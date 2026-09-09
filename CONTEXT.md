@@ -5,6 +5,10 @@ Słownik pojęć domenowych i założeń projektowych dla projektu **Energy Solu
 ## Dokumenty Architektoniczne (ADR)
 - [ADR 0001: Wybór stacku prototypu frontendowego przed migracją do WordPress / Elementor](docs/adr/0001-frontend-prototype-stack.md)
 
+## Referencje wizualne (materiały od klienta)
+- [Energy Solutions – Strona główna](<_clode-es/Energy Solutions - Strona główna.dc.html>) — aktualny typ ułożenia strony głównej (Claude Design canvas).
+- [Ekoterra – Home 4 (Covid-19)](https://ekoterra.ancorathemes.com/home-4-covid-19/) — szablon, który podoba się klientowi; punkt odniesienia dla układu i stylu sekcji.
+
 ## Pojęcia domenowe (Ubiquitous Language)
 
 ### Prototyp Wizualno-Funkcjonalny (Prototype)

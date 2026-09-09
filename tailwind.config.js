@@ -1,3 +1,5 @@
+import defaultTheme from 'tailwindcss/defaultTheme'
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
@@ -14,7 +16,11 @@ export default {
           600: '#16a34a',
           700: '#15803d',
         }
-      }
+      },
+      fontFamily: {
+        sans: ['Inter', ...defaultTheme.fontFamily.sans],
+        heading: ['Montserrat', ...defaultTheme.fontFamily.sans],
+      },
     },
   },
   plugins: [],
