@@ -1,12 +1,6 @@
 import { useState } from 'react'
 import clsx from 'clsx'
-
-const navLinks = [
-  { label: 'Firma', href: '#' },
-  { label: 'Realizacje', href: '#' },
-  { label: 'Kariera', href: '#' },
-  { label: 'Kontakt', href: '#' },
-]
+import { navLinks } from '@/lib/navigation'
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false)
@@ -27,7 +21,7 @@ export default function Header() {
             <a
               key={link.label}
               href={link.href}
-              className="relative text-2xl font-normal font-['Urbanist'] tracking-[0.08em] text-[#777777] transition after:absolute after:-bottom-1 after:left-1/2 after:h-[3px] after:w-0 after:-translate-x-1/2 after:-skew-x-12 after:bg-[#fbba00] after:transition-all after:duration-300 hover:after:w-[105%]"
+              className="relative text-xl font-normal tracking-[0.08em] text-[#777777] transition after:absolute after:-bottom-1 after:left-1/2 after:h-[3px] after:w-0 after:-translate-x-1/2 after:-skew-x-12 after:bg-[#fbba00] after:transition-all after:duration-300 hover:after:w-[105%]"
             >
               {link.label}
             </a>

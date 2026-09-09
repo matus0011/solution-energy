@@ -18,7 +18,7 @@ export default {
         }
       },
       fontFamily: {
-        sans: ['Inter', ...defaultTheme.fontFamily.sans],
+        sans: ['Urbanist', ...defaultTheme.fontFamily.sans],
         heading: ['Montserrat', ...defaultTheme.fontFamily.sans],
       },
     },
