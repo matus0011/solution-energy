@@ -1,3 +1,174 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/*
+ * Style dla treści przychodzącej dynamicznie z WordPressa (edytor blokowy/
+ * klasyczny) — artykuły w Aktualnościach będą renderowane jako surowe HTML
+ * (dangerouslySetInnerHTML), więc stylujemy tu gołe tagi, a nie klasy
+ * utrzymywane ręcznie w JSX. Kolory/fonty dopasowane do reszty projektu.
+ */
+@layer components {
+  .entry-content {
+    @apply flex flex-col gap-6 text-[18px] font-normal leading-relaxed text-[#777777];
+  }
+
+  /* Akapity i tekst */
+  .entry-content p {
+    @apply text-[18px] font-normal leading-relaxed text-[#777777];
+  }
+  .entry-content a {
+    @apply text-[#fbba00] underline underline-offset-2 transition-colors duration-300 hover:text-[#26282C];
+  }
+  .entry-content strong,
+  .entry-content b {
+    @apply font-bold text-[#26282C];
+  }
+  .entry-content em,
+  .entry-content i {
+    @apply italic;
+  }
+  .entry-content small {
+    @apply text-sm;
+  }
+  .entry-content mark {
+    @apply bg-[#fbba00]/30 text-[#26282C];
+  }
+  .entry-content del {
+    @apply text-[#777777]/60 line-through;
+  }
+
+  /* Nagłówki */
+  .entry-content h1,
+  .entry-content h2,
+  .entry-content h3,
+  .entry-content h4,
+  .entry-content h5,
+  .entry-content h6 {
+    @apply font-heading font-bold uppercase tracking-wide text-[#26282C];
+  }
+  .entry-content h1 {
+    @apply text-3xl sm:text-4xl;
+  }
+  .entry-content h2 {
+    @apply text-2xl sm:text-3xl;
+  }
+  .entry-content h3 {
+    @apply text-xl sm:text-2xl;
+  }
+  .entry-content h4 {
+    @apply text-lg sm:text-xl;
+  }
+  .entry-content h5,
+  .entry-content h6 {
+    @apply text-base sm:text-lg;
+  }
+
+  /* Listy */
+  .entry-content ul,
+  .entry-content ol {
+    @apply flex flex-col gap-2 pl-1;
+  }
+  .entry-content ul > li,
+  .entry-content ol > li {
+    @apply flex items-start gap-3 text-[18px] leading-relaxed text-[#777777];
+  }
+  .entry-content ul > li::before {
+    content: '';
+    @apply mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#fbba00];
+  }
+  .entry-content ol {
+    counter-reset: entry-ol;
+  }
+  .entry-content ol > li::before {
+    counter-increment: entry-ol;
+    content: counter(entry-ol) '.';
+    @apply shrink-0 font-bold text-[#fbba00];
+  }
+  .entry-content li > ul,
+  .entry-content li > ol {
+    @apply mt-2 pl-6;
+  }
+
+  /* Cytaty */
+  .entry-content blockquote {
+    @apply border-l-4 border-[#fbba00] pl-6 text-[18px] italic leading-relaxed text-[#26282C];
+  }
+  .entry-content blockquote p:last-child {
+    @apply mb-0;
+  }
+  .entry-content cite {
+    @apply mt-2 block text-[16px] font-bold not-italic uppercase tracking-wide text-[#777777];
+  }
+
+  /* Obrazy i podpisy */
+  .entry-content img {
+    @apply w-full object-cover;
+  }
+  .entry-content figure {
+    @apply flex flex-col gap-3;
+  }
+  .entry-content figcaption {
+    @apply text-center text-sm text-[#777777]/80;
+  }
+  .entry-content .alignleft {
+    @apply float-left mr-6;
+  }
+  .entry-content .alignright {
+    @apply float-right ml-6;
+  }
+  .entry-content .aligncenter {
+    @apply mx-auto;
+  }
+  .entry-content .alignwide,
+  .entry-content .alignfull {
+    @apply w-full;
+  }
+
+  /* Wideo / osadzenia (YouTube, Vimeo itp. — WP owija je w figure/div) */
+  .entry-content iframe,
+  .entry-content video,
+  .entry-content embed,
+  .entry-content object {
+    @apply w-full rounded-none;
+  }
+  .entry-content iframe {
+    @apply aspect-video h-auto border-0;
+  }
+  .entry-content .wp-block-embed__wrapper,
+  .entry-content .video-wrapper {
+    @apply relative aspect-video w-full overflow-hidden;
+  }
+  .entry-content .wp-block-embed__wrapper iframe,
+  .entry-content .video-wrapper iframe {
+    @apply absolute inset-0 h-full w-full;
+  }
+
+  /* Tabele */
+  .entry-content table {
+    @apply w-full border-collapse text-left text-[16px] text-[#777777];
+  }
+  .entry-content th,
+  .entry-content td {
+    @apply border border-[#e5e5e5] px-4 py-2;
+  }
+  .entry-content th {
+    @apply bg-[#f7f7f7] font-bold uppercase tracking-wide text-[#26282C];
+  }
+
+  /* Kod */
+  .entry-content code {
+    @apply rounded bg-[#f7f7f7] px-1.5 py-0.5 font-mono text-[15px] text-[#26282C];
+  }
+  .entry-content pre {
+    @apply overflow-x-auto rounded bg-[#26282C] p-4 text-[15px] text-white;
+  }
+  .entry-content pre code {
+    @apply bg-transparent p-0 text-inherit;
+  }
+
+  /* Linia pozioma */
+  .entry-content hr {
+    @apply my-2 border-t border-[#e5e5e5];
+  }
+}
