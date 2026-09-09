@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    body { margin: 0; background: #FBFAF8; }
+  </style>
+</helmet>
+
+<div style="font-family:'Barlow',sans-serif;">
+
+  <!-- top strip -->
+  <div style="background:#33363B; color:#B9BCC1; font-size:13px; display:flex; justify-content:space-between; align-items:center; padding:8px 56px;">
+    <div style="display:flex; gap:24px;">
+      <span>tel. +48 (14) 657 11 05</span>
+      <span>biuro@energysolutions.pl</span>
+    </div>
+    <div style="display:flex; gap:12px; font-weight:600;">
+      <span style="color:#F5B21A;">PL</span><span style="cursor:pointer;">EN</span>
+    </div>
+  </div>
+
+  <!-- header -->
+  <div style="display:flex; justify-content:space-between; align-items:center; padding:20px 56px; background:#FFFFFF; border-bottom:1px solid #E5E3DE;">
+    <a href="Strona główna.dc.html"><img src="../assets/logo.png" alt="Energy Solutions" style="height:44px; display:block;"></a>
+    <div style="display:flex; gap:32px; font-weight:600; color:#33363B; text-transform:uppercase; letter-spacing:0.04em; font-family:'Barlow Condensed',sans-serif; font-size:17px;">
+      <a href="Strona główna.dc.html" style="color:#33363B; text-decoration:none; transition:color 0.2s ease;" style-hover="color:#B58200;">Strona główna</a>
+      <a href="Firma.dc.html" style="color:#33363B; text-decoration:none; transition:color 0.2s ease;" style-hover="color:#B58200;">Firma</a>
+      <a href="Oferta.dc.html" style="color:#33363B; text-decoration:none; transition:color 0.2s ease;" style-hover="color:#B58200;">Oferta</a>
+      <a href="Realizacje.dc.html" style="color:#B58200; text-decoration:none;">Realizacje</a>
+      <a href="Kariera.dc.html" style="color:#33363B; text-decoration:none; transition:color 0.2s ease;" style-hover="color:#B58200;">Kariera</a>
+      <a href="Kontakt.dc.html" style="color:#33363B; text-decoration:none; transition:color 0.2s ease;" style-hover="color:#B58200;">Kontakt</a>
+    </div>
+  </div>
+
+  <!-- page hero -->
+  <div style="background:#33363B; padding:64px 56px; display:flex; flex-direction:column; gap:16px;">
+    <span style="font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:0.12em; color:#F5B21A;">STRONA GŁÓWNA / REALIZACJE</span>
+    <h1 style="margin:0; font-family:'Barlow Condensed',sans-serif; font-size:56px; font-weight:700; color:#FFFFFF; text-transform:uppercase;">Realizacje</h1>
+    <p style="margin:0; font-size:17px; line-height:1.6; color:#C9CCD0; max-width:640px;">Wybrane projekty zrealizowane dla naszych klientów. Poniższe pozycje to placeholdery — do uzupełnienia rzeczywistymi realizacjami.</p>
+  </div>
+
+  <!-- filters + grid -->
+  <div style="padding:64px 56px 80px 56px; display:flex; flex-direction:column; gap:40px;">
+    <div style="display:flex; gap:8px; font-size:14px; font-weight:600; flex-wrap:wrap;">
+      <span style="cursor:pointer; background:{{ chipAllBg }}; color:{{ chipAllColor }}; padding:8px 16px;" onClick="{{ filterAll }}">Wszystkie</span>
+      <sc-for list="{{ categories }}" as="cat" hint-placeholder-count="4">
+        <span style="cursor:pointer; background:{{ cat.bg }}; color:{{ cat.color }}; padding:8px 16px; transition:background 0.2s ease, color 0.2s ease;" onClick="{{ cat.select }}">{{ cat.name }}</span>
+      </sc-for>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:24px;">
+      <sc-for list="{{ projects }}" as="p" hint-placeholder-count="6">
+        <div style="background:#FFFFFF; border:1px solid #E5E3DE; display:flex; flex-direction:column; cursor:pointer; transition:transform 0.25s ease, box-shadow 0.25s ease;" style-hover="transform:translateY(-6px); box-shadow:0 16px 32px rgba(51,54,59,0.16);">
+          <div style="position:relative; overflow:hidden; height:220px; background:repeating-linear-gradient(45deg, #EDEBE6 0, #EDEBE6 10px, #E4E1DA 10px, #E4E1DA 20px); display:flex; align-items:center; justify-content:center;">
+            <span style="font-family:'IBM Plex Mono',monospace; font-size:12px; color:#8B877E;">{{ p.imgLabel }}</span>
+            <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(38,40,44,0.55) 0%, rgba(38,40,44,0) 55%);"></div>
+            <span style="position:absolute; left:16px; bottom:14px; background:#F5B21A; color:#26282C; font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.08em; padding:5px 10px;">{{ p.catUpper }}</span>
+          </div>
+          <div style="padding:24px; display:flex; flex-direction:column; gap:8px;">
+            <span style="font-family:'Barlow Condensed',sans-serif; font-size:22px; font-weight:600; color:#33363B;">{{ p.title }}</span>
+            <span style="font-size:14px; color:#7B7F86;">{{ p.desc }}</span>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <!-- footer -->
+  <div style="background:#33363B; padding:64px 56px 40px 56px; display:flex; flex-direction:column; gap:48px;">
+    <div style="display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:48px;">
+      <div style="display:flex; flex-direction:column; gap:16px;">
+        <div style="background:#FFFFFF; padding:12px 16px; border-radius:4px; align-self:flex-start;">
+          <img src="../assets/logo.png" alt="Energy Solutions" style="height:32px; display:block;">
+        </div>
+        <p style="margin:0; font-size:14px; line-height:1.7; color:#9DA1A8; max-width:360px;">Energy Solutions Sp. z o.o. — pewny partner biznesowy w zakresie obsługi inwestycji i innowacyjnych rozwiązań.</p>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:10px; font-size:14px; color:#C9CCD0;">
+        <span style="font-family:'Barlow Condensed',sans-serif; font-size:18px; font-weight:600; color:#F5B21A; text-transform:uppercase; letter-spacing:0.06em;">Kontakt</span>
+        <span>ul. Wiesława Wody 27, 33-100 Tarnów</span>
+        <span>tel. +48 (14) 657 11 05</span>
+        <span>fax +48 (14) 657 11 06</span>
+        <span>biuro@energysolutions.pl</span>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:10px; font-size:14px; color:#C9CCD0;">
+        <span style="font-family:'Barlow Condensed',sans-serif; font-size:18px; font-weight:600; color:#F5B21A; text-transform:uppercase; letter-spacing:0.06em;">Dane rejestrowe</span>
+        <span>NIP: 873-308-78-05</span>
+        <span>KRS: 0000245582</span>
+        <span>BDO: 000566462</span>
+      </div>
+    </div>
+    <div style="border-top:1px solid #46494F; padding-top:20px; font-size:13px; color:#7B7F86;">© 2026 Energy Solutions Sp. z o.o. Wszelkie prawa zastrzeżone.</div>
+  </div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { active: null };
+
+  static CATEGORIES = [
+    "Energetyka i kogeneracja",
+    "Geotermia",
+    "Instalacje elektryczne i AKPiA",
+    "Ochrona środowiska"
+  ];
+
+  static PROJECTS = [
+    { cat: "Energetyka i kogeneracja", title: "Nazwa realizacji — do uzupełnienia", desc: "Krótki opis projektu, zakres prac, lokalizacja.", imgLabel: "[ zdjęcie realizacji 1 ]" },
+    { cat: "Geotermia", title: "Nazwa realizacji — do uzupełnienia", desc: "Krótki opis projektu, zakres prac, lokalizacja.", imgLabel: "[ zdjęcie realizacji 2 ]" },
+    { cat: "Instalacje elektryczne i AKPiA", title: "Nazwa realizacji — do uzupełnienia", desc: "Krótki opis projektu, zakres prac, lokalizacja.", imgLabel: "[ zdjęcie realizacji 3 ]" },
+    { cat: "Ochrona środowiska", title: "Nazwa realizacji — do uzupełnienia", desc: "Krótki opis projektu, zakres prac, lokalizacja.", imgLabel: "[ zdjęcie realizacji 4 ]" },
+    { cat: "Energetyka i kogeneracja", title: "Nazwa realizacji — do uzupełnienia", desc: "Krótki opis projektu, zakres prac, lokalizacja.", imgLabel: "[ zdjęcie realizacji 5 ]" },
+    { cat: "Geotermia", title: "Nazwa realizacji — do uzupełnienia", desc: "Krótki opis projektu, zakres prac, lokalizacja.", imgLabel: "[ zdjęcie realizacji 6 ]" }
+  ];
+
+  renderVals() {
+    const active = this.state.active;
+    const categories = Component.CATEGORIES.map((name) => ({
+      name,
+      bg: active === name ? "#33363B" : "#FFFFFF",
+      color: active === name ? "#FFFFFF" : "#54575D",
+      select: () => this.setState({ active: name })
+    }));
+    const projects = Component.PROJECTS
+      .filter((p) => !active || p.cat === active)
+      .map((p) => ({ ...p, catUpper: p.cat.toUpperCase() }));
+    return {
+      categories,
+      projects,
+      chipAllBg: active === null ? "#33363B" : "#FFFFFF",
+      chipAllColor: active === null ? "#FFFFFF" : "#54575D",
+      filterAll: () => this.setState({ active: null })
+    };
+  }
+}
+</script>
+</body>
+</html>

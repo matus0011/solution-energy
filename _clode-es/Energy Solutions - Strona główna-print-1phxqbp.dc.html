@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style data-omelette-print-defaults>
+@media print {
+  @page { margin: 0.5in; }
+  h1, h2, h3, h4, h5, h6 { break-after: avoid; }
+  figure, table, pre, blockquote, img, svg, tr, [class~="card" i] { break-inside: avoid; }
+  img, svg { max-width: 100%; }
+  p { orphans: 3; widows: 3; }
+}
+</style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <meta name="design_doc_mode" content="canvas">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    body { margin: 0; background: #E9EAEB; }
+  </style>
+</helmet>
+
+<section style="display:flex; flex-direction:column; gap:24px; padding:40px; font-family:'Barlow',sans-serif;">
+  <div style="display:flex; align-items:baseline; gap:16px;">
+    <div style="font-family:'Barlow Condensed',sans-serif; font-size:28px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:#33363B;">Warianty strony głównej</div>
+    <div style="font-size:15px; color:#6B6F76;">Wybierz kierunek: <a href="#1a" style="color:#B58200; font-weight:600;">1a</a> jasny korporacyjny · <a href="#1b" style="color:#B58200; font-weight:600;">1b</a> ciemny industrialny</div>
+  </div>
+
+  <div style="display:flex; gap:48px; align-items:flex-start; flex-wrap:wrap;">
+
+    <!-- ============ OPTION 1a — LIGHT CORPORATE ============ -->
+    <div id="1a" style="display:flex; flex-direction:column; gap:12px;">
+      <div style="display:flex; align-items:center; gap:10px;">
+        <div style="background:#33363B; color:#F5B21A; font-family:'IBM Plex Mono',monospace; font-size:14px; font-weight:500; padding:4px 12px; border-radius:4px;">1a</div>
+        <div style="font-size:15px; font-weight:600; color:#33363B;">Jasny korporacyjny — spokojny, zaufanie</div>
+      </div>
+
+      <div style="width:1280px; background:#FBFAF8; box-shadow:0 8px 40px rgba(0,0,0,0.18); overflow:hidden;">
+
+        <!-- top strip -->
+        <div style="background:#33363B; color:#B9BCC1; font-size:13px; display:flex; justify-content:space-between; align-items:center; padding:8px 56px;">
+          <div style="display:flex; gap:24px;">
+            <span>tel. +48 (14) 657 11 05</span>
+            <span>biuro@energysolutions.pl</span>
+          </div>
+          <div style="display:flex; gap:12px; font-weight:600;">
+            <span style="color:#F5B21A;">PL</span><span>EN</span>
+          </div>
+        </div>
+
+        <!-- header -->
+        <div style="display:flex; justify-content:space-between; align-items:center; padding:20px 56px; background:#FFFFFF; border-bottom:1px solid #E5E3DE;">
+          <img src="assets/logo.png" alt="Energy Solutions" style="height:44px;">
+          <div style="display:flex; gap:32px; font-size:15px; font-weight:600; color:#33363B; text-transform:uppercase; letter-spacing:0.04em; font-family:'Barlow Condensed',sans-serif; font-size:17px;">
+            <span style="color:#B58200;">Strona główna</span>
+            <span style="cursor:pointer; transition:color 0.2s ease;" style-hover="color:#B58200;">Firma</span>
+            <span style="cursor:pointer; transition:color 0.2s ease;" style-hover="color:#B58200;">Oferta</span>
+            <span style="cursor:pointer; transition:color 0.2s ease;" style-hover="color:#B58200;">Realizacje</span>
+            <span style="cursor:pointer; transition:color 0.2s ease;" style-hover="color:#B58200;">Kariera</span>
+            <span style="cursor:pointer; transition:color 0.2s ease;" style-hover="color:#B58200;">Kontakt</span>
+          </div>
+        </div>
+
+        <!-- hero -->
+        <div style="position:relative; background:#33363B; padding:96px 56px 104px 56px; overflow:hidden;">
+          <div style="position:absolute; inset:0; background:repeating-linear-gradient(115deg, #3A3D43 0px, #3A3D43 28px, #33363B 28px, #33363B 56px);"></div>
+          <div style="position:absolute; right:56px; top:96px; bottom:104px; width:460px; background:repeating-linear-gradient(45deg, #46494F 0, #46494F 10px, #3E4147 10px, #3E4147 20px); display:flex; align-items:center; justify-content:center;">
+            <span style="font-family:'IBM Plex Mono',monospace; font-size:13px; color:#9DA1A8;">[ zdjęcie: inwestycja energetyczna ]</span>
+            <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(38,40,44,0.75) 0%, rgba(38,40,44,0) 45%);"></div>
+            <div style="position:absolute; top:-12px; left:-12px; width:64px; height:64px; border-top:4px solid #F5B21A; border-left:4px solid #F5B21A;"></div>
+            <div style="position:absolute; bottom:-12px; right:-12px; width:64px; height:64px; border-bottom:4px solid #F5B21A; border-right:4px solid #F5B21A;"></div>
+            <div style="position:absolute; left:20px; bottom:16px; display:flex; align-items:center; gap:10px;">
+              <div style="width:24px; height:3px; background:#F5B21A;"></div>
+              <span style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.1em; color:#FFFFFF;">ENERGETYKA / PRZEMYSŁ</span>
+            </div>
+          </div>
+          <div style="position:relative; max-width:620px; display:flex; flex-direction:column; gap:24px;">
+            <div style="display:flex; align-items:center; gap:12px;">
+              <div style="width:40px; height:4px; background:#F5B21A;"></div>
+              <span style="font-family:'IBM Plex Mono',monospace; font-size:13px; letter-spacing:0.12em; color:#F5B21A;">OBSŁUGA INWESTYCJI PRZEMYSŁOWYCH</span>
+            </div>
+            <h1 style="margin:0; font-family:'Barlow Condensed',sans-serif; font-size:64px; line-height:1.05; font-weight:700; color:#FFFFFF; text-transform:uppercase;">Dobra energia<br>do współpracy</h1>
+            <p style="margin:0; font-size:18px; line-height:1.6; color:#C9CCD0; max-width:480px;">Pewny partner biznesowy w zakresie obsługi inwestycji i innowacyjnych rozwiązań — od projektu, przez realizację, po serwis.</p>
+            <div style="display:flex; gap:16px; margin-top:8px;">
+              <span style="background:#F5B21A; color:#33363B; font-weight:700; font-size:15px; padding:14px 28px; text-transform:uppercase; letter-spacing:0.04em; cursor:pointer; transition:background 0.2s ease, transform 0.2s ease;" style-hover="background:#FFC838; transform:translateY(-2px);">Poznaj ofertę</span>
+              <span style="border:2px solid #5A5D63; color:#FFFFFF; font-weight:600; font-size:15px; padding:12px 26px; text-transform:uppercase; letter-spacing:0.04em; cursor:pointer; transition:border-color 0.2s ease, color 0.2s ease;" style-hover="border-color:#F5B21A; color:#F5B21A;">Nasze realizacje</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- o firmie -->
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:64px; padding:88px 56px; align-items:center;">
+          <div style="position:relative; height:420px; background:repeating-linear-gradient(45deg, #EDEBE6 0, #EDEBE6 10px, #E4E1DA 10px, #E4E1DA 20px); display:flex; align-items:center; justify-content:center;">
+            <span style="font-family:'IBM Plex Mono',monospace; font-size:13px; color:#8B877E;">[ zdjęcie: zespół / siedziba firmy ]</span>
+            <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(51,54,59,0.55) 0%, rgba(51,54,59,0) 45%);"></div>
+            <div style="position:absolute; bottom:-14px; left:-14px; width:72px; height:72px; border-bottom:4px solid #F5B21A; border-left:4px solid #F5B21A;"></div>
+            <div style="position:absolute; left:24px; bottom:18px; display:flex; align-items:center; gap:10px;">
+              <div style="width:24px; height:3px; background:#F5B21A;"></div>
+              <span style="font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.1em; color:#FFFFFF;">ENERGY SOLUTIONS / TARNÓW</span>
+            </div>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:20px;">
+            <span style="font-family:'IBM Plex Mono',monospace; font-size:13px; letter-spacing:0.12em; color:#B58200;">FIRMA</span>
+            <h2 style="margin:0; font-family:'Barlow Condensed',sans-serif; font-size:42px; line-height:1.1; font-weight:700; color:#33363B; text-transform:uppercase;">Doświadczony i odpowiedzialny partner biznesowy</h2>
+            <p style="margin:0; font-size:16px; line-height:1.7; color:#54575D;">Powierzane nam zadania traktujemy kompleksowo. Dzięki takiemu podejściu wykonujemy z optymalnym efektem nawet najbardziej nietypowe i problematyczne realizacje, których nie potrafią podjąć się inni.</p>
+            <p style="margin:0; font-size:16px; line-height:1.7; color:#54575D;">Wspieramy klientów na każdym etapie procesu inwestycyjnego — od projektowania i realizacji, po serwis gwarancyjny i pogwarancyjny. To procentuje.</p>
+            <span style="color:#B58200; font-weight:700; font-size:15px; text-transform:uppercase; letter-spacing:0.04em; cursor:pointer; transition:letter-spacing 0.2s ease, color 0.2s ease;" style-hover="letter-spacing:0.08em; color:#33363B;">Czytaj więcej →</span>
+          </div>
+        </div>
+
+        <!-- facts -->
+        <div style="background:#F5B21A; display:grid; grid-template-columns:1fr 1fr 1fr; padding:48px 56px;">
+          <div style="display:flex; flex-direction:column; gap:6px; border-left:3px solid #33363B; padding-left:24px;">
+            <span style="font-family:'Barlow Condensed',sans-serif; font-size:48px; font-weight:700; color:#33363B; line-height:1;">2011</span>
+            <span style="font-size:15px; font-weight:600; color:#5C4A10;">początek działalności</span>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:6px; border-left:3px solid #33363B; padding-left:24px;">
+            <span style="font-family:'Barlow Condensed',sans-serif; font-size:48px; font-weight:700; color:#33363B; line-height:1;">7</span>
+            <span style="font-size:15px; font-weight:600; color:#5C4A10;">obszarów kompetencji</span>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:6px; border-left:3px solid #33363B; padding-left:24px;">
+            <span style="font-family:'Barlow Condensed',sans-serif; font-size:48px; font-weight:700; color:#33363B; line-height:1;">100%</span>
+            <span style="font-size:15px; font-weight:600; color:#5C4A10;">kompleksowa obsługa inwestycji</span>
+          </div>
+        </div>
+
+        <!-- oferta -->
+        <div style="padding:88px 56px; display:flex; flex-direction:column; gap:40px;">
+          <div style="display:flex; flex-direction:column; gap:12px;">
+            <span style="font-family:'IBM Plex Mono',monospace; font-size:13px; letter-spacing:0.12em; color:#B58200;">OFERTA</span>
+            <h2 style="margin:0; font-family:'Barlow Condensed',sans-serif; font-size:42px; font-weight:700; color:#33363B; text-transform:uppercase;">Obszary działalności</h2>
+          </div>
+          <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:2px; background:#E5E3DE; border:1px solid #E5E3DE;">
+            <div style="background:#FFFFFF; padding:32px 28px; display:flex; flex-direction:column; gap:12px; min-height:120px; cursor:pointer; transition:transform 0.25s ease, box-shadow 0.25s ease;" style-hover="transform:translateY(-4px); box-shadow:0 14px 28px rgba(51,54,59,0.16);">
+              <span style="font-family:'IBM Plex Mono',monospace; font-size:12px; color:#B58200;">01</span>
+              <span style="font-family:'Barlow Condensed',sans-serif; font-size:24px; font-weight:600; color:#33363B; text-transform:uppercase;">Kogeneracja i obiekty energetyczne</span>
+            </div>
+            <div style="background:#FFFFFF; padding:32px 28px; display:flex; flex-direction:column; gap:12px; cursor:pointer; transition:transform 0.25s ease, box-shadow 0.25s ease;" style-hover="transform:translateY(-4px); box-shadow:0 14px 28px rgba(51,54,59,0.16);">
+              <span style="font-family:'IBM Plex Mono',monospace; font-size:12px; color:#B58200;">02</span>
+              <span style="font-family:'Barlow Condensed',sans-serif; font-size:24px; font-weight:600; color:#33363B; text-transform:uppercase;">Ciepłownie geotermalne</span>
+            </div>
+            <div style="background:#FFFFFF; padding:32px 28px; display:flex; flex-direction:column; gap:12px; cursor:pointer; transition:transform 0.25s ease, box-shadow 0.25s ease;" style-hover="transform:translateY(-4px); box-shadow:0 14px 28px rgba(51,54,59,0.16);">
+              <span style="font-family:'IBM Plex Mono',monospace; font-size:12px; color:#B58200;">03</span>
+              <span style="font-family:'Barlow Condensed',sans-serif; font-size:24px; font-weight:600; color:#33363B; text-transform:uppercase;">Instalacje na biomasę</span>
+            </div>
+            <div style="background:#FFFFFF; padding:32px 28px; display:flex; flex-direction:column; gap:12px; cursor:pointer; transition:transform 0.25s ease, box-shadow 0.25s ease;" style-hover="transform:translateY(-4px); box-shadow:0 14px 28px rgba(51,54,59,0.16);">
+              <span style="font-family:'IBM Plex Mono',monospace; font-size:12px; color:#B58200;">04</span>
+              <span style="font-family:'Barlow Condensed',sans-serif; font-size:24px; font-weight:600; color:#33363B; text-transform:uppercase;">Pompy ciepła</span>
+            </div>
+            <div style="background:#FFFFFF; padding:32px 28px; display:flex; flex-direction:column; gap:12px; cursor:pointer; transition:transform 0.25s ease, box-shadow 0.25s ease;" style-hover="transform:translateY(-4px); box-shadow:0 14px 28px rgba(51,54,59,0.16);">
+              <span style="font-family:'IBM Plex Mono',monospace; font-size:12px; color:#B58200;">05</span>
+              <span style="font-family:'Barlow Condensed',sans-serif; font-size:24px; font-weight:600; color:#33363B; text-transform:uppercase;">Instalacje elektryczne i AKPiA</span>
+            </div>
+            <div style="background:#FFFFFF; padding:32px 28px; display:flex; flex-direction:column; gap:12px; cursor:pointer; transition:transform 0.25s ease, box-shadow 0.25s ease;" style-hover="transform:translateY(-4px); box-shadow:0 14px 28px rgba(51,54,59,0.16);">
+              <span style="font-family:'IBM Plex Mono',monospace; font-size:12px; color:#B58200;">06</span>
+              <span style="font-family:'Barlow Condensed',sans-serif; font-size:24px; font-weight:600; color:#33363B; text-transform:uppercase;">Ochrona środowiska</span>
+            </div>
+            <div style="background:#33363B; padding:32px 28px; display:flex; flex-direction:column; gap:12px; grid-column:span 3; cursor:pointer; transition:background 0.25s ease;" style-hover="background:#3E4147;">
+              <span style="font-family:'IBM Plex Mono',monospace; font-size:12px; color:#F5B21A;">07</span>
+              <div style="display:flex; justify-content:space-between; align-items:center;">
+                <span style="font-family:'Barlow Condensed',sans-serif; font-size:24px; font-weight:600; color:#FFFFFF; text-transform:uppercase;">Kompleksowa obsługa inwestycji przemysłowych</span>
+                <span style="color:#F5B21A; font-weight:700; font-size:14px; text-transform:uppercase; letter-spacing:0.04em;">Zobacz pełną ofertę →</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- realizacje -->
+        <div style="background:#F2F0EC; padding:88px 56px; display:flex; flex-direction:column; gap:40px;">
+          <div style="display:flex; justify-content:space-between; align-items:flex-end;">
+            <div style="display:flex; flex-direction:column; gap:12px;">
+              <span style="font-family:'IBM Plex Mono',monospace; font-size:13px; letter-spacing:0.12em; color:#B58200;">REALIZACJE</span>
+              <h2 style="margin:0; font-family:'Barlow Condensed',sans-serif; font-size:42px; font-weight:700; color:#33363B; text-transform:uppercase;">Wybrane projekty</h2>
+            </div>
+            <div style="display:flex; gap:8px; font-size:14px; font-weight:600;">
+              <span style="background:#33363B; color:#FFFFFF; padding:8px 16px;">Wszystkie</span>
+              <span style="background:#FFFFFF; color:#54575D; padding:8px 16px; cursor:pointer; transition:background 0.2s ease, color 0.2s ease;" style-hover="background:#33363B; color:#FFFFFF;">Energetyka</span>
+              <span style="background:#FFFFFF; color:#54575D; padding:8px 16px; cursor:pointer; transition:background 0.2s ease, color 0.2s ease;" style-hover="background:#33363B; color:#FFFFFF;">Geotermia</span>
+              <span style="background:#FFFFFF; color:#54575D; padding:8px 16px; cursor:pointer; transition:background 0.2s ease, color 0.2s ease;" style-hover="background:#33363B; color:#FFFFFF;">Przemysł</span>
+            </div>
+          </div>
+          <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:24px;">
+            <div style="background:#FFFFFF; display:flex; flex-direction:column; cursor:pointer; transition:transform 0.25s ease, box-shadow 0.25s ease;" style-hover="transform:translateY(-6px); box-shadow:0 16px 32px rgba(51,54,59,0.16);">
+              <div style="position:relative; overflow:hidden; height:220px; background:repeating-linear-gradient(45deg, #EDEBE6 0, #EDEBE6 10px, #E4E1DA 10px, #E4E1DA 20px); display:flex; align-items:center; justify-content:center;">
+                <span style="font-family:'IBM Plex Mono',monospace; font-size:12px; color:#8B877E;">[ zdjęcie realizacji 1 ]</span>
+                <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(38,40,44,0.55) 0%, rgba(38,40,44,0) 55%);"></div>
+                <span style="position:absolute; left:16px; bottom:14px; background:#F5B21A; color:#26282C; font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.08em; padding:5px 10px;">KATEGORIA</span>
+              </div>
+              <div style="padding:24px; display:flex; flex-direction:column; gap:8px;">
+                <span style="font-family:'Barlow Condensed',sans-serif; font-size:22px; font-weight:600; color:#33363B;">Nazwa realizacji — do uzupełnienia</span>
+              </div>
+            </div>
+            <div style="background:#FFFFFF; display:flex; flex-direction:column; cursor:pointer; transition:transform 0.25s ease, box-shadow 0.25s ease;" style-hover="transform:translateY(-6px); box-shadow:0 16px 32px rgba(51,54,59,0.16);">
+              <div style="position:relative; overflow:hidden; height:220px; background:repeating-linear-gradient(45deg, #EDEBE6 0, #EDEBE6 10px, #E4E1DA 10px, #E4E1DA 20px); display:flex; align-items:center; justify-content:center;">
+                <span style="font-family:'IBM Plex Mono',monospace; font-size:12px; color:#8B877E;">[ zdjęcie realizacji 2 ]</span>
+                <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(38,40,44,0.55) 0%, rgba(38,40,44,0) 55%);"></div>
+                <span style="position:absolute; left:16px; bottom:14px; background:#F5B21A; color:#26282C; font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.08em; padding:5px 10px;">KATEGORIA</span>
+              </div>
+              <div style="padding:24px; display:flex; flex-direction:column; gap:8px;">
+                <span style="font-family:'Barlow Condensed',sans-serif; font-size:22px; font-weight:600; color:#33363B;">Nazwa realizacji — do uzupełnienia</span>
+              </div>
+            </div>
+            <div style="background:#FFFFFF; display:flex; flex-direction:column; cursor:pointer; transition:transform 0.25s ease, box-shadow 0.25s ease;" style-hover="transform:translateY(-6px); box-shadow:0 16px 32px rgba(51,54,59,0.16);">
+              <div style="position:relative; overflow:hidden; height:220px; background:repeating-linear-gradient(45deg, #EDEBE6 0, #EDEBE6 10px, #E4E1DA 10px, #E4E1DA 20px); display:flex; align-items:center; justify-content:center;">
+                <span style="font-family:'IBM Plex Mono',monospace; font-size:12px; color:#8B877E;">[ zdjęcie realizacji 3 ]</span>
+                <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(38,40,44,0.55) 0%, rgba(38,40,44,0) 55%);"></div>
+                <span style="position:absolute; left:16px; bottom:14px; background:#F5B21A; color:#26282C; font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.08em; padding:5px 10px;">KATEGORIA</span>
+              </div>
+              <div style="padding:24px; display:flex; flex-direction:column; gap:8px;">
+                <span style="font-family:'Barlow Condensed',sans-serif; font-size:22px; font-weight:600; color:#33363B;">Nazwa realizacji — do uzupełnienia</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- footer -->
+        <div style="background:#33363B; padding:64px 56px 40px 56px; display:flex; flex-direction:column; gap:48px;">
+          <div style="display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:48px;">
+            <div style="display:flex; flex-direction:column; gap:16px;">
+              <div style="background:#FFFFFF; padding:12px 16px; border-radius:4px; align-self:flex-start;">
+                <img src="assets/logo.png" alt="Energy Solutions" style="height:32px; display:block;">
+              </div>
+              <p style="margin:0; font-size:14px; line-height:1.7; color:#9DA1A8; max-width:360px;">Energy Solutions Sp. z o.o. — pewny partner biznesowy w zakresie obsługi inwestycji i innowacyjnych rozwiązań.</p>
+            </div>
+            <div style="display:flex; flex-direction:column; gap:10px; font-size:14px; color:#C9CCD0;">
+              <span style="font-family:'Barlow Condensed',sans-serif; font-size:18px; font-weight:600; color:#F5B21A; text-transform:uppercase; letter-spacing:0.06em;">Kontakt</span>
+              <span>ul. Wiesława Wody 27, 33-100 Tarnów</span>
+              <span>tel. +48 (14) 657 11 05</span>
+              <span>fax +48 (14) 657 11 06</span>
+              <span>biuro@energysolutions.pl</span>
+            </div>
+            <div style="display:flex; flex-direction:column; gap:10px; font-size:14px; color:#C9CCD0;">
+              <span style="font-family:'Barlow Condensed',sans-serif; font-size:18px; font-weight:600; color:#F5B21A; text-transform:uppercase; letter-spacing:0.06em;">Dane rejestrowe</span>
+              <span>NIP: 873-308-78-05</span>
+              <span>KRS: 0000245582</span>
+              <span>BDO: 000566462</span>
+            </div>
+          </div>
+          <div style="border-top:1px solid #46494F; padding-top:20px; font-size:13px; color:#7B7F86;">© 2026 Energy Solutions Sp. z o.o. Wszelkie prawa zastrzeżone.</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ============ OPTION 1b — DARK INDUSTRIAL ============ -->
+    <div id="1b" style="display:flex; flex-direction:column; gap:12px;">
+      <div style="display:flex; align-items:center; gap:10px;">
+        <div style="background:#33363B; color:#F5B21A; font-family:'IBM Plex Mono',monospace; font-size:14px; font-weight:500; padding:4px 12px; border-radius:4px;">1b</div>
+        <div style="font-size:15px; font-weight:600; color:#33363B;">Ciemny industrialny — nowoczesny, dynamiczny</div>
+      </div>
+
+      <div style="width:1280px; background:#26282C; box-shadow:0 8px 40px rgba(0,0,0,0.18); overflow:hidden; font-family:'Barlow',sans-serif;">
+
+        <!-- header -->
+        <div style="display:flex; justify-content:space-between; align-items:center; padding:20px 56px; border-bottom:1px solid #3A3D43;">
+          <div style="background:#FFFFFF; padding:8px 12px; border-radius:4px;">
+            <img src="assets/logo.png" alt="Energy Solutions" style="height:34px; display:block;">
+          </div>
+          <div style="display:flex; gap:32px; align-items:center; font-family:'Barlow Condensed',sans-serif; font-size:17px; font-weight:600; color:#C9CCD0; text-transform:uppercase; letter-spacing:0.04em;">
+            <span style="color:#F5B21A;">Strona główna</span>
+            <span style="cursor:pointer; transition:color 0.2s ease;" style-hover="color:#F5B21A;">Firma</span>
+            <span style="cursor:pointer; transition:color 0.2s ease;" style-hover="color:#F5B21A;">Oferta</span>
+            <span style="cursor:pointer; transition:color 0.2s ease;" style-hover="color:#F5B21A;">Realizacje</span>
+            <span style="cursor:pointer; transition:color 0.2s ease;" style-hover="color:#F5B21A;">Kariera</span>
+            <span style="cursor:pointer; transition:color 0.2s ease;" style-hover="color:#F5B21A;">Kontakt</span>
+            <span style="border-left:1px solid #3A3D43; padding-left:24px; font-size:15px;"><span style="color:#F5B21A;">PL</span> / EN</span>
+          </div>
+        </div>
+
+        <!-- hero typographic -->
+        <div style="padding:104px 56px 88px 56px; display:flex; flex-direction:column; gap:32px; position:relative; overflow:hidden;">
+          <div style="position:absolute; right:-40px; top:40px; font-family:'Barlow Condensed',sans-serif; font-size:280px; font-weight:700; color:#2C2E33; line-height:1; user-select:none;">ES</div>
+          <div style="position:relative; display:flex; flex-direction:column; gap:28px;">
+            <div style="display:flex; gap:6px;">
+              <div style="width:44px; height:8px; background:#F5B21A;"></div>
+              <div style="width:44px; height:8px; background:#F5B21A;"></div>
+              <div style="width:44px; height:8px; background:#F5B21A;"></div>
+            </div>
+            <h1 style="margin:0; font-family:'Barlow Condensed',sans-serif; font-size:88px; line-height:0.98; font-weight:700; color:#FFFFFF; text-transform:uppercase; max-width:900px;">Dobra energia<br><span style="color:#F5B21A;">do współpracy</span></h1>
+            <p style="margin:0; font-size:19px; line-height:1.6; color:#9DA1A8; max-width:560px;">Kompleksowa obsługa inwestycji przemysłowych — energetyka, geotermia, kogeneracja. Od projektu po serwis pogwarancyjny.</p>
+            <div style="display:flex; gap:16px;">
+              <span style="background:#F5B21A; color:#26282C; font-weight:700; font-size:15px; padding:14px 28px; text-transform:uppercase; letter-spacing:0.04em; cursor:pointer; transition:background 0.2s ease, transform 0.2s ease;" style-hover="background:#FFC838; transform:translateY(-2px);">Poznaj ofertę</span>
+              <span style="color:#FFFFFF; font-weight:600; font-size:15px; padding:14px 8px; text-transform:uppercase; letter-spacing:0.04em; border-bottom:2px solid #F5B21A; cursor:pointer; transition:color 0.2s ease;" style-hover="color:#F5B21A;">Nasze realizacje</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- image band -->
+        <div style="position:relative; overflow:hidden; height:340px; margin:0 56px; background:repeating-linear-gradient(45deg, #33363B 0, #33363B 10px, #2C2E33 10px, #2C2E33 20px); display:flex; align-items:center; justify-content:center;">
+          <span style="font-family:'IBM Plex Mono',monospace; font-size:13px; color:#7B7F86;">[ zdjęcie panoramiczne: inwestycja energetyczna ]</span>
+          <div style="position:absolute; inset:0; background:linear-gradient(100deg, rgba(38,40,44,0.85) 0%, rgba(38,40,44,0.2) 55%, rgba(38,40,44,0) 100%);"></div>
+          <div style="position:absolute; left:40px; bottom:36px; display:flex; flex-direction:column; gap:14px;">
+            <div style="display:flex; gap:5px;">
+              <div style="width:30px; height:6px; background:#F5B21A;"></div>
+              <div style="width:30px; height:6px; background:#F5B21A;"></div>
+              <div style="width:30px; height:6px; background:#F5B21A;"></div>
+            </div>
+            <span style="font-family:'Barlow Condensed',sans-serif; font-size:30px; font-weight:600; color:#FFFFFF; text-transform:uppercase; letter-spacing:0.03em;">Obsługa inwestycji przemysłowych</span>
+          </div>
+        </div>
+
+        <!-- o firmie -->
+        <div style="display:grid; grid-template-columns:1fr 1.2fr; gap:64px; padding:96px 56px;">
+          <div style="display:flex; flex-direction:column; gap:16px;">
+            <span style="font-family:'IBM Plex Mono',monospace; font-size:13px; letter-spacing:0.12em; color:#F5B21A;">FIRMA / OD 2011</span>
+            <h2 style="margin:0; font-family:'Barlow Condensed',sans-serif; font-size:46px; line-height:1.05; font-weight:700; color:#FFFFFF; text-transform:uppercase;">Doświadczony i odpowiedzialny partner biznesowy</h2>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:20px;">
+            <p style="margin:0; font-size:17px; line-height:1.75; color:#B9BCC1;">Powierzane nam zadania traktujemy kompleksowo. Dzięki takiemu podejściu wykonujemy z optymalnym efektem nawet najbardziej nietypowe i problematyczne realizacje, których nie potrafią podjąć się inni.</p>
+            <p style="margin:0; font-size:17px; line-height:1.75; color:#B9BCC1;">Wspieramy klientów na każdym etapie procesu inwestycyjnego — od projektowania i realizacji, po serwis gwarancyjny i pogwarancyjny. Pewność to spokój.</p>
+            <span style="color:#F5B21A; font-weight:700; font-size:15px; text-transform:uppercase; letter-spacing:0.04em; cursor:pointer; transition:letter-spacing 0.2s ease, color 0.2s ease;" style-hover="letter-spacing:0.08em; color:#FFC838;">Poznaj firmę →</span>
+          </div>
+        </div>
+
+        <!-- oferta rows -->
+        <div style="padding:0 56px 96px 56px; display:flex; flex-direction:column; gap:32px;">
+          <div style="display:flex; align-items:baseline; gap:20px;">
+            <h2 style="margin:0; font-family:'Barlow Condensed',sans-serif; font-size:46px; font-weight:700; color:#FFFFFF; text-transform:uppercase;">Oferta</h2>
+            <span style="font-family:'IBM Plex Mono',monospace; font-size:13px; color:#7B7F86;">7 obszarów działalności</span>
+          </div>
+          <div style="display:flex; flex-direction:column;">
+            <div style="display:flex; justify-content:space-between; align-items:center; padding:22px 0; border-top:1px solid #3A3D43; cursor:pointer; transition:background 0.25s ease, padding 0.25s ease;" style-hover="background:#2C2E33; padding-left:16px; padding-right:12px;">
+              <div style="display:flex; gap:24px; align-items:baseline;">
+                <span style="font-family:'IBM Plex Mono',monospace; font-size:13px; color:#F5B21A;">01</span>
+                <span style="font-family:'Barlow Condensed',sans-serif; font-size:28px; font-weight:600; color:#FFFFFF; text-transform:uppercase;">Kogeneracja i obiekty energetyczne</span>
+              </div>
+              <span style="color:#F5B21A; font-size:22px;">→</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; align-items:center; padding:22px 0; border-top:1px solid #3A3D43; cursor:pointer; transition:background 0.25s ease, padding 0.25s ease;" style-hover="background:#2C2E33; padding-left:16px; padding-right:12px;">
+              <div style="display:flex; gap:24px; align-items:baseline;">
+                <span style="font-family:'IBM Plex Mono',monospace; font-size:13px; color:#F5B21A;">02</span>
+                <span style="font-family:'Barlow Condensed',sans-serif; font-size:28px; font-weight:600; color:#FFFFFF; text-transform:uppercase;">Ciepłownie geotermalne</span>
+              </div>
+              <span style="color:#F5B21A; font-size:22px;">→</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; align-items:center; padding:22px 0; border-top:1px solid #3A3D43; cursor:pointer; transition:background 0.25s ease, padding 0.25s ease;" style-hover="background:#2C2E33; padding-left:16px; padding-right:12px;">
+              <div style="display:flex; gap:24px; align-items:baseline;">
+                <span style="font-family:'IBM Plex Mono',monospace; font-size:13px; color:#F5B21A;">03</span>
+                <span style="font-family:'Barlow Condensed',sans-serif; font-size:28px; font-weight:600; color:#FFFFFF; text-transform:uppercase;">Instalacje na biomasę</span>
+              </div>
+              <span style="color:#F5B21A; font-size:22px;">→</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; align-items:center; padding:22px 0; border-top:1px solid #3A3D43; cursor:pointer; transition:background 0.25s ease, padding 0.25s ease;" style-hover="background:#2C2E33; padding-left:16px; padding-right:12px;">
+              <div style="display:flex; gap:24px; align-items:baseline;">
+                <span style="font-family:'IBM Plex Mono',monospace; font-size:13px; color:#F5B21A;">04</span>
+                <span style="font-family:'Barlow Condensed',sans-serif; font-size:28px; font-weight:600; color:#FFFFFF; text-transform:uppercase;">Pompy ciepła</span>
+              </div>
+              <span style="color:#F5B21A; font-size:22px;">→</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; align-items:center; padding:22px 0; border-top:1px solid #3A3D43; cursor:pointer; transition:background 0.25s ease, padding 0.25s ease;" style-hover="background:#2C2E33; padding-left:16px; padding-right:12px;">
+              <div style="display:flex; gap:24px; align-items:baseline;">
+                <span style="font-family:'IBM Plex Mono',monospace; font-size:13px; color:#F5B21A;">05</span>
+                <span style="font-family:'Barlow Condensed',sans-serif; font-size:28px; font-weight:600; color:#FFFFFF; text-transform:uppercase;">Instalacje elektryczne i AKPiA</span>
+              </div>
+              <span style="color:#F5B21A; font-size:22px;">→</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; align-items:center; padding:22px 0; border-top:1px solid #3A3D43; cursor:pointer; transition:background 0.25s ease, padding 0.25s ease;" style-hover="background:#2C2E33; padding-left:16px; padding-right:12px;">
+              <div style="display:flex; gap:24px; align-items:baseline;">
+                <span style="font-family:'IBM Plex Mono',monospace; font-size:13px; color:#F5B21A;">06</span>
+                <span style="font-family:'Barlow Condensed',sans-serif; font-size:28px; font-weight:600; color:#FFFFFF; text-transform:uppercase;">Ochrona środowiska</span>
+              </div>
+              <span style="color:#F5B21A; font-size:22px;">→</span>
+            </div>
+            <div style="display:flex; justify-content:space-between; align-items:center; padding:22px 0; border-top:1px solid #3A3D43; border-bottom:1px solid #3A3D43; cursor:pointer; transition:background 0.25s ease, padding 0.25s ease;" style-hover="background:#2C2E33; padding-left:16px; padding-right:12px;">
+              <div style="display:flex; gap:24px; align-items:baseline;">
+                <span style="font-family:'IBM Plex Mono',monospace; font-size:13px; color:#F5B21A;">07</span>
+                <span style="font-family:'Barlow Condensed',sans-serif; font-size:28px; font-weight:600; color:#FFFFFF; text-transform:uppercase;">Obsługa inwestycji przemysłowych</span>
+              </div>
+              <span style="color:#F5B21A; font-size:22px;">→</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- realizacje -->
+        <div style="background:#F5B21A; padding:88px 56px; display:flex; flex-direction:column; gap:40px;">
+          <div style="display:flex; justify-content:space-between; align-items:flex-end;">
+            <h2 style="margin:0; font-family:'Barlow Condensed',sans-serif; font-size:46px; font-weight:700; color:#26282C; text-transform:uppercase;">Wybrane realizacje</h2>
+            <span style="color:#26282C; font-weight:700; font-size:15px; text-transform:uppercase; letter-spacing:0.04em; border-bottom:2px solid #26282C;">Wszystkie realizacje →</span>
+          </div>
+          <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:24px;">
+            <div style="background:#26282C; display:flex; flex-direction:column; cursor:pointer; transition:transform 0.25s ease, box-shadow 0.25s ease;" style-hover="transform:translateY(-6px); box-shadow:0 18px 36px rgba(0,0,0,0.35);">
+              <div style="position:relative; overflow:hidden; height:200px; background:repeating-linear-gradient(45deg, #33363B 0, #33363B 10px, #2C2E33 10px, #2C2E33 20px); display:flex; align-items:center; justify-content:center;">
+                <span style="font-family:'IBM Plex Mono',monospace; font-size:12px; color:#7B7F86;">[ zdjęcie realizacji 1 ]</span>
+                <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 55%);"></div>
+                <span style="position:absolute; left:16px; bottom:14px; background:#F5B21A; color:#26282C; font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.08em; padding:5px 10px;">KATEGORIA</span>
+              </div>
+              <div style="padding:24px; display:flex; flex-direction:column; gap:8px;">
+                <span style="font-family:'Barlow Condensed',sans-serif; font-size:22px; font-weight:600; color:#FFFFFF;">Nazwa realizacji — do uzupełnienia</span>
+              </div>
+            </div>
+            <div style="background:#26282C; display:flex; flex-direction:column; cursor:pointer; transition:transform 0.25s ease, box-shadow 0.25s ease;" style-hover="transform:translateY(-6px); box-shadow:0 18px 36px rgba(0,0,0,0.35);">
+              <div style="position:relative; overflow:hidden; height:200px; background:repeating-linear-gradient(45deg, #33363B 0, #33363B 10px, #2C2E33 10px, #2C2E33 20px); display:flex; align-items:center; justify-content:center;">
+                <span style="font-family:'IBM Plex Mono',monospace; font-size:12px; color:#7B7F86;">[ zdjęcie realizacji 2 ]</span>
+                <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 55%);"></div>
+                <span style="position:absolute; left:16px; bottom:14px; background:#F5B21A; color:#26282C; font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.08em; padding:5px 10px;">KATEGORIA</span>
+              </div>
+              <div style="padding:24px; display:flex; flex-direction:column; gap:8px;">
+                <span style="font-family:'Barlow Condensed',sans-serif; font-size:22px; font-weight:600; color:#FFFFFF;">Nazwa realizacji — do uzupełnienia</span>
+              </div>
+            </div>
+            <div style="background:#26282C; display:flex; flex-direction:column; cursor:pointer; transition:transform 0.25s ease, box-shadow 0.25s ease;" style-hover="transform:translateY(-6px); box-shadow:0 18px 36px rgba(0,0,0,0.35);">
+              <div style="position:relative; overflow:hidden; height:200px; background:repeating-linear-gradient(45deg, #33363B 0, #33363B 10px, #2C2E33 10px, #2C2E33 20px); display:flex; align-items:center; justify-content:center;">
+                <span style="font-family:'IBM Plex Mono',monospace; font-size:12px; color:#7B7F86;">[ zdjęcie realizacji 3 ]</span>
+                <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 55%);"></div>
+                <span style="position:absolute; left:16px; bottom:14px; background:#F5B21A; color:#26282C; font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.08em; padding:5px 10px;">KATEGORIA</span>
+              </div>
+              <div style="padding:24px; display:flex; flex-direction:column; gap:8px;">
+                <span style="font-family:'Barlow Condensed',sans-serif; font-size:22px; font-weight:600; color:#FFFFFF;">Nazwa realizacji — do uzupełnienia</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- footer -->
+        <div style="padding:64px 56px 40px 56px; display:flex; flex-direction:column; gap:48px;">
+          <div style="display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:48px;">
+            <div style="display:flex; flex-direction:column; gap:16px;">
+              <div style="background:#FFFFFF; padding:10px 14px; border-radius:4px; align-self:flex-start;">
+                <img src="assets/logo.png" alt="Energy Solutions" style="height:30px; display:block;">
+              </div>
+              <p style="margin:0; font-size:14px; line-height:1.7; color:#7B7F86; max-width:360px;">Zawsze celujemy w dobrą energię do współpracy.</p>
+            </div>
+            <div style="display:flex; flex-direction:column; gap:10px; font-size:14px; color:#B9BCC1;">
+              <span style="font-family:'Barlow Condensed',sans-serif; font-size:18px; font-weight:600; color:#F5B21A; text-transform:uppercase; letter-spacing:0.06em;">Kontakt</span>
+              <span>ul. Wiesława Wody 27, 33-100 Tarnów</span>
+              <span>tel. +48 (14) 657 11 05</span>
+              <span>fax +48 (14) 657 11 06</span>
+              <span>biuro@energysolutions.pl</span>
+            </div>
+            <div style="display:flex; flex-direction:column; gap:10px; font-size:14px; color:#B9BCC1;">
+              <span style="font-family:'Barlow Condensed',sans-serif; font-size:18px; font-weight:600; color:#F5B21A; text-transform:uppercase; letter-spacing:0.06em;">Dane rejestrowe</span>
+              <span>NIP: 873-308-78-05</span>
+              <span>KRS: 0000245582</span>
+              <span>BDO: 000566462</span>
+            </div>
+          </div>
+          <div style="border-top:1px solid #3A3D43; padding-top:20px; font-size:13px; color:#5A5D63;">© 2026 Energy Solutions Sp. z o.o. Wszelkie prawa zastrzeżone.</div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+</x-dc>
+<script>
+(async () => {
+  if (!document.title || !document.title.trim()) document.title = "Energy Solutions - Strona główna";
+  // Prepend so page-supplied @page / break rules (deck-stage's margin:0,
+  // author CSS) keep source-order precedence over the baseline.
+  const baseCss = document.createElement('style');
+  baseCss.textContent = "@media print {\n  figure, table { break-inside: avoid; }\n  *, *::before, *::after {\n    print-color-adjust: exact; -webkit-print-color-adjust: exact;\n    backdrop-filter: none !important; -webkit-backdrop-filter: none !important;\n    animation-delay: -99s !important; animation-duration: .001s !important;\n    animation-iteration-count: 1 !important; animation-fill-mode: both !important;\n    animation-play-state: running !important; transition-duration: 0s !important;\n  }\n}";
+  document.head.prepend(baseCss);
+  if (document.readyState === 'loading') {
+    await new Promise((r) => document.addEventListener('DOMContentLoaded', r, { once: true }));
+  }
+  let ds = document.querySelector('deck-stage');
+  // whenDefined never resolves when nothing registers the element, so only
+  // await it when a <deck-stage> tag exists (and race a timeout regardless).
+  if (ds && !customElements.get('deck-stage')) {
+    try {
+      await Promise.race([
+        customElements.whenDefined('deck-stage'),
+        new Promise((r) => setTimeout(r, 3000)),
+      ]);
+    } catch (e) {}
+    ds = document.querySelector('deck-stage');
+  }
+  // dc-runtime assigns window.DCLogic at init and mounts into #dc-root on
+  // DOMContentLoaded; settle on that subtree so React has rendered before
+  // print(). Non-DC pages fall through to weighing body.
+  const isDc = !ds && 'DCLogic' in window;
+  const settleRoot = ds || (isDc ? document.getElementById('dc-root') : null) || document.body;
+  if (settleRoot) {
+    // Weigh only content children — skip script/style/template so inline
+    // Babel/CSS doesn't register as stable "content" before the framework
+    // has mounted anything.
+    const MEDIA = 'img,svg,canvas,video,picture,iframe,embed,object';
+    const weigh = () => {
+      let text = 0, media = 0;
+      for (const c of settleRoot.children) {
+        const t = c.tagName;
+        if (t === 'SCRIPT' || t === 'STYLE' || t === 'TEMPLATE') continue;
+        text += (c.textContent || '').trim().length;
+        media += c.querySelectorAll(MEDIA).length + (c.matches(MEDIA) ? 1 : 0);
+      }
+      return text + media * 100;
+    };
+    // "Non-zero and stable" alone is not sufficient to mean rendered: generic
+    // body can carry a static shell while async main content is pending, and
+    // #dc-root can carry the root DC's static text while child refs are still
+    // .sc-placeholder boxes. Gate generic on readyState 'complete', and never
+    // accept stability while a dc-runtime placeholder is present.
+    const isGeneric = settleRoot === document.body;
+    const deadline = Date.now() + 15000;
+    let last = -1, stable = 0;
+    while (Date.now() < deadline) {
+      const n = weigh();
+      const ready =
+        (!isGeneric || document.readyState === 'complete') &&
+        !settleRoot.querySelector('.sc-placeholder');
+      if (n > 0 && n === last && ready) { if (++stable >= 2) break; } else { stable = 0; }
+      last = n;
+      await new Promise((r) => setTimeout(r, 250));
+    }
+  }
+  // Project support.js may predate runtime default-seeding; push via bridge.
+  if (isDc && window.__dcSetProps && window.__dcRootName) {
+    try {
+      const dpEl = document.querySelector('script[data-dc-script]');
+      const meta = JSON.parse((dpEl && dpEl.getAttribute('data-props')) || '{}');
+      const bag = {};
+      for (const k in meta)
+        if (k[0] !== '$' && meta[k] && meta[k].default !== undefined)
+          bag[k] = meta[k].default;
+      if (Object.keys(bag).length) {
+        window.__dcSetProps(window.__dcRootName(), bag);
+        await new Promise((r) => setTimeout(r, 50));
+      }
+    } catch (e) {}
+  }
+  // Reveal content gated on scroll or visibility before printing. Lazy <img>,
+  // IntersectionObserver fade-ins, and collapsed <details> don't render while
+  // off-screen, so a long page would print with them blank or closed. Open
+  // every <details>, force native-lazy images eager, and scroll the document
+  // through its full height to trip lazy-load + IO; then wait (bounded) for the
+  // newly-triggered images. Inert for deck-stage (slides aren't scroll-gated).
+  try {
+    for (const d of document.querySelectorAll('details')) d.open = true;
+    for (const img of document.querySelectorAll('img[loading="lazy"]'))
+      img.loading = 'eager';
+    const scroller = document.scrollingElement || document.documentElement;
+    const full = Math.max(scroller.scrollHeight, document.body.scrollHeight);
+    const step = window.innerHeight || 800;
+    for (let y = 0; y <= full; y += step) {
+      window.scrollTo(0, y);
+      await new Promise((r) => requestAnimationFrame(r));
+    }
+    window.scrollTo(0, 0);
+    await Promise.race([
+      Promise.all(
+        [...document.images].map((img) =>
+          img.complete
+            ? null
+            : new Promise((res) => {
+                img.addEventListener('load', res, { once: true });
+                img.addEventListener('error', res, { once: true });
+              })
+        )
+      ),
+      new Promise((r) => setTimeout(r, 4000)),
+    ]);
+  } catch (e) {}
+  try { await document.fonts.ready; } catch (e) {}
+  // Jump every animation to its end state so print() never captures a slide
+  // mid-entrance. Ordering matters: the 0s-transition style must be live
+  // BEFORE data-deck-active is set so attribute-keyed transitions don't
+  // start a (now-0s) run from the pre-active base.
+  const st = document.createElement('style');
+  st.textContent = '*,*::before,*::after{animation-delay:-99s !important;animation-duration:.001s !important;animation-iteration-count:1 !important;animation-fill-mode:both !important;animation-play-state:running !important;transition-duration:0s !important}';
+  document.head.appendChild(st);
+  for (const d of document.querySelectorAll('deck-stage')) {
+    for (const c of d.children) {
+      const t = c.tagName;
+      if (t === 'SCRIPT' || t === 'STYLE' || t === 'TEMPLATE') continue;
+      c.setAttribute('data-deck-active', '');
+    }
+  }
+  // Re-append deck-stage's @page last so no author @page can add a margin and
+  // spill each full-bleed slide onto two sheets. Backstop for old copies.
+  if (ds) {
+    let pg = document.getElementById('deck-stage-print-page');
+    if (!pg) {
+      pg = document.createElement('style');
+      pg.textContent = '@page{size:' + (+ds.getAttribute('width') || 1920) +
+        'px ' + (+ds.getAttribute('height') || 1080) + 'px;margin:0}';
+    }
+    document.body.appendChild(pg);
+  }
+  try {
+    const sweep = () => {
+      for (const a of document.getAnimations()) {
+        try { a.finish(); } catch (e) {
+          try { a.currentTime = (a.effect && a.effect.getComputedTiming().duration) || 0; a.pause(); } catch (e2) {}
+        }
+      }
+    };
+    sweep();
+    await new Promise((r) => requestAnimationFrame(r));
+    sweep();
+    await new Promise((r) => requestAnimationFrame(r));
+  } catch (e) {}
+  // Size the PDF page to the rendered design unless the file opted into
+  // standard paper via @page{size:letter|A4|…}. Decks own their own @page.
+  // Wrappers (body, …) lose padding+margin so the frame sits at (0,0); the
+  // frame itself loses only margin — its padding is INSIDE the measured
+  // rect and must stay, or content shifts and leaves a gap at bottom/right.
+  var __m = null;
+  try { __m = (() => {
+  var STAMP = true;
+  var docEl = document.documentElement;
+  var doc = { width: docEl.scrollWidth, height: docEl.scrollHeight };
+
+  var ds = document.querySelector('deck-stage');
+  if (ds) {
+    var dw = Number(ds.getAttribute('width')) || 1920;
+    var dh = Number(ds.getAttribute('height')) || 1080;
+    var n = typeof ds.length === 'number' ? ds.length : ds.children.length;
+    var idx = typeof ds.index === 'number' ? ds.index : 0;
+    var frames = [];
+    for (var i = 0; i < n; i++) frames.push({ left: 0, top: 0, width: dw, height: dh });
+    return { kind: 'deck', source: 'declared', doc: doc, frames: frames,
+      authored: frames.map(function(){return{width:true,height:true}}),
+      deck: { width: dw, height: dh, slideCount: n, index: idx },
+      signals: { paperPage: false, pxPage: false } };
+  }
+
+  // Declared kind: a doc-page tag names the kind outright, so no signal
+  // heuristics run (like the deck branch above, signals report false —
+  // they describe inferred classifications only). The tag alone is not
+  // trusted: the element must have upgraded (shadowRoot present), so a
+  // leftover tag whose script was deleted falls through to the heuristics
+  // that handle plain markup.
+  var stageSx = window.scrollX || 0, stageSy = window.scrollY || 0;
+  var dp = document.querySelector('doc-page');
+  if (dp && dp.shadowRoot) {
+    // Crop to the sheet, not the host — the desk around it is screen-only
+    // chrome that must not land in PNG exports.
+    var sheet = dp.shadowRoot.querySelector('.sheet');
+    var sr = (sheet || dp).getBoundingClientRect();
+    return { kind: 'paper-doc', source: 'declared', doc: doc,
+      frames: [{ left: sr.left + stageSx, top: sr.top + stageSy,
+        width: sr.width, height: sr.height }],
+      authored: [{ width: false, height: false }],
+      signals: { paperPage: false, pxPage: false } };
+  }
+  var paperPage = false, pxPage = false;
+  var eachRule = function (fn) {
+    for (var s = 0; s < document.styleSheets.length; s++) {
+      var rs; try { rs = document.styleSheets[s].cssRules; } catch (e) { continue; }
+      for (var r = 0; r < rs.length; r++) {
+        fn(rs[r]);
+        if (rs[r].cssRules) for (var n = 0; n < rs[r].cssRules.length; n++) fn(rs[r].cssRules[n]);
+      }
+    }
+  };
+  eachRule(function (r) {
+    if (r.type !== 6) return;
+    var m = /\bsize\s*:\s*([^;}]+)/i.exec(r.cssText || '');
+    if (!m) return;
+    if (/\b(letter|a[3-5]|legal|ledger)\b/i.test(m[1])) paperPage = true;
+    if (/\d+(?:\.\d+)?px\b/i.test(m[1])) pxPage = true;
+  });
+  var signals = { paperPage: paperPage, pxPage: pxPage };
+
+  var pxVal = function (v) {
+    var m = /^(\d+(?:\.\d+)?)px$/.exec(v || ''); return m ? +m[1] : 0;
+  };
+  var authoredPx = function (el, prop) {
+    if (pxVal(el.style[prop])) return true;
+    var attr = el.getAttribute(prop);
+    if (attr && /^\d+$/.test(attr)) return true;
+    var hit = false;
+    eachRule(function (r) {
+      if (hit || r.type !== 1 || !r.style) return;
+      try { if (el.matches(r.selectorText) && pxVal(r.style[prop])) hit = true; } catch (e) {}
+    });
+    return hit;
+  };
+
+  var el = document.body, rootPxW = false;
+  for (;;) {
+    var kids = [];
+    for (var c = 0; c < el.children.length; c++) {
+      var t = el.children[c].tagName;
+      if (t !== 'SCRIPT' && t !== 'STYLE' && t !== 'TEMPLATE') kids.push(el.children[c]);
+    }
+    if (kids.length !== 1 || !(kids[0] instanceof HTMLElement)) break;
+    if (STAMP) el.setAttribute('data-om-frame-wrap', '');
+    el = kids[0];
+    rootPxW = authoredPx(el, 'width');
+    if (rootPxW) break;
+  }
+  if (!rootPxW) rootPxW = authoredPx(el, 'width');
+
+  // @page{size:letter} alone is a flowing doc; with a px-width root it's a
+  // fixed sheet pretending to be paper — fall through and size to render.
+  if (paperPage && !rootPxW) {
+    return { kind: 'paper-doc', source: 'inferred', doc: doc, signals: signals,
+      frames: [{ left: 0, top: 0, width: doc.width, height: doc.height }],
+      authored: [{ width: false, height: false }] };
+  }
+
+  var sx = window.scrollX || 0, sy = window.scrollY || 0;
+  var rectOf = function (e) {
+    var r = e.getBoundingClientRect();
+    var oy; try { oy = getComputedStyle(e).overflowY; } catch (err) {}
+    var h = oy === 'visible' ? Math.max(r.height, e.scrollHeight || 0) : r.height;
+    return { left: r.left + sx, top: r.top + sy, width: r.width, height: h };
+  };
+
+  // Multi-frame: ≥2 visible non-fixed children, each with authored px width
+  // AND height, all within ±2px of each other. Off unless the page opts in
+  // via data-om-multi-frame on the stop element — guards against card grids
+  // and pricing tables that match the geometry but aren't separate canvases.
+  if (el.hasAttribute('data-om-multi-frame')) {
+    var cands = [];
+    for (var k = 0; k < el.children.length; k++) {
+      var ch = el.children[k];
+      var cs; try { cs = getComputedStyle(ch); } catch (e) { continue; }
+      if (cs.display === 'none' || cs.visibility === 'hidden' || cs.position === 'fixed') continue;
+      var rc = rectOf(ch);
+      if (rc.width < 2 || rc.height < 2) continue;
+      if (!authoredPx(ch, 'width') || !authoredPx(ch, 'height')) continue;
+      cands.push(rc);
+    }
+    if (cands.length >= 2) {
+      var w0 = cands[0].width, h0 = cands[0].height, ok = true;
+      for (var q = 1; q < cands.length; q++)
+        if (Math.abs(cands[q].width - w0) > 2 || Math.abs(cands[q].height - h0) > 2) ok = false;
+      if (ok) return { kind: 'multi-frame', source: 'inferred', doc: doc, signals: signals,
+        frames: cands, authored: cands.map(function(){return{width:true,height:true}}) };
+    }
+  }
+
+  if (STAMP) el.setAttribute('data-om-frame', '');
+  return { kind: 'single-canvas', source: 'inferred', doc: doc, signals: signals,
+    frames: [rectOf(el)],
+    authored: [{ width: rootPxW, height: authoredPx(el, 'height') }] };
+})(); } catch (e) {}
+  var frame = null;
+  if (__m && __m.kind === 'single-canvas') {
+    var f = __m.frames && __m.frames[0];
+    if (f && f.width >= 200 && f.height >= 200) {
+      frame = f;
+      var fst = document.createElement('style');
+      fst.textContent = '@media print{@page{size:' + Math.ceil(f.width) + 'px ' +
+        Math.ceil(f.height) + 'px;margin:0}' +
+        'html,body,[data-om-frame-wrap]{padding:0!important;margin:0!important;background:none!important}' +
+        '[data-om-frame]{margin:0!important}}';
+      document.body.appendChild(fst);
+    }
+  }
+  // Relax break-inside on oversized elements. An element taller than a
+  // printable page can't honor break-inside: avoid — browsers either overflow
+  // it or push it whole to the next page, leaving a blank gap, then break it
+  // anyway at an arbitrary point. After the final layout (content revealed,
+  // animations jumped), find elements taller than a page that still compute
+  // break-inside: avoid and reset them to auto, so the browser breaks them at
+  // their children's boundaries instead (children keep their own avoid). PAGE_PX
+  // is a conservative portrait estimate at 96 CSS px/in — Letter/A4 usable
+  // height minus our 0.5in margins — so only clearly-oversized elements are
+  // touched and under-page elements still stay whole. Skipped for decks (slides
+  // are sized to the page) and for fixed-size canvases (frame set, or an author
+  // px-based @page) — runs as before for flowing docs on letter/A4.
+  try {
+    if (!ds && !frame && !(__m && __m.signals && __m.signals.pxPage)) {
+      const PAGE_PX = 1024;
+      // Our print defaults add a real @page margin only when the source has
+      // no @page of its own; computed style can't tell us (it reports screen
+      // media), so read the injected rule directly.
+      const defaults = document.querySelector('style[data-omelette-print-defaults]');
+      const pageInset = /@page\s*\{[^}]*margin/.test(defaults ? defaults.textContent || '' : '');
+      const SEL = 'section,article,figure,table,pre,blockquote,[class~="card" i],[class~="page" i],[class~="sheet" i]';
+      for (const el of document.body.querySelectorAll(SEL)) {
+        if (el instanceof HTMLElement && el.offsetHeight > PAGE_PX) {
+          el.setAttribute('data-om-oversized', '');
+          // Fake-paged docs simulate sheets with over-tall break-after:page
+          // boxes; honoring the break spills half-blank pages and ends a
+          // colored box mid-sheet. Flow them, and (only when we own the page
+          // inset) drop the redundant padding/background via the rule below.
+          const cs = getComputedStyle(el);
+          if (cs.breakAfter === 'page' || cs.pageBreakAfter === 'always') {
+            el.setAttribute('data-om-fakepage', '');
+          }
+        }
+      }
+      const ost = document.createElement('style');
+      ost.textContent = '@media print{' +
+        '[data-om-oversized]{break-inside:auto !important;page-break-inside:auto !important}' +
+        '[data-om-fakepage]{break-after:auto !important;page-break-after:auto !important}' +
+        (pageInset ? '[data-om-fakepage]{padding:0 !important;background:none !important}' : '') +
+        '}';
+      document.head.appendChild(ost);
+    }
+  } catch (e) {}
+  // macOS Preview renders Skia-PDF Luminosity soft-masks as opaque grey boxes;
+  // swap the CSS that triggers them for Preview-safe forms.
+  try {
+    for (const el of document.body.querySelectorAll('*')) {
+      const cs = getComputedStyle(el);
+
+      if (cs.boxShadow !== 'none' && cs.filter === 'none') {
+        const outs = [], kept = [];
+        for (const s of cs.boxShadow.split(/,(?![^(]*[)])/)) {
+          const t = s.trim();
+          const m = t.match(/^(rgba?[(][^)]+[)]) (-?[0-9.]+px) (-?[0-9.]+px) ([0-9.]+px) -?[0-9.]+px$/);
+          if (m && parseFloat(m[4]) > 0) outs.push('drop-shadow(' + m[2] + ' ' + m[3] + ' ' + m[4] + ' ' + m[1] + ')');
+          else kept.push(t);
+        }
+        if (outs.length) {
+          el.style.setProperty('filter', outs.join(' '), 'important');
+          el.style.setProperty('box-shadow', kept.join(', ') || 'none', 'important');
+        }
+      }
+
+      const mask = cs.maskImage && cs.maskImage !== 'none' ? cs.maskImage : cs.webkitMaskImage;
+      if (mask && mask !== 'none' && cs.filter === 'none') el.style.setProperty('filter', 'opacity(1)', 'important');
+    }
+  } catch (e) {}
+  setTimeout(() => { try { window.print(); } catch (e) {} }, 200);
+})();
+</script>
+</body>
+</html>
