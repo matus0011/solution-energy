@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { FaFacebook, FaLinkedin } from 'react-icons/fa'
 import { FaSquareXTwitter } from 'react-icons/fa6'
 import { InstagramIcon, YoutubeIcon } from '@/components/icons/SocialIcons'
@@ -18,13 +19,13 @@ export default function Footer() {
       <div className="mx-auto flex max-w-7xl flex-col gap-12">
         <div className="grid grid-cols-1 gap-10 text-center lg:grid-cols-[1.4fr_1fr_1fr] lg:gap-12 lg:text-left">
           <div className="flex flex-col items-center gap-4 lg:items-start">
-            <a href="/" className="inline-block w-fit">
+            <Link to="/" className="inline-block w-fit">
               <img
                 src="/logos/logotyp_energysolutions_crv_white.png"
                 alt="Energy Solutions — strona główna"
                 className="h-14 w-auto"
               />
-            </a>
+            </Link>
             <p className="max-w-sm text-base leading-relaxed text-white">
               Zawsze celujemy w dobrą energię do współpracy.
             </p>

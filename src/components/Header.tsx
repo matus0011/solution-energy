@@ -1,6 +1,36 @@
-import { useState } from 'react'
+import { useState, type CSSProperties, type ReactNode } from 'react'
+import { Link } from 'react-router-dom'
 import clsx from 'clsx'
 import { navLinks } from '@/lib/navigation'
+
+// Real routes use react-router's Link; "#" placeholders (pages not built yet)
+// stay as plain inert anchors so they don't resolve to the current route.
+function NavItem({
+  href,
+  className,
+  style,
+  onClick,
+  children,
+}: {
+  href: string
+  className?: string
+  style?: CSSProperties
+  onClick?: () => void
+  children: ReactNode
+}) {
+  if (href.startsWith('/')) {
+    return (
+      <Link to={href} className={className} style={style} onClick={onClick}>
+        {children}
+      </Link>
+    )
+  }
+  return (
+    <a href={href} className={className} style={style} onClick={onClick}>
+      {children}
+    </a>
+  )
+}
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false)
@@ -8,23 +38,23 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 bg-white">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-12">
-        <a href="/" className="shrink-0">
+        <Link to="/" className="shrink-0">
           <img
             src="/logos/logotyp_energysolutions_crv.png"
             alt="Energy Solutions — strona główna"
             className="h-14 w-auto"
           />
-        </a>
+        </Link>
 
         <nav aria-label="Główna nawigacja" className="hidden items-center gap-12 md:flex">
           {navLinks.map((link) => (
-            <a
+            <NavItem
               key={link.label}
               href={link.href}
               className="relative text-xl font-normal tracking-[0.08em] text-[#777777] transition after:absolute after:-bottom-1 after:left-1/2 after:h-[3px] after:w-0 after:-translate-x-1/2 after:-skew-x-12 after:bg-[#fbba00] after:transition-all after:duration-300 hover:after:w-[105%]"
             >
               {link.label}
-            </a>
+            </NavItem>
           ))}
         </nav>
 
@@ -68,7 +98,7 @@ export default function Header() {
         <nav aria-label="Nawigacja mobilna" className="min-h-0 overflow-hidden bg-white px-6 py-4">
           <div className="flex flex-col gap-1">
             {navLinks.map((link, index) => (
-              <a
+              <NavItem
                 key={link.label}
                 href={link.href}
                 onClick={() => setMobileOpen(false)}
@@ -79,7 +109,7 @@ export default function Header() {
                 )}
               >
                 {link.label}
-              </a>
+              </NavItem>
             ))}
           </div>
         </nav>

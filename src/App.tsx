@@ -1,12 +1,15 @@
-import Header from '@/components/Header'
-import Footer from '@/components/Footer'
+import { Routes, Route } from 'react-router-dom'
+import Layout from '@/components/Layout'
+import Home from '@/pages/Home'
+import Realizacje from '@/pages/Realizacje'
 
 export default function App() {
   return (
-    <div className="flex min-h-screen flex-col bg-white">
-      <Header />
-      <main className="flex-1" />
-      <Footer />
-    </div>
+    <Routes>
+      <Route element={<Layout />}>
+        <Route path="/" element={<Home />} />
+        <Route path="/realizacje" element={<Realizacje />} />
+      </Route>
+    </Routes>
   )
 }
