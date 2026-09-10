@@ -72,7 +72,7 @@ export default function Header() {
           />
         </NavLink>
 
-        <nav aria-label="Główna nawigacja" className="hidden items-center gap-8 md:flex">
+        <nav aria-label="Główna nawigacja" className="hidden items-center gap-4 md:flex">
           {navLinks.map((link, index) => (
             <Fragment key={link.label}>
               {index > 0 && <span className="h-4 w-px bg-[#e5e5e5]" aria-hidden="true" />}
