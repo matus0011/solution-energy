@@ -173,14 +173,14 @@ export default function Header() {
             <a
               href="tel:+48146571105"
               onClick={() => setMobileOpen(false)}
-              className="px-6 py-3 text-center text-lg font-medium text-white transition-colors hover:text-[#fbba00]"
+              className="px-6 py-6 text-center text-lg font-medium text-white transition-colors hover:text-[#fbba00]"
             >
               Zadzwoń
             </a>
             <a
               href="mailto:biuro@energysolutions.pl"
               onClick={() => setMobileOpen(false)}
-              className="px-6 py-3 text-center text-lg font-medium text-white transition-colors hover:text-[#fbba00]"
+              className="px-6 py-6 text-center text-lg font-medium text-white transition-colors hover:text-[#fbba00]"
             >
               Napisz
             </a>
