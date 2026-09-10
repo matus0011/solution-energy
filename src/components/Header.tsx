@@ -78,7 +78,7 @@ export default function Header() {
               {index > 0 && <span className="h-4 w-px bg-[#e5e5e5]" aria-hidden="true" />}
               <NavItem
                 href={link.href}
-                className="relative text-xl font-medium tracking-[0.08em] text-[#777777] transition after:absolute after:-bottom-1 after:left-1/2 after:h-[3px] after:w-0 after:-translate-x-1/2 after:-skew-x-12 after:bg-[#fbba00] after:transition-all after:duration-300 hover:after:w-[105%]"
+                className="relative text-xl font-normal tracking-[0.08em] text-[#777777] transition after:absolute after:-bottom-1 after:left-1/2 after:h-[3px] after:w-0 after:-translate-x-1/2 after:-skew-x-12 after:bg-[#fbba00] after:transition-all after:duration-300 hover:after:w-[105%]"
                 activeClassName="after:w-[105%]"
               >
                 {link.label}
@@ -133,7 +133,7 @@ export default function Header() {
                 onClick={() => setMobileOpen(false)}
                 style={{ transitionDelay: mobileOpen ? `${index * 60}ms` : '0ms' }}
                 className={clsx(
-                  'rounded-lg px-3 py-2.5 text-2xl font-normal font-heading tracking-[0.08em] text-[#404040] transition-all duration-300 ease-out hover:text-[#fbba00]',
+                  'rounded-lg px-3 py-2.5 text-2xl font-medium tracking-[0.08em] text-[#404040] transition-all duration-300 ease-out hover:text-[#fbba00]',
                   mobileOpen ? 'translate-y-0 opacity-100' : '-translate-y-2 opacity-0',
                 )}
                 activeClassName="text-[#fbba00]"

@@ -46,7 +46,7 @@ export default function Footer() {
           </div>
 
           <div className="flex flex-col items-center gap-2.5 text-base text-white lg:items-start">
-            <span className="font-heading text-2xl font-bold tracking-wide text-[#fbba00] mb-6">
+            <span className="font-heading text-2xl font-semibold tracking-wide text-[#fbba00] mb-6">
               Kontakt
             </span>
             <span>
@@ -64,7 +64,7 @@ export default function Footer() {
           </div>
 
           <div className="flex flex-col items-center gap-2.5 text-base text-white lg:items-start">
-            <span className="font-heading text-2xl font-bold tracking-wide text-[#fbba00] mb-6">
+            <span className="font-heading text-2xl font-semibold tracking-wide text-[#fbba00] mb-6">
               Dane rejestrowe
             </span>
             <span><span className="font-bold">NIP:</span> 873-308-78-05</span>

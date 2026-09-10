@@ -18,7 +18,7 @@ export default {
         }
       },
       fontFamily: {
-        sans: ['Urbanist', ...defaultTheme.fontFamily.sans],
+        sans: ['Roboto', ...defaultTheme.fontFamily.sans],
         heading: ['Montserrat', ...defaultTheme.fontFamily.sans],
       },
     },
