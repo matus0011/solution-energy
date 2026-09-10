@@ -36,8 +36,8 @@ export default function Kontakt() {
         </div>
       </div>
 
-      <div className="px-6 pb-20 pt-16 sm:px-10 lg:px-14">
-        <div className="mx-auto flex max-w-7xl flex-col gap-16">
+      <div className="px-6 pb-10 pt-8 sm:px-10 sm:pb-20 sm:pt-16 lg:px-14">
+        <div className="mx-auto flex max-w-7xl flex-col gap-8 sm:gap-16">
           <div className="relative sm:mb-28 lg:mb-36">
             <div className="relative h-[420px] w-full overflow-hidden sm:h-[520px]">
               {/* Na sm+ karta kontaktowa nachodzi na prawą połowę mapy (jest
@@ -112,7 +112,7 @@ export default function Kontakt() {
           {/* Formularz — na razie sam wizualny szkielet, bez obsługi wysyłki.
               Docelowo podpięty pod formularz WordPressa (np. Contact Form 7 /
               WPForms) po migracji do Elementora. */}
-          <form className="flex flex-col gap-6">
+          <form className="flex flex-col gap-4 sm:gap-6">
             <div className="flex flex-col gap-3">
               <span className="text-[14px] font-bold uppercase tracking-[0.12em] text-[#fbba00]">
                 Masz pytania?
@@ -126,7 +126,7 @@ export default function Kontakt() {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6">
               <label className="flex flex-col gap-2">
                 <span className="text-[14px] font-bold uppercase tracking-wide text-[#26282C]">
                   Imię i nazwisko

@@ -1,4 +1,4 @@
-import { useEffect, useState, type CSSProperties, type ReactNode } from 'react'
+import { Fragment, useEffect, useState, type CSSProperties, type ReactNode } from 'react'
 import { NavLink } from 'react-router-dom'
 import clsx from 'clsx'
 import { navLinks } from '@/lib/navigation'
@@ -72,16 +72,18 @@ export default function Header() {
           />
         </NavLink>
 
-        <nav aria-label="Główna nawigacja" className="hidden items-center gap-12 md:flex">
-          {navLinks.map((link) => (
-            <NavItem
-              key={link.label}
-              href={link.href}
-              className="relative text-xl font-medium tracking-[0.08em] text-[#777777] transition after:absolute after:-bottom-1 after:left-1/2 after:h-[3px] after:w-0 after:-translate-x-1/2 after:-skew-x-12 after:bg-[#fbba00] after:transition-all after:duration-300 hover:after:w-[105%]"
-              activeClassName="after:w-[105%]"
-            >
-              {link.label}
-            </NavItem>
+        <nav aria-label="Główna nawigacja" className="hidden items-center gap-8 md:flex">
+          {navLinks.map((link, index) => (
+            <Fragment key={link.label}>
+              {index > 0 && <span className="h-4 w-px bg-[#e5e5e5]" aria-hidden="true" />}
+              <NavItem
+                href={link.href}
+                className="relative text-xl font-medium tracking-[0.08em] text-[#777777] transition after:absolute after:-bottom-1 after:left-1/2 after:h-[3px] after:w-0 after:-translate-x-1/2 after:-skew-x-12 after:bg-[#fbba00] after:transition-all after:duration-300 hover:after:w-[105%]"
+                activeClassName="after:w-[105%]"
+              >
+                {link.label}
+              </NavItem>
+            </Fragment>
           ))}
         </nav>
 

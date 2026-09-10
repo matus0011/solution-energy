@@ -29,9 +29,9 @@ export default function Realizacje() {
         </div>
       </div>
 
-      <div className="px-6 pb-16 pt-20 sm:px-10 lg:px-14">
-        <div className="mx-auto flex max-w-7xl flex-col gap-10">
-          <div className="grid grid-cols-1 gap-x-8 gap-y-12 md:grid-cols-2 2xl:grid-cols-3">
+      <div className="px-6 pb-10 pt-8 sm:px-10 sm:pb-16 sm:pt-20 lg:px-14">
+        <div className="mx-auto flex max-w-7xl flex-col gap-6 sm:gap-10">
+          <div className="grid grid-cols-1 gap-x-8 gap-y-6 md:grid-cols-2 md:gap-y-12 2xl:grid-cols-3">
             {projects.map((project, index) => (
               <Link key={index} to={`/realizacje/${index}`} className="flex cursor-pointer flex-col bg-white">
                 <div className="group relative h-[280px] overflow-hidden md:h-[360px] 2xl:h-[280px]">
@@ -42,14 +42,14 @@ export default function Realizacje() {
                     <span className="h-2.5 w-2.5 scale-0 rounded-full bg-[#fbba00] transition-transform delay-150 duration-300 group-hover:scale-100" />
                   </div>
                 </div>
-                <div className="flex flex-col gap-2 py-6 pr-6">
+                <div className="flex flex-col gap-2 py-3 pr-6 sm:py-6">
                   <span className="line-clamp-2 h-[65px] w-fit font-heading text-[26px] font-bold leading-tight text-[#26282C] transition duration-500 hover:text-[#fbba00]/80">
                     {project.title}
                   </span>
                   <span className="text-[16px] font-bold uppercase tracking-wide text-[#777777]">
                     {project.date} / Aktualności
                   </span>
-                  <span className="line-clamp-3 mb-6 mt-6 h-[81px] text-[18px] font-normal leading-normal text-[#777777]">
+                  <span className="line-clamp-3 mb-3 mt-3 h-[81px] text-[18px] font-normal leading-normal text-[#777777] sm:mb-6 sm:mt-6">
                     {project.desc}
                   </span>
                   <div className="group/cta flex w-fit cursor-pointer items-center gap-3">
