@@ -124,6 +124,20 @@ export default function Firma() {
             </div>
           </div>
 
+          {/* Oni nam zaufali */}
+          <div className="flex flex-col gap-8 sm:gap-10">
+            <div className="flex flex-col gap-3">
+              <h2 className="font-heading text-3xl font-bold uppercase text-[#26282C] sm:text-[42px]">
+                Oni nam zaufali
+              </h2>
+              <p className="text-[17px] leading-relaxed text-[#777777]">
+                Wysoką wiarygodność spółki oraz profesjonalizm wykonywanych usług potwierdza liczne grono
+                zadowolonych klientów.
+              </p>
+            </div>
+            <LogoWall logos={trustedClients} />
+          </div>
+
           {/* Partnerzy */}
           <div className="flex flex-col gap-8 sm:gap-10">
             <div className="flex flex-col gap-3">
@@ -137,20 +151,6 @@ export default function Firma() {
               </p>
             </div>
             <LogoWall logos={partners} />
-          </div>
-
-          {/* Oni nam zaufali */}
-          <div className="flex flex-col gap-8 sm:gap-10">
-            <div className="flex flex-col gap-3">
-              <h2 className="font-heading text-3xl font-bold uppercase text-[#26282C] sm:text-[42px]">
-                Oni nam zaufali
-              </h2>
-              <p className="text-[17px] leading-relaxed text-[#777777]">
-                Wysoką wiarygodność spółki oraz profesjonalizm wykonywanych usług potwierdza liczne grono
-                zadowolonych klientów.
-              </p>
-            </div>
-            <LogoWall logos={trustedClients} />
           </div>
         </div>
       </div>
