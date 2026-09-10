@@ -16,26 +16,28 @@ const socialLinks = [
 export default function Kontakt() {
   return (
     <>
-      <div className="relative mx-auto mb-6 flex h-[200px] w-full max-w-7xl items-center overflow-hidden sm:h-[380px]">
+      <div className="relative mx-auto mb-6 flex h-[200px] w-full max-w-screen-2xl items-center overflow-hidden sm:h-[380px]">
         <img
           src="https://pixabay.com/images/download/peterdargatz-windmill-50512_640.jpg"
           alt="Kontakt"
           className="absolute inset-0 h-full w-full object-cover"
         />
         <div className="absolute inset-0 bg-black/55" />
-        <div className="relative mx-auto flex w-full max-w-7xl flex-col items-center gap-2 px-6 text-center sm:px-10 lg:px-14">
+        <div className="relative mx-auto flex w-full max-w-screen-2xl flex-col items-center gap-2 px-6 text-center sm:px-10 lg:px-14">
           <h1 className="font-heading text-4xl font-bold uppercase tracking-wide text-white sm:text-5xl">
             Kontakt
           </h1>
           <span className="pt-4 text-base font-semibold uppercase tracking-[0.12em] text-white/70">
-            <Link to="/">Strona główna</Link>{' '}
+            <Link to="/" className="transition-colors hover:text-white">
+              Strona główna
+            </Link>{' '}
             / Kontakt
           </span>
         </div>
       </div>
 
       <div className="px-6 pb-20 pt-16 sm:px-10 lg:px-14">
-        <div className="mx-auto flex max-w-5xl flex-col gap-16">
+        <div className="mx-auto flex max-w-7xl flex-col gap-16">
           <div className="relative sm:mb-28 lg:mb-36">
             <div className="relative h-[420px] w-full overflow-hidden sm:h-[520px]">
               {/* Na sm+ karta kontaktowa nachodzi na prawą połowę mapy (jest

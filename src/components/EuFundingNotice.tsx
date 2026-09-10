@@ -3,7 +3,7 @@ const placeholderMarks = ['Fundusze Europejskie', 'Barwy RP', 'Unia Europejska']
 export default function EuFundingNotice() {
   return (
     <div className="border-t border-slate-200 bg-white px-6 py-8 sm:px-10 lg:px-14">
-      <div className="mx-auto flex max-w-7xl flex-col items-center gap-4 text-center">
+      <div className="mx-auto flex max-w-screen-2xl flex-col items-center gap-4 text-center">
         <div className="flex flex-wrap items-center justify-center gap-4">
           {placeholderMarks.map((label) => (
             <div
