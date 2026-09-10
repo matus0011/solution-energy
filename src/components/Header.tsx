@@ -51,6 +51,15 @@ export default function Header() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  // Pełnoekranowy overlay menu mobile — blokujemy scroll strony w tle, żeby
+  // się nie przewijała "pod spodem" podczas gdy menu jest otwarte.
+  useEffect(() => {
+    document.body.style.overflow = mobileOpen ? 'hidden' : ''
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [mobileOpen])
+
   return (
     <header
       className={clsx(
@@ -93,8 +102,8 @@ export default function Header() {
           aria-expanded={mobileOpen}
           aria-label={mobileOpen ? 'Zamknij menu' : 'Otwórz menu'}
           className={clsx(
-            'relative flex h-12 w-12 items-center justify-center rounded-lg transition-colors md:hidden',
-            mobileOpen ? 'text-[#fbba00]' : 'text-[#404040] hover:text-[#fbba00]',
+            'relative z-50 flex h-12 w-12 items-center justify-center rounded-lg transition-colors md:hidden',
+            mobileOpen ? 'text-white' : 'text-[#404040] hover:text-[#fbba00]',
           )}
         >
           <span
@@ -118,14 +127,31 @@ export default function Header() {
         </button>
       </div>
 
+      {/* Pełnoekranowe menu mobile — ciemny overlay, wyśrodkowane pozycje
+          (aktywna strona / hover na biało, reszta przygaszona) i pasek
+          Zadzwoń/Napisz na dole. Logo w tym samym miejscu co przycisk
+          zamknięcia w headerze, żeby się wizualnie pokrywały. */}
       <div
         className={clsx(
-          'grid transition-all duration-300 ease-in-out md:hidden',
-          mobileOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0',
+          'fixed inset-0 z-40 flex flex-col overflow-hidden bg-[#26282C] transition-opacity duration-300 md:hidden',
+          mobileOpen ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0',
         )}
       >
-        <nav aria-label="Nawigacja mobilna" className="min-h-0 overflow-hidden bg-white">
-          <div className="flex flex-col gap-1 px-6 py-4">
+        <div
+          className={clsx(
+            'flex shrink-0 items-center px-6 pt-10 transition-[padding] duration-300',
+            scrolled ? 'py-4' : 'py-12',
+          )}
+        >
+          <img
+            src="/logos/logotyp_energysolutions_crv_white.png"
+            alt="Energy Solutions — strona główna"
+            className="h-14 w-auto"
+          />
+        </div>
+
+        <nav aria-label="Nawigacja mobilna" className="flex flex-1 flex-col overflow-y-auto">
+          <div className="flex flex-1 flex-col items-start justify-center gap-1 px-6 text-left">
             {navLinks.map((link, index) => (
               <NavItem
                 key={link.label}
@@ -133,14 +159,31 @@ export default function Header() {
                 onClick={() => setMobileOpen(false)}
                 style={{ transitionDelay: mobileOpen ? `${index * 60}ms` : '0ms' }}
                 className={clsx(
-                  'rounded-lg px-3 py-2.5 text-2xl font-medium tracking-[0.08em] text-[#404040] transition-all duration-300 ease-out hover:text-[#fbba00]',
+                  'py-2.5 text-4xl font-normal text-white/35 transition-all duration-300 ease-out hover:text-white/70',
                   mobileOpen ? 'translate-y-0 opacity-100' : '-translate-y-2 opacity-0',
                 )}
-                activeClassName="text-[#fbba00]"
+                activeClassName="!text-white"
               >
                 {link.label}
               </NavItem>
             ))}
+          </div>
+
+          <div className="grid grid-cols-2 divide-x divide-white/15 border-t border-white/15">
+            <a
+              href="tel:+48146571105"
+              onClick={() => setMobileOpen(false)}
+              className="px-6 py-3 text-center text-lg font-medium text-white transition-colors hover:text-[#fbba00]"
+            >
+              Zadzwoń
+            </a>
+            <a
+              href="mailto:biuro@energysolutions.pl"
+              onClick={() => setMobileOpen(false)}
+              className="px-6 py-3 text-center text-lg font-medium text-white transition-colors hover:text-[#fbba00]"
+            >
+              Napisz
+            </a>
           </div>
         </nav>
       </div>
