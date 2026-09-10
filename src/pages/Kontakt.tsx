@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { FaFacebook, FaLinkedin } from 'react-icons/fa'
 import { FaSquareXTwitter } from 'react-icons/fa6'
 import { InstagramIcon, YoutubeIcon } from '@/components/icons/SocialIcons'
@@ -15,37 +16,42 @@ const socialLinks = [
 export default function Kontakt() {
   return (
     <>
-      <div className="relative flex h-[160px] items-center overflow-hidden sm:h-[300px]">
+      <div className="relative mx-auto mb-6 flex h-[200px] w-full max-w-7xl items-center overflow-hidden sm:h-[380px]">
         <img
           src="https://pixabay.com/images/download/peterdargatz-windmill-50512_640.jpg"
           alt="Kontakt"
           className="absolute inset-0 h-full w-full object-cover"
         />
         <div className="absolute inset-0 bg-black/55" />
-        <div className="relative mx-auto flex w-full max-w-7xl flex-col items-start gap-2 px-6 text-left sm:px-10 lg:px-14">
-          <span className="text-xs font-medium uppercase tracking-[0.12em] text-white/70">
-            Strona główna / Kontakt
-          </span>
+        <div className="relative mx-auto flex w-full max-w-7xl flex-col items-center gap-2 px-6 text-center sm:px-10 lg:px-14">
           <h1 className="font-heading text-4xl font-bold uppercase tracking-wide text-white sm:text-5xl">
             Kontakt
           </h1>
+          <span className="pt-4 text-base font-semibold uppercase tracking-[0.12em] text-white/70">
+            <Link to="/">Strona główna</Link>{' '}
+            / Kontakt
+          </span>
         </div>
       </div>
 
       <div className="px-6 pb-20 pt-16 sm:px-10 lg:px-14">
         <div className="mx-auto flex max-w-5xl flex-col gap-16">
           <div className="relative sm:mb-28 lg:mb-36">
-            <div className="h-[420px] w-full overflow-hidden sm:h-[520px]">
+            <div className="relative h-[420px] w-full overflow-hidden sm:h-[520px]">
+              {/* Na sm+ karta kontaktowa nachodzi na prawą połowę mapy (jest
+                  "absolute"), więc poszerzamy iframe i przesuwamy go w lewo —
+                  dzięki temu pineska adresu ląduje w widocznej, nieprzysłoniętej
+                  części mapy zamiast dokładnie pod kartą. */}
               <iframe
                 title="Mapa — siedziba Energy Solutions"
-                src="https://www.google.com/maps?q=Wies%C5%82awa+Wody+27,+33-100+Tarn%C3%B3w&output=embed"
-                className="h-full w-full border-0"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2564.0234025931823!2d20.947015512882636!3d50.010916571392706!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x417340c5960ae7ab%3A0xdcb8bf2684350d38!2sEnergy%20Solutions%20Sp.%20o.o.!5e0!3m2!1sen!2spl!4v1789029743619!5m2!1sen!2spl"
+                className="h-full w-full border-0 sm:absolute sm:inset-y-0 sm:left-[-50%] sm:w-[160%]"
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
               />
             </div>
 
-            <div className="relative z-10 mx-0 w-full mt-0 flex flex-col gap-6 bg-[#26282C] px-6 py-8 text-white shadow-[0_16px_40px_rgba(0,0,0,0.25)] sm:absolute sm:top-16 sm:right-[-190px] sm:w-full sm:max-w-[700px] sm:gap-8 sm:px-16 sm:py-20 lg:right-[-136px]">
+            <div className="relative z-10 mx-0 w-full mt-0 flex flex-col gap-6 bg-[#26282C] px-6 py-8 text-white shadow-[0_16px_40px_rgba(0,0,0,0.25)] sm:absolute sm:top-16 sm:right-[-190px] sm:w-full sm:max-w-[600px] sm:gap-8 sm:px-16 sm:py-20 lg:right-[-136px]">
               {/* Własny znak — ręcznie rysowana błyskawica: żółty "cień" przesunięty
                   za konturową błyskawicą, jak na referencji od klienta. */}
               <svg viewBox="0 0 24 24" className="h-14 w-14" xmlns="http://www.w3.org/2000/svg">

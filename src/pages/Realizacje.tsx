@@ -9,20 +9,21 @@ const activePaginationItem = 1
 export default function Realizacje() {
   return (
     <>
-      <div className="relative flex h-[160px] items-center overflow-hidden sm:h-[300px]">
+      <div className="relative mx-auto mb-6 flex h-[200px] w-full max-w-7xl items-center overflow-hidden sm:h-[380px]">
         <img
-          src="https://pixabay.com/images/download/x-1733741_640.jpg"
+          src="https://pixabay.com/images/download/peterdargatz-windmill-50512_640.jpg"
           alt="Aktualności"
           className="absolute inset-0 h-full w-full object-cover"
         />
         <div className="absolute inset-0 bg-black/55" />
-        <div className="relative mx-auto flex w-full max-w-7xl flex-col items-start gap-2 px-6 text-left sm:px-10 lg:px-14">
-          <span className="text-xs font-medium uppercase tracking-[0.12em] text-white/70">
-            Strona główna / Aktualności
-          </span>
+        <div className="relative mx-auto flex w-full max-w-7xl flex-col items-center gap-2 px-6 text-center sm:px-10 lg:px-14">
           <h1 className="font-heading text-4xl font-bold uppercase tracking-wide text-white sm:text-5xl">
             Aktualności
           </h1>
+          <span className="pt-4 text-base font-semibold uppercase tracking-[0.12em] text-white/70">
+            <Link to="/">Strona główna</Link>{' '}
+            / Aktualności
+          </span>
         </div>
       </div>
 
