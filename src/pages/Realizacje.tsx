@@ -12,19 +12,19 @@ export default function Realizacje() {
       <div className="relative mx-auto mb-6 flex h-[200px] w-full max-w-screen-2xl items-center overflow-hidden sm:h-[380px]">
         <img
           src="https://pixabay.com/images/download/peterdargatz-windmill-50512_640.jpg"
-          alt="Aktualności"
+          alt="Realizacje"
           className="absolute inset-0 h-full w-full object-cover"
         />
         <div className="absolute inset-0 bg-black/55" />
         <div className="relative mx-auto flex w-full max-w-screen-2xl flex-col items-center gap-2 px-6 text-center sm:px-10 lg:px-14">
           <h1 className="font-heading text-4xl font-bold uppercase tracking-wide text-white sm:text-5xl">
-            Aktualności
+            Realizacje
           </h1>
           <span className="pt-4 text-base font-semibold uppercase tracking-[0.12em] text-white/70">
             <Link to="/" className="transition-colors hover:text-white">
               Strona główna
             </Link>{' '}
-            / Aktualności
+            / Realizacje
           </span>
         </div>
       </div>
@@ -36,6 +36,9 @@ export default function Realizacje() {
               <Link key={index} to={`/realizacje/${index}`} className="flex cursor-pointer flex-col bg-white">
                 <div className="group relative h-[280px] overflow-hidden md:h-[360px] 2xl:h-[280px]">
                   <img src={project.image} alt={project.title} className="h-full w-full object-cover" />
+                  <span className="absolute bottom-4 left-4 bg-[#fbba00] px-3 py-1.5 text-[12px] font-bold uppercase tracking-[0.06em] text-[#26282C]">
+                    {project.cat}
+                  </span>
                   <div className="absolute inset-0 flex items-center justify-center gap-2 bg-black/30 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                     <span className="h-2.5 w-2.5 scale-0 rounded-full bg-[#fbba00] transition-transform duration-300 group-hover:scale-100" />
                     <span className="h-2.5 w-2.5 scale-0 rounded-full bg-[#fbba00] transition-transform delay-75 duration-300 group-hover:scale-100" />
@@ -46,8 +49,8 @@ export default function Realizacje() {
                   <span className="line-clamp-2 h-[65px] w-fit font-heading text-[26px] font-bold leading-tight text-[#26282C] transition duration-500 hover:text-[#fbba00]/80">
                     {project.title}
                   </span>
-                  <span className="text-[16px] font-bold uppercase tracking-wide text-[#777777]">
-                    {project.date} / Aktualności
+                  <span className="line-clamp-1 text-[16px] font-bold uppercase tracking-wide text-[#777777]">
+                    {project.date} · {project.client}
                   </span>
                   <span className="line-clamp-3 mb-3 mt-3 h-[81px] text-[18px] font-normal leading-normal text-[#777777] sm:mb-6 sm:mt-6">
                     {project.desc}
