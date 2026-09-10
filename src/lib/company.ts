@@ -89,27 +89,33 @@ export const processSteps = [
   },
 ]
 
-// Certyfikaty posiadane przez spółkę.
+// Certyfikaty posiadane przez spółkę. `logo` — oficjalne oznaczenie danej
+// normy/dyrektywy (public/logos/certifications), tam gdzie ono istnieje;
+// WPQR nie ma jednego powszechnego znaku, więc zostaje przy ikonie.
 export const certifications = [
   {
     code: 'ISO 9001:2015',
     title: 'Zintegrowany System Zarządzania',
     desc: 'W zakresie projektowania, serwisu i generalnego wykonawstwa obiektów oraz instalacji w branży sanitarnej, technologicznej, elektrycznej i sterowania.',
+    logo: '/logos/certifications/iso.svg',
   },
   {
     code: 'ISO 45001:2018',
     title: 'System Zarządzania BHP',
     desc: 'System Zarządzania Bezpieczeństwem i Higieną Pracy w organizacji — w tym samym zakresie branżowym.',
+    logo: '/logos/certifications/iso.svg',
   },
   {
     code: 'ISO 14001:2015',
     title: 'System Zarządzania Środowiskowego',
     desc: 'Zarządzanie środowiskowe w organizacji — w tym samym zakresie branżowym.',
+    logo: '/logos/certifications/iso.svg',
   },
   {
     code: 'PED 2014/68/UE',
     title: 'Zgodność z dyrektywą ciśnieniową',
     desc: 'Moduł A2 — w zakresie wytwarzania urządzeń ciśnieniowych.',
+    logo: '/logos/certifications/ce-marking.svg',
   },
   {
     code: 'WPQR',
@@ -117,6 +123,41 @@ export const certifications = [
     desc: 'Certyfikowane procedury kwalifikowania technologii spawania.',
   },
 ]
+
+// Logotypy partnerów i klientów. Na razie tylko kilka realnych plików
+// (public/logos/partners|clients) — powielone (`repeatLogos`), żeby siatka na
+// stronie "Firma" nie wyglądała na pustą, dopóki nie dojdą kolejne, docelowe
+// logo od klienta.
+interface LogoEntry {
+  name: string
+  logo: string
+}
+
+function repeatLogos(base: LogoEntry[], count: number): LogoEntry[] {
+  return Array.from({ length: count }, (_, i) => base[i % base.length])
+}
+
+const partnerLogos: LogoEntry[] = [
+  { name: 'Legrand', logo: '/logos/partners/legrand.svg' },
+  { name: 'Schneider Electric', logo: '/logos/partners/schneider-electric.svg' },
+  { name: 'Emerson', logo: '/logos/partners/emerson.png' },
+  { name: 'Tedom', logo: '/logos/partners/tedom.png' },
+  { name: 'Siemens', logo: '/logos/partners/siemens.svg' },
+  { name: 'KSB', logo: '/logos/partners/ksb.png' },
+  { name: 'ABB', logo: '/logos/partners/abb.svg' },
+  { name: 'Alfa Laval', logo: '/logos/partners/alfa-laval.svg' },
+]
+
+const clientLogos: LogoEntry[] = [
+  { name: 'GE', logo: '/logos/clients/ge.svg' },
+  { name: 'AGH', logo: '/logos/clients/agh.svg' },
+  { name: 'Valeo', logo: '/logos/clients/valeo.svg' },
+  { name: 'Kraków Airport', logo: '/logos/clients/krakow-airport.svg' },
+  { name: 'Coca-Cola HBC', logo: '/logos/clients/coca-cola-hbc.svg' },
+]
+
+export const partners = repeatLogos(partnerLogos, 20)
+export const trustedClients = repeatLogos(clientLogos, 20)
 
 // Kwalifikacje posiadane przez pracowników spółki.
 export const staffQualifications = [

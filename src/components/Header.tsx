@@ -1,5 +1,6 @@
 import { Fragment, useEffect, useState, type CSSProperties, type ReactNode } from 'react'
 import { NavLink } from 'react-router-dom'
+import { ChevronDown } from 'lucide-react'
 import clsx from 'clsx'
 import { navLinks } from '@/lib/navigation'
 
@@ -43,6 +44,7 @@ function NavItem({
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const [expandedMobile, setExpandedMobile] = useState<string | null>(null)
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 0)
@@ -58,6 +60,12 @@ export default function Header() {
     return () => {
       document.body.style.overflow = ''
     }
+  }, [mobileOpen])
+
+  // Zwiń rozwinięte podmenu mobile, kiedy całe menu się zamyka, żeby przy
+  // kolejnym otwarciu zawsze startowało od stanu zwiniętego.
+  useEffect(() => {
+    if (!mobileOpen) setExpandedMobile(null)
   }, [mobileOpen])
 
   return (
@@ -85,13 +93,64 @@ export default function Header() {
           {navLinks.map((link, index) => (
             <Fragment key={link.label}>
               {index > 0 && <span className="h-4 w-px bg-[#e5e5e5]" aria-hidden="true" />}
-              <NavItem
-                href={link.href}
-                className="relative text-xl font-normal tracking-[0.08em] text-[#777777] transition after:absolute after:-bottom-1 after:left-1/2 after:h-[3px] after:w-0 after:-translate-x-1/2 after:-skew-x-12 after:bg-[#fbba00] after:transition-all after:duration-300 hover:after:w-[105%]"
-                activeClassName="after:w-[105%]"
-              >
-                {link.label}
-              </NavItem>
+              {link.children && link.children.length > 0 ? (
+                <div className="group relative">
+                  <NavItem
+                    href={link.href}
+                    className="relative flex items-center gap-1.5 text-xl font-normal tracking-[0.08em] text-[#777777] transition after:absolute after:-bottom-1 after:left-1/2 after:h-[3px] after:w-0 after:-translate-x-1/2 after:-skew-x-12 after:bg-[#fbba00] after:transition-all after:duration-300 hover:after:w-[105%] group-hover:after:w-[105%] group-focus-within:after:w-[105%]"
+                    activeClassName="after:w-[105%]"
+                  >
+                    {link.label}
+                    <ChevronDown
+                      className="h-4 w-4 text-[#777777] transition-transform duration-300 group-hover:rotate-180"
+                      aria-hidden="true"
+                    />
+                  </NavItem>
+
+                  <div className="invisible absolute left-0 top-full z-50 w-[190px] translate-y-1 pt-[30px] opacity-0 transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100">
+                    <div className="flex flex-col bg-[#26282C] py-2 shadow-[0_16px_32px_rgba(0,0,0,0.25)]">
+                      {/* Sam link do /firma powtórzony jako pierwsza pozycja — bez
+                          tego użytkownik widzi tylko dwie podstrony i może nie
+                          zauważyć, że nagłówek "Firma" też prowadzi na własną,
+                          osobną stronę. */}
+                      <NavLink
+                        to={link.href}
+                        end
+                        className={({ isActive }) =>
+                          clsx(
+                            'border-b border-white/10 px-5 py-3 text-[17px] font-bold uppercase leading-snug tracking-wide text-[#fbba00] transition-colors duration-200 hover:text-white',
+                            isActive && 'text-white',
+                          )
+                        }
+                      >
+                        O firmie
+                      </NavLink>
+                      {link.children.map((child) => (
+                        <NavLink
+                          key={child.href}
+                          to={child.href}
+                          className={({ isActive }) =>
+                            clsx(
+                              'px-5 py-3 text-[17px] font-bold leading-snug tracking-wide transition-colors duration-200 hover:text-[#fbba00]',
+                              isActive ? 'text-[#fbba00]' : 'text-white/90',
+                            )
+                          }
+                        >
+                          {child.label}
+                        </NavLink>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <NavItem
+                  href={link.href}
+                  className="relative text-xl font-normal tracking-[0.08em] text-[#777777] transition after:absolute after:-bottom-1 after:left-1/2 after:h-[3px] after:w-0 after:-translate-x-1/2 after:-skew-x-12 after:bg-[#fbba00] after:transition-all after:duration-300 hover:after:w-[105%]"
+                  activeClassName="after:w-[105%]"
+                >
+                  {link.label}
+                </NavItem>
+              )}
             </Fragment>
           ))}
         </nav>
@@ -152,21 +211,70 @@ export default function Header() {
 
         <nav aria-label="Nawigacja mobilna" className="flex flex-1 flex-col overflow-y-auto">
           <div className="flex flex-1 flex-col items-start justify-center gap-1 px-6 text-left">
-            {navLinks.map((link, index) => (
-              <NavItem
-                key={link.label}
-                href={link.href}
-                onClick={() => setMobileOpen(false)}
-                style={{ transitionDelay: mobileOpen ? `${index * 60}ms` : '0ms' }}
-                className={clsx(
-                  'py-2.5 text-4xl font-normal text-white/35 transition-all duration-300 ease-out hover:text-white/70',
-                  mobileOpen ? 'translate-y-0 opacity-100' : '-translate-y-2 opacity-0',
-                )}
-                activeClassName="!text-white"
-              >
-                {link.label}
-              </NavItem>
-            ))}
+            {navLinks.map((link, index) => {
+              const hasChildren = !!link.children?.length
+              const isExpanded = expandedMobile === link.label
+              return (
+                <div key={link.label} className="flex w-full flex-col items-start">
+                  <div className="flex w-full items-center gap-2">
+                    <NavItem
+                      href={link.href}
+                      onClick={() => setMobileOpen(false)}
+                      style={{ transitionDelay: mobileOpen ? `${index * 60}ms` : '0ms' }}
+                      className={clsx(
+                        'py-2.5 text-4xl font-normal text-white/35 transition-all duration-300 ease-out hover:text-white/70',
+                        mobileOpen ? 'translate-y-0 opacity-100' : '-translate-y-2 opacity-0',
+                      )}
+                      activeClassName="!text-white"
+                    >
+                      {link.label}
+                    </NavItem>
+
+                    {hasChildren && (
+                      <button
+                        type="button"
+                        onClick={() => setExpandedMobile(isExpanded ? null : link.label)}
+                        aria-expanded={isExpanded}
+                        aria-label={isExpanded ? `Zwiń podmenu ${link.label}` : `Rozwiń podmenu ${link.label}`}
+                        style={{ transitionDelay: mobileOpen ? `${index * 60}ms` : '0ms' }}
+                        className={clsx(
+                          'flex h-10 w-10 shrink-0 items-center justify-center text-white/35 transition-all duration-300 ease-out hover:text-white/70',
+                          mobileOpen ? 'translate-y-0 opacity-100' : '-translate-y-2 opacity-0',
+                        )}
+                      >
+                        <ChevronDown
+                          className={clsx('h-6 w-6 transition-transform duration-300', isExpanded && 'rotate-180')}
+                          aria-hidden="true"
+                        />
+                      </button>
+                    )}
+                  </div>
+
+                  {hasChildren && (
+                    <div
+                      className={clsx(
+                        'grid w-full transition-all duration-300 ease-out',
+                        isExpanded ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0',
+                      )}
+                    >
+                      <div className="flex flex-col gap-1 overflow-hidden pb-1">
+                        {link.children!.map((child) => (
+                          <NavItem
+                            key={child.href}
+                            href={child.href}
+                            onClick={() => setMobileOpen(false)}
+                            className="py-1.5 text-xl font-normal text-white/35 transition-colors duration-300 hover:text-white/70"
+                            activeClassName="!text-white"
+                          >
+                            {child.label}
+                          </NavItem>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              )
+            })}
           </div>
 
           <div className="grid grid-cols-2 divide-x divide-white/15 border-t border-white/15">

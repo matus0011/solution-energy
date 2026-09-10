@@ -35,7 +35,10 @@ export default function Kariera() {
             {jobs.map((job, index) => {
               const isOpen = openIndex === index
               return (
-                <div key={job.title} className="border-b border-[#e5e5e5] py-6 sm:py-8">
+                <div
+                  key={job.title}
+                  className="border-b border-[#e5e5e5] px-3 py-6 transition-colors duration-300 hover:bg-[#faf7f0] sm:py-8"
+                >
                   <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between sm:gap-6">
                     <div className="flex flex-col gap-2">
                       <span className="text-[13px] font-bold uppercase tracking-[0.12em] text-[#fbba00]">

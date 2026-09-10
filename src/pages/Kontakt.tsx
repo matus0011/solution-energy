@@ -53,7 +53,7 @@ export default function Kontakt() {
               />
             </div>
 
-            <div className="relative z-10 mx-0 w-full mt-0 flex flex-col gap-6 bg-[#26282C] px-6 py-8 text-white shadow-[0_16px_40px_rgba(0,0,0,0.25)] sm:absolute sm:top-16 sm:right-[-190px] sm:w-full sm:max-w-[600px] sm:gap-8 sm:px-16 sm:py-20 lg:right-[-136px]">
+            <div className="relative z-10 mx-0 w-full mt-0 flex flex-col gap-6 bg-[#26282C] px-6 py-8 text-white shadow-[0_16px_40px_rgba(0,0,0,0.25)] sm:absolute sm:top-16 sm:right-[-24px] sm:w-full sm:max-w-[600px] sm:gap-8 sm:px-16 sm:py-20 lg:right-[-40px]">
               {/* Własny znak — ręcznie rysowana błyskawica: żółty "cień" przesunięty
                   za konturową błyskawicą, jak na referencji od klienta. */}
               <svg viewBox="0 0 24 24" className="h-14 w-14" xmlns="http://www.w3.org/2000/svg">
@@ -100,7 +100,7 @@ export default function Kontakt() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={label}
-                    className="text-[#fbba00] transition-colors hover:text-white"
+                    className="text-[#fbba00] transition-all duration-300 hover:scale-110 hover:text-white"
                   >
                     <Icon size={28} />
                   </a>

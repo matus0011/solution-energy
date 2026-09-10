@@ -2,6 +2,8 @@ import { Routes, Route } from 'react-router-dom'
 import Layout from '@/components/Layout'
 import Home from '@/pages/Home'
 import Firma from '@/pages/Firma'
+import ObszaryDzialalnosci from '@/pages/ObszaryDzialalnosci'
+import JakPracujemy from '@/pages/JakPracujemy'
 import Realizacje from '@/pages/Realizacje'
 import RealizacjaSzczegoly from '@/pages/RealizacjaSzczegoly'
 import Kontakt from '@/pages/Kontakt'
@@ -13,6 +15,8 @@ export default function App() {
       <Route element={<Layout />}>
         <Route path="/" element={<Home />} />
         <Route path="/firma" element={<Firma />} />
+        <Route path="/firma/obszary-dzialalnosci" element={<ObszaryDzialalnosci />} />
+        <Route path="/firma/jak-pracujemy" element={<JakPracujemy />} />
         <Route path="/realizacje" element={<Realizacje />} />
         <Route path="/realizacje/:id" element={<RealizacjaSzczegoly />} />
         <Route path="/kontakt" element={<Kontakt />} />

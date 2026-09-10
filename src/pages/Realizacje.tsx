@@ -35,7 +35,11 @@ export default function Realizacje() {
             {projects.map((project, index) => (
               <Link key={index} to={`/realizacje/${index}`} className="flex cursor-pointer flex-col bg-white">
                 <div className="group relative h-[280px] overflow-hidden md:h-[360px] 2xl:h-[280px]">
-                  <img src={project.image} alt={project.title} className="h-full w-full object-cover" />
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
                   <span className="absolute bottom-4 left-4 bg-[#fbba00] px-3 py-1.5 text-[12px] font-bold uppercase tracking-[0.06em] text-[#26282C]">
                     {project.cat}
                   </span>

@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom'
-import { CalendarRange, Layers, ShieldCheck, Award, HardHat, Leaf, Gauge, Flame, Check } from 'lucide-react'
-import { companyFacts, competencies, processSteps, certifications, staffQualifications } from '@/lib/company'
+import { CalendarRange, Layers, ShieldCheck, BadgeCheck, HardHat, Leaf, Gauge, Flame } from 'lucide-react'
+import { companyFacts, certifications, partners, trustedClients } from '@/lib/company'
+import LogoWall from '@/components/LogoWall'
 
 const factIcons = [CalendarRange, Layers, ShieldCheck]
-const certIcons = [Award, HardHat, Leaf, Gauge, Flame]
+const certIcons = [BadgeCheck, HardHat, Leaf, Gauge, Flame]
 
 export default function Firma() {
   return (
@@ -63,10 +64,14 @@ export default function Firma() {
               return (
                 <div
                   key={fact.label}
-                  className="flex flex-col items-center gap-1.5 border-l-[3px] border-[#26282C] pl-5 text-center sm:items-start sm:text-left"
+                  className="group flex flex-col items-center gap-1.5 border-l-[3px] border-[#26282C] pl-5 text-center transition-all duration-300 hover:border-white hover:pl-7 sm:items-start sm:text-left"
                 >
                   <div className="flex items-center gap-3">
-                    <Icon className="h-8 w-8 text-[#26282C]" strokeWidth={1.75} aria-hidden="true" />
+                    <Icon
+                      className="h-8 w-8 text-[#26282C] transition-transform duration-300 group-hover:scale-110"
+                      strokeWidth={1.75}
+                      aria-hidden="true"
+                    />
                     <span className="font-heading text-4xl font-bold leading-none text-[#26282C] sm:text-5xl">
                       {fact.value}
                     </span>
@@ -75,61 +80,6 @@ export default function Firma() {
                 </div>
               )
             })}
-          </div>
-
-          {/* Obszary działalności */}
-          <div className="flex flex-col gap-8 sm:gap-10">
-            <div className="flex flex-col gap-3">
-              <h2 className="font-heading text-3xl font-bold uppercase text-[#26282C] sm:text-[42px]">
-                Obszary działalności
-              </h2>
-            </div>
-
-            <div className="grid grid-cols-1 gap-px border border-[#e5e5e5] bg-[#e5e5e5] sm:grid-cols-2 lg:grid-cols-3">
-              {competencies.map((item) => (
-                <div
-                  key={item.num}
-                  className="flex flex-col gap-3 bg-white px-7 py-8 transition-colors duration-300 hover:bg-[#faf7f0]"
-                >
-                  <span className="text-[12px] font-bold text-[#fbba00]">{item.num}</span>
-                  <span className="font-heading text-xl font-semibold uppercase text-[#26282C] sm:text-2xl">
-                    {item.title}
-                  </span>
-                  <p className="text-[15px] leading-relaxed text-[#777777]">{item.desc}</p>
-                </div>
-              ))}
-            </div>
-
-            <Link
-              to="/realizacje"
-              className="w-fit text-[15px] font-bold uppercase tracking-wide text-[#fbba00] transition-all duration-300 hover:tracking-[0.08em] hover:text-[#26282C]"
-            >
-              Zobacz nasze realizacje →
-            </Link>
-          </div>
-
-          {/* Jak pracujemy */}
-          <div className="flex flex-col gap-8 sm:gap-10">
-            <div className="flex flex-col gap-3">
-              <h2 className="font-heading text-3xl font-bold uppercase text-[#26282C] sm:text-[42px]">
-                Jak pracujemy
-              </h2>
-              <p className="max-w-2xl text-[17px] leading-relaxed text-[#777777]">
-                Bazując na wieloletnim doświadczeniu, specjalizujemy się w realizacji inwestycji w formule EPC —
-                od analizy i doradztwa, przez projektowanie i wykonawstwo, po uruchomienie oraz obsługę
-                serwisową.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
-              {processSteps.map((step) => (
-                <div key={step.num} className="flex flex-col gap-3 border-t-4 border-[#fbba00] pt-5">
-                  <span className="font-heading text-3xl font-bold text-[#e5e5e5]">{step.num}</span>
-                  <span className="font-heading text-xl font-bold uppercase text-[#26282C]">{step.title}</span>
-                  <p className="text-[15px] leading-relaxed text-[#777777]">{step.desc}</p>
-                </div>
-              ))}
-            </div>
           </div>
 
           {/* Certyfikaty i uprawnienia */}
@@ -144,32 +94,33 @@ export default function Firma() {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
               {certifications.map((cert, index) => {
                 const Icon = certIcons[index]
                 return (
-                  <div key={cert.code} className="flex flex-col gap-3 border border-white/15 p-6">
-                    <Icon className="h-8 w-8 text-[#fbba00]" strokeWidth={1.75} aria-hidden="true" />
-                    <span className="font-heading text-xl font-bold text-white">{cert.code}</span>
-                    <span className="text-[14px] font-semibold uppercase tracking-wide text-white/50">
-                      {cert.title}
-                    </span>
-                    <p className="text-[15px] leading-relaxed text-white/70">{cert.desc}</p>
+                  <div
+                    key={cert.code}
+                    className="group flex min-h-[230px] gap-5 border border-white/10 bg-white/[0.03] p-6 transition-all duration-300 hover:border-[#fbba00]/60 hover:bg-white/[0.06]"
+                  >
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center transition-transform duration-300 group-hover:scale-105">
+                      {cert.logo ? (
+                        <img src={cert.logo} alt={cert.code} className="h-full w-full object-contain" />
+                      ) : (
+                        <Icon className="h-9 w-9 text-[#fbba00]" strokeWidth={1.75} aria-hidden="true" />
+                      )}
+                    </div>
+                    <div className="flex flex-col gap-2">
+                      <div className="flex flex-col">
+                        <span className="font-heading text-xl font-bold text-white">{cert.code}</span>
+                        <span className="text-[13px] font-semibold uppercase tracking-wide text-[#fbba00]">
+                          {cert.title}
+                        </span>
+                      </div>
+                      <p className="text-[15px] leading-relaxed text-white/60">{cert.desc}</p>
+                    </div>
                   </div>
                 )
               })}
-            </div>
-
-            <div className="flex flex-col gap-5 border-t border-white/15 pt-8">
-              <h3 className="font-heading text-xl font-bold uppercase text-white">Kwalifikacje pracowników</h3>
-              <ul className="grid grid-cols-1 gap-x-8 gap-y-4 sm:grid-cols-2">
-                {staffQualifications.map((q) => (
-                  <li key={q} className="flex gap-3 text-[15px] leading-relaxed text-white/70">
-                    <Check className="mt-0.5 h-5 w-5 shrink-0 text-[#fbba00]" strokeWidth={2.5} aria-hidden="true" />
-                    <span>{q}</span>
-                  </li>
-                ))}
-              </ul>
             </div>
           </div>
 
@@ -179,13 +130,13 @@ export default function Firma() {
               <h2 className="font-heading text-3xl font-bold uppercase text-[#26282C] sm:text-[42px]">
                 Partnerzy
               </h2>
-              <p className="max-w-2xl text-[17px] leading-relaxed text-[#777777]">
+              <p className="text-[17px] leading-relaxed text-[#777777]">
                 Energy Solutions skupia wokół siebie marki, których potencjał pozwala dostarczyć inwestorom
                 najlepsze dostępne rozwiązania. Wykorzystując specjalistyczne możliwości swoich partnerów, firma
                 jest w stanie sprostać nawet najbardziej wymagającym projektom.
               </p>
             </div>
-            <img src="/portfolio/partnerzy.png" alt="Partnerzy technologiczni Energy Solutions" className="h-auto w-full" />
+            <LogoWall logos={partners} />
           </div>
 
           {/* Oni nam zaufali */}
@@ -194,16 +145,12 @@ export default function Firma() {
               <h2 className="font-heading text-3xl font-bold uppercase text-[#26282C] sm:text-[42px]">
                 Oni nam zaufali
               </h2>
-              <p className="max-w-2xl text-[17px] leading-relaxed text-[#777777]">
+              <p className="text-[17px] leading-relaxed text-[#777777]">
                 Wysoką wiarygodność spółki oraz profesjonalizm wykonywanych usług potwierdza liczne grono
                 zadowolonych klientów.
               </p>
             </div>
-            <img
-              src="/portfolio/oni-nam-zaufali.png"
-              alt="Klienci, którzy zaufali Energy Solutions"
-              className="h-auto w-full"
-            />
+            <LogoWall logos={trustedClients} />
           </div>
         </div>
       </div>
