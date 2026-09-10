@@ -3,6 +3,7 @@ import Layout from '@/components/Layout'
 import Home from '@/pages/Home'
 import Realizacje from '@/pages/Realizacje'
 import AktualnoscSzczegoly from '@/pages/AktualnoscSzczegoly'
+import Kontakt from '@/pages/Kontakt'
 
 export default function App() {
   return (
@@ -11,6 +12,7 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/realizacje" element={<Realizacje />} />
         <Route path="/realizacje/:id" element={<AktualnoscSzczegoly />} />
+        <Route path="/kontakt" element={<Kontakt />} />
       </Route>
     </Routes>
   )
