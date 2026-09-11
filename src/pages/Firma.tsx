@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { CalendarRange, Layers, ShieldCheck, BadgeCheck, HardHat, Leaf, Gauge, Flame } from 'lucide-react'
 import { companyFacts, certifications, partners, trustedClients } from '@/lib/company'
 import LogoWall from '@/components/LogoWall'
+import CardSlider from '@/components/CardSlider'
 
 const factIcons = [CalendarRange, Layers, ShieldCheck]
 const certIcons = [BadgeCheck, HardHat, Leaf, Gauge, Flame]
@@ -94,34 +95,34 @@ export default function Firma() {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+            <CardSlider label="Certyfikaty i uprawnienia" tone="dark" loop>
               {certifications.map((cert, index) => {
                 const Icon = certIcons[index]
                 return (
                   <div
                     key={cert.code}
-                    className="group flex min-h-[230px] gap-5 border border-white/10 bg-white/[0.03] p-6 transition-all duration-300 hover:border-[#fbba00]/60 hover:bg-white/[0.06]"
+                    className="group flex h-full min-h-[280px] flex-col gap-5 border border-white/10 bg-white/[0.03] p-7 transition-all duration-300 hover:border-[#fbba00]/60 hover:bg-white/[0.06]"
                   >
-                    <div className="flex h-12 w-12 shrink-0 items-center justify-center transition-transform duration-300 group-hover:scale-105">
+                    <div className="flex h-14 w-14 items-center justify-center transition-transform duration-300 group-hover:scale-110">
                       {cert.logo ? (
                         <img src={cert.logo} alt={cert.code} className="h-full w-full object-contain" />
                       ) : (
-                        <Icon className="h-9 w-9 text-[#fbba00]" strokeWidth={1.75} aria-hidden="true" />
+                        <Icon className="h-11 w-11 text-[#fbba00]" strokeWidth={1.75} aria-hidden="true" />
                       )}
                     </div>
-                    <div className="flex flex-col gap-2">
-                      <div className="flex flex-col">
-                        <span className="font-heading text-xl font-bold text-white">{cert.code}</span>
-                        <span className="text-[13px] font-semibold uppercase tracking-wide text-[#fbba00]">
-                          {cert.title}
-                        </span>
-                      </div>
-                      <p className="text-[15px] leading-relaxed text-white/60">{cert.desc}</p>
+                    <div className="flex flex-col gap-1">
+                      <span className="font-heading text-[22px] font-bold leading-tight text-white">
+                        {cert.code}
+                      </span>
+                      <span className="text-[13px] font-semibold uppercase leading-snug tracking-wide text-[#fbba00]">
+                        {cert.title}
+                      </span>
                     </div>
+                    <p className="text-[15px] leading-relaxed text-white/60">{cert.desc}</p>
                   </div>
                 )
               })}
-            </div>
+            </CardSlider>
           </div>
 
           {/* Oni nam zaufali */}

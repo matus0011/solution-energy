@@ -172,3 +172,15 @@
     @apply my-2 border-t border-[#e5e5e5];
   }
 }
+
+/* Ukrycie natywnego paska przewijania w poziomych sliderach (CardSlider) —
+   nawigację przejmują strzałki i kropki, a na dotyku swipe. */
+@layer utilities {
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
