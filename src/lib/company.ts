@@ -160,3 +160,41 @@ export const staffQualifications = [
   'Uprawnienia energetyczne na stanowiskach dozoru i eksploatacji dla wszystkich grup — elektrycznej, cieplnej i gazowej.',
   'Uprawnienia UDT w zakresie F-gazów oraz napełniania zbiorników przenośnych (naczyń ciśnieniowych) o pojemności powyżej 350 cm³ gazami skroplonymi.',
 ]
+
+// Trzy wyróżnione wejścia pod hero na stronie głównej. Kliknięcie w kafelek
+// podmienia zdjęcie w hero (`heroImage`), a `image` to okrągła miniatura
+// w pasku. Wszystkie zdjęcia to prawdziwe fotografie z budów
+// (public/realizacje), te same, które pokazujemy w Realizacjach — miniatura
+// i tło pochodzą w miarę możliwości z tej samej inwestycji.
+export const homeHighlights = [
+  {
+    kicker: 'Geotermia',
+    title: 'Ciepłownie geotermalne pod klucz',
+    image: '/realizacje/konin-geotermia.jpg',
+    heroImage: '/realizacje/torun-geotermia.jpg',
+    heroAlt: 'Ciepłownia geotermalna w Toruniu zrealizowana przez Energy Solutions',
+    heroLead:
+      'Realizujemy kompletne obiekty geotermalne — dokumentację wielobranżową, konstrukcje wsporcze i estakady, montaż i spawanie rurociągów, a we współpracy z wiodącym polskim partnerem również odwierty produkcyjne i zatłaczające.',
+    href: '/realizacje',
+  },
+  {
+    kicker: 'Formuła EPC',
+    title: 'Inwestycja od projektu po serwis',
+    image: '/realizacje/pruszkow-kotlownia.jpg',
+    heroImage: '/realizacje/pruszkow-hala-kotlowni.jpg',
+    heroAlt: 'Hala kotłowni gazowo-olejowej w EC Pruszków',
+    heroLead:
+      'Prowadzimy inwestycję od początku do końca — analiza i doradztwo, wsparcie w decyzjach administracyjnych, projekt budowlany z pozwoleniem, wykonawstwo pod klucz, rozruch oraz serwis gwarancyjny i pogwarancyjny.',
+    href: '/firma/jak-pracujemy',
+  },
+  {
+    kicker: 'Kogeneracja',
+    title: 'Układy CHP i trigeneracji',
+    image: '/realizacje/brzesko-kogeneracja.jpg',
+    heroImage: '/realizacje/brzesko-kogeneracja.jpg',
+    heroAlt: 'Układ kogeneracyjny w Brzesku',
+    heroLead:
+      'Projektujemy, dostarczamy i serwisujemy instalacje kogeneracyjne oraz trigeneracyjne zasilane gazem ziemnym, biogazem i gazami poprocesowymi — modernizujemy też istniejące układy.',
+    href: '/firma/obszary-dzialalnosci',
+  },
+]

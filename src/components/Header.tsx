@@ -97,12 +97,12 @@ export default function Header() {
                 <div className="group relative">
                   <NavItem
                     href={link.href}
-                    className="relative flex items-center gap-1.5 text-xl font-normal tracking-[0.08em] text-[#777777] transition after:absolute after:-bottom-1 after:left-1/2 after:h-[3px] after:w-0 after:-translate-x-1/2 after:-skew-x-12 after:bg-[#fbba00] after:transition-all after:duration-300 hover:after:w-[105%] group-hover:after:w-[105%] group-focus-within:after:w-[105%]"
+                    className="relative flex items-center gap-1.5 text-lg font-normal tracking-[0.08em] text-[#26282C] transition after:absolute after:-bottom-1 after:left-1/2 after:h-[3px] after:w-0 after:-translate-x-1/2 after:-skew-x-12 after:bg-[#fbba00] after:transition-all after:duration-300 hover:after:w-[105%] group-hover:after:w-[105%] group-focus-within:after:w-[105%]"
                     activeClassName="after:w-[105%]"
                   >
                     {link.label}
                     <ChevronDown
-                      className="h-4 w-4 text-[#777777] transition-transform duration-300 group-hover:rotate-180"
+                      className="h-4 w-4 text-[#26282C] transition-transform duration-300 group-hover:rotate-180"
                       aria-hidden="true"
                     />
                   </NavItem>
@@ -145,7 +145,7 @@ export default function Header() {
               ) : (
                 <NavItem
                   href={link.href}
-                  className="relative text-xl font-normal tracking-[0.08em] text-[#777777] transition after:absolute after:-bottom-1 after:left-1/2 after:h-[3px] after:w-0 after:-translate-x-1/2 after:-skew-x-12 after:bg-[#fbba00] after:transition-all after:duration-300 hover:after:w-[105%]"
+                  className="relative text-lg font-normal tracking-[0.08em] text-[#26282C] transition after:absolute after:-bottom-1 after:left-1/2 after:h-[3px] after:w-0 after:-translate-x-1/2 after:-skew-x-12 after:bg-[#fbba00] after:transition-all after:duration-300 hover:after:w-[105%]"
                   activeClassName="after:w-[105%]"
                 >
                   {link.label}

@@ -184,3 +184,29 @@
     display: none;
   }
 }
+
+/* Wejście tekstu w hero przy przełączaniu kafelków — lekkie przenikanie
+   z podjazdem od dołu, zsynchronizowane z crossfade'em zdjęcia w tle.
+   Wyłączone dla osób z ustawieniem "ogranicz animacje". */
+@layer utilities {
+  @keyframes hero-in {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-hero-in {
+    animation: hero-in 500ms ease-out both;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animate-hero-in {
+      animation: none;
+    }
+  }
+}
