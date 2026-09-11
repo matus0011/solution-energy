@@ -258,6 +258,18 @@ export default function Header() {
                       )}
                     >
                       <div className="flex flex-col gap-1 overflow-hidden pb-1">
+                        {/* Sam link do /firma powtórzony jako pierwsza pozycja — ta sama
+                            logika co w rozwijanym menu desktop (patrz wyżej), żeby po
+                            rozwinięciu podmenu było jasne, że "Firma" to też osobna strona,
+                            a nie tylko nagłówek grupujący dwie podstrony. */}
+                        <NavItem
+                          href={link.href}
+                          onClick={() => setMobileOpen(false)}
+                          className="py-1.5 text-xl font-bold uppercase tracking-wide text-[#fbba00] transition-colors duration-300 hover:text-white"
+                          activeClassName="!text-white"
+                        >
+                          O firmie
+                        </NavItem>
                         {link.children!.map((child) => (
                           <NavItem
                             key={child.href}
