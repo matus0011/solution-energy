@@ -198,3 +198,29 @@ export const homeHighlights = [
     href: '/firma/obszary-dzialalnosci',
   },
 ]
+
+// Dane kontaktowe. Na razie korzysta z nich sekcja CTA na stronie głównej —
+// Header, Footer i podstrona Kontakt mają jeszcze własne, wpisane na sztywno
+// kopie. Docelowo powinny czytać stąd, żeby numer nie rozjechał się w trzech
+// miejscach przy pierwszej zmianie.
+export const contact = {
+  phone: '+48 (14) 657 11 05',
+  phoneHref: 'tel:+48146571105',
+  email: 'biuro@energysolutions.pl',
+  address: 'ul. Wiesława Wody 27, 33-100 Tarnów',
+}
+
+// Wizytówka Google. `rating` i `count` są celowo puste — do uzupełnienia
+// prawdziwymi danymi z profilu firmy. Dopóki są nullem, pasek pokazuje sam
+// link do opinii, bez oceny i licznika. Świadomie nie wstawiamy tu przykładowych
+// liczb: zmyślona ocena na żywej stronie wprowadza klienta w błąd, a Google
+// zabrania prezentowania nieprawdziwych danych z wizytówki.
+export const googleReviews: {
+  rating: number | null
+  count: number | null
+  url: string
+} = {
+  rating: null,
+  count: null,
+  url: 'https://www.google.com/search?q=Energy+Solutions+Tarnów',
+}

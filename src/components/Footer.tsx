@@ -16,7 +16,7 @@ export default function Footer() {
 
   return (
     <footer className="bg-[#26282C] px-6 py-16 sm:px-10 lg:px-14">
-      <div className="mx-auto flex max-w-screen-2xl flex-col gap-12">
+      <div className="mx-auto flex max-w-7xl flex-col gap-12">
         <div className="grid grid-cols-1 gap-10 text-center lg:grid-cols-[1.4fr_1fr_1fr] lg:gap-12 lg:text-left">
           <div className="flex flex-col items-center gap-4 lg:items-start">
             <Link to="/" className="inline-block w-fit">

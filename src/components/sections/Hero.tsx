@@ -10,8 +10,8 @@ import { homeHighlights } from '@/lib/company'
 // czyli wielka tylko pierwsza litera. Dzięki temu skrót „EPC" w „Formuła EPC"
 // zostaje wersalikami, czego `capitalize` by nie zrobiło („Formuła Epc”).
 const headingClass =
-  'max-w-3xl font-heading text-3xl font-bold leading-[1.1] tracking-[0.05em] text-white sm:text-5xl lg:text-[56px]'
-const leadClass = 'my-6 max-w-xl text-[17px] leading-relaxed text-white sm:text-[19px]'
+  'max-w-3xl font-heading text-4xl font-bold leading-[1.1] tracking-[0.05em] text-white sm:text-6xl lg:text-[72px]'
+const leadClass = 'my-6 max-w-2xl text-[17px] leading-relaxed text-white sm:text-[19px]'
 
 // Hero strony głównej: pełnoekranowe zdjęcie z budowy + treść po lewej.
 // Na desktopie pod spodem stoi pasek trzech kafelków przełączających zdjęcie
@@ -50,8 +50,8 @@ export default function Hero() {
   }, [])
 
   return (
-    <section className="mx-auto w-full max-w-screen-2xl">
-      <div className="relative flex min-h-[460px] items-center overflow-hidden sm:min-h-[620px] lg:min-h-[700px]">
+    <section className="mx-auto w-full max-w-7xl">
+      <div className="relative flex min-h-[360px] items-center overflow-hidden sm:min-h-[520px] lg:min-h-[600px]">
         {/* Wszystkie zdjęcia są w DOM-ie i przełączane przezroczystością —
             daje to płynne przejście i kolejne tła są już wczytane, więc
             kliknięcie nie pokazuje pustego miejsca. */}
@@ -69,7 +69,7 @@ export default function Hero() {
 
         {/* Gradient od lewej, a nie płaskie przyciemnienie — tekst zostaje
             czytelny, a prawa strona zdjęcia pozostaje widoczna. */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/65 to-black/25" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/65 via-black/45 to-black/10" />
 
         <div className="relative w-full px-6 py-16 sm:px-10 sm:py-20 lg:px-14">
           <div className="mx-auto flex max-w-7xl flex-col gap-7">

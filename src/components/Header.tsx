@@ -77,7 +77,7 @@ export default function Header() {
     >
       <div
         className={clsx(
-          'mx-auto flex max-w-screen-2xl items-center justify-between px-6 transition-[padding] duration-300',
+          'mx-auto flex max-w-7xl items-center justify-between px-6 transition-[padding] duration-300',
           scrolled ? 'py-4' : 'py-12',
         )}
       >
