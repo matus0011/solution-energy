@@ -125,19 +125,16 @@ export const certifications = [
 ]
 
 // Logotypy partnerów i klientów. Na razie tylko kilka realnych plików
-// (public/logos/partners|clients) — powielone (`repeatLogos`), żeby siatka na
-// stronie "Firma" nie wyglądała na pustą, dopóki nie dojdą kolejne, docelowe
-// logo od klienta.
+// (public/logos/partners|clients). Pokazujemy wyłącznie realne pozycje — bez
+// powielania ich w siatce. Powtórzone logo tej samej marki obok siebie jest
+// natychmiast widoczne i podważa wiarygodność całej sekcji, a te listy stoją
+// teraz na kilku podstronach naraz.
 interface LogoEntry {
   name: string
   logo: string
 }
 
-function repeatLogos(base: LogoEntry[], count: number): LogoEntry[] {
-  return Array.from({ length: count }, (_, i) => base[i % base.length])
-}
-
-const partnerLogos: LogoEntry[] = [
+export const partners: LogoEntry[] = [
   { name: 'Legrand', logo: '/logos/partners/legrand.svg' },
   { name: 'Schneider Electric', logo: '/logos/partners/schneider-electric.svg' },
   { name: 'Emerson', logo: '/logos/partners/emerson.png' },
@@ -148,16 +145,13 @@ const partnerLogos: LogoEntry[] = [
   { name: 'Alfa Laval', logo: '/logos/partners/alfa-laval.svg' },
 ]
 
-const clientLogos: LogoEntry[] = [
+export const trustedClients: LogoEntry[] = [
   { name: 'GE', logo: '/logos/clients/ge.svg' },
   { name: 'AGH', logo: '/logos/clients/agh.svg' },
   { name: 'Valeo', logo: '/logos/clients/valeo.svg' },
   { name: 'Kraków Airport', logo: '/logos/clients/krakow-airport.svg' },
   { name: 'Coca-Cola HBC', logo: '/logos/clients/coca-cola-hbc.svg' },
 ]
-
-export const partners = repeatLogos(partnerLogos, 20)
-export const trustedClients = repeatLogos(clientLogos, 20)
 
 // Kwalifikacje posiadane przez pracowników spółki.
 export const staffQualifications = [

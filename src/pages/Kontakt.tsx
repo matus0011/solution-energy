@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { FaFacebook, FaLinkedin } from 'react-icons/fa'
 import { FaSquareXTwitter } from 'react-icons/fa6'
 import { InstagramIcon, YoutubeIcon } from '@/components/icons/SocialIcons'
+import TrustedClients from '@/components/sections/TrustedClients'
 
 // Te same linki co w stopce (patrz src/components/Footer.tsx) — na razie
 // placeholdery "#", do podmiany na realne profile firmy.
@@ -108,6 +109,14 @@ export default function Kontakt() {
               </div>
             </div>
           </div>
+
+          {/* Logotypy klientów tuż przed formularzem — to moment, w którym
+              odwiedzający decyduje, czy napisać. Widok znanych marek obniża
+              opór przed wysłaniem zapytania. */}
+          <TrustedClients
+            title="Zaufali nam"
+            description="Realizujemy inwestycje dla wymagających klientów przemysłowych i ciepłowniczych — od zakładów produkcyjnych po miejskie przedsiębiorstwa energetyki cieplnej."
+          />
 
           {/* Formularz — na razie sam wizualny szkielet, bez obsługi wysyłki.
               Docelowo podpięty pod formularz WordPressa (np. Contact Form 7 /

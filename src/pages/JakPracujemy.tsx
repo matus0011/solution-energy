@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ChevronDown } from 'lucide-react'
 import { processSteps } from '@/lib/company'
+import Certifications from '@/components/sections/Certifications'
 
 export default function JakPracujemy() {
   const [openStep, setOpenStep] = useState<number>(0)
@@ -87,6 +88,11 @@ export default function JakPracujemy() {
               })}
             </div>
           </div>
+
+          {/* Certyfikaty domykają opis procesu — mówią o tym, że powyższe
+              etapy są prowadzone w ramach wdrożonych systemów zarządzania,
+              a nie tylko deklarowane. */}
+          <Certifications description="Opisany wyżej proces prowadzimy w ramach wdrożonych systemów zarządzania — potwierdzają to certyfikaty spółki oraz uprawnienia naszych specjalistów." />
         </div>
       </div>
     </>

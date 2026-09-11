@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import clsx from 'clsx'
 import { projects } from '@/lib/projects'
+import TrustedClients from '@/components/sections/TrustedClients'
 
 // Wizualny placeholder — bez logiki, tylko do pokazania.
 const paginationItems = [1, 2]
@@ -95,6 +96,13 @@ export default function Realizacje() {
               ›
             </span>
           </nav>
+
+          {/* Dowód społeczny tuż po przejrzeniu realizacji — czytelnik widział
+              właśnie zakres prac, więc lista klientów pada w najlepszym
+              momencie. */}
+          <div className="mt-4 sm:mt-10">
+            <TrustedClients description="Realizacje powyżej powstawały dla inwestorów, którzy wracają do nas przy kolejnych projektach." />
+          </div>
         </div>
       </div>
     </>

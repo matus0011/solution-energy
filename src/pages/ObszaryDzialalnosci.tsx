@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { Mountain, Flame, Snowflake, Zap, Plug, SlidersHorizontal, Wind, Cog } from 'lucide-react'
 import { competencies } from '@/lib/company'
+import Partners from '@/components/sections/Partners'
 
 const competencyIcons = [Mountain, Flame, Snowflake, Zap, Plug, SlidersHorizontal, Wind, Cog]
 
@@ -75,6 +76,11 @@ export default function ObszaryDzialalnosci() {
               Zobacz nasze realizacje →
             </Link>
           </div>
+
+          {/* Partnerzy stoją właśnie tutaj: wymienione wyżej kompetencje to
+              dokładnie te technologie (ABB, Siemens, Alfa Laval, KSB, Tedom),
+              więc logotypy są konkretnym dopełnieniem listy, a nie ozdobą. */}
+          <Partners description="Wymienione wyżej technologie realizujemy w oparciu o rozwiązania sprawdzonych producentów — to ich urządzenia trafiają na nasze budowy." />
         </div>
       </div>
     </>
