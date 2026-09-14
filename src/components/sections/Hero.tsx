@@ -50,7 +50,7 @@ export default function Hero() {
   }, [])
 
   return (
-    <section className="mx-auto w-full max-w-7xl">
+    <section className="mx-auto w-full max-w-screen-2xl">
       <div className="relative flex min-h-[360px] items-center overflow-hidden sm:min-h-[520px] lg:min-h-[600px]">
         {/* Wszystkie zdjęcia są w DOM-ie i przełączane przezroczystością —
             daje to płynne przejście i kolejne tła są już wczytane, więc
@@ -72,7 +72,7 @@ export default function Hero() {
         <div className="absolute inset-0 bg-gradient-to-r from-black/65 via-black/45 to-black/10" />
 
         <div className="relative w-full px-6 py-16 sm:px-10 sm:py-20 lg:px-14">
-          <div className="mx-auto flex max-w-7xl flex-col gap-7">
+          <div className="mx-auto flex max-w-screen-2xl flex-col gap-7">
             {/* Wszystkie warianty tekstu leżą w jednej komórce siatki. Kopie
                 niewidoczne (`invisible`) nie są widać, ale nadal zajmują
                 miejsce, więc komórka ma zawsze wysokość najdłuższego wariantu
@@ -130,7 +130,7 @@ export default function Hero() {
       {/* Pasek wyróżnień — przełącza zdjęcie w hero. Ukryty poniżej `md`:
           na wąskim ekranie zajmował pół ekranu, a hero i tak rotuje samo. */}
       <div className="hidden bg-[#26282C] px-6 py-10 sm:px-10 sm:py-12 md:block lg:px-14">
-        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-8 sm:gap-0 md:grid-cols-3">
+        <div className="mx-auto grid max-w-screen-2xl grid-cols-1 gap-8 sm:gap-0 md:grid-cols-3">
           {homeHighlights.map((item, index) => {
             const isActive = index === activeIndex
             return (
