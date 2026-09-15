@@ -14,7 +14,7 @@ export default function ProcessSteps() {
           <h2 className="font-heading text-3xl font-bold uppercase text-[#26282C] sm:text-[42px]">
             Jak prowadzimy inwestycję
           </h2>
-          <p className="max-w-3xl text-[17px] leading-relaxed text-[#777777]">
+          <p className="max-w-xl text-[17px] leading-relaxed text-[#777777]">
             Od pierwszej analizy po serwis po oddaniu obiektu. Za każdy etap odpowiada ten sam
             wykonawca, więc na styku branż nie ma nikogo, kto mógłby przerzucić odpowiedzialność.
           </p>

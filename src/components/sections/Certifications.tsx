@@ -21,7 +21,7 @@ export default function Certifications({
       <div className="mx-auto flex max-w-7xl flex-col gap-10">
         <div className="flex flex-col gap-3">
           <h2 className="font-heading text-3xl font-bold uppercase text-white sm:text-[42px]">{title}</h2>
-          <p className="max-w-2xl text-[17px] leading-relaxed text-white/70">{description}</p>
+          <p className="max-w-xl text-[17px] leading-relaxed text-white/70">{description}</p>
         </div>
 
         <CardSlider label={title} tone="dark" loop>

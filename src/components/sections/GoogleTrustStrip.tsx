@@ -53,7 +53,7 @@ export default function GoogleTrustStrip() {
   return (
     <aside
       aria-label="Opinie Google i zaufanie klientów"
-      className="relative z-10 my-10 bg-[#f5f4f1] py-16 text-[#26282C] sm:my-14 sm:py-24 lg:my-16 lg:py-28"
+      className="relative z-10 mb-10 bg-white py-16 text-[#26282C] sm:mb-14 sm:py-24 lg:mb-16 lg:py-28"
     >
       <div className="mx-auto flex max-w-7xl flex-col gap-12 px-6 sm:px-10 lg:px-14">
         {/* Nagłówek: badge Google + link do wszystkich opinii */}
@@ -99,7 +99,7 @@ export default function GoogleTrustStrip() {
           {sampleReviews.map((review) => (
             <div
               key={review.author}
-              className="flex h-full flex-col gap-5 bg-white p-8 shadow-md shadow-black/5 transition-transform duration-300 hover:-translate-y-1"
+              className="flex h-full flex-col gap-5 bg-[#f5f4f1] p-8 shadow-md shadow-black/5 transition-transform duration-300 hover:-translate-y-1"
             >
               <div className="flex items-center justify-between gap-3">
                 <div className="flex items-center gap-1" aria-label={`Ocena ${review.rating} na 5 gwiazdek`}>

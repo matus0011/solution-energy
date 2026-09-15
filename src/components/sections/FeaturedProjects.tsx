@@ -15,7 +15,7 @@ export default function FeaturedProjects() {
           <h2 className="font-heading text-3xl font-bold uppercase text-[#26282C] sm:text-[42px]">
             Wybrane realizacje
           </h2>
-          <p className="max-w-3xl text-[17px] leading-relaxed text-[#777777]">
+          <p className="max-w-xl text-[17px] leading-relaxed text-[#777777]">
             Ciepłownie geotermalne, obiekty energetyczne i układy kogeneracyjne — realizowane
             samodzielnie oraz w konsorcjach z czołowymi wykonawcami na rynku.
           </p>

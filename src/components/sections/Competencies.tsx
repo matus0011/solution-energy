@@ -10,13 +10,13 @@ const icons = [Mountain, Flame, Snowflake, Zap, Plug, SlidersHorizontal, Wind, C
 
 export default function Competencies() {
   return (
-    <section className="bg-white px-6 py-16 sm:px-10 sm:py-24 lg:px-14">
+    <section className="bg-[#f5f4f1] px-6 py-16 sm:px-10 sm:py-24 lg:px-14">
       <div className="mx-auto flex max-w-7xl flex-col gap-10 sm:gap-14">
         <div className="flex flex-col gap-3">
           <h2 className="font-heading text-3xl font-bold uppercase text-[#26282C] sm:text-[42px]">
             Obszary działalności
           </h2>
-          <p className="max-w-3xl text-[17px] leading-relaxed text-[#777777]">
+          <p className="max-w-xl text-[17px] leading-relaxed text-[#777777]">
             Osiem kompetencji, które łączymy w ramach jednej inwestycji — od obiektów geotermalnych,
             przez kotłownie i układy kogeneracyjne, po elektroenergetykę, sterowanie i HVAC.
           </p>

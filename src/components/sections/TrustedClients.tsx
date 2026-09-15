@@ -18,7 +18,7 @@ export default function TrustedClients({
     <div className="flex flex-col gap-8 sm:gap-10">
       <div className="flex flex-col gap-3">
         <h2 className="font-heading text-3xl font-bold uppercase text-[#26282C] sm:text-[42px]">{title}</h2>
-        <p className="max-w-3xl text-[17px] leading-relaxed text-[#777777]">{description}</p>
+        <p className="max-w-xl text-[17px] leading-relaxed text-[#777777]">{description}</p>
       </div>
       <LogoWall logos={trustedClients} />
     </div>

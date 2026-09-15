@@ -10,8 +10,8 @@ import { homeHighlights } from '@/lib/company'
 // czyli wielka tylko pierwsza litera. Dzięki temu skrót „EPC" w „Formuła EPC"
 // zostaje wersalikami, czego `capitalize` by nie zrobiło („Formuła Epc”).
 const headingClass =
-  'max-w-3xl font-heading text-4xl font-bold leading-[1.1] tracking-[0.05em] text-white sm:text-6xl lg:text-[72px]'
-const leadClass = 'my-6 max-w-2xl text-[17px] leading-relaxed text-white sm:text-[19px]'
+  'max-w-3xl font-heading text-4xl font-bold leading-[1.1] tracking-[-0.02em] text-white sm:text-6xl lg:text-[72px]'
+const leadClass = 'my-6 max-w-xl text-[17px] leading-relaxed text-white sm:text-[19px]'
 
 // Hero strony głównej: pełnoekranowe zdjęcie z budowy + treść po lewej.
 // Na desktopie pod spodem stoi pasek trzech kafelków przełączających zdjęcie
