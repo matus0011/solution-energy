@@ -9,7 +9,7 @@ import { contact } from '@/lib/company'
 export default function ClosingCta() {
   return (
     <section className="bg-[#fbba00] px-6 py-16 sm:px-10 sm:py-20 lg:px-14">
-      <div className="mx-auto flex max-w-7xl flex-col gap-10 lg:flex-row lg:items-center lg:justify-between lg:gap-16">
+      <div className="mx-auto flex max-w-6xl flex-col gap-10 lg:flex-row lg:items-center lg:justify-between lg:gap-16">
         <div className="flex flex-col gap-4">
           <h2 className="font-heading text-3xl font-bold uppercase leading-tight text-[#26282C] sm:text-[42px]">
             Planujesz inwestycję?

@@ -18,7 +18,7 @@ export default function Certifications({
 }: CertificationsProps) {
   return (
     <div className="bg-[#26282C] px-6 py-10 sm:px-10 sm:py-14 lg:px-14">
-      <div className="mx-auto flex max-w-7xl flex-col gap-10">
+      <div className="mx-auto flex max-w-6xl flex-col gap-10">
         <div className="flex flex-col gap-3">
           <h2 className="font-heading text-3xl font-bold uppercase text-white sm:text-[42px]">{title}</h2>
           <p className="max-w-xl text-[17px] leading-relaxed text-white/70">{description}</p>

@@ -32,7 +32,7 @@ export default function Home() {
           Firma), więc dostaje tu obramowanie z paddingiem i szerokością —
           sam go nie niesie. */}
       <div className="px-6 py-16 sm:px-10 sm:py-24 lg:px-14">
-        <div className="mx-auto flex max-w-7xl flex-col">
+        <div className="mx-auto flex max-w-6xl flex-col">
           <TrustedClients />
         </div>
       </div>
