@@ -55,7 +55,7 @@ export default function GoogleTrustStrip() {
       aria-label="Opinie Google i zaufanie klientów"
       className="relative z-10 mb-10 bg-white py-16 text-[#26282C] sm:mb-14 sm:py-24 lg:mb-16 lg:py-28"
     >
-      <div className="mx-auto flex max-w-6xl flex-col gap-12 px-6 sm:px-10 lg:px-14">
+      <div className="mx-auto flex max-w-7xl flex-col gap-12 px-6 sm:px-10 lg:px-14">
         {/* Nagłówek: badge Google + link do wszystkich opinii */}
         <div className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-center">
           <div className="flex items-center gap-5">

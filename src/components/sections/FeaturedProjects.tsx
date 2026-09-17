@@ -10,7 +10,7 @@ const featured = projects.slice(0, 3)
 export default function FeaturedProjects() {
   return (
     <section className="bg-white px-6 py-16 sm:px-10 sm:py-24 lg:px-14">
-      <div className="mx-auto flex max-w-6xl flex-col gap-10 sm:gap-14">
+      <div className="mx-auto flex max-w-7xl flex-col gap-10 sm:gap-14">
         <div className="flex flex-col gap-3">
           <h2 className="font-heading text-3xl font-bold uppercase text-[#26282C] sm:text-[42px]">
             Wybrane realizacje
