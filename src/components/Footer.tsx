@@ -16,7 +16,7 @@ export default function Footer() {
 
   return (
     <footer className="bg-[#26282C] px-6 py-16 sm:px-10 lg:px-14">
-      <div className="mx-auto flex max-w-screen-2xl flex-col gap-12">
+      <div className="mx-auto flex max-w-[1380px] 2xl:max-w-screen-2xl flex-col gap-12">
         <div className="grid grid-cols-1 gap-10 text-center lg:grid-cols-[1.4fr_1fr_1fr] lg:gap-12 lg:text-left">
           <div className="flex flex-col items-center gap-4 lg:items-start">
             <Link to="/" className="inline-block w-fit">
@@ -73,16 +73,21 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-10 flex flex-col items-center gap-2 text-center text-sm text-white lg:flex-row lg:justify-between lg:text-left">
+        <div className="mt-10 flex flex-col items-center gap-4 text-center text-sm text-white sm:flex-row sm:justify-between sm:text-left">
           <span>© {year} Energy Solutions Sp. z o.o. Wszelkie prawa zastrzeżone.</span>
-          <a
-            href="https://mateuszklich.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="transition hover:text-[#fbba00]"
-          >
-            Projekt i wykonanie MK
-          </a>
+          <div className="flex flex-wrap items-center justify-center gap-6">
+            <Link to="/polityka-prywatnosci" className="transition hover:text-[#fbba00]">
+              Polityka prywatności
+            </Link>
+            <a
+              href="https://mateuszklich.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition hover:text-[#fbba00]"
+            >
+              Projekt i wykonanie MK
+            </a>
+          </div>
         </div>
       </div>
     </footer>

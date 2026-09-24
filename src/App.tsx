@@ -8,6 +8,7 @@ import Realizacje from '@/pages/Realizacje'
 import RealizacjaSzczegoly from '@/pages/RealizacjaSzczegoly'
 import Kontakt from '@/pages/Kontakt'
 import Kariera from '@/pages/Kariera'
+import PolitykaPrywatnosci from '@/pages/PolitykaPrywatnosci'
 
 export default function App() {
   return (
@@ -21,6 +22,7 @@ export default function App() {
         <Route path="/realizacje/:id" element={<RealizacjaSzczegoly />} />
         <Route path="/kontakt" element={<Kontakt />} />
         <Route path="/kariera" element={<Kariera />} />
+        <Route path="/polityka-prywatnosci" element={<PolitykaPrywatnosci />} />
       </Route>
     </Routes>
   )
