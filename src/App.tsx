@@ -9,6 +9,7 @@ import RealizacjaSzczegoly from '@/pages/RealizacjaSzczegoly'
 import Kontakt from '@/pages/Kontakt'
 import Kariera from '@/pages/Kariera'
 import PolitykaPrywatnosci from '@/pages/PolitykaPrywatnosci'
+import Aktualnosci from '@/pages/Aktualnosci'
 
 export default function App() {
   return (
@@ -20,6 +21,7 @@ export default function App() {
         <Route path="/firma/jak-pracujemy" element={<JakPracujemy />} />
         <Route path="/realizacje" element={<Realizacje />} />
         <Route path="/realizacje/:id" element={<RealizacjaSzczegoly />} />
+        <Route path="/aktualnosci" element={<Aktualnosci />} />
         <Route path="/kontakt" element={<Kontakt />} />
         <Route path="/kariera" element={<Kariera />} />
         <Route path="/polityka-prywatnosci" element={<PolitykaPrywatnosci />} />

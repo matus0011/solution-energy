@@ -10,6 +10,57 @@ export const companyFacts = [
   { value: '100%', label: 'kompleksowa obsługa inwestycji' },
 ]
 
+// Pasek liczb na stronie głównej. Te same zweryfikowane fakty co na podstronie
+// Firma — bez metryk przejętych z plansz referencyjnych (Budimex, Inżynieria).
+export const homeStats = [
+  { value: '2011', label: 'początek działalności' },
+  { value: '5', label: 'sektorów działalności' },
+  { value: '100%', label: 'kompleksowa obsługa inwestycji' },
+]
+
+// Sektory na stronie głównej. Energetyka jest blokiem wiodącym, pozostałe
+// cztery stoją pod spodem. Szczegółowe kompetencje (8 obszarów) zostają
+// na podstronie Obszary działalności.
+export const sectors: {
+  title: string
+  lead: string
+  image: string
+  imageAlt: string
+  featured?: boolean
+}[] = [
+  {
+    title: 'Energetyka',
+    lead: 'Ciepłownie geotermalne, kotłownie, układy kogeneracyjne i elektroenergetyka — od dokumentacji po obiekt oddany do eksploatacji.',
+    image: '/realizacje/torun-geotermia.jpg',
+    imageAlt: 'Ciepłownia geotermalna w Toruniu',
+    featured: true,
+  },
+  {
+    title: 'Przemysł i górnictwo',
+    lead: 'Instalacje i mechanizacja procesów dla zakładów przemysłowych oraz obiektów górniczych.',
+    image: '/realizacje/wieliczka-klimatyzacja.jpg',
+    imageAlt: 'Instalacja w Kopalni Soli Wieliczka',
+  },
+  {
+    title: 'Ochrona środowiska',
+    lead: 'Obiekty gospodarki wodno-ściekowej i układy zasilane biogazem na oczyszczalniach.',
+    image: '/realizacje/dzierzoniow-kogeneracja.jpg',
+    imageAlt: 'Agregaty kogeneracyjne na biogaz w Dzierżoniowie',
+  },
+  {
+    title: 'Serwis',
+    lead: 'Obsługa gwarancyjna i pogwarancyjna zrealizowanych instalacji.',
+    image: '/realizacje/brzesko-sterownica.jpg',
+    imageAlt: 'Sterownica układu kogeneracyjnego',
+  },
+  {
+    title: 'Produkcja',
+    lead: 'Szafy elektryczne, AKPiA, SCADA, piping i rozwiązania kontenerowe.',
+    image: '/realizacje/sieradz-kontener-chp.jpg',
+    imageAlt: 'Kontenerowy moduł kogeneracyjny',
+  },
+]
+
 export const competencies = [
   {
     num: '01',

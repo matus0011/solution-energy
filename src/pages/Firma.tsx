@@ -4,6 +4,7 @@ import { companyFacts } from '@/lib/company'
 import TrustedClients from '@/components/sections/TrustedClients'
 import Certifications from '@/components/sections/Certifications'
 import Partners from '@/components/sections/Partners'
+import EuFundingNotice from '@/components/EuFundingNotice'
 
 const factIcons = [CalendarRange, Layers, ShieldCheck]
 
@@ -92,6 +93,12 @@ export default function Firma() {
 
           <Partners />
 
+          <section className="flex flex-col gap-6">
+            <h2 className="font-heading text-[28px] font-bold uppercase leading-tight text-[#26282C] sm:text-[42px]">
+              Dofinansowanie
+            </h2>
+            <EuFundingNotice />
+          </section>
         </div>
       </div>
     </>

@@ -7,7 +7,7 @@ import { projects } from '@/lib/projects'
 // podstronie Realizacje.
 const featured = projects.slice(0, 3)
 
-export default function FeaturedProjects() {
+export default function FeaturedProjects({ moreLabel = 'Zobacz wszystkie realizacje →' }: { moreLabel?: string }) {
   return (
     <section className="bg-white px-6 py-16 sm:px-10 sm:py-24 lg:px-14">
       <div className="mx-auto flex max-w-7xl flex-col gap-10 sm:gap-14">
@@ -52,7 +52,7 @@ export default function FeaturedProjects() {
           to="/realizacje"
           className="w-fit text-[15px] font-bold uppercase tracking-wide text-[#fbba00] transition-all duration-300 hover:tracking-[0.08em] hover:text-[#26282C]"
         >
-          Zobacz wszystkie realizacje →
+          {moreLabel}
         </Link>
       </div>
     </section>
