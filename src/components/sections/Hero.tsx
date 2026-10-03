@@ -36,7 +36,7 @@ export default function Hero() {
 
       <div className="relative w-full px-6 py-16 sm:px-10 lg:px-14">
         <div className="mx-auto w-full max-w-[1380px] 2xl:max-w-screen-2xl">
-          <div className="flex max-w-3xl flex-col items-start gap-5 text-left">
+          <div className="animate-hero-in flex max-w-3xl flex-col items-start gap-5 text-left">
           <h1 className="font-heading text-[32px] font-semibold leading-[1.05] text-white sm:text-[52px] lg:text-[60px]">
             Kompleksowe realizacje energetyczne
           </h1>

@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { sectors } from '@/lib/company'
+import Reveal from '@/components/Reveal'
 
 const featured = sectors.find((sector) => sector.featured)
 const rest = sectors.filter((sector) => !sector.featured)
@@ -8,7 +9,7 @@ export default function Sectors() {
   return (
     <section className="bg-[#f5f4f1] px-6 py-16 sm:px-10 sm:py-24 lg:px-14">
       <div className="mx-auto flex max-w-7xl flex-col gap-6">
-        <div className="mb-2 flex flex-col gap-3">
+        <Reveal className="mb-2 flex flex-col gap-3">
           <h2 className="font-heading text-3xl font-bold uppercase text-[#26282C] sm:text-[42px]">
             Sektory działalności
           </h2>
@@ -16,10 +17,11 @@ export default function Sectors() {
             Energetyka jest naszym głównym obszarem. Obok niej prowadzimy prace dla przemysłu,
             ochrony środowiska, serwisu i własnej produkcji.
           </p>
-        </div>
+        </Reveal>
 
         {featured && (
-          <Link
+          <Reveal>
+            <Link
             to="/firma/obszary-dzialalnosci"
             className="group relative flex min-h-[400px] items-end overflow-hidden sm:min-h-[480px]"
           >
@@ -36,14 +38,15 @@ export default function Sectors() {
               <p className="text-[16px] leading-relaxed text-white/90 sm:text-[17px]">{featured.lead}</p>
             </div>
           </Link>
+          </Reveal>
         )}
 
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-          {rest.map((sector) => (
+          {rest.map((sector, index) => (
+            <Reveal key={sector.title} delay={index % 2 === 0 ? 0 : 90} className="h-full">
             <Link
-              key={sector.title}
               to="/firma/obszary-dzialalnosci"
-              className="group relative flex min-h-[260px] items-end overflow-hidden sm:min-h-[300px]"
+              className="group relative flex h-full min-h-[260px] items-end overflow-hidden sm:min-h-[300px]"
             >
               <img
                 src={sector.image}
@@ -58,6 +61,7 @@ export default function Sectors() {
                 <p className="text-[15px] leading-relaxed text-white/85">{sector.lead}</p>
               </div>
             </Link>
+            </Reveal>
           ))}
         </div>
       </div>

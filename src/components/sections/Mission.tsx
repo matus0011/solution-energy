@@ -1,10 +1,13 @@
 import { Link } from 'react-router-dom'
+import { useInView } from '@/lib/useInView'
 
 export default function Mission() {
+  const { ref, shown } = useInView<HTMLElement>()
+
   return (
-    <section className="bg-white px-6 py-16 sm:px-10 sm:py-24 lg:px-14">
+    <section ref={ref} className="bg-white px-6 py-16 sm:px-10 sm:py-24 lg:px-14">
       <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-16">
-        <div className="relative h-[280px] overflow-hidden sm:h-[420px]">
+        <div className={`reveal-x relative h-[280px] overflow-hidden sm:h-[420px] ${shown ? 'is-in' : ''}`}>
           <img
             src="/realizacje/pruszkow-hala-kotlowni.jpg"
             alt="Hala kotłowni zrealizowana przez Energy Solutions"
@@ -12,7 +15,7 @@ export default function Mission() {
           />
         </div>
 
-        <div className="flex flex-col gap-5">
+        <div className={`reveal flex flex-col gap-5 ${shown ? 'is-in' : ''}`} style={{ transitionDelay: '120ms' }}>
           <h2 className="font-heading text-[28px] font-bold uppercase leading-tight text-[#26282C] sm:text-[42px]">
             Doświadczony partner inwestycji
           </h2>

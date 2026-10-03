@@ -1,16 +1,17 @@
 import { Link } from 'react-router-dom'
 import { Phone, ArrowRight } from 'lucide-react'
 import { contact } from '@/lib/company'
+import Reveal from '@/components/Reveal'
 
 // Ostatnia sekcja strony głównej — zgodnie ze sprawdzoną strukturą landing
 // page każda strona powinna kończyć się jednym, wyraźnym wezwaniem do
 // działania. Dwie ścieżki kontaktu (telefon = szybko i bezpośrednio, przycisk
 // = formularz), żeby nie zmuszać wszystkich do tej samej formy kontaktu.
-export default function ClosingCta() {
+export default function ClosingCta({ motion = false }: { motion?: boolean }) {
   return (
     <section className="bg-[#fbba00] px-6 py-16 sm:px-10 sm:py-20 lg:px-14">
       <div className="mx-auto flex max-w-7xl flex-col gap-10 lg:flex-row lg:items-center lg:justify-between lg:gap-16">
-        <div className="flex flex-col gap-4">
+        <Reveal active={motion} className="flex flex-col gap-4">
           <h2 className="font-heading text-3xl font-bold uppercase leading-tight text-[#26282C] sm:text-[42px]">
             Planujesz inwestycję?
           </h2>
@@ -18,9 +19,9 @@ export default function ClosingCta() {
             Porozmawiajmy na etapie, na którym jesteś — nawet jeśli to dopiero wstępna koncepcja.
             Doradztwo przed decyzją inwestycyjną jest częścią naszego zakresu.
           </p>
-        </div>
+        </Reveal>
 
-        <div className="flex shrink-0 flex-col items-start gap-4 sm:gap-5">
+        <Reveal active={motion} delay={140} className="flex shrink-0 flex-col items-start gap-4 sm:gap-5">
           <a
             href={contact.phoneHref}
             className="group flex items-center gap-2 text-[18px] font-bold text-[#26282C] transition-opacity duration-300 hover:opacity-70 sm:gap-3 sm:text-[22px] lg:text-[26px]"
@@ -39,7 +40,7 @@ export default function ClosingCta() {
               aria-hidden="true"
             />
           </Link>
-        </div>
+        </Reveal>
       </div>
     </section>
   )

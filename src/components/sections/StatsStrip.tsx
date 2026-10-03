@@ -1,13 +1,54 @@
+import { useEffect, useState } from 'react'
 import { homeStats } from '@/lib/company'
+import { useInView } from '@/lib/useInView'
+
+function formatStat(value: number, suffix: string) {
+  const formatted = value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '\u00a0')
+  return `${formatted}${suffix}`
+}
+
+function Count({ value, suffix, run }: { value: number; suffix: string; run: boolean }) {
+  const [current, setCurrent] = useState(run ? value : 0)
+
+  useEffect(() => {
+    if (!run) return
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      setCurrent(value)
+      return
+    }
+
+    const start = performance.now()
+    const duration = 1200
+    let frame = 0
+
+    const tick = (now: number) => {
+      const progress = Math.min(1, (now - start) / duration)
+      const eased = 1 - (1 - progress) ** 3
+      setCurrent(Math.round(value * eased))
+      if (progress < 1) frame = requestAnimationFrame(tick)
+    }
+
+    frame = requestAnimationFrame(tick)
+    return () => cancelAnimationFrame(frame)
+  }, [run, value])
+
+  return <>{formatStat(current, suffix)}</>
+}
 
 export default function StatsStrip() {
+  const { ref, shown } = useInView<HTMLElement>(0.4)
+
   return (
-    <section className="bg-[#fbba00] px-6 py-10 sm:px-10 sm:py-14 lg:px-14">
+    <section ref={ref} className="bg-[#fbba00] px-6 py-10 sm:px-10 sm:py-14 lg:px-14">
       <div className="mx-auto grid max-w-7xl grid-cols-1 gap-8 sm:grid-cols-3 sm:gap-6">
-        {homeStats.map((stat) => (
-          <div key={stat.value} className="flex flex-col gap-2 border-l-[3px] border-[#26282C] pl-5">
+        {homeStats.map((stat, index) => (
+          <div
+            key={stat.label}
+            className={`reveal flex flex-col gap-2 ${shown ? 'is-in' : ''}`}
+            style={{ transitionDelay: `${index * 140}ms` }}
+          >
             <span className="font-heading text-4xl font-bold leading-none text-white sm:text-5xl">
-              {stat.value}
+              <Count value={stat.value} suffix={stat.suffix} run={shown} />
             </span>
             <span className="max-w-xs text-[15px] font-medium leading-snug text-[#26282C]">{stat.label}</span>
           </div>

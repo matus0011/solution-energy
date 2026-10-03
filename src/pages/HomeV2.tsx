@@ -28,8 +28,8 @@ export default function HomeV2() {
       <StatsStrip />
       <Sectors />
       <NewsPreview />
-      <FeaturedProjects moreLabel="Pokaż więcej" />
-      <ClosingCta />
+      <FeaturedProjects moreLabel="Pokaż więcej" motion />
+      <ClosingCta motion />
     </>
   )
 }

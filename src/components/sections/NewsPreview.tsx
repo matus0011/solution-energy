@@ -1,22 +1,27 @@
 import { Link } from 'react-router-dom'
 import { news } from '@/lib/news'
+import Reveal from '@/components/Reveal'
 
 export default function NewsPreview() {
   return (
     <section className="bg-white px-6 py-16 sm:px-10 sm:py-24 lg:px-14">
       <div className="mx-auto flex max-w-7xl flex-col gap-10 sm:gap-14">
-        <div className="flex flex-col gap-3">
+        <Reveal className="flex flex-col gap-3">
           <h2 className="font-heading text-3xl font-bold uppercase text-[#26282C] sm:text-[42px]">
             Aktualności
           </h2>
           <p className="max-w-xl text-[17px] leading-relaxed text-[#777777]">
             Najnowsze informacje o realizacjach. W wersji demo wpisy pochodzą z portfolio spółki.
           </p>
-        </div>
+        </Reveal>
 
         <div className="grid grid-cols-1 gap-8 md:grid-cols-3 md:gap-6">
-          {news.map((item) => (
-            <Link key={item.title} to={item.href} className="group flex flex-col">
+          {news.map((item, index) => (
+            <Reveal key={item.title} delay={index * 90}>
+            <Link
+              to={item.href}
+              className="group flex h-full flex-col"
+            >
               <div className="h-[220px] overflow-hidden lg:h-[240px]">
                 <img
                   src={item.image}
@@ -32,15 +37,18 @@ export default function NewsPreview() {
                 <span className="text-[15px] leading-relaxed text-[#777777]">{item.excerpt}</span>
               </div>
             </Link>
+            </Reveal>
           ))}
         </div>
 
+        <Reveal>
         <Link
           to="/aktualnosci"
           className="w-fit text-[15px] font-bold uppercase tracking-wide text-[#fbba00] transition-colors duration-300 hover:text-[#26282C]"
         >
           Pokaż więcej
         </Link>
+        </Reveal>
       </div>
     </section>
   )

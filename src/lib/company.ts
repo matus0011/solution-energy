@@ -10,12 +10,11 @@ export const companyFacts = [
   { value: '100%', label: 'kompleksowa obsługa inwestycji' },
 ]
 
-// Pasek liczb na stronie głównej. Te same zweryfikowane fakty co na podstronie
-// Firma — bez metryk przejętych z plansz referencyjnych (Budimex, Inżynieria).
+// Pasek liczb na stronie głównej v1.
 export const homeStats = [
-  { value: '1 000 km', label: 'ułożonych kabli' },
-  { value: '250 MW', label: 'Łączna wartość energii elektrycznej zainstalowanej w układach' },
-  { value: '140 MW', label: 'Łączna wartość energii cieplnej zainstalowanej w układach' },
+  { value: 1000, suffix: ' km', label: 'ułożonych kabli' },
+  { value: 250, suffix: ' MW', label: 'Łączna wartość energii elektrycznej zainstalowanej w układach' },
+  { value: 140, suffix: ' MW', label: 'Łączna wartość energii cieplnej zainstalowanej w układach' },
 ]
 
 // Sektory na stronie głównej. Energetyka jest blokiem wiodącym, pozostałe
