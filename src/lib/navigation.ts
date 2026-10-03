@@ -16,6 +16,7 @@ export const navLinks: NavLinkItem[] = [
     children: [
       { label: 'Obszary działalności', href: '/firma/obszary-dzialalnosci' },
       { label: 'Jak pracujemy', href: '/firma/jak-pracujemy' },
+      { label: 'Środki UE', href: '/srodki-ue' },
     ],
   },
   { label: 'Realizacje', href: '/realizacje' },

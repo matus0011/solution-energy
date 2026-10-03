@@ -8,6 +8,7 @@ import Realizacje from '@/pages/Realizacje'
 import RealizacjaSzczegoly from '@/pages/RealizacjaSzczegoly'
 import Kontakt from '@/pages/Kontakt'
 import Kariera from '@/pages/Kariera'
+import SrodkiUe from '@/pages/SrodkiUe'
 import PolitykaPrywatnosci from '@/pages/PolitykaPrywatnosci'
 import Aktualnosci from '@/pages/Aktualnosci'
 
@@ -24,6 +25,7 @@ export default function App() {
         <Route path="/aktualnosci" element={<Aktualnosci />} />
         <Route path="/kontakt" element={<Kontakt />} />
         <Route path="/kariera" element={<Kariera />} />
+        <Route path="/srodki-ue" element={<SrodkiUe />} />
         <Route path="/polityka-prywatnosci" element={<PolitykaPrywatnosci />} />
       </Route>
     </Routes>

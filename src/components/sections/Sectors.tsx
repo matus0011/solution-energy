@@ -21,7 +21,7 @@ export default function Sectors() {
         {featured && (
           <Link
             to="/firma/obszary-dzialalnosci"
-            className="group relative flex min-h-[360px] items-end overflow-hidden sm:min-h-[440px]"
+            className="group relative flex min-h-[400px] items-end overflow-hidden sm:min-h-[480px]"
           >
             <img
               src={featured.image}
@@ -43,7 +43,7 @@ export default function Sectors() {
             <Link
               key={sector.title}
               to="/firma/obszary-dzialalnosci"
-              className="group relative flex min-h-[220px] items-end overflow-hidden"
+              className="group relative flex min-h-[260px] items-end overflow-hidden sm:min-h-[300px]"
             >
               <img
                 src={sector.image}
