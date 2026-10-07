@@ -39,7 +39,17 @@ export default function StatsStrip() {
   const { ref, shown } = useInView<HTMLElement>(0.4)
 
   return (
-    <section ref={ref} className="bg-[#fbba00] px-6 py-10 sm:px-10 sm:py-14 lg:px-14">
+    <section
+      ref={ref}
+      className="relative isolate overflow-hidden bg-[#fbba00] px-6 py-14 sm:px-10 sm:py-20 lg:px-14"
+    >
+      <img
+        src="/realizacje/konin-rurociag.jpg"
+        alt=""
+        aria-hidden="true"
+        loading="lazy"
+        className="pointer-events-none absolute inset-0 -z-10 h-full w-full object-cover object-[70%_center] opacity-[0.16] grayscale"
+      />
       <div className="mx-auto grid max-w-7xl grid-cols-1 gap-8 sm:grid-cols-3 sm:gap-6">
         {homeStats.map((stat, index) => (
           <div

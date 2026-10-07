@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 64" width="200" height="64" role="img" aria-label="PED 2014/68/UE">
+  <circle cx="32" cy="32" r="29" fill="none" stroke="#6b6b6b" stroke-width="3"/>
+  <circle cx="32" cy="32" r="23" fill="none" stroke="#6b6b6b" stroke-width="1"/>
+  <text x="32" y="38" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="18" fill="#6b6b6b">CE</text>
+  <text x="74" y="31" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="22" fill="#5a5a5a">PED</text>
+  <text x="74" y="49" font-family="Arial, Helvetica, sans-serif" font-size="11.5" letter-spacing="0.4" fill="#8a8a8a">2014/68/UE</text>
+</svg>

@@ -8,7 +8,8 @@ import LogoMarquee from '@/components/LogoMarquee'
 // zamiast powtarzać wszędzie ten sam tekst.
 interface TrustedClientsProps {
   title?: string
-  description?: string
+  /** `false` — sam nagłówek, bez akapitu. */
+  description?: string | false
   variant?: 'wall' | 'marquee'
   /** Nadpisanie listy — domyślnie klienci z `company.ts`. */
   logos?: LogoEntry[]
@@ -24,7 +25,7 @@ export default function TrustedClients({
     <div className="flex flex-col gap-8 sm:gap-10">
       <div className="flex flex-col gap-3">
         <h2 className="font-heading text-3xl font-bold uppercase text-[#26282C] sm:text-[42px]">{title}</h2>
-        <p className="max-w-xl text-[17px] leading-relaxed text-[#777777]">{description}</p>
+        {description && <p className="max-w-xl text-[17px] leading-relaxed text-[#777777]">{description}</p>}
       </div>
       {variant === 'marquee' ? <LogoMarquee logos={logos} /> : <LogoWall logos={logos} />}
     </div>

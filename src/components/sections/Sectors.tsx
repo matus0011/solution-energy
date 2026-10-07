@@ -5,9 +5,7 @@ import { sectors } from '@/lib/company'
 
 const n = sectors.length
 const slides = [...sectors, ...sectors]
-const SLIDE_MS = 500
-const PAUSE_MS = 0
-const TYTUL_MS = 500
+const TYTUL_MS = 250
 
 export default function Sectors() {
   const track = useRef<HTMLDivElement>(null)
@@ -104,30 +102,14 @@ export default function Sectors() {
       return
     }
     setFaza('dol')
-    const el = track.current
-    let frame = 0
-    let czekaj = 0
-    let started = false
-    const start = () => {
-      if (started) return
-      started = true
+    let drugi = 0
+    const pierwszy = requestAnimationFrame(() => {
       setFaza('gotowe')
-      frame = requestAnimationFrame(() => {
-        frame = requestAnimationFrame(() => setFaza('gora'))
-      })
-    }
-    const onEnd = (zdarzenie: TransitionEvent) => {
-      if (zdarzenie.target !== el || zdarzenie.propertyName !== 'transform') return
-      if (PAUSE_MS > 0) czekaj = window.setTimeout(start, PAUSE_MS)
-      else start()
-    }
-    el?.addEventListener('transitionend', onEnd)
-    const fallback = window.setTimeout(start, SLIDE_MS + PAUSE_MS)
+      drugi = requestAnimationFrame(() => setFaza('gora'))
+    })
     return () => {
-      el?.removeEventListener('transitionend', onEnd)
-      window.clearTimeout(fallback)
-      window.clearTimeout(czekaj)
-      cancelAnimationFrame(frame)
+      cancelAnimationFrame(pierwszy)
+      cancelAnimationFrame(drugi)
     }
   }, [logical])
 
@@ -229,14 +211,14 @@ export default function Sectors() {
                     className="absolute inset-0 h-full w-full object-cover"
                   />
                   <div
-                    className={`absolute inset-0 bg-[linear-gradient(rgba(38,40,44,0)_42%,rgb(38,40,44)_100%)] transition-opacity duration-500 motion-reduce:transition-none ${
-                      aktywna && faza === 'gora' ? 'opacity-0' : 'opacity-100'
-                    }`}
+                    className={`absolute inset-0 bg-[linear-gradient(rgba(38,40,44,0)_42%,rgb(38,40,44)_100%)] ease-out motion-reduce:transition-none ${
+                      instant ? 'transition-none' : 'transition-opacity duration-[250ms]'
+                    } ${aktywna && faza === 'gora' ? 'opacity-0' : 'opacity-100'}`}
                   />
                   <div
-                    className={`absolute inset-0 bg-gradient-to-b from-black/55 via-black/15 to-transparent transition-opacity duration-500 motion-reduce:transition-none ${
-                      aktywna && faza === 'gora' ? 'opacity-100' : 'opacity-0'
-                    }`}
+                    className={`absolute inset-0 bg-gradient-to-b from-black/55 via-black/15 to-transparent ease-out motion-reduce:transition-none ${
+                      instant ? 'transition-none' : 'transition-opacity duration-[250ms]'
+                    } ${aktywna && faza === 'gora' ? 'opacity-100' : 'opacity-0'}`}
                   />
                   <h3
                     className="absolute inset-x-0 top-0 m-0 p-6 font-heading text-[22px] font-bold leading-[28px] text-white sm:p-8 sm:text-[26px] sm:leading-8 motion-reduce:transition-none"
@@ -246,7 +228,7 @@ export default function Sectors() {
                           ? 'translateY(0)'
                           : 'translateY(calc(100cqh - 100%))',
                       transition:
-                        aktywna && faza !== 'dol'
+                        aktywna && faza !== 'dol' && !instant
                           ? `transform ${TYTUL_MS}ms ease-out`
                           : 'none',
                     }}

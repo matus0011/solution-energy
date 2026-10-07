@@ -195,6 +195,19 @@ export const partners: LogoEntry[] = [
   { name: 'Alfa Laval', logo: '/logos/partners/alfa-laval.svg' },
 ]
 
+// Znaki do slidera „Certyfikaty” — odpowiadają `certifications` oraz
+// uprawnieniom niżej. Na razie to neutralne plakietki zastępcze
+// (public/logos/certificates), do podmiany na skany realnych certyfikatów.
+export const certificates: LogoEntry[] = [
+  { name: 'ISO 9001:2015', logo: '/logos/certificates/iso-9001.svg' },
+  { name: 'ISO 14001:2015', logo: '/logos/certificates/iso-14001.svg' },
+  { name: 'ISO 45001:2018', logo: '/logos/certificates/iso-45001.svg' },
+  { name: 'PED 2014/68/UE', logo: '/logos/certificates/ped.svg' },
+  { name: 'WPQR', logo: '/logos/certificates/wpqr.svg' },
+  { name: 'UDT', logo: '/logos/certificates/udt.svg' },
+  { name: 'SEP', logo: '/logos/certificates/sep.svg' },
+]
+
 export const trustedClients: LogoEntry[] = [
   { name: 'GE', logo: '/logos/clients/ge.svg' },
   { name: 'AGH', logo: '/logos/clients/agh.svg' },
