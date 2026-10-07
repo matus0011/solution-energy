@@ -1,4 +1,4 @@
-import { trustedClients } from '@/lib/company'
+import { trustedClients, type LogoEntry } from '@/lib/company'
 import LogoWall from '@/components/LogoWall'
 import LogoMarquee from '@/components/LogoMarquee'
 
@@ -10,12 +10,15 @@ interface TrustedClientsProps {
   title?: string
   description?: string
   variant?: 'wall' | 'marquee'
+  /** Nadpisanie listy — domyślnie klienci z `company.ts`. */
+  logos?: LogoEntry[]
 }
 
 export default function TrustedClients({
   title = 'Oni nam zaufali',
   description = 'Wysoką wiarygodność spółki oraz profesjonalizm wykonywanych usług potwierdza liczne grono zadowolonych klientów.',
   variant = 'wall',
+  logos = trustedClients,
 }: TrustedClientsProps) {
   return (
     <div className="flex flex-col gap-8 sm:gap-10">
@@ -23,7 +26,7 @@ export default function TrustedClients({
         <h2 className="font-heading text-3xl font-bold uppercase text-[#26282C] sm:text-[42px]">{title}</h2>
         <p className="max-w-xl text-[17px] leading-relaxed text-[#777777]">{description}</p>
       </div>
-      {variant === 'marquee' ? <LogoMarquee logos={trustedClients} /> : <LogoWall logos={trustedClients} />}
+      {variant === 'marquee' ? <LogoMarquee logos={logos} /> : <LogoWall logos={logos} />}
     </div>
   )
 }

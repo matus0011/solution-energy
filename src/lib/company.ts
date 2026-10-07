@@ -179,7 +179,7 @@ export const certifications = [
 // powielania ich w siatce. Powtórzone logo tej samej marki obok siebie jest
 // natychmiast widoczne i podważa wiarygodność całej sekcji, a te listy stoją
 // teraz na kilku podstronach naraz.
-interface LogoEntry {
+export interface LogoEntry {
   name: string
   logo: string
 }

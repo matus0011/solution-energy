@@ -1,68 +1,264 @@
+import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { sectors } from '@/lib/company'
-import Reveal from '@/components/Reveal'
 
-const featured = sectors.find((sector) => sector.featured)
-const rest = sectors.filter((sector) => !sector.featured)
+const n = sectors.length
+const slides = [...sectors, ...sectors]
+const SLIDE_MS = 500
+const PAUSE_MS = 0
+const TYTUL_MS = 500
 
 export default function Sectors() {
+  const track = useRef<HTMLDivElement>(null)
+  const skok = useRef(false)
+  const indexRef = useRef(0)
+  const stepRef = useRef(421)
+  const [index, setIndex] = useState(0)
+  const [step, setStep] = useState(421)
+  const [instant, setInstant] = useState(false)
+  const [faza, setFaza] = useState<'dol' | 'gotowe' | 'gora'>('dol')
+  indexRef.current = index
+  stepRef.current = step
+
+  useEffect(() => {
+    const measure = () => {
+      const row = track.current
+      const card = row?.querySelector<HTMLElement>('[data-karta]')
+      if (!row || !card) return
+      const gap = Number.parseFloat(getComputedStyle(row).columnGap) || 16
+      setStep(card.offsetWidth + gap)
+    }
+    measure()
+    window.addEventListener('resize', measure)
+    return () => window.removeEventListener('resize', measure)
+  }, [])
+
+  useEffect(() => {
+    if (skok.current && index === n) {
+      skok.current = false
+      let cancelled = false
+      const id = requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          if (cancelled) return
+          const el = track.current
+          if (el) el.style.transition = ''
+          setInstant(false)
+          setIndex(n - 1)
+        })
+      })
+      return () => {
+        cancelled = true
+        cancelAnimationFrame(id)
+      }
+    }
+
+    if (index < n) return
+    const el = track.current
+    if (!el) return
+    let done = false
+    const aligned = () => {
+      const x = new DOMMatrix(getComputedStyle(el).transform).m41
+      return Math.abs(x + indexRef.current * stepRef.current) <= 1
+    }
+    const finish = () => {
+      if (done || indexRef.current < n || !aligned()) return
+      done = true
+      el.style.transition = 'none'
+      void el.offsetWidth
+      setInstant(true)
+      setIndex(indexRef.current % n)
+    }
+    const onEnd = (zdarzenie: TransitionEvent) => {
+      if (zdarzenie.target === el && zdarzenie.propertyName === 'transform') finish()
+    }
+    el.addEventListener('transitionend', onEnd)
+    const timer = window.setInterval(() => {
+      if (aligned()) finish()
+    }, 50)
+    const giveUp = window.setTimeout(() => window.clearInterval(timer), 1200)
+    return () => {
+      el.removeEventListener('transitionend', onEnd)
+      window.clearInterval(timer)
+      window.clearTimeout(giveUp)
+    }
+  }, [index])
+
+  useEffect(() => {
+    if (!instant || index >= n) return
+    const id = requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        const el = track.current
+        if (el) el.style.transition = ''
+        setInstant(false)
+      })
+    })
+    return () => cancelAnimationFrame(id)
+  }, [instant, index])
+
+  const logical = index % n
+
+  useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      setFaza('gora')
+      return
+    }
+    setFaza('dol')
+    const el = track.current
+    let frame = 0
+    let czekaj = 0
+    let started = false
+    const start = () => {
+      if (started) return
+      started = true
+      setFaza('gotowe')
+      frame = requestAnimationFrame(() => {
+        frame = requestAnimationFrame(() => setFaza('gora'))
+      })
+    }
+    const onEnd = (zdarzenie: TransitionEvent) => {
+      if (zdarzenie.target !== el || zdarzenie.propertyName !== 'transform') return
+      if (PAUSE_MS > 0) czekaj = window.setTimeout(start, PAUSE_MS)
+      else start()
+    }
+    el?.addEventListener('transitionend', onEnd)
+    const fallback = window.setTimeout(start, SLIDE_MS + PAUSE_MS)
+    return () => {
+      el?.removeEventListener('transitionend', onEnd)
+      window.clearTimeout(fallback)
+      window.clearTimeout(czekaj)
+      cancelAnimationFrame(frame)
+    }
+  }, [logical])
+
+  const pokaz = index % n
+
+  const next = () => {
+    skok.current = false
+    const el = track.current
+    if (el) el.style.transition = ''
+    setInstant(false)
+    setIndex(indexRef.current + 1)
+  }
+
+  const prev = () => {
+    const i = indexRef.current
+    if (i % n === 0 && i < n) {
+      const el = track.current
+      if (el) {
+        el.style.transition = 'none'
+        void el.offsetWidth
+      }
+      skok.current = true
+      setInstant(true)
+      setIndex(n)
+      return
+    }
+    skok.current = false
+    const el = track.current
+    if (el) el.style.transition = ''
+    setInstant(false)
+    setIndex(i - 1)
+  }
+
+  const arrows = (
+    <div className="flex items-center gap-4">
+      <button
+        type="button"
+        onClick={prev}
+        aria-label="Poprzedni sektor"
+        className="inline-flex size-11 items-center justify-center rounded-none bg-[#fbba00] text-[#26282C] transition-transform duration-200 hover:scale-105 motion-reduce:transition-none"
+      >
+        <ChevronLeft className="size-5" strokeWidth={2.5} />
+      </button>
+      <p className="m-0 min-w-[4.5rem] text-center text-[15px] font-medium tabular-nums text-[#606264]">
+        <span className="text-[#26282C]">{pokaz + 1}</span>
+        <span> z </span>
+        <span>{n}</span>
+      </p>
+      <button
+        type="button"
+        onClick={next}
+        aria-label="Następny sektor"
+        className="inline-flex size-11 items-center justify-center rounded-none bg-[#fbba00] text-[#26282C] transition-transform duration-200 hover:scale-105 motion-reduce:transition-none"
+      >
+        <ChevronRight className="size-5" strokeWidth={2.5} />
+      </button>
+    </div>
+  )
+
   return (
-    <section className="bg-[#f5f4f1] px-6 py-16 sm:px-10 sm:py-24 lg:px-14">
-      <div className="mx-auto flex max-w-7xl flex-col gap-6">
-        <Reveal className="mb-2 flex flex-col gap-3">
-          <h2 className="font-heading text-3xl font-bold uppercase text-[#26282C] sm:text-[42px]">
-            Sektory działalności
-          </h2>
-          <p className="max-w-xl text-[17px] leading-relaxed text-[#777777]">
-            Energetyka jest naszym głównym obszarem. Obok niej prowadzimy prace dla przemysłu,
-            ochrony środowiska, serwisu i własnej produkcji.
-          </p>
-        </Reveal>
+    <section
+      data-faza={faza}
+      className="overflow-hidden bg-[#f5f4f1] bg-[radial-gradient(circle,#e4e2dc_1.4px,transparent_1.5px)] bg-[length:22px_22px] py-16 sm:py-24"
+    >
+      <div className="flex flex-col gap-8 pl-6 sm:pl-10 lg:flex-row lg:items-center lg:gap-6 lg:pl-14 xl:pl-[max(3.5rem,calc((100vw-90rem)/2))]">
+        <div className="relative z-10 hidden h-auto w-full shrink-0 flex-col justify-between gap-10 border border-[#eeeeef] bg-white p-8 sm:p-12 lg:flex lg:h-[560px] lg:w-[427px] lg:p-14">
+          <div>
+            <p className="m-0 mb-3 pb-4 font-sans text-[20px] font-[500] leading-snug text-[#606264] sm:text-[22px]">
+              Czym się zajmujemy
+            </p>
+            <h2 className="m-0 font-heading text-[32px] font-[500] leading-[40px] text-[#26282C] sm:text-[40px] sm:leading-[48px]">
+              Sektory działalności
+            </h2>
+          </div>
+          <div className="hidden lg:block">{arrows}</div>
+        </div>
 
-        {featured && (
-          <Reveal>
-            <Link
-            to="/firma/obszary-dzialalnosci"
-            className="group relative flex min-h-[400px] items-end overflow-hidden sm:min-h-[480px]"
+        <div className="min-w-0 flex-1">
+          <div className="overflow-hidden">
+          <div
+            ref={track}
+            className={`flex h-[480px] shrink-0 items-center gap-4 lg:h-[630px] ${instant ? '' : 'transition-transform duration-500 ease-out'} motion-reduce:transition-none`}
+            style={{ transform: `translate3d(-${index * step}px,0,0)` }}
           >
-            <img
-              src={featured.image}
-              alt={featured.imageAlt}
-              className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/35 to-black/10" />
-            <div className="relative flex max-w-2xl flex-col gap-3 p-7 sm:p-10">
-              <h3 className="font-heading text-3xl font-bold uppercase text-white sm:text-5xl">
-                {featured.title}
-              </h3>
-              <p className="text-[16px] leading-relaxed text-white/90 sm:text-[17px]">{featured.lead}</p>
-            </div>
-          </Link>
-          </Reveal>
-        )}
-
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-          {rest.map((sector, index) => (
-            <Reveal key={sector.title} delay={index % 2 === 0 ? 0 : 90} className="h-full">
-            <Link
-              to="/firma/obszary-dzialalnosci"
-              className="group relative flex h-full min-h-[260px] items-end overflow-hidden sm:min-h-[300px]"
-            >
-              <img
-                src={sector.image}
-                alt={sector.imageAlt}
-                className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/15" />
-              <div className="relative flex flex-col gap-2 p-6">
-                <h3 className="font-heading text-xl font-bold uppercase text-white sm:text-2xl">
-                  {sector.title}
-                </h3>
-                <p className="text-[15px] leading-relaxed text-white/85">{sector.lead}</p>
-              </div>
-            </Link>
-            </Reveal>
-          ))}
+            {slides.map((sector, i) => {
+              const aktywna = i === index
+              return (
+                <Link
+                  key={`${sector.title}-${i}`}
+                  data-karta
+                  to="/firma/obszary-dzialalnosci"
+                  className={`group relative w-[82vw] shrink-0 overflow-hidden [container-type:size] sm:w-[360px] lg:w-[405px] ${
+                    aktywna ? 'h-[480px] lg:h-[630px]' : 'h-[420px] lg:h-[560px]'
+                  } ${instant ? '' : 'transition-[height] duration-500 ease-out'} motion-reduce:transition-none`}
+                >
+                  <img
+                    src={sector.image}
+                    alt={i < n ? sector.imageAlt : ''}
+                    className="absolute inset-0 h-full w-full object-cover"
+                  />
+                  <div
+                    className={`absolute inset-0 bg-[linear-gradient(rgba(38,40,44,0)_42%,rgb(38,40,44)_100%)] transition-opacity duration-500 motion-reduce:transition-none ${
+                      aktywna && faza === 'gora' ? 'opacity-0' : 'opacity-100'
+                    }`}
+                  />
+                  <div
+                    className={`absolute inset-0 bg-gradient-to-b from-black/55 via-black/15 to-transparent transition-opacity duration-500 motion-reduce:transition-none ${
+                      aktywna && faza === 'gora' ? 'opacity-100' : 'opacity-0'
+                    }`}
+                  />
+                  <h3
+                    className="absolute inset-x-0 top-0 m-0 p-6 font-heading text-[22px] font-bold leading-[28px] text-white sm:p-8 sm:text-[26px] sm:leading-8 motion-reduce:transition-none"
+                    style={{
+                      transform:
+                        aktywna && faza === 'gora'
+                          ? 'translateY(0)'
+                          : 'translateY(calc(100cqh - 100%))',
+                      transition:
+                        aktywna && faza !== 'dol'
+                          ? `transform ${TYTUL_MS}ms ease-out`
+                          : 'none',
+                    }}
+                  >
+                    {sector.title}
+                  </h3>
+                </Link>
+              )
+            })}
+          </div>
+          </div>
+          <div className="mt-8 lg:hidden">{arrows}</div>
         </div>
       </div>
     </section>

@@ -55,23 +55,6 @@ export default function Kontakt() {
             </div>
 
             <div className="relative z-10 mx-0 w-full mt-0 flex flex-col gap-6 bg-[#26282C] px-6 py-8 text-white shadow-[0_16px_40px_rgba(0,0,0,0.25)] sm:absolute sm:top-16 sm:right-[-24px] sm:w-full sm:max-w-[600px] sm:gap-8 sm:px-16 sm:py-20 lg:right-[-40px]">
-              {/* Własny znak — ręcznie rysowana błyskawica: żółty "cień" przesunięty
-                  za konturową błyskawicą, jak na referencji od klienta. */}
-              <svg viewBox="0 0 24 24" className="h-14 w-14" xmlns="http://www.w3.org/2000/svg">
-                <polygon
-                  points="14 2 4 14 12 14 10 22 20 10 12 10 14 2"
-                  fill="#fbba00"
-                  transform="translate(1.8 1.8)"
-                />
-                <polygon
-                  points="14 2 4 14 12 14 10 22 20 10 12 10 14 2"
-                  fill="white"
-                  stroke="#26282C"
-                  strokeWidth="1.6"
-                  strokeLinejoin="round"
-                />
-              </svg>
-
               <h2 className="font-heading text-[34px] font-bold uppercase tracking-wide text-white">
                 Skontaktuj się
               </h2>
