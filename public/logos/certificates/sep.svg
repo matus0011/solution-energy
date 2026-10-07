@@ -1,7 +1,64 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 64" width="200" height="64" role="img" aria-label="SEP ENERGETYKA">
-  <circle cx="32" cy="32" r="29" fill="none" stroke="#6b6b6b" stroke-width="3"/>
-  <circle cx="32" cy="32" r="23" fill="none" stroke="#6b6b6b" stroke-width="1"/>
-  <text x="32" y="37" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="15" fill="#6b6b6b">SEP</text>
-  <text x="74" y="31" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="22" fill="#5a5a5a">SEP</text>
-  <text x="74" y="49" font-family="Arial, Helvetica, sans-serif" font-size="11.5" letter-spacing="0.4" fill="#8a8a8a">ENERGETYKA</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 64" width="200" height="64" role="img" aria-label="SEP - Stowarzyszenie Elektryków Polskich / Uprawnienia Grupa G1 G2 G3">
+  <title>Stowarzyszenie Elektryków Polskich - Uprawnienia SEP</title>
+  <defs>
+    <!-- SEP Signature Blue Gradient (#005CA9) -->
+    <linearGradient id="sepBlueGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0067BC"/>
+      <stop offset="100%" stop-color="#004E92"/>
+    </linearGradient>
+    <!-- Electric Flash Gold Gradient -->
+    <linearGradient id="sepFlashGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFE033"/>
+      <stop offset="100%" stop-color="#F59E0B"/>
+    </linearGradient>
+    <filter id="sepShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="1" stdDeviation="1" flood-color="#000000" flood-opacity="0.18"/>
+    </filter>
+    <filter id="textGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="1" stdDeviation="0.8" flood-color="#002D54" flood-opacity="0.9"/>
+    </filter>
+  </defs>
+
+  <!-- Left: Official SEP Characteristic Blue Rhombus Emblem (Center: cx=32, cy=32) -->
+  <g id="sep-emblem" filter="url(#sepShadow)">
+    <!-- Blue Rhombus (#005CA9) with rounded bevel corners -->
+    <polygon points="32,6.5 57.5,32 32,57.5 6.5,32"
+             fill="url(#sepBlueGrad)" stroke="#005CA9" stroke-width="1.2" stroke-linejoin="round"/>
+    
+    <!-- White Inset Border Line (Biała Obwódka) -->
+    <polygon points="32,10.5 53.5,32 32,53.5 10.5,32"
+             fill="none" stroke="#FFFFFF" stroke-width="1.6" stroke-linejoin="round"/>
+    
+    <!-- Subtle Secondary Precision Guide Line -->
+    <polygon points="32,13 51,32 32,51 13,32"
+             fill="none" stroke="#FFFFFF" stroke-width="0.5" opacity="0.35" stroke-linejoin="round"/>
+
+    <!-- Electrical Discharge Lightning Bolt / Arrow (Błyskawica / Strzała Wyładowania) -->
+    <path d="M 37,13.5 L 33,13.5 L 26.5,26.5 L 32.5,26.5 L 23.5,39 L 29.5,39 L 39,50 L 38.5,44 L 35,45.8 L 29,37 L 23.8,37 L 32.2,24.5 L 26.5,24.5 Z"
+          fill="url(#sepFlashGrad)" stroke="#D97706" stroke-width="0.5" stroke-linejoin="round"/>
+
+    <!-- Central Letters "SEP" in Signature White Typography -->
+    <text x="32" y="37" text-anchor="middle"
+          font-family="Montserrat, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"
+          font-weight="900" font-size="13.5" letter-spacing="1.2" fill="#FFFFFF" filter="url(#textGlow)">SEP</text>
+  </g>
+
+  <!-- Vertical Divider Line -->
+  <line x1="64" y1="12" x2="64" y2="52" stroke="#CBD5E1" stroke-width="1.5" stroke-linecap="round"/>
+
+  <!-- Right: Official Typography -->
+  <g id="sep-typography">
+    <!-- Kicker: Official Organization Name -->
+    <text x="74" y="18" font-family="Montserrat, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="700" font-size="6.3" letter-spacing="0.4" fill="#005CA9">STOWARZYSZENIE ELEKTRYKÓW POLSKICH</text>
+
+    <!-- Main Line: SEP + Pill Badge -->
+    <text x="74" y="36.5" font-family="Montserrat, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="800" font-size="18.5" letter-spacing="-0.3" fill="#1E2022">SEP</text>
+
+    <!-- Pill Badge: GRUPA G1 · G2 · G3 -->
+    <rect x="117" y="23" width="73" height="16" rx="3.5" fill="#EFF6FF" stroke="#BFDBFE" stroke-width="1"/>
+    <text x="153.5" y="34.2" text-anchor="middle" font-family="Montserrat, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="700" font-size="7.5" fill="#005CA9" letter-spacing="0.4">GRUPA G1 · G2 · G3</text>
+
+    <!-- Subtitle: Specific Qualification Scope -->
+    <text x="74" y="51" font-family="Montserrat, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="600" font-size="8.3" letter-spacing="0.1" fill="#64748B">Uprawnienia Energetyczne · Dozór i Eksploatacja</text>
+  </g>
 </svg>
