@@ -54,13 +54,13 @@ export default function StatsStrip() {
         {homeStats.map((stat, index) => (
           <div
             key={stat.label}
-            className={`reveal flex flex-col gap-2 ${shown ? 'is-in' : ''}`}
+            className={`reveal flex flex-col gap-4 sm:gap-6 ${shown ? 'is-in' : ''}`}
             style={{ transitionDelay: `${index * 140}ms` }}
           >
-            <span className="font-heading text-4xl font-bold leading-none text-white sm:text-5xl">
+            <span className="font-heading text-5xl sm:text-6xl font-extrabold leading-none text-white tracking-tight">
               <Count value={stat.value} suffix={stat.suffix} run={shown} />
             </span>
-            <span className="max-w-xs text-[15px] font-medium leading-snug text-[#26282C]">{stat.label}</span>
+            <span className="max-w-xs text-[14px] sm:text-[15px] font-medium leading-snug text-[#26282C]/90">{stat.label}</span>
           </div>
         ))}
       </div>

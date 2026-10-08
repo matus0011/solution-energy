@@ -39,11 +39,7 @@
 
   <!-- Right: Typography & Specification -->
   <g id="ped-text">
-    <text x="74" y="31" font-family="Montserrat, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="800" font-size="22" fill="#26282C" letter-spacing="-0.3">PED</text>
-    
-    <rect x="127" y="16.5" width="63" height="15" rx="3" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>
-    <text x="158.5" y="27.5" text-anchor="middle" font-family="Montserrat, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="700" font-size="8" fill="#475569" letter-spacing="0.5">MODUŁ A2</text>
-
-    <text x="74" y="49" font-family="Montserrat, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="600" font-size="11.5" letter-spacing="0.5" fill="#64748b">2014/68/UE</text>
+    <text x="66" y="34" font-family="Montserrat, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="800" font-size="16.5" letter-spacing="-0.3" fill="#26282C">PED 2014/68/UE</text>
+    <text x="66" y="49" font-family="Montserrat, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="600" font-size="9" letter-spacing="0.1" fill="#64748B">Dyrektywa Ciśnieniowa</text>
   </g>
 </svg>

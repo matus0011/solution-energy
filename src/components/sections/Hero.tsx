@@ -34,26 +34,26 @@ export default function Hero() {
 
       <div className="absolute inset-0 bg-black/45" />
 
-      <div className="relative w-full px-6 py-16 sm:px-10 lg:px-14">
+      <div className="relative w-full -translate-y-4 px-6 py-16 sm:-translate-y-8 sm:px-10 lg:-translate-y-12 lg:px-14">
         <div className="mx-auto w-full max-w-[1380px] 2xl:max-w-screen-2xl">
           <div className="animate-hero-in flex max-w-3xl flex-col items-start gap-5 text-left">
-          <h1 className="font-heading text-[32px] font-semibold leading-[1.05] text-white sm:text-[52px] lg:text-[60px]">
+          <h1 className="font-heading text-4xl sm:text-6xl lg:text-[64px] font-medium leading-[1.04] tracking-[-0.02em] text-white">
             Kompleksowe realizacje energetyczne
           </h1>
-          <p className="max-w-xl text-[17px] leading-relaxed text-white sm:text-[19px]">
+          <p className="max-w-xl text-[17px] sm:text-[18px] text-white/90 leading-relaxed font-normal">
             Od projektu i wykonawstwa po serwis. Prowadzimy inwestycje w energetyce, przemyśle
             i ochronie środowiska.
           </p>
           <div className="mt-4 flex flex-col items-start gap-4 sm:mt-6 sm:flex-row sm:items-center sm:gap-8">
             <Link
               to="/kontakt"
-              className="inline-flex bg-[#fbba00] px-8 py-4 text-[15px] font-bold uppercase tracking-[0.08em] text-[#26282C] transition-colors duration-300 hover:bg-white"
+              className="inline-flex bg-[#fbba00] px-8 py-4 text-[13.5px] font-bold uppercase tracking-[0.12em] text-[#26282C] transition-colors duration-300 hover:bg-white"
             >
               Porozmawiajmy
             </Link>
             <Link
               to="/firma"
-              className="text-[15px] font-bold uppercase tracking-[0.08em] text-white transition-colors duration-300 hover:text-[#fbba00]"
+              className="text-[13.5px] font-bold uppercase tracking-[0.12em] text-white transition-colors duration-300 hover:text-[#fbba00]"
             >
               O firmie
             </Link>

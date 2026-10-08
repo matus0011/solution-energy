@@ -177,10 +177,10 @@ export default function Sectors() {
       <div className="flex flex-col gap-8 pl-6 sm:pl-10 lg:flex-row lg:items-center lg:gap-6 lg:pl-14 xl:pl-[max(3.5rem,calc((100vw-90rem)/2))]">
         <div className="relative z-10 hidden h-auto w-full shrink-0 flex-col justify-between gap-10 border border-[#eeeeef] bg-white p-8 sm:p-12 lg:flex lg:h-[560px] lg:w-[427px] lg:p-14">
           <div>
-            <p className="m-0 mb-3 pb-4 font-sans text-[20px] font-[500] leading-snug text-[#606264] sm:text-[22px]">
+            <p className="m-0 mb-3 text-[12px] sm:text-[13px] font-bold uppercase tracking-[0.14em] text-[#fbba00]">
               Czym się zajmujemy
             </p>
-            <h2 className="m-0 font-heading text-[32px] font-[500] leading-[40px] text-[#26282C] sm:text-[40px] sm:leading-[48px]">
+            <h2 className="m-0 font-heading text-[32px] sm:text-[38px] font-semibold leading-[1.12] text-[#26282C] tracking-tight">
               Sektory działalności
             </h2>
           </div>
@@ -205,11 +205,13 @@ export default function Sectors() {
                     aktywna ? 'h-[480px] lg:h-[630px]' : 'h-[420px] lg:h-[560px]'
                   } ${instant ? '' : 'transition-[height] duration-500 ease-out'} motion-reduce:transition-none`}
                 >
-                  <img
-                    src={sector.image}
-                    alt={i < n ? sector.imageAlt : ''}
-                    className="absolute inset-0 h-full w-full object-cover"
-                  />
+                  <div className="pointer-events-none absolute inset-x-0 top-1/2 h-[480px] -translate-y-1/2 lg:h-[630px]">
+                    <img
+                      src={sector.image}
+                      alt={i < n ? sector.imageAlt : ''}
+                      className="h-full w-full object-cover"
+                    />
+                  </div>
                   <div
                     className={`absolute inset-0 bg-[linear-gradient(rgba(38,40,44,0)_42%,rgb(38,40,44)_100%)] ease-out motion-reduce:transition-none ${
                       instant ? 'transition-none' : 'transition-opacity duration-[250ms]'
@@ -221,7 +223,7 @@ export default function Sectors() {
                     } ${aktywna && faza === 'gora' ? 'opacity-100' : 'opacity-0'}`}
                   />
                   <h3
-                    className="absolute inset-x-0 top-0 m-0 p-6 font-heading text-[22px] font-bold leading-[28px] text-white sm:p-8 sm:text-[26px] sm:leading-8 motion-reduce:transition-none"
+                    className="absolute inset-x-0 top-0 m-0 p-6 font-heading text-[22px] sm:text-[24px] font-semibold leading-snug text-white sm:p-8 motion-reduce:transition-none"
                     style={{
                       transform:
                         aktywna && faza === 'gora'

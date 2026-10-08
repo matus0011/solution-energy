@@ -10,6 +10,19 @@
   initial-value: 0%;
 }
 
+:root {
+  --brand-accent: #fbba00;
+  --brand-accent-rgb: 251, 186, 0;
+  --logo-filter: none;
+}
+
+:root[data-theme='decarb'],
+html[data-theme='decarb'] {
+  --brand-accent: #10b981;
+  --brand-accent-rgb: 16, 185, 129;
+  --logo-filter: hue-rotate(85deg) saturate(1.3) brightness(0.98);
+}
+
 [data-wave] {
   --dkw-accent: #fbba00;
   --dkw-set: #26282C;
@@ -23,6 +36,15 @@
   --dkw-word-dur: 0.9s;
   --dkw-win-dur: 1.15s;
   --dkw-win-delay: 0.12s;
+}
+
+/* Wariant Dekarbonizacja (zielona fala ekologiczna) */
+[data-wave='decarb'],
+html[data-theme='decarb'] [data-wave] {
+  --dkw-accent: #10b981;
+  --dkw-set: #26282C;
+  --dkw-hit: #10b981;
+  --dkw-dim: rgba(38, 40, 44, 0.22);
 }
 
 /* Wariant dark (gdy kontener ma klasę dark lub data-theme="dark") */
@@ -81,6 +103,18 @@
   --dkw-set: #e09b00;
   --dkw-hit: #26282C;
   --dkw-dim: rgba(224, 155, 0, 0.26);
+}
+
+[data-wave='decarb'][data-wave-ready] .dkw-word.is-accent,
+html[data-theme='decarb'] [data-wave][data-wave-ready] .dkw-word.is-accent {
+  --dkw-set: #059669;
+  --dkw-hit: #26282C;
+  --dkw-dim: rgba(5, 150, 105, 0.25);
+}
+
+[data-wave='decarb'][data-wave-ready] .dkw-win:hover,
+html[data-theme='decarb'] [data-wave][data-wave-ready] .dkw-win:hover {
+  box-shadow: 0 8px 24px -2px rgba(0, 0, 0, 0.22), 0 0 0 2px #10b981;
 }
 
 .dark [data-wave][data-wave-ready] .dkw-word.is-accent,

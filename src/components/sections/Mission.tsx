@@ -26,42 +26,45 @@ type IndexedWindowToken = WindowToken & IndexedTokenBase
 type IndexedToken = IndexedWordToken | IndexedWindowToken
 
 const RAW_LINES: Token[][] = [
-  // Linia 1: "Doświadczony" + [kapsuła: hala kotłowni] + "partner" (is-accent) + "inwestycji"
+  // Linia 1: "Dekarbonizacja" (is-accent) + [kapsuła: toruń geotermia] + "przemysłu" + "i" + "energetyki"
   [
-    { type: 'word', text: 'Doświadczony' },
+    { type: 'word', text: 'Dekarbonizacja', isAccent: true },
     {
       type: 'window',
-      src: '/realizacje/pruszkow-hala-kotlowni.jpg',
-      alt: 'Hala kotłowni',
-      title: 'Pruszków — Hala kotłowni',
+      src: '/realizacje/torun-geotermia.jpg',
+      alt: 'Geotermia Toruń — OZE',
+      title: 'Toruń — Ciepłownia geotermalna OZE',
     },
-    { type: 'word', text: 'partner', isAccent: true },
-    { type: 'word', text: 'inwestycji' },
-  ],
-  // Linia 2: "energetycznych" + [kapsuła: geotermia] + "i" + "przemysłowych —"
-  [
-    { type: 'word', text: 'energetycznych' },
-    {
-      type: 'window',
-      src: '/realizacje/konin-geotermia.jpg',
-      alt: 'Geotermia Konin',
-      title: 'Konin — Ciepłownia geotermalna',
-    },
+    { type: 'word', text: 'przemysłu' },
     { type: 'word', text: 'i' },
-    { type: 'word', text: 'przemysłowych —' },
+    { type: 'word', text: 'energetyki' },
   ],
-  // Linia 3: "od" + "projektu" + [kapsuła: kogeneracja] + "po" + "serwis." (is-accent)
+  // Linia 2: "redukcja" + "emisji" + [kapsuła: sieradz geotermia] + "oraz" + "efektywność —"
+  [
+    { type: 'word', text: 'redukcja' },
+    { type: 'word', text: 'emisji' },
+    {
+      type: 'window',
+      src: '/realizacje/sieradz-geotermia.jpg',
+      alt: 'Instalacja OZE Sieradz',
+      title: 'Sieradz — Głęboka geotermia i biomasa',
+    },
+    { type: 'word', text: 'oraz' },
+    { type: 'word', text: 'efektywność —' },
+  ],
+  // Linia 3: "od" + "audytu" + [kapsuła: lubartów sesbio biomasa] + "po" + "zieloną" (is-accent) + "transformację." (is-accent)
   [
     { type: 'word', text: 'od' },
-    { type: 'word', text: 'projektu' },
+    { type: 'word', text: 'audytu' },
     {
       type: 'window',
-      src: '/realizacje/brzesko-kogeneracja.jpg',
-      alt: 'Kogeneracja',
-      title: 'Brzesko — Układ kogeneracyjny CHP',
+      src: '/realizacje/lubartow-sesbio.jpg',
+      alt: 'Instalacja biomasowa Lubartów',
+      title: 'Lubartów — Instalacja OZE i biomasy',
     },
     { type: 'word', text: 'po' },
-    { type: 'word', text: 'serwis.', isAccent: true },
+    { type: 'word', text: 'zieloną', isAccent: true },
+    { type: 'word', text: 'transformację.', isAccent: true },
   ],
 ]
 
@@ -106,10 +109,22 @@ export default function Mission() {
       }, 75)
     }
 
-    // Obsługa scrolla: dynamiczny scrubbing fali + restart po wyjściu w górę
+    // Obsługa scrolla: dynamiczny scrubbing fali + zmiana motywu na zielony w nagłówku i sekcji
     const onScroll = () => {
       const rect = section.getBoundingClientRect()
       const winH = window.innerHeight
+
+      // Dynamiczne włączenie zielonego motywu dekarbonizacji (dla logo i elementów)
+      // gdy sekcja jest w kadrze (z uwzględnieniem przyklejonego nagłówka)
+      const isInDecarbZone = rect.top <= winH * 0.65 && rect.bottom >= 90
+      if (isInDecarbZone) {
+        document.documentElement.setAttribute('data-theme', 'decarb')
+      } else {
+        // Gdy wyjeżdżamy ponad lub poniżej sekcji — przywracamy klasyczny kolor marki
+        if (document.documentElement.getAttribute('data-theme') === 'decarb') {
+          document.documentElement.removeAttribute('data-theme')
+        }
+      }
 
       // Granica wejścia fali: gdy sekcja zajmuje 75% dolnej części ekranu
       const triggerY = winH * 0.78
@@ -157,6 +172,7 @@ export default function Mission() {
     return () => {
       observer.disconnect()
       window.removeEventListener('scroll', onScroll)
+      document.documentElement.removeAttribute('data-theme')
       if (timerRef.current !== null) {
         clearInterval(timerRef.current)
       }
@@ -166,19 +182,19 @@ export default function Mission() {
   return (
     <section
       ref={sectionRef}
-      className="relative overflow-hidden bg-white px-6 py-20 sm:px-10 sm:py-28 lg:px-14 lg:py-36"
+      className="relative overflow-hidden bg-white px-6 py-20 transition-colors duration-700 sm:px-10 sm:py-28 lg:px-14 lg:py-36"
     >
-      {/* Subtelny ambient / poświata technologiczna */}
+      {/* Subtelny ambient / ekologiczna poświata dekarbonizacji */}
       <div
-        className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_60%_40%_at_50%_25%,rgba(251,186,0,0.06),transparent_70%)]"
+        className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_60%_40%_at_50%_25%,rgba(16,185,129,0.08),transparent_70%)]"
         aria-hidden="true"
       />
 
       <div className="mx-auto flex max-w-7xl flex-col items-center">
-        {/* Główny blok tekstu dkton intro_text z atrybutami fali */}
+        {/* Główny blok tekstu dkton intro_text z zieloną falą dekarbonizacji */}
         <div
-          className="intro_text mx-auto max-w-6xl text-center font-heading text-[26px] font-bold uppercase tracking-tight text-[#26282C] sm:text-4xl md:text-5xl lg:text-[54px] xl:text-[62px]"
-          data-wave="a"
+          className="intro_text mx-auto max-w-6xl text-center font-heading text-2xl sm:text-4xl md:text-5xl lg:text-[50px] font-semibold leading-[1.24] tracking-[-0.01em] text-[#26282C]"
+          data-wave="decarb"
           data-wave-ready="1"
         >
           {LINES.map((line, lineIdx) => (
@@ -227,10 +243,10 @@ export default function Mission() {
         {/* Przycisk kierujący do podstrony firmy */}
         <div className="mx-auto mt-12 flex items-center justify-center sm:mt-16">
           <Link
-            to="/firma"
-            className="group inline-flex items-center gap-3 rounded-full bg-[#26282C] px-8 py-4 text-[14px] font-bold uppercase tracking-[0.08em] text-white shadow-md transition-all duration-300 hover:bg-[#fbba00] hover:text-[#26282C] hover:shadow-lg active:scale-[0.98] sm:text-[15px]"
+            to="/firma/obszary-dzialalnosci"
+            className="group inline-flex items-center gap-3 rounded-full bg-[#26282C] px-8 py-4 text-[13.5px] font-bold uppercase tracking-[0.12em] text-white shadow-md transition-all duration-300 hover:bg-[#10b981] hover:text-white hover:shadow-lg active:scale-[0.98]"
           >
-            <span>Poznaj naszą firmę</span>
+            <span>Poznaj technologie dekarbonizacji</span>
             <ArrowRight
               className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
               aria-hidden="true"

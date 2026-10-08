@@ -6,7 +6,6 @@ import ProcessSteps from '@/components/sections/ProcessSteps'
 import TrustedClients from '@/components/sections/TrustedClients'
 import Certifications from '@/components/sections/Certifications'
 import Faq from '@/components/sections/Faq'
-import ClosingCta from '@/components/sections/ClosingCta'
 
 // Dotychczasowe demo, sprzed przebudowy według briefu PDF.
 export default function HomeV1() {
@@ -24,7 +23,6 @@ export default function HomeV1() {
         </div>
       </div>
       <Faq />
-      <ClosingCta />
     </>
   )
 }

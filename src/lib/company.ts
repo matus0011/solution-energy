@@ -30,33 +30,33 @@ export const sectors: {
   {
     title: 'Energetyka',
     lead: 'Ciepłownie geotermalne, kotłownie, układy kogeneracyjne i elektroenergetyka — od dokumentacji po obiekt oddany do eksploatacji.',
-    image: '/realizacje/torun-geotermia.jpg',
-    imageAlt: 'Ciepłownia geotermalna w Toruniu',
+    image: '/realizacje/pruszkow-kotlownia.jpg',
+    imageAlt: 'Kotłownia gazowo-olejowa w EC Pruszków',
     featured: true,
   },
   {
     title: 'Przemysł i górnictwo',
     lead: 'Instalacje i mechanizacja procesów dla zakładów przemysłowych oraz obiektów górniczych.',
-    image: '/realizacje/wieliczka-klimatyzacja.jpg',
-    imageAlt: 'Instalacja w Kopalni Soli Wieliczka',
+    image: '/realizacje/pruszkow-rurociagi.jpg',
+    imageAlt: 'Instalacje przemysłowe i rurociągi technologiczne',
   },
   {
     title: 'Ochrona środowiska',
     lead: 'Obiekty gospodarki wodno-ściekowej i układy zasilane biogazem na oczyszczalniach.',
-    image: '/realizacje/dzierzoniow-kogeneracja.jpg',
-    imageAlt: 'Agregaty kogeneracyjne na biogaz w Dzierżoniowie',
+    image: '/realizacje/konin-wiertnica.jpg',
+    imageAlt: 'Odwiert ciepłowni geotermalnej w Koninie',
   },
   {
     title: 'Serwis',
     lead: 'Obsługa gwarancyjna i pogwarancyjna zrealizowanych instalacji.',
-    image: '/realizacje/brzesko-sterownica.jpg',
-    imageAlt: 'Sterownica układu kogeneracyjnego',
+    image: '/realizacje/torun-pompa.jpg',
+    imageAlt: 'Przemysłowe pompy technologiczne i serwis armatury',
   },
   {
     title: 'Produkcja',
     lead: 'Szafy elektryczne, AKPiA, SCADA, piping i rozwiązania kontenerowe.',
-    image: '/realizacje/sieradz-kontener-chp.jpg',
-    imageAlt: 'Kontenerowy moduł kogeneracyjny',
+    image: '/realizacje/lubartow-armatura.jpg',
+    imageAlt: 'Prefabrykacja armatury i węzłów technologicznych',
   },
 ]
 

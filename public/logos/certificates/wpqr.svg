@@ -52,11 +52,7 @@
 
   <!-- Right: Typography & Specification -->
   <g id="wpqr-text">
-    <text x="74" y="31" font-family="Montserrat, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="800" font-size="22" fill="#26282C" letter-spacing="-0.3">WPQR</text>
-    
-    <rect x="142" y="16.5" width="50" height="15" rx="3" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>
-    <text x="167" y="27.5" text-anchor="middle" font-family="Montserrat, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="700" font-size="7.5" fill="#475569" letter-spacing="0.5">QUALIFIED</text>
-
-    <text x="74" y="49" font-family="Montserrat, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="600" font-size="11.5" letter-spacing="0.4" fill="#64748b">EN ISO 15614-1</text>
+    <text x="66" y="34" font-family="Montserrat, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="800" font-size="20" letter-spacing="-0.3" fill="#26282C">WPQR</text>
+    <text x="66" y="49" font-family="Montserrat, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="600" font-size="9" letter-spacing="0.1" fill="#64748B">Technologie Spawania</text>
   </g>
 </svg>

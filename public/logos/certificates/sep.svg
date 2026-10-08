@@ -43,22 +43,9 @@
           font-weight="900" font-size="13.5" letter-spacing="1.2" fill="#FFFFFF" filter="url(#textGlow)">SEP</text>
   </g>
 
-  <!-- Vertical Divider Line -->
-  <line x1="64" y1="12" x2="64" y2="52" stroke="#CBD5E1" stroke-width="1.5" stroke-linecap="round"/>
-
   <!-- Right: Official Typography -->
   <g id="sep-typography">
-    <!-- Kicker: Official Organization Name -->
-    <text x="74" y="18" font-family="Montserrat, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="700" font-size="6.3" letter-spacing="0.4" fill="#005CA9">STOWARZYSZENIE ELEKTRYKÓW POLSKICH</text>
-
-    <!-- Main Line: SEP + Pill Badge -->
-    <text x="74" y="36.5" font-family="Montserrat, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="800" font-size="18.5" letter-spacing="-0.3" fill="#1E2022">SEP</text>
-
-    <!-- Pill Badge: GRUPA G1 · G2 · G3 -->
-    <rect x="117" y="23" width="73" height="16" rx="3.5" fill="#EFF6FF" stroke="#BFDBFE" stroke-width="1"/>
-    <text x="153.5" y="34.2" text-anchor="middle" font-family="Montserrat, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="700" font-size="7.5" fill="#005CA9" letter-spacing="0.4">GRUPA G1 · G2 · G3</text>
-
-    <!-- Subtitle: Specific Qualification Scope -->
-    <text x="74" y="51" font-family="Montserrat, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="600" font-size="8.3" letter-spacing="0.1" fill="#64748B">Uprawnienia Energetyczne · Dozór i Eksploatacja</text>
+    <text x="66" y="34" font-family="Montserrat, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="800" font-size="20" letter-spacing="-0.3" fill="#26282C">SEP</text>
+    <text x="66" y="49" font-family="Montserrat, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="600" font-size="9" letter-spacing="0.1" fill="#64748B">Uprawnienia Energetyczne G1-G3</text>
   </g>
 </svg>

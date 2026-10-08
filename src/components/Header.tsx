@@ -85,7 +85,7 @@ export default function Header() {
           <img
             src="/logos/logotyp_energysolutions_crv.png"
             alt="Energy Solutions — strona główna"
-            className="h-14 w-auto"
+            className="h-14 w-auto transition-[filter] duration-700 ease-out [filter:var(--logo-filter,none)]"
           />
         </NavLink>
 
@@ -97,7 +97,7 @@ export default function Header() {
                 <div className="group relative">
                   <NavItem
                     href={link.href}
-                    className="relative flex items-center gap-1.5 text-lg font-normal tracking-[0.08em] text-[#26282C] transition after:absolute after:-bottom-1 after:left-1/2 after:h-[3px] after:w-0 after:-translate-x-1/2 after:-skew-x-12 after:bg-[#fbba00] after:transition-all after:duration-300 hover:after:w-[105%] group-hover:after:w-[105%] group-focus-within:after:w-[105%]"
+                    className="relative flex items-center gap-1.5 text-lg font-normal tracking-[0.08em] text-[#26282C] transition after:absolute after:-bottom-1 after:left-1/2 after:h-[3px] after:w-0 after:-translate-x-1/2 after:-skew-x-12 after:bg-[var(--brand-accent,#fbba00)] after:transition-all after:duration-500 hover:after:w-[105%] group-hover:after:w-[105%] group-focus-within:after:w-[105%]"
                     activeClassName="after:w-[105%]"
                   >
                     {link.label}
@@ -118,7 +118,7 @@ export default function Header() {
                         end
                         className={({ isActive }) =>
                           clsx(
-                            'border-b border-white/10 px-5 py-3 text-[17px] font-bold uppercase leading-snug tracking-wide text-[#fbba00] transition-colors duration-200 hover:text-white',
+                            'border-b border-white/10 px-5 py-3 text-[17px] font-bold uppercase leading-snug tracking-wide text-[var(--brand-accent,#fbba00)] transition-colors duration-200 hover:text-white',
                             isActive && 'text-white',
                           )
                         }
@@ -131,8 +131,8 @@ export default function Header() {
                           to={child.href}
                           className={({ isActive }) =>
                             clsx(
-                              'px-5 py-3 text-[17px] font-bold leading-snug tracking-wide transition-colors duration-200 hover:text-[#fbba00]',
-                              isActive ? 'text-[#fbba00]' : 'text-white/90',
+                              'px-5 py-3 text-[17px] font-bold leading-snug tracking-wide transition-colors duration-200 hover:text-[var(--brand-accent,#fbba00)]',
+                              isActive ? 'text-[var(--brand-accent,#fbba00)]' : 'text-white/90',
                             )
                           }
                         >
@@ -145,7 +145,7 @@ export default function Header() {
               ) : (
                 <NavItem
                   href={link.href}
-                  className="relative text-lg font-normal tracking-[0.08em] text-[#26282C] transition after:absolute after:-bottom-1 after:left-1/2 after:h-[3px] after:w-0 after:-translate-x-1/2 after:-skew-x-12 after:bg-[#fbba00] after:transition-all after:duration-300 hover:after:w-[105%]"
+                  className="relative text-lg font-normal tracking-[0.08em] text-[#26282C] transition after:absolute after:-bottom-1 after:left-1/2 after:h-[3px] after:w-0 after:-translate-x-1/2 after:-skew-x-12 after:bg-[var(--brand-accent,#fbba00)] after:transition-all after:duration-500 hover:after:w-[105%]"
                   activeClassName="after:w-[105%]"
                 >
                   {link.label}
@@ -162,7 +162,7 @@ export default function Header() {
           aria-label={mobileOpen ? 'Zamknij menu' : 'Otwórz menu'}
           className={clsx(
             'relative z-50 flex h-12 w-12 items-center justify-center rounded-lg transition-colors md:hidden',
-            mobileOpen ? 'text-white' : 'text-[#404040] hover:text-[#fbba00]',
+            mobileOpen ? 'text-white' : 'text-[#404040] hover:text-[var(--brand-accent,#fbba00)]',
           )}
         >
           <span
