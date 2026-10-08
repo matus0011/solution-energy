@@ -74,34 +74,6 @@ export default function ThreeCanvas({
     goldAccentLight.position.set(0, 2.5, 2.5)
     scene.add(goldAccentLight)
 
-    // Pływające cząsteczki energii (Dynamic Energy Particles)
-    const particleCount = 80
-    const particleGeometry = new THREE.BufferGeometry()
-    const particlePositions = new Float32Array(particleCount * 3)
-    const particleVelocities: { x: number; y: number; z: number }[] = []
-
-    for (let i = 0; i < particleCount; i++) {
-      particlePositions[i * 3] = (Math.random() - 0.5) * 5.2
-      particlePositions[i * 3 + 1] = (Math.random() - 0.5) * 4.2
-      particlePositions[i * 3 + 2] = (Math.random() - 0.5) * 5.2
-      particleVelocities.push({
-        x: (Math.random() - 0.5) * 0.003,
-        y: Math.random() * 0.005 + 0.002,
-        z: (Math.random() - 0.5) * 0.003,
-      })
-    }
-    particleGeometry.setAttribute('position', new THREE.BufferAttribute(particlePositions, 3))
-
-    const particleMaterial = new THREE.PointsMaterial({
-      color: 0xfbba00,
-      size: 0.045,
-      transparent: true,
-      opacity: 0.75,
-      blending: THREE.AdditiveBlending,
-    })
-    const particleSystem = new THREE.Points(particleGeometry, particleMaterial)
-    scene.add(particleSystem)
-
     // Pivot group gwarantujący idealne wycentrowanie modelu w punkcie (0, 0, 0)
     const pivotGroup = new THREE.Group()
     scene.add(pivotGroup)
@@ -172,16 +144,6 @@ export default function ThreeCanvas({
       pivotGroup.rotation.x = THREE.MathUtils.lerp(pivotGroup.rotation.x, mouseY * 0.15, 0.05)
       pivotGroup.rotation.z = THREE.MathUtils.lerp(pivotGroup.rotation.z, -mouseX * 0.15, 0.05)
 
-      // Animacja unoszących się cząsteczek energii
-      const positions = particleGeometry.attributes.position.array as Float32Array
-      for (let i = 0; i < particleCount; i++) {
-        positions[i * 3 + 1] += particleVelocities[i].y
-        if (positions[i * 3 + 1] > 2.5) {
-          positions[i * 3 + 1] = -2.2
-        }
-      }
-      particleGeometry.attributes.position.needsUpdate = true
-
       controls.update()
       renderer.render(scene, camera)
     }
@@ -203,8 +165,6 @@ export default function ThreeCanvas({
       window.removeEventListener('mousemove', onMouseMove)
       resizeObserver.disconnect()
       renderer.dispose()
-      particleGeometry.dispose()
-      particleMaterial.dispose()
       if (container.contains(renderer.domElement)) {
         container.removeChild(renderer.domElement)
       }

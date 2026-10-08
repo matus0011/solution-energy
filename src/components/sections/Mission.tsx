@@ -21,13 +21,13 @@ export default function Mission() {
         <div className="max-w-xl lg:max-w-[620px] xl:max-w-[680px]">
           {/* cta__text-wrapper */}
           <div className="flex flex-col items-start text-left">
-            {/* cta__title: Potężny, powiększony nagłówek */}
-            <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-[56px] xl:text-[64px] font-bold leading-[1.06] tracking-[-0.03em] text-[#1e2229] mb-6 sm:mb-8">
+            {/* cta__title: Okazały, reprezentacyjny nagłówek o inżynieryjnej wadze font-medium */}
+            <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-[52px] xl:text-[58px] font-medium leading-[1.08] tracking-[-0.025em] text-[#1e2229] mb-6 sm:mb-7">
               Inżynieria transformacji energetycznej.
             </h2>
 
-            {/* cta__description: Powiększony, reprezentacyjny lead */}
-            <div className="text-[18px] sm:text-[20px] lg:text-[22px] font-normal leading-[1.65] text-[#4a5058] mb-10 sm:mb-12">
+            {/* cta__description: Elegancki lead */}
+            <div className="text-[17px] sm:text-[18px] lg:text-[19px] font-normal leading-[1.65] text-[#4a5058] mb-8 sm:mb-10">
               <p>
                 Realizujemy strategiczne inwestycje pod klucz w formule EPC — od projektowania w standardzie 3D BIM,
                 przez ciepłownie geotermalne i układy kogeneracyjne, po prefabrykację i rozruch obiektów.
@@ -35,11 +35,11 @@ export default function Mission() {
             </div>
           </div>
 
-          {/* cta__button-wrapper: Powiększony przycisk */}
+          {/* cta__button-wrapper: Prostokątny przycisk */}
           <div>
             <Link
               to="/firma/obszary-dzialalnosci"
-              className="inline-flex items-center justify-center rounded-none bg-[#fbba00] px-12 py-5 text-[15px] sm:text-[16px] font-bold uppercase tracking-[0.16em] text-[#26282C] shadow-md transition-all duration-300 hover:bg-[#e5a800] hover:shadow-lg active:scale-[0.99]"
+              className="inline-flex items-center justify-center rounded-none bg-[#fbba00] px-10 py-4 text-[14px] font-bold uppercase tracking-[0.14em] text-[#26282C] shadow-md transition-all duration-300 hover:bg-[#e5a800] hover:shadow-lg active:scale-[0.99]"
             >
               Zobacz więcej
             </Link>
