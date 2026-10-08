@@ -272,3 +272,30 @@
     }
   }
 }
+
+/* Nowoczesny, smukły pasek przewijania (Slim Minimal Scrollbar) */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(38, 40, 44, 0.25);
+  border-radius: 9999px;
+  transition: background 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #fbba00;
+}
+
+/* Standard dla Firefox */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(38, 40, 44, 0.28) transparent;
+}
+

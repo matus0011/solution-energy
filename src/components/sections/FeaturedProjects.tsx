@@ -23,7 +23,7 @@ export default function FeaturedProjects({
 }: FeaturedProjectsProps) {
   return (
     <section className={`bg-white px-6 py-16 sm:px-10 sm:py-24 lg:px-14 ${className}`}>
-      <div className="mx-auto flex max-w-7xl flex-col gap-10 sm:gap-14">
+      <div className="mx-auto flex max-w-[1380px] 2xl:max-w-screen-2xl flex-col gap-10 sm:gap-14">
         <Reveal active={motion} className="flex flex-col gap-3">
           <h2 className="font-heading text-3xl font-semibold text-[#26282C] sm:text-[38px] tracking-tight">
             Wybrane realizacje

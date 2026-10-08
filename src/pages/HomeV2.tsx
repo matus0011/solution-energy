@@ -28,7 +28,7 @@ export default function HomeV2() {
       <Sectors />
       <NewsPreview />
       <section className="bg-[#f7f7f7] px-6 py-12 sm:px-10 sm:py-16 lg:px-14">
-        <div className="mx-auto flex max-w-7xl flex-col">
+        <div className="mx-auto flex max-w-[1380px] 2xl:max-w-screen-2xl flex-col">
           <TrustedClients
             variant="marquee"
             logos={partners}
@@ -45,7 +45,7 @@ export default function HomeV2() {
         </div>
       </section> */}
       <section className="bg-[#f7f7f7] px-6 py-10 sm:px-10 sm:py-14 lg:px-14">
-        <div className="mx-auto flex max-w-7xl flex-col">
+        <div className="mx-auto flex max-w-[1380px] 2xl:max-w-screen-2xl flex-col">
           <TrustedClients variant="marquee" logos={certificates} title="Certyfikaty" description={false} size="xl" />
         </div>
       </section>

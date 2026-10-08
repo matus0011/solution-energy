@@ -172,9 +172,14 @@ export default function Sectors() {
   return (
     <section
       data-faza={faza}
-      className="overflow-hidden bg-[#f5f4f1] bg-[radial-gradient(circle,#e4e2dc_1.4px,transparent_1.5px)] bg-[length:22px_22px] py-16 sm:py-24"
+      className="relative overflow-hidden bg-[#f5f4f1] py-16 sm:py-24"
     >
-      <div className="flex flex-col gap-8 pl-6 sm:pl-10 lg:flex-row lg:items-center lg:gap-6 lg:pl-14 xl:pl-[max(3.5rem,calc((100vw-90rem)/2))]">
+      {/* Kropki tylko od góry, łagodnie przechodzące w gradient do gładkiego tła */}
+      <div
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle,#e4e2dc_1.4px,transparent_1.5px)] bg-[length:22px_22px] [mask-image:linear-gradient(to_bottom,black_0%,transparent_65%)] [-webkit-mask-image:linear-gradient(to_bottom,black_0%,transparent_65%)]"
+        aria-hidden="true"
+      />
+      <div className="relative z-10 flex flex-col gap-8 pl-6 sm:pl-10 lg:flex-row lg:items-center lg:gap-6 lg:pl-14 xl:pl-[max(3.5rem,calc((100vw-90rem)/2))]">
         <div className="relative z-10 hidden h-auto w-full shrink-0 flex-col justify-between gap-10 border border-[#eeeeef] bg-white p-8 sm:p-12 lg:flex lg:h-[560px] lg:w-[427px] lg:p-14">
           <div>
             <p className="m-0 mb-3 text-[12px] sm:text-[13px] font-bold uppercase tracking-[0.14em] text-[#fbba00]">

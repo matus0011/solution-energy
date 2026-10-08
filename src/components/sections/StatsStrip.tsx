@@ -2,11 +2,6 @@ import { useEffect, useState } from 'react'
 import { homeStats } from '@/lib/company'
 import { useInView } from '@/lib/useInView'
 
-function formatStat(value: number, suffix: string) {
-  const formatted = value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '\u00a0')
-  return `${formatted}${suffix}`
-}
-
 function Count({ value, suffix, run }: { value: number; suffix: string; run: boolean }) {
   const [current, setCurrent] = useState(run ? value : 0)
 
@@ -32,7 +27,15 @@ function Count({ value, suffix, run }: { value: number; suffix: string; run: boo
     return () => cancelAnimationFrame(frame)
   }, [run, value])
 
-  return <>{formatStat(current, suffix)}</>
+  const formatted = current.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '\u00a0')
+  const cleanSuffix = suffix.trim()
+
+  return (
+    <span className="inline-flex items-baseline tracking-[0.04em]">
+      <span>{formatted}</span>
+      <span className="ml-2.5 sm:ml-3 tracking-[0.07em] font-bold">{cleanSuffix}</span>
+    </span>
+  )
 }
 
 export default function StatsStrip() {
@@ -50,14 +53,14 @@ export default function StatsStrip() {
         loading="lazy"
         className="pointer-events-none absolute inset-0 -z-10 h-full w-full object-cover object-[70%_center] opacity-[0.16] grayscale"
       />
-      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-8 sm:grid-cols-3 sm:gap-6">
+      <div className="mx-auto grid max-w-[1380px] 2xl:max-w-screen-2xl grid-cols-1 gap-8 sm:grid-cols-3 sm:gap-6">
         {homeStats.map((stat, index) => (
           <div
             key={stat.label}
             className={`reveal flex flex-col gap-4 sm:gap-6 ${shown ? 'is-in' : ''}`}
             style={{ transitionDelay: `${index * 140}ms` }}
           >
-            <span className="font-heading text-5xl sm:text-6xl font-extrabold leading-none text-white tracking-tight">
+            <span className="font-heading text-5xl sm:text-6xl font-extrabold leading-none text-white tracking-wide">
               <Count value={stat.value} suffix={stat.suffix} run={shown} />
             </span>
             <span className="max-w-xs text-[14px] sm:text-[15px] font-medium leading-snug text-[#26282C]/90">{stat.label}</span>
