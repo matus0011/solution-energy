@@ -13,7 +13,7 @@ export default function HomeV4() {
   return (
     <HomeVariantContext.Provider value="v3">
       <Hero />
-      <EnergyTimelineVertical />
+      <EnergyTimelineVertical media="photos" />
       <StatsStrip />
       <Sectors />
       <NewsPreview />

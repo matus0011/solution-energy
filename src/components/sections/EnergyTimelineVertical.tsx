@@ -1,6 +1,7 @@
 import { useEffect, useRef, type CSSProperties } from 'react'
 import { Link } from 'react-router-dom'
 import { ChargeBars } from '@/components/SectionTitle'
+import TimelineIcon from '@/components/timelineIcons'
 import { projects } from '@/lib/projects'
 import { greenIndex, timeline, type TimelineStep } from '@/lib/timeline'
 import { setDecarb, useScrollFrame } from '@/lib/timelineScroll'
@@ -13,6 +14,8 @@ const GREEN = '#10b981'
 const READ_Y = 0.58
 
 const DESKTOP = '(min-width: 1024px)'
+
+type TimelineMedia = 'icons' | 'photos'
 
 type Geo = {
   still: boolean
@@ -71,14 +74,30 @@ function Year({ step, className = '' }: { step: TimelineStep; className?: string
   )
 }
 
-function Card({ step, side, className = '' }: { step: TimelineStep; side: 'left' | 'right'; className?: string }) {
+function Card({
+  step,
+  side,
+  media,
+  className = '',
+}: {
+  step: TimelineStep
+  side: 'left' | 'right'
+  media: TimelineMedia
+  className?: string
+}) {
   const category = step.project !== undefined ? projects[step.project]?.cat : undefined
   const body = (
     <>
-      {step.image && (
-        <div className="tlv-photo relative aspect-[2/1] shrink-0 overflow-hidden">
-          <img src={step.image} alt="" loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
+      {media === 'icons' && step.icon ? (
+        <div className="tlv-band flex h-[112px] shrink-0 items-center px-4">
+          <TimelineIcon name={step.icon} />
         </div>
+      ) : (
+        step.image && (
+          <div className="tlv-photo relative aspect-[2/1] shrink-0 overflow-hidden">
+            <img src={step.image} alt="" loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
+          </div>
+        )
       )}
       <div className="flex flex-col gap-1.5 px-5 pb-5 pt-4">
         {category && <span className="text-[12px] text-[#8a8e94]">{category}</span>}
@@ -106,10 +125,10 @@ function Card({ step, side, className = '' }: { step: TimelineStep; side: 'left'
   )
 }
 
-// Układ v3: oś czasu jako drzewko z góry na dół. Pień przejmuje kreskę „Przewiń”
+// Układy v3 i v4: oś czasu jako drzewko z góry na dół. Pień przejmuje kreskę „Przewiń”
 // z hero i biegnie środkiem; etapy odchodzą od niego na przemian w lewo i w prawo.
-// Na telefonie pień stoi przy lewej krawędzi.
-export default function EnergyTimelineVertical() {
+// Na telefonie pień stoi przy lewej krawędzi. Karty v3 mają zdjęcia, v4 rysunki.
+export default function EnergyTimelineVertical({ media }: { media: TimelineMedia }) {
   const sectionRef = useRef<HTMLElement>(null)
   const wrapRef = useRef<HTMLDivElement>(null)
   const listRef = useRef<HTMLOListElement>(null)
@@ -241,6 +260,7 @@ export default function EnergyTimelineVertical() {
                 <Card
                   step={step}
                   side={side}
+                  media={media}
                   className={side === 'right' ? 'lg:col-start-2 lg:row-start-1' : 'lg:col-start-1 lg:row-start-1'}
                 />
               </li>
