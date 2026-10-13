@@ -1,7 +1,13 @@
 import { createContext, useContext } from 'react'
 
-// Sekcje strony głównej są wspólne dla v1 i v2. HomeV3 ustawia tu 'v2',
-// żeby zmiany typografii i odstępów nie przenosiły się na v1.
-export const HomeVariantContext = createContext<'v1' | 'v2'>('v1')
+export type HomeVariant = 'v1' | 'v2' | 'v3'
 
-export const useIsV2 = () => useContext(HomeVariantContext) === 'v2'
+// Sekcje strony głównej są wspólne dla wariantów. HomeV3 ustawia 'v2', HomeV4 ustawia 'v3'.
+export const HomeVariantContext = createContext<HomeVariant>('v1')
+
+export const useHomeVariant = () => useContext(HomeVariantContext)
+export const useIsV2 = () => {
+  const v = useContext(HomeVariantContext)
+  return v === 'v2' || v === 'v3'
+}
+export const useIsV3 = () => useContext(HomeVariantContext) === 'v3'

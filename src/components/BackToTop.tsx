@@ -12,7 +12,7 @@ const scrollTop = () => {
   }
 }
 
-// Wersja dla strony głównej v2: mały grafitowy kwadrat ze strzałką.
+// Wersja dla strony głównej v2 i v3: mały grafitowy kwadrat ze strzałką.
 // Obwód zapełnia się w kolorze akcentu w miarę przewijania strony.
 function QuietBackToTop() {
   const [visible, setVisible] = useState(false)
@@ -75,7 +75,8 @@ export default function BackToTop() {
   const [visible, setVisible] = useState(false)
   const { pathname } = useLocation()
   const [params] = useSearchParams()
-  const quiet = pathname === '/' && params.get('wersja') === 'v2'
+  const wersja = params.get('wersja')
+  const quiet = pathname === '/' && (wersja === 'v2' || wersja === 'v3')
 
   useEffect(() => {
     const onScroll = () => setVisible(window.scrollY > 400)

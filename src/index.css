@@ -501,6 +501,137 @@
       animation: none;
     }
   }
+
+  /* Oś czasu (v3), pionowa. Korzysta z .tl-node, .tl-head i .tl-fill-y z v2.
+     --tlv-ys to stopień roku; od niego zależy też położenie węzła na telefonie. */
+  .tlv-year {
+    font-size: var(--tlv-ys);
+    color: rgba(38, 40, 44, 0.1);
+  }
+
+  .tlv-year-fill {
+    color: #26282c;
+    clip-path: inset(0 0 100% 0);
+  }
+
+  .tlv-branch {
+    background: rgba(38, 40, 44, 0.14);
+  }
+
+  .tlv-branch::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--tl-zone);
+    transform: scaleX(0);
+    transform-origin: inherit;
+    transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .tl-step.is-lit .tlv-branch::after {
+    transform: scaleX(1);
+  }
+
+  .tlv-card {
+    opacity: 0.5;
+    transform: translate3d(20px, 0, 0);
+    transition:
+      opacity 0.6s ease,
+      transform 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 0.4s ease;
+  }
+
+  @media (min-width: 1024px) {
+    .tlv-step[data-side='left'] .tlv-card {
+      transform: translate3d(-20px, 0, 0);
+    }
+  }
+
+  .tl-step.is-lit .tlv-card {
+    opacity: 1;
+    transform: none;
+    box-shadow: 0 22px 44px -28px rgba(38, 40, 44, 0.38);
+  }
+
+  .tlv-photo img {
+    filter: grayscale(1) contrast(0.92);
+    transform: scale(1.06);
+    transition:
+      filter 0.9s ease,
+      transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .tl-step.is-lit .tlv-photo img {
+    filter: none;
+    transform: scale(1);
+  }
+
+  .tl-step.is-lit .tlv-card:hover .tlv-photo img {
+    transform: scale(1.04);
+  }
+
+  /* Węzeł geotermii ma podwójny pierścień, jak głowica odwiertu. */
+  .tlv-geo {
+    box-shadow:
+      inset 0 0 0 2px rgba(38, 40, 44, 0.22),
+      0 0 0 5px #f5f4f1,
+      0 0 0 6.5px rgba(38, 40, 44, 0.2);
+  }
+
+  /* Jednorazowa fala z węzła geotermii; rusza za każdym razem, gdy etap się zapala. */
+  .tlv-ripple i {
+    position: absolute;
+    left: calc(var(--r) / -2);
+    top: calc(var(--r) / -2);
+    width: var(--r);
+    height: var(--r);
+    border: 1px solid #10b981;
+    border-radius: 9999px;
+    opacity: 0;
+  }
+
+  .tl-step.is-lit .tlv-ripple i {
+    animation: tlv-ripple 1.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .tl-step.is-lit .tlv-ripple i:nth-child(2) {
+    animation-delay: 0.16s;
+  }
+
+  .tl-step.is-lit .tlv-ripple i:nth-child(3) {
+    animation-delay: 0.32s;
+  }
+
+  @keyframes tlv-ripple {
+    0% {
+      opacity: 0;
+      transform: scale(0.55);
+    }
+    22% {
+      opacity: 0.6;
+    }
+    100% {
+      opacity: 0;
+      transform: scale(1);
+    }
+  }
+
+  /* Pień nie kończy się na „Dziś”. */
+  .tlv-tail {
+    background: repeating-linear-gradient(to bottom, rgba(38, 40, 44, 0.3) 0 6px, transparent 6px 14px);
+    mask-image: linear-gradient(to bottom, black, transparent);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .tlv-card,
+    .tlv-photo img,
+    .tlv-branch::after {
+      transition: none;
+    }
+    .tl-step.is-lit .tlv-ripple i {
+      animation: none;
+    }
+  }
 }
 
 /* Nowoczesny, smukły pasek przewijania (Slim Minimal Scrollbar) */
