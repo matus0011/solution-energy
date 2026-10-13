@@ -265,7 +265,7 @@ export default function Header() {
                         <NavItem
                           href={link.href}
                           onClick={() => setMobileOpen(false)}
-                          className="py-1.5 text-xl font-bold uppercase tracking-wide text-[#fbba00] transition-colors duration-300 hover:text-white"
+                          className="py-1.5 text-xl font-bold uppercase tracking-wide text-[var(--brand-accent)] transition-colors duration-300 hover:text-white"
                           activeClassName="!text-white"
                         >
                           O firmie
@@ -293,14 +293,14 @@ export default function Header() {
             <a
               href="tel:+48146571105"
               onClick={() => setMobileOpen(false)}
-              className="px-6 py-6 text-center text-lg font-medium text-white transition-colors hover:text-[#fbba00]"
+              className="px-6 py-6 text-center text-lg font-medium text-white transition-colors hover:text-[var(--brand-accent)]"
             >
               Zadzwoń
             </a>
             <a
               href="mailto:biuro@energysolutions.pl"
               onClick={() => setMobileOpen(false)}
-              className="px-6 py-6 text-center text-lg font-medium text-white transition-colors hover:text-[#fbba00]"
+              className="px-6 py-6 text-center text-lg font-medium text-white transition-colors hover:text-[var(--brand-accent)]"
             >
               Napisz
             </a>

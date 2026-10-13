@@ -23,7 +23,7 @@ export default function Footer() {
               <img
                 src="/logos/logotyp_energysolutions_crv_white.png"
                 alt="Energy Solutions — strona główna"
-                className="h-14 w-auto"
+                className="h-14 w-auto transition-[filter] duration-700 ease-out [filter:var(--logo-filter-light,none)]"
               />
             </Link>
             <p className="max-w-sm text-base leading-relaxed text-white">
@@ -37,7 +37,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={label}
-                  className="text-white transition-all duration-300 hover:scale-110 hover:text-[#fbba00]"
+                  className="text-white transition-all duration-300 hover:scale-110 hover:text-[var(--brand-accent)]"
                 >
                   <Icon size={28} />
                 </a>
@@ -46,25 +46,25 @@ export default function Footer() {
           </div>
 
           <div className="flex flex-col items-center gap-2.5 text-base text-white lg:items-start">
-            <span className="font-heading text-2xl font-semibold tracking-wide text-[#fbba00] mb-6">
+            <span className="font-heading text-2xl font-semibold tracking-wide text-[var(--brand-accent)] mb-6">
               Kontakt
             </span>
             <span>
               <span className="font-bold">ul.</span> Wiesława Wody 27, 33-100 Tarnów
             </span>
-            <a href="tel:+48146571105" className="w-fit transition hover:text-[#fbba00]">
+            <a href="tel:+48146571105" className="w-fit transition hover:text-[var(--brand-accent)]">
               <span className="font-bold">tel.</span> +48 (14) 657 11 05
             </a>
             <span>
               <span className="font-bold">fax</span> +48 (14) 657 11 06
             </span>
-            <a href="mailto:biuro@energysolutions.pl" className="w-fit transition hover:text-[#fbba00]">
+            <a href="mailto:biuro@energysolutions.pl" className="w-fit transition hover:text-[var(--brand-accent)]">
               <span className="font-bold">e-mail:</span> biuro@energysolutions.pl
             </a>
           </div>
 
           <div className="flex flex-col items-center gap-2.5 text-base text-white lg:items-start">
-            <span className="font-heading text-2xl font-semibold tracking-wide text-[#fbba00] mb-6">
+            <span className="font-heading text-2xl font-semibold tracking-wide text-[var(--brand-accent)] mb-6">
               Dane rejestrowe
             </span>
             <span><span className="font-bold">NIP:</span> 873-308-78-05</span>
@@ -76,14 +76,14 @@ export default function Footer() {
         <div className="mt-10 flex flex-col items-center gap-4 text-center text-sm text-white sm:flex-row sm:justify-between sm:text-left">
           <span>© {year} Energy Solutions Sp. z o.o. Wszelkie prawa zastrzeżone.</span>
           <div className="flex flex-wrap items-center justify-center gap-6">
-            <Link to="/polityka-prywatnosci" className="transition hover:text-[#fbba00]">
+            <Link to="/polityka-prywatnosci" className="transition hover:text-[var(--brand-accent)]">
               Polityka prywatności
             </Link>
             <a
               href="https://mateuszklich.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="transition hover:text-[#fbba00]"
+              className="transition hover:text-[var(--brand-accent)]"
             >
               Projekt i wykonanie MK
             </a>

@@ -1,6 +1,8 @@
 import { trustedClients, type LogoEntry } from '@/lib/company'
 import LogoWall from '@/components/LogoWall'
 import LogoMarquee, { type LogoSize } from '@/components/LogoMarquee'
+import SectionTitle from '@/components/SectionTitle'
+import { useIsV2 } from '@/lib/homeVariant'
 
 // Sekcja "Oni nam zaufali" — najmocniejszy uniwersalny sygnał wiarygodności,
 // więc stoi na kilku podstronach. `description` jest nadpisywalny, żeby na
@@ -25,12 +27,16 @@ export default function TrustedClients({
   size = 'md',
   descriptionClassName = 'max-w-xl',
 }: TrustedClientsProps) {
+  const v2 = useIsV2()
+
   return (
-    <div className="flex flex-col gap-8 sm:gap-10">
-      <div className="flex flex-col gap-3">
-        <h2 className="font-heading text-3xl font-semibold text-[#26282C] sm:text-[38px] tracking-tight">{title}</h2>
+    <div className={`flex flex-col ${v2 ? 'gap-10 sm:gap-14' : 'gap-8 sm:gap-10'}`}>
+      <div className={`flex flex-col ${v2 ? 'gap-5' : 'gap-3'}`}>
+        <SectionTitle className="font-heading text-3xl font-semibold text-[#26282C] sm:text-[38px] tracking-tight">
+          {title}
+        </SectionTitle>
         {description && (
-          <p className={`text-[16px] sm:text-[17px] leading-relaxed text-[#55595f] ${descriptionClassName}`}>
+          <p className={`text-[16px] leading-relaxed text-[#55595f] ${v2 ? 'sm:text-[18px]' : 'sm:text-[17px]'} ${descriptionClassName}`}>
             {description}
           </p>
         )}

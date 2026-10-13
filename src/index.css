@@ -271,6 +271,236 @@
       transition: none;
     }
   }
+
+  /* Paski z logo przy nagłówkach v2. Kolor idzie za akcentem strony,
+     więc po przejściu osi też robią się zielone. */
+  .es-bars {
+    display: inline-flex;
+    gap: 5px;
+  }
+
+  .es-bars i {
+    display: block;
+    height: 6px;
+    width: 18px;
+    background: var(--brand-accent);
+    opacity: 0.18;
+    transform: skewX(-24deg) scaleX(0.55);
+    transform-origin: left center;
+    transition:
+      opacity 0.35s ease,
+      transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .es-bars.is-in i {
+    opacity: 1;
+    transform: skewX(-24deg) scaleX(1);
+  }
+
+  .es-bars.is-in i:nth-child(2) {
+    transition-delay: 0.14s;
+  }
+
+  .es-bars.is-in i:nth-child(3) {
+    transition-delay: 0.28s;
+  }
+
+  /* Podkreślenie tytułu karty przy najechaniu, ten sam skos co w menu. */
+  .es-card-title {
+    background-image: linear-gradient(var(--brand-accent), var(--brand-accent));
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    background-size: 0% 2px;
+    transition: background-size 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .group:hover .es-card-title,
+  .group:focus-visible .es-card-title {
+    background-size: 100% 2px;
+  }
+
+  /* Przewód schodzący z hero w dół strony. */
+  .es-drop {
+    position: relative;
+    width: 2px;
+    height: 88px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.22);
+  }
+
+  .es-drop::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: -40%;
+    width: 100%;
+    height: 40%;
+    background: linear-gradient(to bottom, transparent, var(--brand-accent));
+    animation: es-drop 2.2s cubic-bezier(0.6, 0, 0.2, 1) infinite;
+  }
+
+  @keyframes es-fade {
+    from {
+      opacity: 0;
+      transform: translateY(6px);
+    }
+  }
+
+  @keyframes es-drop {
+    to {
+      top: 100%;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .es-bars i {
+      transition: none;
+    }
+    .es-drop::after {
+      animation: none;
+      top: 60%;
+    }
+  }
+
+  /* Oś czasu (v2). Etap zapala się, gdy dojdzie do niego głowica.
+     --tl-zone to kolor odcinka: żółty przed geotermią, zielony od niej. */
+  .tl-fill {
+    background: linear-gradient(
+      90deg,
+      #fbba00 0,
+      #fbba00 calc(var(--tl-switch, 9999px) - 240px),
+      #10b981 var(--tl-switch, 9999px),
+      #10b981 100%
+    );
+  }
+
+  .tl-fill-y {
+    background: linear-gradient(
+      180deg,
+      #fbba00 0,
+      #fbba00 calc(var(--tl-switch, 9999px) - 160px),
+      #10b981 var(--tl-switch, 9999px),
+      #10b981 100%
+    );
+  }
+
+  .tl-node {
+    background: #f5f4f1;
+    box-shadow: inset 0 0 0 2px rgba(38, 40, 44, 0.22);
+    transition:
+      background-color 0.45s ease,
+      box-shadow 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .tl-step.is-lit .tl-node {
+    background: var(--tl-zone);
+    box-shadow:
+      inset 0 0 0 2px var(--tl-zone),
+      0 0 0 7px color-mix(in srgb, var(--tl-zone) 20%, transparent);
+  }
+
+  .tl-stem {
+    background: rgba(38, 40, 44, 0.16);
+    transition: background-color 0.45s ease;
+  }
+
+  .tl-step.is-lit .tl-stem {
+    background: var(--tl-zone);
+  }
+
+  .tl-card {
+    opacity: 0.45;
+    transform: translate3d(0, var(--tl-from, 16px), 0);
+    transition:
+      opacity 0.6s ease,
+      transform 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 0.4s ease;
+  }
+
+  .tl-step.is-lit .tl-card {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+    box-shadow: 0 18px 40px -24px rgba(38, 40, 44, 0.35);
+  }
+
+  .tl-photo {
+    height: var(--tl-photo, clamp(88px, 14vh, 170px));
+  }
+
+  .tl-photo img {
+    filter: grayscale(1) contrast(0.92);
+    transform: scale(1.06);
+    transition:
+      filter 0.9s ease,
+      transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .tl-step.is-lit .tl-photo img {
+    filter: none;
+    transform: scale(1);
+  }
+
+  .tl-step.is-lit .tl-card:hover .tl-photo img {
+    transform: scale(1.04);
+  }
+
+  .tl-year {
+    color: rgba(38, 40, 44, 0.3);
+    transition: color 0.5s ease;
+  }
+
+  .tl-step.is-lit .tl-year {
+    color: var(--tl-zone);
+  }
+
+  .tl-head {
+    background: var(--brand-accent);
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.4);
+    box-shadow:
+      0 0 0 6px color-mix(in srgb, var(--brand-accent) 25%, transparent),
+      0 0 28px 6px color-mix(in srgb, var(--brand-accent) 45%, transparent);
+    transition:
+      opacity 0.3s ease,
+      transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .tl-head.is-on {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  .tl-head::after {
+    content: '';
+    position: absolute;
+    inset: -10px;
+    border-radius: 9999px;
+    border: 2px solid var(--brand-accent);
+    animation: tl-pulse 1.8s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+  }
+
+  @keyframes tl-pulse {
+    from {
+      opacity: 0.7;
+      transform: scale(0.6);
+    }
+    to {
+      opacity: 0;
+      transform: scale(1.8);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .tl-card,
+    .tl-photo img,
+    .tl-node,
+    .tl-year {
+      transition: none;
+    }
+    .tl-head::after {
+      animation: none;
+    }
+  }
 }
 
 /* Nowoczesny, smukły pasek przewijania (Slim Minimal Scrollbar) */

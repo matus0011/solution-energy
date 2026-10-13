@@ -2,12 +2,15 @@ import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { sectors } from '@/lib/company'
+import SectionTitle from '@/components/SectionTitle'
+import { useIsV2 } from '@/lib/homeVariant'
 
 const n = sectors.length
 const slides = [...sectors, ...sectors]
 const TYTUL_MS = 250
 
 export default function Sectors() {
+  const v2 = useIsV2()
   const track = useRef<HTMLDivElement>(null)
   const skok = useRef(false)
   const indexRef = useRef(0)
@@ -149,7 +152,7 @@ export default function Sectors() {
         type="button"
         onClick={prev}
         aria-label="Poprzedni sektor"
-        className="inline-flex size-11 items-center justify-center rounded-none bg-[#fbba00] text-[#26282C] transition-transform duration-200 hover:scale-105 motion-reduce:transition-none"
+        className="inline-flex size-11 items-center justify-center rounded-none bg-[var(--brand-accent)] text-[#26282C] transition-transform duration-200 hover:scale-105 motion-reduce:transition-none"
       >
         <ChevronLeft className="size-5" strokeWidth={2.5} />
       </button>
@@ -162,7 +165,7 @@ export default function Sectors() {
         type="button"
         onClick={next}
         aria-label="Następny sektor"
-        className="inline-flex size-11 items-center justify-center rounded-none bg-[#fbba00] text-[#26282C] transition-transform duration-200 hover:scale-105 motion-reduce:transition-none"
+        className="inline-flex size-11 items-center justify-center rounded-none bg-[var(--brand-accent)] text-[#26282C] transition-transform duration-200 hover:scale-105 motion-reduce:transition-none"
       >
         <ChevronRight className="size-5" strokeWidth={2.5} />
       </button>
@@ -172,7 +175,7 @@ export default function Sectors() {
   return (
     <section
       data-faza={faza}
-      className="relative overflow-hidden bg-[#f5f4f1] py-16 sm:py-24"
+      className={`relative overflow-hidden bg-[#f5f4f1] ${v2 ? 'py-20 lg:py-28' : 'py-16 sm:py-24'}`}
     >
       {/* Kropki tylko od góry, łagodnie przechodzące w gradient do gładkiego tła */}
       <div
@@ -181,14 +184,26 @@ export default function Sectors() {
       />
       <div className="relative z-10 flex flex-col gap-8 pl-6 sm:pl-10 lg:flex-row lg:items-center lg:gap-6 lg:pl-14 xl:pl-[max(3.5rem,calc((100vw-90rem)/2))]">
         <div className="relative z-10 hidden h-auto w-full shrink-0 flex-col justify-between gap-10 border border-[#eeeeef] bg-white p-8 sm:p-12 lg:flex lg:h-[560px] lg:w-[427px] lg:p-14">
-          <div>
-            <p className="m-0 mb-3 text-[12px] sm:text-[13px] font-bold uppercase tracking-[0.14em] text-[#fbba00]">
-              Czym się zajmujemy
-            </p>
-            <h2 className="m-0 font-heading text-[32px] sm:text-[38px] font-semibold leading-[1.12] text-[#26282C] tracking-tight">
-              Sektory działalności
-            </h2>
-          </div>
+          {v2 ? (
+            <div className="flex flex-col gap-6">
+              <SectionTitle>Sektory działalności</SectionTitle>
+              <div className="flex flex-col gap-2">
+                <p className="m-0 font-heading text-[18px] font-semibold text-[#26282C]">{sectors[pokaz].title}</p>
+                <p key={pokaz} className="m-0 animate-[es-fade_0.5s_ease-out] text-[15.5px] leading-relaxed text-[#55595f]">
+                  {sectors[pokaz].lead}
+                </p>
+              </div>
+            </div>
+          ) : (
+            <div>
+              <p className="m-0 mb-3 text-[12px] sm:text-[13px] font-bold uppercase tracking-[0.14em] text-[var(--brand-accent)]">
+                Czym się zajmujemy
+              </p>
+              <h2 className="m-0 font-heading text-[32px] sm:text-[38px] font-semibold leading-[1.12] text-[#26282C] tracking-tight">
+                Sektory działalności
+              </h2>
+            </div>
+          )}
           <div className="hidden lg:block">{arrows}</div>
         </div>
 
