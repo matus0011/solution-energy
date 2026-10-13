@@ -29,24 +29,24 @@ function Intro() {
   return (
     <div
       ref={ref}
-      className="relative z-[1] mb-16 grid gap-6 sm:mb-20 lg:mb-28 lg:grid-cols-2 lg:items-end lg:gap-x-[120px]"
+      className="relative z-[1] mb-12 grid gap-5 sm:mb-14 lg:mb-20 lg:grid-cols-2 lg:items-end lg:gap-x-[104px]"
     >
       <div className="flex flex-col items-start">
-        <div className="mb-6">
+        <div className="mb-4 [&_i]:h-1 [&_i]:w-[13px]">
           <ChargeBars on={shown} />
         </div>
-        <h2 className="font-heading text-3xl font-semibold leading-[1.08] tracking-[-0.025em] text-[#1e2229] sm:text-4xl md:text-5xl lg:text-[50px] xl:text-[56px]">
+        <h2 className="max-w-[26rem] font-heading text-[28px] font-semibold leading-[1.15] tracking-[-0.02em] text-[#26282C] sm:text-[32px] lg:text-[36px] xl:text-[40px]">
           Inżynieria transformacji energetycznej.
         </h2>
       </div>
-      <div className="flex flex-col items-start lg:pb-1.5">
-        <p className="mb-8 max-w-[34rem] text-[17px] leading-[1.65] text-[#4a5058] sm:text-[18px]">
+      <div className="flex flex-col items-start lg:pb-1">
+        <p className="mb-6 max-w-[30rem] text-[15.5px] leading-[1.7] text-[#55595f] sm:text-[16px]">
           Realizujemy strategiczne inwestycje pod klucz w formule EPC — od projektowania w standardzie 3D BIM, przez
           ciepłownie geotermalne i układy kogeneracyjne, po prefabrykację i rozruch obiektów.
         </p>
         <Link
           to="/firma/obszary-dzialalnosci"
-          className="inline-flex items-center justify-center bg-[var(--brand-accent)] px-10 py-4 text-[14px] font-bold uppercase tracking-[0.14em] text-[#26282C] transition-colors duration-300 hover:bg-[var(--brand-accent-strong)]"
+          className="inline-flex items-center justify-center bg-[var(--brand-accent)] px-6 py-3 text-[12px] font-bold uppercase tracking-[0.16em] text-[#26282C] transition-colors duration-300 hover:bg-[var(--brand-accent-strong)]"
         >
           Zobacz więcej
         </Link>
@@ -61,7 +61,7 @@ function Year({ step, className = '' }: { step: TimelineStep; className?: string
   return (
     <div
       data-year
-      className={`tlv-year relative z-[1] mb-5 font-heading font-medium leading-none tracking-[-0.045em] lg:mb-0 ${className}`}
+      className={`tlv-year relative z-[1] mb-4 font-heading font-light leading-none tracking-[-0.03em] lg:mb-0 ${className}`}
     >
       <span className="block">{step.year}</span>
       <span data-year-fill className="tlv-year-fill absolute inset-0" aria-hidden="true">
@@ -76,22 +76,22 @@ function Card({ step, side, className = '' }: { step: TimelineStep; side: 'left'
   const body = (
     <>
       {step.image && (
-        <div className="tlv-photo relative aspect-[16/10] shrink-0 overflow-hidden sm:aspect-auto sm:min-h-[200px] sm:w-[42%] lg:aspect-[16/9] lg:min-h-0 lg:w-auto xl:aspect-auto xl:min-h-[236px] xl:w-[44%]">
+        <div className="tlv-photo relative aspect-[2/1] shrink-0 overflow-hidden">
           <img src={step.image} alt="" loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
         </div>
       )}
-      <div className="flex flex-1 flex-col justify-center gap-2 p-6 sm:p-7">
-        {category && <span className="text-[13px] font-medium text-[#7a7f86]">{category}</span>}
-        <h3 className="font-heading text-[18px] font-semibold leading-snug tracking-[-0.01em] text-[#26282C] sm:text-[19px]">
+      <div className="flex flex-col gap-1.5 px-5 pb-5 pt-4">
+        {category && <span className="text-[12px] text-[#8a8e94]">{category}</span>}
+        <h3 className="font-heading text-[16.5px] font-semibold leading-snug tracking-[-0.01em] text-[#26282C] sm:text-[17px]">
           <span className="es-card-title">{step.title}</span>
         </h3>
-        <p className="line-clamp-3 text-[15px] leading-relaxed text-[#55595f]">{step.desc}</p>
+        <p className="line-clamp-3 text-[14px] leading-[1.65] text-[#5f636a]">{step.desc}</p>
       </div>
     </>
   )
 
-  const classes = `tlv-card group relative z-[1] flex flex-col bg-white sm:flex-row lg:flex-col ${
-    side === 'right' ? 'xl:flex-row-reverse' : 'xl:flex-row'
+  const classes = `tlv-card group relative z-[1] flex w-full max-w-[440px] flex-col bg-white lg:max-w-[400px] xl:max-w-[420px] ${
+    side === 'right' ? 'lg:justify-self-start' : 'lg:justify-self-end'
   } ${className}`
 
   return step.project !== undefined ? (
@@ -182,7 +182,7 @@ export default function EnergyTimelineVertical() {
   return (
     <section
       ref={sectionRef}
-      className="relative overflow-hidden bg-[#f5f4f1] px-6 py-20 [--tlv-ys:clamp(40px,11vw,56px)] sm:px-10 lg:px-14 lg:py-28 lg:[--tlv-ys:clamp(48px,6.2vw,96px)]"
+      className="relative overflow-hidden bg-[#f5f4f1] px-6 py-20 [--tlv-ys:clamp(28px,8vw,34px)] sm:px-10 lg:px-14 lg:py-28 lg:[--tlv-ys:clamp(32px,3.6vw,52px)]"
       aria-label="Oś czasu"
     >
       <div
@@ -202,7 +202,7 @@ export default function EnergyTimelineVertical() {
 
         <Intro />
 
-        <ol ref={listRef} className="relative flex flex-col gap-14 sm:gap-16 lg:gap-24">
+        <ol ref={listRef} className="relative flex flex-col gap-11 sm:gap-12 lg:gap-14">
           {timeline.map((step, index) => {
             const side = index % 2 === 0 ? 'right' : 'left'
             const anchor = 'absolute left-[9px] top-[calc(var(--tlv-ys)/2)] lg:left-1/2 lg:top-1/2'
@@ -211,7 +211,7 @@ export default function EnergyTimelineVertical() {
                 key={step.title}
                 data-step
                 data-side={side}
-                className="tl-step tlv-step relative pl-10 sm:pl-14 lg:grid lg:grid-cols-2 lg:items-center lg:gap-x-[120px] lg:pl-0"
+                className="tl-step tlv-step relative pl-9 sm:pl-12 lg:grid lg:grid-cols-2 lg:items-center lg:gap-x-[104px] lg:pl-0"
                 style={{ '--tl-zone': index >= greenIndex ? GREEN : YELLOW } as CSSProperties}
               >
                 {index === greenIndex && (
@@ -222,14 +222,14 @@ export default function EnergyTimelineVertical() {
                   </span>
                 )}
                 <span
-                  className={`tlv-branch absolute top-1/2 hidden h-[2px] w-[51px] -translate-y-1/2 lg:block ${
-                    side === 'right' ? 'left-[calc(50%+9px)] origin-left' : 'right-[calc(50%+9px)] origin-right'
+                  className={`tlv-branch absolute top-1/2 hidden h-px w-[46px] lg:block ${
+                    side === 'right' ? 'left-[calc(50%+6px)] origin-left' : 'right-[calc(50%+6px)] origin-right'
                   }`}
                   aria-hidden="true"
                 />
                 <span
                   data-node
-                  className={`tl-node ${anchor} z-[1] h-[18px] w-[18px] -translate-x-1/2 -translate-y-1/2 rounded-full ${
+                  className={`tl-node tlv-node ${anchor} z-[1] h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-full ${
                     index === greenIndex ? 'tlv-geo' : ''
                   }`}
                   aria-hidden="true"

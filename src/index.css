@@ -506,16 +506,22 @@
      --tlv-ys to stopień roku; od niego zależy też położenie węzła na telefonie. */
   .tlv-year {
     font-size: var(--tlv-ys);
-    color: rgba(38, 40, 44, 0.1);
+    color: rgba(38, 40, 44, 0.16);
   }
 
   .tlv-year-fill {
-    color: #26282c;
+    color: #3a3d42;
     clip-path: inset(0 0 100% 0);
   }
 
+  .tl-step.is-lit .tlv-node {
+    box-shadow:
+      inset 0 0 0 2px var(--tl-zone),
+      0 0 0 4px color-mix(in srgb, var(--tl-zone) 18%, transparent);
+  }
+
   .tlv-branch {
-    background: rgba(38, 40, 44, 0.14);
+    background: rgba(38, 40, 44, 0.12);
   }
 
   .tlv-branch::after {
@@ -533,8 +539,8 @@
   }
 
   .tlv-card {
-    opacity: 0.5;
-    transform: translate3d(20px, 0, 0);
+    opacity: 0.55;
+    transform: translate3d(14px, 0, 0);
     transition:
       opacity 0.6s ease,
       transform 0.8s cubic-bezier(0.22, 1, 0.36, 1),
@@ -543,14 +549,14 @@
 
   @media (min-width: 1024px) {
     .tlv-step[data-side='left'] .tlv-card {
-      transform: translate3d(-20px, 0, 0);
+      transform: translate3d(-14px, 0, 0);
     }
   }
 
   .tl-step.is-lit .tlv-card {
     opacity: 1;
     transform: none;
-    box-shadow: 0 22px 44px -28px rgba(38, 40, 44, 0.38);
+    box-shadow: 0 14px 32px -26px rgba(38, 40, 44, 0.32);
   }
 
   .tlv-photo img {
@@ -574,8 +580,8 @@
   .tlv-geo {
     box-shadow:
       inset 0 0 0 2px rgba(38, 40, 44, 0.22),
-      0 0 0 5px #f5f4f1,
-      0 0 0 6.5px rgba(38, 40, 44, 0.2);
+      0 0 0 4px #f5f4f1,
+      0 0 0 5px rgba(38, 40, 44, 0.2);
   }
 
   /* Jednorazowa fala z węzła geotermii; rusza za każdym razem, gdy etap się zapala. */
