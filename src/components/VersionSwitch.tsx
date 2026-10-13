@@ -1,8 +1,9 @@
-export type HomeVersion = 'default' | 'v1'
+export type HomeVersion = 'default' | 'v1' | 'v2'
 
 const options: { id: HomeVersion; label: string; hint: string }[] = [
   { id: 'default', label: 'Domyślna', hint: 'dotychczasowe demo' },
-  { id: 'v1', label: 'v1', hint: 'układ z dziś' },
+  { id: 'v1', label: 'v1', hint: 'układ v1' },
+  { id: 'v2', label: 'v2', hint: 'układ v2' },
 ]
 
 export default function VersionSwitch({
