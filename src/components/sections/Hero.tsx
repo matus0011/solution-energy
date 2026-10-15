@@ -27,7 +27,7 @@ export default function Hero() {
         ref={videoRef}
         className="absolute inset-0 h-full w-full object-cover"
         src="/hero.mp4"
-        poster="/realizacje/torun-geotermia.jpg"
+        poster="/hero-poster.webp"
         autoPlay
         muted
         loop
