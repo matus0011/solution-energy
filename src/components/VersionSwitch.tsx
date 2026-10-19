@@ -1,4 +1,4 @@
-export type HomeVersion = 'default' | 'v1' | 'v2' | 'v3' | 'v4'
+export type HomeVersion = 'default' | 'v1' | 'v2' | 'v3' | 'v4' | 'v5'
 
 const options: { id: HomeVersion; label: string; hint: string }[] = [
   { id: 'default', label: 'Domyślna', hint: 'dotychczasowe demo' },
@@ -6,6 +6,7 @@ const options: { id: HomeVersion; label: string; hint: string }[] = [
   { id: 'v2', label: 'v2', hint: 'układ v2' },
   { id: 'v3', label: 'v3', hint: 'układ v3' },
   { id: 'v4', label: 'v4', hint: 'układ v4' },
+  { id: 'v5', label: 'v5', hint: 'układ v5' },
 ]
 
 export default function VersionSwitch({
@@ -16,7 +17,7 @@ export default function VersionSwitch({
   onChange: (version: HomeVersion) => void
 }) {
   return (
-    <div className="fixed bottom-5 left-1/2 z-40 flex -translate-x-1/2 items-center gap-1 bg-[#26282C] p-1.5 shadow-[0_8px_24px_rgba(0,0,0,0.28)]">
+    <div className="fixed bottom-5 left-1/2 z-40 flex max-w-[calc(100vw-24px)] -translate-x-1/2 items-center gap-1 overflow-x-auto bg-[#26282C] p-1.5 shadow-[0_8px_24px_rgba(0,0,0,0.28)]">
       <span className="px-2 text-[11px] font-semibold uppercase tracking-[0.12em] text-white/60">Układ</span>
       {options.map((option) => {
         const active = version === option.id

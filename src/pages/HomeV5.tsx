@@ -9,11 +9,12 @@ import FeaturedProjects from '@/components/sections/FeaturedProjects'
 import { HomeVariantContext } from '@/lib/homeVariant'
 
 // Układ V4: to samo co V3, ale karty osi czasu mają rysunki etapów zamiast zdjęć.
-export default function HomeV5() {
+// HomeV6 (układ V5) renderuje go z `decarb={false}`.
+export default function HomeV5({ decarb = true }: { decarb?: boolean }) {
   return (
     <HomeVariantContext.Provider value="v3">
       <Hero />
-      <EnergyTimelineVertical media="icons" />
+      <EnergyTimelineVertical media="icons" decarb={decarb} />
       <StatsStrip />
       <Sectors />
       <NewsPreview />

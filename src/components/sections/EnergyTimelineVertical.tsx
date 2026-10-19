@@ -127,8 +127,15 @@ function Card({
 
 // Układy v3 i v4: oś czasu jako drzewko z góry na dół. Pień przejmuje kreskę „Przewiń”
 // z hero i biegnie środkiem; etapy odchodzą od niego na przemian w lewo i w prawo.
-// Na telefonie pień stoi przy lewej krawędzi. Karty v3 mają zdjęcia, v4 rysunki.
-export default function EnergyTimelineVertical({ media }: { media: TimelineMedia }) {
+// Na telefonie pień stoi przy lewej krawędzi. Karty v3 mają zdjęcia, v4 i v5 rysunki.
+// Bez `decarb` (v5) oś zostaje w kolorach marki: brak zielonego motywu, fali i pierścienia przy geotermii.
+export default function EnergyTimelineVertical({
+  media,
+  decarb = true,
+}: {
+  media: TimelineMedia
+  decarb?: boolean
+}) {
   const sectionRef = useRef<HTMLElement>(null)
   const wrapRef = useRef<HTMLDivElement>(null)
   const listRef = useRef<HTMLOListElement>(null)
@@ -174,7 +181,7 @@ export default function EnergyTimelineVertical({ media }: { media: TimelineMedia
       }
       trunk.style.top = `${top}px`
       trunk.style.height = `${length}px`
-      trunk.style.setProperty('--tl-switch', `${nodes[greenIndex]}px`)
+      if (decarb) trunk.style.setProperty('--tl-switch', `${nodes[greenIndex]}px`)
       return true
     },
     () => {
@@ -194,7 +201,7 @@ export default function EnergyTimelineVertical({ media }: { media: TimelineMedia
         const shown = Math.min(height, Math.max(0, level - top))
         fill.style.clipPath = `inset(0 0 ${height - shown}px 0)`
       })
-      setDecarb(reach >= nodes[greenIndex])
+      if (decarb) setDecarb(reach >= nodes[greenIndex])
     },
   )
 
@@ -225,15 +232,16 @@ export default function EnergyTimelineVertical({ media }: { media: TimelineMedia
           {timeline.map((step, index) => {
             const side = index % 2 === 0 ? 'right' : 'left'
             const anchor = 'absolute left-[9px] top-[calc(var(--tlv-ys)/2)] lg:left-1/2 lg:top-1/2'
+            const geo = decarb && index === greenIndex
             return (
               <li
                 key={step.title}
                 data-step
                 data-side={side}
                 className="tl-step tlv-step relative pl-9 sm:pl-12 lg:grid lg:grid-cols-2 lg:items-center lg:gap-x-[104px] lg:pl-0"
-                style={{ '--tl-zone': index >= greenIndex ? GREEN : YELLOW } as CSSProperties}
+                style={{ '--tl-zone': decarb && index >= greenIndex ? GREEN : YELLOW } as CSSProperties}
               >
-                {index === greenIndex && (
+                {geo && (
                   <span className={`tlv-ripple ${anchor} h-0 w-0`} aria-hidden="true">
                     <i className="[--r:150px]" />
                     <i className="[--r:340px]" />
@@ -249,7 +257,7 @@ export default function EnergyTimelineVertical({ media }: { media: TimelineMedia
                 <span
                   data-node
                   className={`tl-node tlv-node ${anchor} z-[1] h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-full ${
-                    index === greenIndex ? 'tlv-geo' : ''
+                    geo ? 'tlv-geo' : ''
                   }`}
                   aria-hidden="true"
                 />
