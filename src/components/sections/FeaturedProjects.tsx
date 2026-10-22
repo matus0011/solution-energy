@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { projects } from '@/lib/projects'
+import { projects, finalFeaturedProjects } from '@/lib/projects'
 import Reveal from '@/components/Reveal'
 import SectionTitle from '@/components/SectionTitle'
 import { useIsV2 } from '@/lib/homeVariant'
@@ -11,6 +11,7 @@ import { useIsV2 } from '@/lib/homeVariant'
 const featured = projects.slice(0, 3)
 
 interface FeaturedProjectsProps {
+  final?: boolean
   moreLabel?: string
   motion?: boolean
   className?: string
@@ -18,6 +19,7 @@ interface FeaturedProjectsProps {
 }
 
 export default function FeaturedProjects({
+  final = false,
   moreLabel = 'Zobacz wszystkie realizacje →',
   motion = false,
   className = '',
@@ -42,10 +44,10 @@ export default function FeaturedProjects({
         </Reveal>
 
         <div className={`grid grid-cols-1 gap-8 md:grid-cols-3 ${v2 ? 'md:gap-8' : 'md:gap-6'}`}>
-          {featured.map((project, index) => (
+          {(final ? finalFeaturedProjects : featured).map((project, index) => (
             <Reveal key={project.title} active={motion} delay={index * 90}>
             <Link
-              to={`/realizacje/${index}`}
+              to={`/realizacje/${projects.indexOf(project)}`}
               className="group flex h-full flex-col"
             >
               <div className={`relative overflow-hidden ${v2 ? 'h-[260px] lg:h-[340px]' : 'h-[240px] lg:h-[280px]'}`}>
@@ -76,6 +78,7 @@ export default function FeaturedProjects({
                   {project.date}
                 </span>
                 <span className={`leading-relaxed text-[#606264] ${v2 ? 'text-[15px]' : 'text-[14px]'}`}>{project.client}</span>
+                {final && <p className="text-[15px] leading-relaxed text-[#606264]">{project.desc}</p>}
               </div>
             </Link>
             </Reveal>

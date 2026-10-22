@@ -15,6 +15,7 @@ interface TrustedClientsProps {
   variant?: 'wall' | 'marquee'
   /** Nadpisanie listy — domyślnie klienci z `company.ts`. */
   logos?: LogoEntry[]
+  marqueeDuration?: number
   size?: LogoSize
   descriptionClassName?: string
 }
@@ -25,6 +26,7 @@ export default function TrustedClients({
   variant = 'wall',
   logos = trustedClients,
   size = 'md',
+  marqueeDuration,
   descriptionClassName = 'max-w-xl',
 }: TrustedClientsProps) {
   const v2 = useIsV2()
@@ -41,7 +43,7 @@ export default function TrustedClients({
           </p>
         )}
       </div>
-      {variant === 'marquee' ? <LogoMarquee logos={logos} size={size} /> : <LogoWall logos={logos} />}
+      {variant === 'marquee' ? <LogoMarquee logos={logos} size={size} duration={marqueeDuration} /> : <LogoWall logos={logos} />}
     </div>
   )
 }

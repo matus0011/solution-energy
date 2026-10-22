@@ -1,14 +1,10 @@
 import { Link } from 'react-router-dom'
-import { FaFacebook, FaLinkedin } from 'react-icons/fa'
-import { FaSquareXTwitter } from 'react-icons/fa6'
-import { InstagramIcon, YoutubeIcon } from '@/components/icons/SocialIcons'
+import { FaLinkedin } from 'react-icons/fa'
+import { YoutubeIcon } from '@/components/icons/SocialIcons'
 
 const socialLinks = [
-  { label: 'Facebook', href: '#', Icon: FaFacebook },
   { label: 'LinkedIn', href: '#', Icon: FaLinkedin },
-  { label: 'X', href: '#', Icon: FaSquareXTwitter },
   { label: 'YouTube', href: '#', Icon: YoutubeIcon },
-  { label: 'Instagram', href: '#', Icon: InstagramIcon },
 ]
 
 export default function Footer() {

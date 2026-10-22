@@ -1,4 +1,4 @@
-export type HomeVersion = 'default' | 'v1' | 'v2' | 'v3' | 'v4' | 'v5'
+export type HomeVersion = 'default' | 'v1' | 'v2' | 'v3' | 'v4' | 'v5' | 'final'
 
 const options: { id: HomeVersion; label: string; hint: string }[] = [
   { id: 'default', label: 'Domyślna', hint: 'dotychczasowe demo' },
@@ -7,6 +7,7 @@ const options: { id: HomeVersion; label: string; hint: string }[] = [
   { id: 'v3', label: 'v3', hint: 'układ v3' },
   { id: 'v4', label: 'v4', hint: 'układ v4' },
   { id: 'v5', label: 'v5', hint: 'układ v5' },
+  { id: 'final', label: 'Final', hint: 'wersja finalna' },
 ]
 
 export default function VersionSwitch({

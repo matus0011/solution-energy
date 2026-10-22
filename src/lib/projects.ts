@@ -127,4 +127,34 @@ export const projects = [
       '/realizacje/lodz-instalacja-wewnetrzna.jpg',
     ],
   },
+  // Najnowsze realizacje do sekcji Final — portfolio, pozycje 14, 33 i 13.
+  {
+    cat: 'Obiekty energetyczne',
+    title: 'Akumulator ciepła w EC Żerań',
+    desc: 'Budowa akumulatora ciepła wraz z pompownią wody sieciowej oraz infrastrukturą towarzyszącą w EC Żerań w Warszawie. Konsorcjum: lider Inżynieria Rzeszów S.A., partner Energy Solutions Sp. z o.o.',
+    date: 'W realizacji',
+    client: 'PGNiG TERMIKA S.A.',
+    image: '/realizacje/zeran-akumulator.jpg',
+    gallery: ['/realizacje/zeran-akumulator.jpg'],
+  },
+  {
+    cat: 'Ochrona środowiska',
+    title: 'Oczyszczalnia Ścieków Łęgi w Zakopanem',
+    desc: 'Budowa węzła gospodarki biogazowo-osadowej w ramach II etapu zadania „Rozbudowa Oczyszczalni Ścieków Łęgi w Zakopanem”.',
+    date: 'W realizacji',
+    client: 'Inżynieria Rzeszów S.A. — inwestycja dla SEWIK Tatrzańska Komunalna Grupa Kapitałowa Sp. z o.o.',
+    image: '/realizacje/zakopane-legi.jpg',
+    gallery: ['/realizacje/zakopane-legi.jpg'],
+  },
+  {
+    cat: 'Obiekty energetyczne',
+    title: 'Instalacja kogeneracyjna w MPEC Brzesko',
+    desc: 'Budowa instalacji kogeneracyjnej z agregatami gazowymi i kotłem gazowym w MPEC Sp. z o.o. w Brzesku. Konsorcjum: lider Energy Solutions Sp. z o.o., partner Ferox Energy System Sp. z o.o.',
+    date: '04.11.2024–24.03.2026',
+    client: 'MPEC Sp. z o.o., Brzesko',
+    image: '/realizacje/brzesko-mpec.jpg',
+    gallery: ['/realizacje/brzesko-mpec.jpg'],
+  },
 ]
+
+export const finalFeaturedProjects = projects.slice(-3)

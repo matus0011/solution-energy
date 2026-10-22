@@ -6,6 +6,7 @@ import HomeV2 from '@/pages/HomeV3'
 import HomeV3 from '@/pages/HomeV4'
 import HomeV4 from '@/pages/HomeV5'
 import HomeV5 from '@/pages/HomeV6'
+import HomeFinal from '@/pages/HomeFinal'
 
 // Wejście na / pokazuje dotychczasowe demo.
 // Układ v1 jest pod /?wersja=v1.
@@ -13,7 +14,7 @@ import HomeV5 from '@/pages/HomeV6'
 // Układ v3 (oś czasu ze zdjęciami) jest pod /?wersja=v3.
 // Układ v4 (oś czasu z rysunkami) jest pod /?wersja=v4.
 // Układ v5 (v4 bez przejścia na zielony) jest pod /?wersja=v5.
-const versions: HomeVersion[] = ['v1', 'v2', 'v3', 'v4', 'v5']
+const versions: HomeVersion[] = ['v1', 'v2', 'v3', 'v4', 'v5', 'final']
 
 export default function Home() {
   const [params, setParams] = useSearchParams()
@@ -32,6 +33,7 @@ export default function Home() {
 
   return (
     <>
+      {version === 'final' && <HomeFinal />}
       {version === 'v5' && <HomeV5 />}
       {version === 'v4' && <HomeV4 />}
       {version === 'v3' && <HomeV3 />}

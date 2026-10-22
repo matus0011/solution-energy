@@ -1,14 +1,13 @@
 import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { ChevronLeft, ChevronRight, X } from 'lucide-react'
 import { projects } from '@/lib/projects'
 
-// Na razie nie ma prawdziwego API/CMS z treścią per wpis — na test zawsze
-// pokazujemy pierwszą pozycję z listy, niezależnie od parametru w adresie.
-// Do podmiany, gdy dojdą realne dane dla poszczególnych realizacji.
-const project = projects[0]
-
 export default function RealizacjaSzczegoly() {
+  const { id } = useParams()
+  const index = id && /^\d+$/.test(id) ? Number(id) : -1
+  const project = projects[index] ?? projects[0]
+  const isLatest = index >= projects.length - 3 && index < projects.length
   // Indeks aktualnie powiększonego zdjęcia w lightboxie (null = zamknięty).
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null)
 
@@ -61,7 +60,7 @@ export default function RealizacjaSzczegoly() {
               dangerouslySetInnerHTML). Klasa .entry-content (src/index.css) stylizuje
               gołe tagi, więc obsłuży dowolne bloki, jakie przyjdą z edytora: akapity,
               nagłówki, cytaty, listy, obrazy, wideo/embedy, tabele itd. */}
-          <div className="entry-content">
+          {!isLatest && <div className="entry-content">
             <p>
               Pełna treść realizacji — do uzupełnienia. W tym miejscu pojawi się opis realizacji: zakres prac,
               zastosowane rozwiązania techniczne, harmonogram oraz efekty wdrożenia.
@@ -90,6 +89,8 @@ export default function RealizacjaSzczegoly() {
 
             <p>Ostatni akapit — do uzupełnienia rzeczywistą treścią po stronie klienta.</p>
           </div>
+
+          }
 
           {/* Galeria zdjęć z realizacji — prawdziwe fotografie z budowy
               (materiał referencyjny klienta), nie placeholdery. Siatka

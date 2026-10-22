@@ -52,13 +52,15 @@ function LogoRow({
 export default function LogoMarquee({
   logos,
   size = 'md',
+  duration,
 }: {
   logos: LogoEntry[]
   size?: LogoSize
+  duration?: number
 }) {
   return (
     <div className="relative overflow-hidden py-2">
-      <div className="logo-marquee flex w-max items-center">
+      <div className="logo-marquee flex w-max items-center" style={duration ? { animationDuration: `${duration}s` } : undefined}>
         <LogoRow logos={logos} size={size} />
         <LogoRow logos={logos} size={size} hidden />
       </div>

@@ -1,0 +1,33 @@
+{
+  "status": "Wdrożone w Final. Treści skrócone i zredagowane na potrzeby kart.",
+  "requestedProfile": "https://www.linkedin.com/in/marcin-skrzyniarz-a27914102/recent-activity/all/",
+  "items": [
+    {
+      "title": "Akumulator ciepła w EC Żerań napełniony w 100%",
+      "excerpt": "Akumulator ciepła w EC Żerań w Warszawie osiągnął 100% napełnienia. To kolejny etap realizacji inwestycji prowadzonej przez konsorcjum Inżynierii Rzeszów i Energy Solutions.",
+      "verification": "100% napełnienia potwierdzone przez klienta w rozmowie. Wpis autora z 15.09.2026 informuje o 50% i planie 100% do końca września; nie jest źródłem potwierdzenia pełnego napełnienia.",
+      "source": null,
+      "image": "/aktualnosci/zeran-akumulator.jpg",
+      "date": null,
+      "imageNote": "Fotografia tego samego obiektu z publikacji ORLEN Termika udostępnionej przez autora (7 sierpnia); ilustracja projektu, nie dowód poziomu napełnienia."
+    },
+    {
+      "title": "Umowa na rozbudowę Elektrociepłowni Węgierska w Nowym Sączu",
+      "excerpt": "Energy Solutions podpisało umowę z MPEC Nowy Sącz na budowę układu trzech pomp ciepła o mocy 200 kW każda. Inwestycja stanowi drugi etap rozbudowy Elektrociepłowni Węgierska.",
+      "verification": "Zdjęcie podpisania umowy z wpisu Kierunek Energetyka udostępnionego przez autora 25.08.2026. Zakres potwierdzony przez Urząd Miasta; karta prowadzi do tego komunikatu.",
+      "supportingSource": "https://nowysacz.pl/aktualnosci/komunikaty-biura-prezydenta/rozbudowa-nowej-elektrocieplowni.html",
+      "source": null,
+      "image": "/aktualnosci/nowy-sacz-umowa.jpg",
+      "date": null
+    },
+    {
+      "title": "Nowa kotłownia parowa Fritar oddana do użytku",
+      "excerpt": "Zakończyliśmy budowę kotłowni parowej dla zakładu Fritar w Tarnowie, realizowaną we współpracy z LOOS Centrum. Ukończoną inwestycję odwiedzili przedstawiciele władz miasta, instytucji otoczenia biznesu i partnerzy projektu.",
+      "verification": "Odczytano pełny wpis autora w Safari. Publikacja z 04.09.2026 zawiera film; użyta oryginalna miniatura filmu, rozjaśniona CSS.",
+      "supportingSource": "https://pl.linkedin.com/in/tomasz-kozio%C5%82-689030257",
+      "source": "https://www.linkedin.com/feed/update/urn:li:activity:7501690066432516097/",
+      "image": "/aktualnosci/fritar-oddanie.jpg",
+      "date": null
+    }
+  ]
+}

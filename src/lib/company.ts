@@ -287,3 +287,34 @@ export const googleReviews: {
   count: null,
   url: 'https://www.google.com/search?q=Energy+Solutions+Tarnów',
 }
+
+// Partnerzy Final — kolejność zatwierdzona przez klienta.
+export const finalPartners: LogoEntry[] = [
+  { name: 'Hydrosolar', logo: '/logos/partners/hydrosolar.png' },
+  { name: 'Gazuno', logo: '/logos/partners/gazuno.png' },
+  { name: 'LOOS', logo: '/logos/partners/loos.svg' },
+  { name: 'Oilon', logo: '/logos/partners/oilon.png' },
+  { name: 'Legrand', logo: '/logos/partners/legrand.svg' },
+  { name: 'AGH', logo: '/logos/clients/agh.svg' },
+  { name: 'Energija', logo: '/logos/partners/energija.svg' },
+  { name: 'KSB', logo: '/logos/partners/ksb.png' },
+  { name: 'Tedom', logo: '/logos/partners/tedom.png' },
+  { name: '2G', logo: '/logos/partners/2g.svg' },
+  { name: 'IMI', logo: '/logos/partners/imi.png' },
+  { name: 'Alfa Laval', logo: '/logos/partners/alfa-laval.svg' },
+  { name: 'Gentec', logo: '/logos/partners/gentec.svg' },
+  { name: 'Tranter', logo: '/logos/partners/tranter.svg' },
+  { name: 'SEG', logo: '/logos/partners/seg.jpg' },
+  { name: 'Tarnowski Klaster Przemysłowy', logo: '/logos/partners/klaster-tarnowski.svg' },
+  { name: 'ABB', logo: '/logos/partners/abb.svg' },
+]
+
+// Certyfikaty spółki wymienione na stronie 8 portfolio z 19.05.2026.
+// UDT i uprawnienia energetyczne dotyczą kwalifikacji pracowników (str. 8–9).
+export const finalCertificates: LogoEntry[] = [
+  { name: 'PN-EN ISO 9001:2015', logo: '/logos/certificates/iso-9001.svg' },
+  { name: 'ISO 45001:2018', logo: '/logos/certificates/iso-45001.svg' },
+  { name: 'ISO 14001:2015', logo: '/logos/certificates/iso-14001.svg' },
+  { name: 'PED 2014/68/UE — moduł A2', logo: '/logos/certificates/ped.svg' },
+  { name: 'WPQR — zatwierdzone technologie spawania', logo: '/logos/certificates/wpqr.svg' },
+]

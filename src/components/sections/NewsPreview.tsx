@@ -1,14 +1,15 @@
 import { Link } from 'react-router-dom'
-import { news } from '@/lib/news'
+import { news, finalNews } from '@/lib/news'
 import Reveal from '@/components/Reveal'
 import SectionTitle from '@/components/SectionTitle'
 import { useIsV2 } from '@/lib/homeVariant'
 
 interface NewsPreviewProps {
+  final?: boolean
   description?: string | false
 }
 
-export default function NewsPreview({ description = false }: NewsPreviewProps = {}) {
+export default function NewsPreview({ description = false, final = false }: NewsPreviewProps = {}) {
   const v2 = useIsV2()
 
   return (
@@ -32,21 +33,23 @@ export default function NewsPreview({ description = false }: NewsPreviewProps = 
         </Reveal>
 
         <div className={`grid grid-cols-1 gap-8 md:grid-cols-3 ${v2 ? 'md:gap-8' : 'md:gap-6'}`}>
-          {news.map((item, index) => (
+          {(final ? finalNews : news).map((item, index) => (
             <Reveal key={item.title} delay={index * 90}>
             <Link
               to={item.href}
+              target={item.href.startsWith('https://') ? '_blank' : undefined}
+              rel={item.href.startsWith('https://') ? 'noopener noreferrer' : undefined}
               className="group flex h-full flex-col"
             >
               <div className={`overflow-hidden ${v2 ? 'h-[240px] lg:h-[280px]' : 'h-[220px] lg:h-[240px]'}`}>
                 <img
                   src={item.image}
                   alt=""
-                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  className={`h-full w-full object-cover transition-transform duration-500 group-hover:scale-105 ${item.imageClassName ?? ''}`}
                 />
               </div>
               <div className={`flex flex-col gap-2 ${v2 ? 'pt-6' : 'pt-5'}`}>
-                <span className="text-[12px] font-bold uppercase tracking-[0.14em] text-[var(--brand-accent)]">{item.date}</span>
+                {item.date && <span className="text-[12px] font-bold uppercase tracking-[0.14em] text-[var(--brand-accent)]">{item.date}</span>}
                 <span
                   className={`font-heading font-semibold leading-snug text-[#26282C] transition-colors duration-300 ${
                     v2 ? 'text-[20px] sm:text-[22px]' : 'text-[19px] sm:text-[20px] group-hover:text-[var(--brand-accent)]'
@@ -63,7 +66,7 @@ export default function NewsPreview({ description = false }: NewsPreviewProps = 
 
         <Reveal>
         <Link
-          to="/aktualnosci"
+          to={final ? '/aktualnosci?wersja=final' : '/aktualnosci'}
           className="w-fit text-[14px] font-bold uppercase tracking-[0.1em] text-[var(--brand-accent)] transition-colors duration-300 hover:text-[#26282C]"
         >
           Pokaż więcej
