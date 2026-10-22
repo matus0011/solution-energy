@@ -1,7 +1,8 @@
-import { useEffect, useRef, type CSSProperties } from 'react'
+import { useEffect, useRef, useState, type CSSProperties } from 'react'
 import { Link } from 'react-router-dom'
-import { greenIndex, timeline, type TimelineStep } from '@/lib/timeline'
+import { greenIndex, timeline as originalTimeline, finalTimeline, type TimelineStep } from '@/lib/timeline'
 import { setDecarb, useScrollFrame } from '@/lib/timelineScroll'
+import TimelineIcon from '@/components/timelineIcons'
 import { ChargeBars } from '@/components/SectionTitle'
 import { useInView } from '@/lib/useInView'
 
@@ -14,29 +15,30 @@ const HEAD_Y = 0.62
 const PHOTO_MIN = 48
 const PHOTO_MAX = 170
 
-const zoneStyle = (index: number) => ({ '--tl-zone': index >= greenIndex ? GREEN : YELLOW }) as CSSProperties
+const zoneStyle = (index: number, final = false) => ({ '--tl-zone': !final && index >= greenIndex ? GREEN : YELLOW }) as CSSProperties
 
-function StepCard({ step, className = '' }: { step: TimelineStep; className?: string }) {
+function StepCard({ step, className = '', final = false }: { step: TimelineStep; className?: string; final?: boolean }) {
   const body = (
     <>
-      {step.image && (
+      {final && step.icon && <div className="tlv-band flex items-center px-5 py-3 [&_svg]:h-20 [&_svg]:w-auto"><TimelineIcon name={step.icon} /></div>}
+      {!final && step.image && (
         <div className="tl-photo overflow-hidden">
           <img src={step.image} alt="" loading="lazy" className="h-full w-full object-cover" />
         </div>
       )}
-      <div className="flex flex-col gap-1.5 p-5">
-        <span className="tl-year font-heading text-[26px] font-semibold leading-none tracking-[-0.01em]">
+      <div className={`flex flex-col gap-1.5 ${final ? 'px-5 pb-5 pt-2' : 'p-5'}`}>
+        <span className={`tl-year font-heading ${final ? 'text-[30px]' : 'text-[26px]'} font-semibold leading-none tracking-[-0.01em]`}>
           {step.year}
         </span>
-        <span className="mt-1 font-heading text-[17px] font-semibold leading-snug text-[#26282C]">{step.title}</span>
-        <span className="line-clamp-3 text-[14.5px] leading-relaxed text-[#55595f]">{step.desc}</span>
+        <span className={`mt-1 font-heading ${final ? 'text-[16px]' : 'text-[17px]'} font-semibold leading-snug text-[#26282C]`}>{step.title}</span>
+        <span className={final ? 'text-[14px] leading-[1.5] text-[#4a5058]' : 'line-clamp-3 text-[14.5px] leading-relaxed text-[#55595f]'}>{step.desc}</span>
       </div>
     </>
   )
 
   const classes = `tl-card group flex flex-col bg-white ${className}`
   return step.project !== undefined ? (
-    <Link to={`/realizacje/${step.project}`} className={classes}>
+    <Link to={`/realizacje/${step.project}${final ? '?wersja=final' : ''}`} className={classes}>
       {body}
     </Link>
   ) : (
@@ -44,7 +46,7 @@ function StepCard({ step, className = '' }: { step: TimelineStep; className?: st
   )
 }
 
-function Intro({ className = '' }: { className?: string }) {
+function Intro({ className = '', final = false }: { className?: string; final?: boolean }) {
   const { ref, shown } = useInView<HTMLDivElement>(0.4)
 
   return (
@@ -56,11 +58,10 @@ function Intro({ className = '' }: { className?: string }) {
         Inżynieria transformacji energetycznej.
       </h2>
       <p className="mb-8 text-[17px] leading-[1.65] text-[#4a5058] sm:text-[18px]">
-        Realizujemy strategiczne inwestycje pod klucz w formule EPC — od projektowania w standardzie 3D BIM, przez
-        ciepłownie geotermalne i układy kogeneracyjne, po prefabrykację i rozruch obiektów.
+        {final ? 'Od usług elektroinstalacyjnych po strategiczne inwestycje energetyczne. Poznaj 10 etapów rozwoju Energy Solutions.' : 'Realizujemy strategiczne inwestycje pod klucz w formule EPC — od projektowania w standardzie 3D BIM, przez ciepłownie geotermalne i układy kogeneracyjne, po prefabrykację i rozruch obiektów.'}
       </p>
       <Link
-        to="/firma/obszary-dzialalnosci"
+        to={final ? '/firma/obszary-dzialalnosci?wersja=final' : '/firma/obszary-dzialalnosci'}
         className="inline-flex items-center justify-center bg-[var(--brand-accent)] px-10 py-4 text-[14px] font-bold uppercase tracking-[0.14em] text-[#26282C] transition-colors duration-300 hover:bg-[var(--brand-accent-strong)]"
       >
         Zobacz więcej
@@ -69,13 +70,16 @@ function Intro({ className = '' }: { className?: string }) {
   )
 }
 
-function HorizontalTimeline() {
+function HorizontalTimeline({ final = false }: { final?: boolean }) {
+  const timeline = final ? finalTimeline : originalTimeline
+  const speed = final ? 2 : 1
   const sectionRef = useRef<HTMLElement>(null)
   const stickyRef = useRef<HTMLDivElement>(null)
   const trackRef = useRef<HTMLDivElement>(null)
   const axisRef = useRef<HTMLDivElement>(null)
   const fillRef = useRef<HTMLDivElement>(null)
   const headRef = useRef<HTMLDivElement>(null)
+  const counterRef = useRef<HTMLSpanElement>(null)
   const geo = useRef({ top: 0, headX: 0, maxShift: 0, axisLeft: 0, axisWidth: 0, nodes: [] as number[] })
 
   useScrollFrame(
@@ -115,14 +119,14 @@ function HorizontalTimeline() {
         axisWidth: axisRect.width,
         nodes,
       }
-      section.style.height = `${sticky.offsetHeight + maxShift}px`
-      axis.style.setProperty('--tl-switch', `${nodes[greenIndex] - (axisRect.left - trackLeft)}px`)
+      section.style.height = `${sticky.offsetHeight + maxShift / speed}px`
+      axis.style.setProperty('--tl-switch', final ? '99999px' : `${nodes[greenIndex] - (axisRect.left - trackLeft)}px`)
       return true
     },
     () => {
       const { top, headX, maxShift, axisLeft, axisWidth, nodes } = geo.current
       const section = sectionRef.current!
-      const shift = Math.min(maxShift, Math.max(0, top - section.getBoundingClientRect().top))
+      const shift = Math.min(maxShift, Math.max(0, (top - section.getBoundingClientRect().top) * speed))
       const reach = headX + shift
 
       trackRef.current!.style.transform = `translate3d(${-shift}px, 0, 0)`
@@ -130,27 +134,31 @@ function HorizontalTimeline() {
       fillRef.current!.style.clipPath = `inset(0 ${axisWidth - filled}px 0 0)`
       headRef.current!.classList.toggle('is-on', filled > 0)
 
+      const current = Math.max(0, nodes.reduce((last, node, index) => node <= reach ? index : last, 0))
       trackRef.current!.querySelectorAll<HTMLElement>('[data-step]').forEach((step, index) => {
         step.classList.toggle('is-lit', nodes[index] <= reach)
+        if (final) step.classList.toggle('is-current', index === current)
       })
-      setDecarb(reach >= nodes[greenIndex])
+      if (counterRef.current) counterRef.current.textContent = String(current + 1).padStart(2, '0')
+      setDecarb(!final && reach >= nodes[greenIndex])
     },
   )
 
   return (
-    <section ref={sectionRef} className="relative hidden bg-[#f5f4f1] lg:block motion-reduce:!hidden" aria-label="Oś czasu">
+    <section ref={sectionRef} className={`relative hidden bg-[#f5f4f1] lg:block motion-reduce:!hidden ${final ? 'tl-final-desktop' : ''}`} aria-label="Oś czasu">
       <div ref={stickyRef} className="sticky top-[88px] h-[calc(100vh-88px)] overflow-hidden">
-        <div
+        {!final && <div
           className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle,#e4e2dc_1.4px,transparent_1.5px)] bg-[length:22px_22px] [mask-image:linear-gradient(to_bottom,transparent_30%,black_100%)]"
           aria-hidden="true"
-        />
+        />}
+        {final && <div className="absolute bottom-5 right-24 z-10 text-[13px] tabular-nums text-[#55595f] lg:right-28"><span ref={counterRef} className="font-semibold text-[#26282c]">01</span><span className="mx-2 text-[#8b8e93]">/</span>10</div>}
 
         <div
           ref={trackRef}
-          className="relative flex h-full w-max items-center py-[clamp(48px,7vh,112px)] will-change-transform"
+          className={`relative flex h-full w-max items-center will-change-transform ${final ? 'py-6' : 'py-[clamp(48px,7vh,112px)]'}`}
           style={{ paddingLeft: 'max(3.5rem, calc((100vw - 1380px) / 2))', paddingRight: '50vw' }}
         >
-          <Intro className="w-[440px] shrink-0 pr-6 xl:w-[520px]" />
+          <Intro final={final} className="w-[440px] shrink-0 pr-6 xl:w-[520px]" />
 
           <div className="relative flex h-full items-center pl-16">
             <div ref={axisRef} className="absolute inset-x-0 top-1/2 h-[2px] -translate-y-1/2 bg-[#26282C]/[0.12]" aria-hidden="true">
@@ -164,7 +172,7 @@ function HorizontalTimeline() {
                   key={step.title}
                   data-step
                   className={`tl-step relative h-full w-[300px] shrink-0 xl:w-[330px] ${index > 0 ? '-ml-[96px] xl:-ml-[110px]' : ''}`}
-                  style={{ ...zoneStyle(index), '--tl-from': up ? '-16px' : '16px' } as CSSProperties}
+                  style={{ ...zoneStyle(index, final), '--tl-from': up ? '-16px' : '16px' } as CSSProperties}
                 >
                   <span
                     data-node
@@ -177,6 +185,7 @@ function HorizontalTimeline() {
                   />
                   <StepCard
                     step={step}
+                    final={final}
                     className={`absolute inset-x-0 ${up ? 'bottom-1/2 mb-[45px]' : 'top-1/2 mt-[45px]'}`}
                   />
                 </div>
@@ -197,6 +206,7 @@ function HorizontalTimeline() {
 }
 
 function VerticalTimeline() {
+  const timeline = originalTimeline
   const sectionRef = useRef<HTMLElement>(null)
   const listRef = useRef<HTMLOListElement>(null)
   const fillRef = useRef<HTMLDivElement>(null)
@@ -262,13 +272,37 @@ function VerticalTimeline() {
   )
 }
 
-export default function EnergyTimeline() {
+function MobileFinalTimeline() {
+  const [active, setActive] = useState(0)
+  return (
+    <section className="tl-final-mobile bg-[#f5f4f1] px-6 py-14 sm:px-10 lg:hidden motion-reduce:!block" aria-label="Oś czasu">
+      <Intro final className="max-w-xl" />
+      <div className="mb-6 mt-8 flex items-center justify-between gap-4 text-[13px] text-[#55595f]"><p>Przesuń, aby poznać naszą historię.</p><span className="shrink-0 tabular-nums"><span className="font-semibold text-[#26282c]">{String(active + 1).padStart(2, '0')}</span> / 10</span></div>
+      <ol onScroll={(event) => {
+        const list = event.currentTarget
+        const cards = Array.from(list.children) as HTMLElement[]
+        const first = cards[0]?.offsetLeft ?? 0
+        const nearest = cards.reduce((best, card, index) => Math.abs(card.offsetLeft - first - list.scrollLeft) < Math.abs(cards[best].offsetLeft - first - list.scrollLeft) ? index : best, 0)
+        setActive(nearest)
+      }} tabIndex={0} aria-label="Etapy rozwoju Energy Solutions" className="-mr-6 flex snap-x snap-mandatory gap-6 overflow-x-auto pb-5 pr-6 sm:mr-0">
+        {finalTimeline.map((step, index) => (
+          <li key={step.year} className={`tl-step relative w-[85%] max-w-[360px] shrink-0 snap-start border-t-2 border-[#d9dadd] pt-6 ${index === active ? 'is-current' : ''}`} style={{ '--tl-zone': YELLOW } as CSSProperties}>
+            <span className="absolute -top-2 left-4 size-3 rounded-full bg-[#aeb1b5]" aria-hidden="true" />
+            <StepCard step={step} final className="h-full" />
+          </li>
+        ))}
+      </ol>
+    </section>
+  )
+}
+
+export default function EnergyTimeline({ final = false }: { final?: boolean }) {
   useEffect(() => () => setDecarb(false), [])
 
   return (
     <>
-      <HorizontalTimeline />
-      <VerticalTimeline />
+      <HorizontalTimeline final={final} />
+      {final ? <MobileFinalTimeline /> : <VerticalTimeline />}
     </>
   )
 }

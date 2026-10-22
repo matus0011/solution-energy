@@ -23,3 +23,19 @@ export const navLinks: NavLinkItem[] = [
   { label: 'Kariera', href: '/kariera' },
   { label: 'Kontakt', href: '/kontakt' },
 ]
+
+export const finalNavLinks: NavLinkItem[] = [
+  {
+    label: 'O Firmie',
+    href: '/firma',
+    children: [
+      { label: 'Spółki powiązane', href: '/firma/spolki-powiazane' },
+      { label: 'Środki UE', href: '/srodki-ue' },
+    ],
+  },
+  { label: 'Oferta', href: '/firma/obszary-dzialalnosci' },
+  { label: 'Realizacje', href: '/realizacje' },
+  { label: 'Aktualności', href: '/aktualnosci' },
+  { label: 'Praca', href: '/kariera' },
+  { label: 'Kontakt', href: '/kontakt' },
+]

@@ -1,8 +1,8 @@
 import { Fragment, useEffect, useState, type CSSProperties, type ReactNode } from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useSearchParams } from 'react-router-dom'
 import { ChevronDown } from 'lucide-react'
 import clsx from 'clsx'
-import { navLinks } from '@/lib/navigation'
+import { navLinks, finalNavLinks } from '@/lib/navigation'
 
 // Real routes use react-router's NavLink (so the currently active tab can be
 // highlighted); "#" placeholders (pages not built yet) stay as plain inert
@@ -26,6 +26,7 @@ function NavItem({
     return (
       <NavLink
         to={href}
+        end={href.split('?')[0] === '/firma'}
         style={style}
         onClick={onClick}
         className={({ isActive }) => clsx(className, isActive && activeClassName)}
@@ -42,6 +43,13 @@ function NavItem({
 }
 
 export default function Header() {
+  const [params] = useSearchParams()
+  const isFinal = params.get('wersja') === 'final'
+  const links = (isFinal ? finalNavLinks : navLinks).map(link => ({
+    ...link,
+    href: isFinal ? `${link.href}?wersja=final` : link.href,
+    children: link.children?.map(child => ({ ...child, href: isFinal ? `${child.href}?wersja=final` : child.href })),
+  }))
   const [mobileOpen, setMobileOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [expandedMobile, setExpandedMobile] = useState<string | null>(null)
@@ -81,7 +89,7 @@ export default function Header() {
           scrolled ? 'py-4' : 'py-12',
         )}
       >
-        <NavLink to="/" className="shrink-0">
+        <NavLink to={isFinal ? '/?wersja=final' : '/'} className="shrink-0">
           <img
             src="/logos/logotyp_energysolutions_crv.png"
             alt="Energy Solutions — strona główna"
@@ -89,8 +97,8 @@ export default function Header() {
           />
         </NavLink>
 
-        <nav aria-label="Główna nawigacja" className="hidden items-center gap-4 md:flex">
-          {navLinks.map((link, index) => (
+        <nav aria-label="Główna nawigacja" className={clsx('hidden items-center gap-4', isFinal ? 'lg:flex' : 'md:flex')}>
+          {links.map((link, index) => (
             <Fragment key={link.label}>
               {index > 0 && <span className="h-4 w-px bg-[#e5e5e5]" aria-hidden="true" />}
               {link.children && link.children.length > 0 ? (
@@ -113,7 +121,7 @@ export default function Header() {
                           tego użytkownik widzi tylko dwie podstrony i może nie
                           zauważyć, że nagłówek "Firma" też prowadzi na własną,
                           osobną stronę. */}
-                      <NavLink
+                      {!isFinal && <NavLink
                         to={link.href}
                         end
                         className={({ isActive }) =>
@@ -124,7 +132,7 @@ export default function Header() {
                         }
                       >
                         O firmie
-                      </NavLink>
+                      </NavLink>}
                       {link.children.map((child) => (
                         <NavLink
                           key={child.href}
@@ -161,7 +169,8 @@ export default function Header() {
           aria-expanded={mobileOpen}
           aria-label={mobileOpen ? 'Zamknij menu' : 'Otwórz menu'}
           className={clsx(
-            'relative z-50 flex h-12 w-12 items-center justify-center rounded-lg transition-colors md:hidden',
+            'relative z-50 flex h-12 w-12 items-center justify-center rounded-lg transition-colors',
+            isFinal ? 'lg:hidden' : 'md:hidden',
             mobileOpen ? 'text-white' : 'text-[#404040] hover:text-[var(--brand-accent,#fbba00)]',
           )}
         >
@@ -192,7 +201,8 @@ export default function Header() {
           zamknięcia w headerze, żeby się wizualnie pokrywały. */}
       <div
         className={clsx(
-          'fixed inset-0 z-40 flex flex-col overflow-hidden bg-[#26282C] transition-opacity duration-300 md:hidden',
+          'fixed inset-0 z-40 flex flex-col overflow-hidden bg-[#26282C] transition-opacity duration-300',
+          isFinal ? 'lg:hidden' : 'md:hidden',
           mobileOpen ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0',
         )}
       >
@@ -211,7 +221,7 @@ export default function Header() {
 
         <nav aria-label="Nawigacja mobilna" className="flex flex-1 flex-col overflow-y-auto">
           <div className="flex flex-1 flex-col items-start justify-center gap-1 px-6 text-left">
-            {navLinks.map((link, index) => {
+            {links.map((link, index) => {
               const hasChildren = !!link.children?.length
               const isExpanded = expandedMobile === link.label
               return (
@@ -262,14 +272,14 @@ export default function Header() {
                             logika co w rozwijanym menu desktop (patrz wyżej), żeby po
                             rozwinięciu podmenu było jasne, że "Firma" to też osobna strona,
                             a nie tylko nagłówek grupujący dwie podstrony. */}
-                        <NavItem
+                        {!isFinal && <NavItem
                           href={link.href}
                           onClick={() => setMobileOpen(false)}
                           className="py-1.5 text-xl font-bold uppercase tracking-wide text-[var(--brand-accent)] transition-colors duration-300 hover:text-white"
                           activeClassName="!text-white"
                         >
                           O firmie
-                        </NavItem>
+                        </NavItem>}
                         {link.children!.map((child) => (
                           <NavItem
                             key={child.href}

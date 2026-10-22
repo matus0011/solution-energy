@@ -2,6 +2,7 @@ import { Routes, Route } from 'react-router-dom'
 import Layout from '@/components/Layout'
 import Home from '@/pages/Home'
 import Firma from '@/pages/Firma'
+import SpolkiPowiazane from '@/pages/SpolkiPowiazane'
 import ObszaryDzialalnosci from '@/pages/ObszaryDzialalnosci'
 import JakPracujemy from '@/pages/JakPracujemy'
 import Realizacje from '@/pages/Realizacje'
@@ -18,6 +19,7 @@ export default function App() {
       <Route element={<Layout />}>
         <Route path="/" element={<Home />} />
         <Route path="/firma" element={<Firma />} />
+        <Route path="/firma/spolki-powiazane" element={<SpolkiPowiazane />} />
         <Route path="/firma/obszary-dzialalnosci" element={<ObszaryDzialalnosci />} />
         <Route path="/firma/jak-pracujemy" element={<JakPracujemy />} />
         <Route path="/realizacje" element={<Realizacje />} />

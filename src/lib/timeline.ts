@@ -5,6 +5,8 @@
 // `icon` to rysunek z `timelineIcons.tsx`, używany w układzie v4 zamiast zdjęcia.
 
 export type TimelineIconName =
+  | 'cooling'
+  | 'storage'
   | 'blueprint'
   | 'trigeneration'
   | 'biogas'
@@ -91,3 +93,17 @@ export const timeline: TimelineStep[] = [
 ]
 
 export const greenIndex = timeline.findIndex((step) => step.greenFrom)
+
+// Final: 10 etapów z wytycznych klienta; opisy skrócone na potrzeby osi.
+export const finalTimeline: TimelineStep[] = [
+  { year: '2005', title: 'Powstanie i rejestracja spółki', icon: 'blueprint', desc: 'Rejestracja Energy Solutions. Początek usług elektroinstalacyjnych i inżynieryjnych.' },
+  { year: '2011', title: 'Rozwój inwestycji przemysłowych', icon: 'cogeneration', desc: 'Rozwój zespołu i pierwsze wielobranżowe kontrakty technologiczne dla przemysłu.' },
+  { year: '2014–2015', title: 'Projekt w Kopalni Soli „Wieliczka”', icon: 'cooling', desc: 'Klimatyzacja i osuszanie przy szybie Daniłowicz w zabytkowej kopalni UNESCO.' },
+  { year: '2016', title: 'Smart Energy System — SES', icon: 'trigeneration', desc: 'Wdrożenie modułowego SES po własnych pracach badawczo-rozwojowych z lat 2014–2016.' },
+  { year: '2016–2017', title: 'Pierwsza trigeneracja SES', icon: 'trigeneration', desc: 'Prąd, ciepło i chłód z jednego systemu dla Szpitala im. Biegańskiego w Łodzi.', project: 9 },
+  { year: '2017–2018', title: 'Biogaz i pierwsza geotermia', icon: 'biogas', desc: 'SESBio w Tarnowie i Lubartowie. Pierwsze projekty dla Geotermii Podhalańskiej.' },
+  { year: '2018–2024', title: 'Rozwój polskiej geotermii', icon: 'geothermal', desc: 'Inwestycje w całej Polsce i absorpcyjne pompy ciepła zasilane wodą geotermalną.' },
+  { year: '2019–2023', title: 'B+R: SES i magazynowanie chłodu', icon: 'research', desc: 'Własne laboratorium. Badania magazynu chłodu opartego na przemianach fazowych wody.' },
+  { year: '2022–2023', title: 'Hybrydowe OZE i akumulacja ciepła', icon: 'biomass', desc: 'Hybrydowa ciepłownia w Sieradzu. Kogeneracja z buforami ciepła dla IMEX Poland.' },
+  { year: '> 2025', title: 'Największy akumulator ciepła w Europie', icon: 'storage', desc: 'Akumulator 61 000 m³ z infrastrukturą w EC Żerań w Warszawie dla ORLEN TERMIKA.', project: 10 },
+]

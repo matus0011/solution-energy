@@ -1,4 +1,5 @@
 import Hero from '@/components/sections/Hero'
+import EnergyTimeline from '@/components/sections/EnergyTimeline'
 import EnergyTimelineVertical from '@/components/sections/EnergyTimelineVertical'
 import StatsStrip from '@/components/sections/StatsStrip'
 import Sectors from '@/components/sections/Sectors'
@@ -14,7 +15,7 @@ export default function HomeV5({ decarb = true, final = false }: { decarb?: bool
   return (
     <HomeVariantContext.Provider value="v3">
       <Hero />
-      <EnergyTimelineVertical media="icons" decarb={decarb} />
+      {final ? <EnergyTimeline final /> : <EnergyTimelineVertical media="icons" decarb={decarb} />}
       <StatsStrip final={final} />
       <Sectors />
       <NewsPreview final={final} />

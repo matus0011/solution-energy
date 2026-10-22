@@ -10,6 +10,20 @@ const ring = (cx: number, cy: number, r: number) =>
   `M${cx - r} ${cy}a${r} ${r} 0 1 0 ${r * 2} 0a${r} ${r} 0 1 0 ${-r * 2} 0`
 
 const icons: Record<TimelineIconName, Stroke[]> = {
+  cooling: [
+    { d: 'M8 82H152M20 82V48L55 20L90 48V82M32 82V56H76V82' },
+    { d: 'M55 20V10M104 30H146V72H104Z' },
+    { d: 'M125 38V64M114 44L136 58M136 44L114 58', accent: true },
+    { d: 'M76 66H104M146 50H154', accent: true, flow: true },
+    { d: 'M26 44H84M114 72V82M136 72V82' },
+  ],
+  storage: [
+    { d: 'M8 84H152M45 24C45 12 115 12 115 24V76C115 88 45 88 45 76Z' },
+    { d: 'M45 24C45 36 115 36 115 24M45 42H115M45 60H115' },
+    { d: 'M24 78V36H45M115 68H138V28', accent: true, flow: true },
+    { d: 'M19 47L24 36L29 47M133 39L138 28L143 39', accent: true },
+    { d: 'M72 47C80 51 68 55 76 59M87 47C95 51 83 55 91 59', accent: true },
+  ],
   // Arkusz z rysunkiem hali i cyrkiel.
   blueprint: [
     { d: 'M20 14H108V82H20Z' },

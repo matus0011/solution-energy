@@ -5,7 +5,7 @@
 // uprawnienia").
 
 export const companyFacts = [
-  { value: '2011', label: 'początek działalności' },
+  { value: '2005', label: 'początek działalności' },
   { value: '8', label: 'obszarów kompetencji' },
   { value: '100%', label: 'kompleksowa obsługa inwestycji' },
 ]

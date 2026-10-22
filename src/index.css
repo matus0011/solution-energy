@@ -731,3 +731,44 @@ html {
   scrollbar-color: rgba(38, 40, 44, 0.28) transparent;
 }
 
+
+/* Na niskich ekranach pozioma oś Final korzysta z przewijania natywnego,
+   aby karty nad i pod osią nie były przycinane. */
+@media (max-height: 700px) {
+  .tl-final-desktop { display: none; }
+  .tl-final-mobile { display: block; }
+}
+
+/* Final: every milestone stays readable; the accent marks the current one. */
+:is(.tl-final-desktop, .tl-final-mobile) .tl-step .tl-card {
+  opacity: 1;
+  transform: none;
+  border: 0;
+  box-shadow: none;
+  transition: none;
+}
+:is(.tl-final-desktop, .tl-final-mobile) .tl-step .tl-year {
+  color: #26282c;
+}
+:is(.tl-final-desktop, .tl-final-mobile) .tlv-band {
+  background: #fff;
+  border: 0;
+}
+:is(.tl-final-desktop, .tl-final-mobile) .tlv-icon-ink path {
+  stroke-dashoffset: 0;
+  transition: none;
+}
+:is(.tl-final-desktop, .tl-final-mobile) .tlv-icon-flow path {
+  opacity: 0.65;
+  animation: none;
+  transition: none;
+}
+.tl-final-desktop .tl-step.is-lit .tl-node {
+  background: #f5f4f1;
+  box-shadow: inset 0 0 0 2px #aeb1b5;
+}
+.tl-final-desktop .tl-step .tl-stem { background: #c9cbce; }
+.tl-final-desktop .tl-head::after { animation: none; }
+:is(.tl-final-desktop, .tl-final-mobile) .tl-step.is-current .tl-year {
+  color: #b58200;
+}
