@@ -1,13 +1,20 @@
-import { Link } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
 import { CalendarRange, Layers, ShieldCheck } from 'lucide-react'
 import { companyFacts } from '@/lib/company'
 import TrustedClients from '@/components/sections/TrustedClients'
 import Certifications from '@/components/sections/Certifications'
 import Partners from '@/components/sections/Partners'
 
+import FirmaFinal from './FirmaFinal'
+
 const factIcons = [CalendarRange, Layers, ShieldCheck]
 
 export default function Firma() {
+  const [params] = useSearchParams()
+  return params.get('wersja') === 'final' ? <FirmaFinal /> : <FirmaDemo />
+}
+
+function FirmaDemo() {
   return (
     <>
       <div className="relative mx-auto mb-6 flex h-[200px] w-full max-w-screen-2xl items-center overflow-hidden sm:h-[380px]">

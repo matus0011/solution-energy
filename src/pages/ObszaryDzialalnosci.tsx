@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link, Navigate, useSearchParams } from 'react-router-dom'
 import { Mountain, Flame, Snowflake, Zap, Plug, SlidersHorizontal, Wind, Cog } from 'lucide-react'
 import { competencies } from '@/lib/company'
 import Partners from '@/components/sections/Partners'
@@ -6,6 +6,11 @@ import Partners from '@/components/sections/Partners'
 const competencyIcons = [Mountain, Flame, Snowflake, Zap, Plug, SlidersHorizontal, Wind, Cog]
 
 export default function ObszaryDzialalnosci() {
+  const [params] = useSearchParams()
+  return params.get('wersja') === 'final' ? <Navigate to="/oferta?wersja=final" replace /> : <ObszaryDemo />
+}
+
+function ObszaryDemo() {
   return (
     <>
       <div className="relative mx-auto mb-6 flex h-[200px] w-full max-w-screen-2xl items-center overflow-hidden sm:h-[380px]">

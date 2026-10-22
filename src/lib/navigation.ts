@@ -33,7 +33,7 @@ export const finalNavLinks: NavLinkItem[] = [
       { label: 'Środki UE', href: '/srodki-ue' },
     ],
   },
-  { label: 'Oferta', href: '/firma/obszary-dzialalnosci' },
+  { label: 'Oferta', href: '/oferta' },
   { label: 'Realizacje', href: '/realizacje' },
   { label: 'Aktualności', href: '/aktualnosci' },
   { label: 'Praca', href: '/kariera' },

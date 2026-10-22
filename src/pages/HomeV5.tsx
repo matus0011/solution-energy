@@ -17,7 +17,7 @@ export default function HomeV5({ decarb = true, final = false }: { decarb?: bool
       <Hero />
       {final ? <EnergyTimeline final /> : <EnergyTimelineVertical media="icons" decarb={decarb} />}
       <StatsStrip final={final} />
-      <Sectors />
+      <Sectors final={final} />
       <NewsPreview final={final} />
       <section className="bg-[#f5f4f1] px-6 py-20 sm:px-10 lg:px-14 lg:py-28">
         <div className="mx-auto flex max-w-[1380px] 2xl:max-w-screen-2xl flex-col">

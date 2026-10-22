@@ -772,3 +772,28 @@ html {
 :is(.tl-final-desktop, .tl-final-mobile) .tl-step.is-current .tl-year {
   color: #b58200;
 }
+
+/* Prosta oś historii, z postępem zależnym od przewijania. */
+.company-history-icon .tlv-icon-ink path { stroke-dashoffset: 0; transition: none; }
+.company-history-icon .tlv-icon-flow path { opacity: 0.65; animation: none; }
+.company-history-vertical .company-history-icon svg { height: 64px; }
+.company-history-vertical .company-history-year { margin-top: 16px; font-size: 28px; transition: color 250ms ease; }
+.company-history-vertical .company-history-content { margin-top: 22px; }
+.company-history-vertical .company-history-content h2 { font-size: 23px; }
+.company-history-vertical .company-history-content > p { font-size: 16px; line-height: 1.7; }
+.company-history-vertical .is-current .company-history-year { color: #b58200; }
+.company-history-vertical .is-reached .company-history-node { border-color: #c79a20; background: #c79a20; }
+.company-history-track, .company-history-node { left: 12px; }
+.company-history-row { padding-bottom: 72px; }
+.company-history-row:last-child { padding-bottom: 0; }
+.company-history-body { margin-left: 40px; }
+@media (min-width: 900px) {
+  .company-history-track, .company-history-node { left: 50%; }
+  .company-history-row { padding-bottom: 56px; }
+  .company-history-row:last-child { padding-bottom: 0; }
+  .company-history-body { width: calc(50% - 100px); margin-left: 0; }
+  .company-history-row[data-side='right'] .company-history-body { margin-left: auto; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .company-history-vertical .company-history-year { transition: none; }
+}

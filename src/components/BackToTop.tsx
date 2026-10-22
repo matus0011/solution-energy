@@ -76,7 +76,7 @@ export default function BackToTop() {
   const { pathname } = useLocation()
   const [params] = useSearchParams()
   const wersja = params.get('wersja')
-  const quiet = pathname === '/' && (wersja === 'v2' || wersja === 'v3' || wersja === 'v4' || wersja === 'v5' || wersja === 'final')
+  const quiet = wersja === 'final' || (pathname === '/' && (wersja === 'v2' || wersja === 'v3' || wersja === 'v4' || wersja === 'v5'))
 
   useEffect(() => {
     const onScroll = () => setVisible(window.scrollY > 400)

@@ -1,15 +1,31 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
-import { sectors } from '@/lib/company'
+import { sectors as originalSectors } from '@/lib/company'
+import OfferAreaTiles from '@/components/OfferAreaTiles'
 import SectionTitle from '@/components/SectionTitle'
 import { useIsV2 } from '@/lib/homeVariant'
 
-const n = sectors.length
-const slides = [...sectors, ...sectors]
+const n = originalSectors.length
 const TYTUL_MS = 250
 
-export default function Sectors() {
+export default function Sectors({ final = false }: { final?: boolean }) {
+  if (final) {
+    return (
+      <section aria-label="Obszary działalności" className="bg-[#f5f4f1] px-6 py-16 sm:px-10 sm:py-20 lg:px-14 lg:py-24">
+        <div className="mx-auto max-w-[1380px]">
+          <div className="mb-10"><SectionTitle className="font-heading text-3xl font-semibold tracking-tight text-[#26282c] sm:text-4xl">Obszary działalności</SectionTitle></div>
+          <OfferAreaTiles />
+        </div>
+      </section>
+    )
+  }
+  return <SectorsSlider />
+}
+
+function SectorsSlider() {
+  const sectors = originalSectors.map((area) => ({ ...area, href: '/firma/obszary-dzialalnosci' }))
+  const slides = [...sectors, ...sectors]
   const v2 = useIsV2()
   const track = useRef<HTMLDivElement>(null)
   const skok = useRef(false)
@@ -151,7 +167,7 @@ export default function Sectors() {
       <button
         type="button"
         onClick={prev}
-        aria-label="Poprzedni sektor"
+        aria-label="Poprzedni obszar"
         className="inline-flex size-11 items-center justify-center rounded-none bg-[var(--brand-accent)] text-[#26282C] transition-transform duration-200 hover:scale-105 motion-reduce:transition-none"
       >
         <ChevronLeft className="size-5" strokeWidth={2.5} />
@@ -164,7 +180,7 @@ export default function Sectors() {
       <button
         type="button"
         onClick={next}
-        aria-label="Następny sektor"
+        aria-label="Następny obszar"
         className="inline-flex size-11 items-center justify-center rounded-none bg-[var(--brand-accent)] text-[#26282C] transition-transform duration-200 hover:scale-105 motion-reduce:transition-none"
       >
         <ChevronRight className="size-5" strokeWidth={2.5} />
@@ -186,7 +202,7 @@ export default function Sectors() {
         <div className="relative z-10 hidden h-auto w-full shrink-0 flex-col justify-between gap-10 border border-[#eeeeef] bg-white p-8 sm:p-12 lg:flex lg:h-[560px] lg:w-[427px] lg:p-14">
           {v2 ? (
             <div className="flex flex-col gap-6">
-              <SectionTitle>Sektory działalności</SectionTitle>
+              <SectionTitle>Obszary działalności</SectionTitle>
               <div className="flex flex-col gap-2">
                 <p className="m-0 font-heading text-[18px] font-semibold text-[#26282C]">{sectors[pokaz].title}</p>
                 <p key={pokaz} className="m-0 animate-[es-fade_0.5s_ease-out] text-[15.5px] leading-relaxed text-[#55595f]">
@@ -200,7 +216,7 @@ export default function Sectors() {
                 Czym się zajmujemy
               </p>
               <h2 className="m-0 font-heading text-[32px] sm:text-[38px] font-semibold leading-[1.12] text-[#26282C] tracking-tight">
-                Sektory działalności
+                Obszary działalności
               </h2>
             </div>
           )}
@@ -220,7 +236,7 @@ export default function Sectors() {
                 <Link
                   key={`${sector.title}-${i}`}
                   data-karta
-                  to="/firma/obszary-dzialalnosci"
+                  to={sector.href}
                   className={`group relative w-[82vw] shrink-0 overflow-hidden [container-type:size] sm:w-[360px] lg:w-[405px] ${
                     aktywna ? 'h-[480px] lg:h-[630px]' : 'h-[420px] lg:h-[560px]'
                   } ${instant ? '' : 'transition-[height] duration-500 ease-out'} motion-reduce:transition-none`}

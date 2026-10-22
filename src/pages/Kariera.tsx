@@ -8,7 +8,7 @@ export default function Kariera() {
 
   return (
     <>
-      <div className="relative mx-auto mb-6 flex h-[200px] w-full max-w-screen-2xl items-center overflow-hidden sm:h-[380px]">
+      <div className="relative mx-auto mb-6 flex h-[200px] w-full max-w-screen-2xl items-center overflow-hidden sm:h-[320px]">
         <img
           src="https://pixabay.com/images/download/mrganso-photovoltaic-system-2742302_640.jpg"
           alt="Kariera"

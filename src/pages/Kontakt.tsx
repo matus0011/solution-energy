@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
 import { FaFacebook, FaLinkedin } from 'react-icons/fa'
 import { FaSquareXTwitter } from 'react-icons/fa6'
 import { InstagramIcon, YoutubeIcon } from '@/components/icons/SocialIcons'
@@ -15,9 +15,11 @@ const socialLinks = [
 ]
 
 export default function Kontakt() {
+  const [params] = useSearchParams()
+  const final = params.get('wersja') === 'final'
   return (
     <>
-      <div className="relative mx-auto mb-6 flex h-[200px] w-full max-w-screen-2xl items-center overflow-hidden sm:h-[380px]">
+      <div className="relative mx-auto mb-6 flex h-[200px] w-full max-w-screen-2xl items-center overflow-hidden sm:h-[320px]">
         <img
           src="https://pixabay.com/images/download/peterdargatz-windmill-50512_640.jpg"
           alt="Kontakt"
@@ -96,10 +98,10 @@ export default function Kontakt() {
           {/* Logotypy klientów tuż przed formularzem — to moment, w którym
               odwiedzający decyduje, czy napisać. Widok znanych marek obniża
               opór przed wysłaniem zapytania. */}
-          <TrustedClients
+          {!final && <TrustedClients
             title="Zaufali nam"
             description="Realizujemy inwestycje dla wymagających klientów przemysłowych i ciepłowniczych — od zakładów produkcyjnych po miejskie przedsiębiorstwa energetyki cieplnej."
-          />
+          />}
 
           {/* Formularz — na razie sam wizualny szkielet, bez obsługi wysyłki.
               Docelowo podpięty pod formularz WordPressa (np. Contact Form 7 /

@@ -1,5 +1,6 @@
-import { Link } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
 import clsx from 'clsx'
+import RealizacjeFinal from './RealizacjeFinal'
 import { projects } from '@/lib/projects'
 import TrustedClients from '@/components/sections/TrustedClients'
 
@@ -8,6 +9,11 @@ const paginationItems = [1, 2]
 const activePaginationItem = 1
 
 export default function Realizacje() {
+  const [params] = useSearchParams()
+  return params.get('wersja') === 'final' ? <RealizacjeFinal /> : <RealizacjeDemo />
+}
+
+function RealizacjeDemo() {
   return (
     <>
       <div className="relative mx-auto mb-6 flex h-[200px] w-full max-w-screen-2xl items-center overflow-hidden sm:h-[380px]">

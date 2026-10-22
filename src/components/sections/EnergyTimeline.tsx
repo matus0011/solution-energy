@@ -61,7 +61,7 @@ function Intro({ className = '', final = false }: { className?: string; final?: 
         {final ? 'Od usług elektroinstalacyjnych po strategiczne inwestycje energetyczne. Poznaj 10 etapów rozwoju Energy Solutions.' : 'Realizujemy strategiczne inwestycje pod klucz w formule EPC — od projektowania w standardzie 3D BIM, przez ciepłownie geotermalne i układy kogeneracyjne, po prefabrykację i rozruch obiektów.'}
       </p>
       <Link
-        to={final ? '/firma/obszary-dzialalnosci?wersja=final' : '/firma/obszary-dzialalnosci'}
+        to={final ? '/oferta?wersja=final' : '/firma/obszary-dzialalnosci'}
         className="inline-flex items-center justify-center bg-[var(--brand-accent)] px-10 py-4 text-[14px] font-bold uppercase tracking-[0.14em] text-[#26282C] transition-colors duration-300 hover:bg-[var(--brand-accent-strong)]"
       >
         Zobacz więcej

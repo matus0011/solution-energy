@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 export default function SrodkiUe() {
   return (
     <>
-      <div className="relative mx-auto mb-6 flex h-[200px] w-full max-w-screen-2xl items-center overflow-hidden sm:h-[380px]">
+      <div className="relative mx-auto mb-6 flex h-[200px] w-full max-w-screen-2xl items-center overflow-hidden sm:h-[320px]">
         <img
           src="/realizacje/torun-geotermia.jpg"
           alt=""
