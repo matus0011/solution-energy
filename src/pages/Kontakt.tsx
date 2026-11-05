@@ -64,7 +64,7 @@ export default function Kontakt() {
               <div className="flex flex-col gap-5 text-[19px] leading-relaxed text-white/80">
                 <div>
                   <span className="mb-1 block text-[20px] font-semibold uppercase tracking-wide text-white">
-                    Adres:
+                    {final ? 'Główna Siedziba' : 'Adres:'}
                   </span>
                   Wiesława Wody 27, 33-100 Tarnów
                 </div>

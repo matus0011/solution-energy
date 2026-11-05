@@ -90,7 +90,7 @@ export default function Header() {
 
   return (
     <>
-    <div className="hidden bg-white md:block">
+    <div className="hidden bg-[#f5f4f1] md:block">
       <div className="mx-auto flex h-10 max-w-[1380px] items-center justify-between gap-6 px-6 2xl:max-w-screen-2xl">
         <nav aria-label="Media społecznościowe" className="flex items-center gap-4">
           {socialLinks.map(({ label, href, Icon }) => (
@@ -114,7 +114,7 @@ export default function Header() {
             <Phone className="h-4 w-4 shrink-0" aria-hidden="true" />
             +48 (14) 657 11 05
           </a>
-          <span className="h-4 w-px bg-[#e5e5e5]" aria-hidden="true" />
+          <span className="h-4 w-px bg-[#d9d7d1]" aria-hidden="true" />
           <a
             href="mailto:biuro@energysolutions.pl"
             className="inline-flex items-center gap-2 transition-colors duration-300 hover:text-[var(--brand-accent,#fbba00)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#26282C]"

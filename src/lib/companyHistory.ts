@@ -1,16 +1,13 @@
 import type { TimelineIconName } from './timeline'
 
-type FinancialRow = { year: string; revenue: string; profit: string }
 export type CompanyMilestone = {
   year: string
   title: string
   icon: TimelineIconName
   text: string
-  financials?: FinancialRow[]
-  note?: string
 }
 
-// Treść i wyniki przekazane przez klienta w wytycznych do zakładki O firmie.
+// Historia oparta na wytycznych klienta; bez kwot finansowych zgodnie z końcowymi uwagami.
 export const companyHistory: CompanyMilestone[] = [
   {
     year: '15 grudnia 2005', title: 'Powstanie i rejestracja spółki', icon: 'blueprint',
@@ -19,6 +16,10 @@ export const companyHistory: CompanyMilestone[] = [
   {
     year: '2006–2016', title: 'Rozwój kompetencji i pozycji rynkowej', icon: 'cogeneration',
     text: 'Systematycznie poszerzamy portfolio w obszarze instalacji elektrycznych, automatyki przemysłowej i obsługi inwestycji. Zespół zdobywa doświadczenie przy złożonych projektach, także współfinansowanych ze środków unijnych.',
+  },
+  {
+    year: '2016', title: 'Własny Smart Energy System', icon: 'trigeneration',
+    text: 'Wprowadzamy do oferty modułowy Smart Energy System — SES, opracowany w ramach własnych prac badawczo-rozwojowych prowadzonych w latach 2014–2016.',
   },
   {
     year: '2017–2019', title: 'Dynamiczny wzrost skali działalności', icon: 'trigeneration',

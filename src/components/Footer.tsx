@@ -74,9 +74,6 @@ export default function Footer() {
         </div>
 
         <div className="mt-10 flex flex-col gap-6">
-          <p className="text-center text-base font-semibold text-white sm:text-right">
-            Oddział w Warszawie
-          </p>
           <div className="flex flex-col items-center gap-4 text-center text-sm text-white sm:flex-row sm:justify-between sm:text-left">
             <span>© {year} Energy Solutions Sp. z o.o. Wszelkie prawa zastrzeżone.</span>
             <div className="flex flex-wrap items-center justify-center gap-6">

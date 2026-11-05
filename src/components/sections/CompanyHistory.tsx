@@ -1,5 +1,6 @@
 import { useRef } from 'react'
 import TimelineIcon from '@/components/timelineIcons'
+import { ChargeBars } from '@/components/SectionTitle'
 import { companyHistory, type CompanyMilestone } from '@/lib/companyHistory'
 import { useScrollFrame } from '@/lib/timelineScroll'
 
@@ -15,12 +16,7 @@ function Milestone({ step }: { step: CompanyMilestone }) {
     <div className="company-history-content">
       <h2 className="font-heading text-[24px] font-semibold leading-tight text-[#26282c]">{step.title}</h2>
       <p className="mt-4 text-[16px] leading-relaxed text-[#55595f]">{step.text}</p>
-      {step.financials && <table className="mt-5 w-full text-left text-[13px] tabular-nums text-[#26282c]">
-        <caption className="sr-only">Przybliżone wyniki finansowe</caption>
-        <thead className="border-b border-[#d5d6d8] text-[#676b72]"><tr><th scope="col" className="pb-2 font-normal">Rok</th><th scope="col" className="pb-2 font-normal">Przychody</th><th scope="col" className="pb-2 font-normal">Zysk netto</th></tr></thead>
-        <tbody>{step.financials.map((row) => <tr key={row.year}><th scope="row" className="py-2 pr-3 font-medium">{row.year}</th><td className="py-2 pr-3 font-semibold">{row.revenue}</td><td className="py-2">{row.profit}</td></tr>)}</tbody>
-      </table>}
-      {step.note && <p className="mt-3 text-sm text-[#55595f]">{step.note}</p>}
+
     </div>
   </>
 }
@@ -50,9 +46,18 @@ export default function CompanyHistory() {
 
   return <section className="company-history-vertical bg-[#f5f4f1] px-6 pb-20 pt-16 sm:px-10 sm:pt-20 lg:px-14" aria-label="Historia firmy">
     <div className="mx-auto max-w-[1140px]">
-      <p className="mb-12 max-w-[640px] text-sm leading-relaxed text-[#55595f]">
-        Powierzane nam zadania traktujemy kompleksowo. Dzięki takiemu podejściu wykonujemy z optymalnym efektem nawet najbardziej nietypowe i problematyczne realizacje, których nie potrafią podjąć się inni. Wspieramy klientów na każdym etapie procesu inwestycyjnego — od projektowania i realizacji, po serwis gwarancyjny i pogwarancyjny.
-      </p>
+      <div className="mb-16 flex w-full flex-col gap-7 sm:mb-20">
+        <div className="flex flex-col items-start gap-5">
+          <ChargeBars on />
+          <p className="w-full font-heading text-2xl font-semibold leading-[1.35] tracking-[-0.025em] text-[#26282c] sm:text-[28px]">
+            Energy Solutions to multidyscyplinarny zespół inżynierów, który kompleksowo przygotowuje i realizuje inwestycje.
+          </p>
+        </div>
+        <div className="flex w-full flex-col gap-1.5 text-base leading-[1.7] text-[#55595f]">
+          <p>Specjalizujemy się w realizacjach pod klucz w formule EPC oraz instalacjach wentylacyjnych, elektrycznych i systemach sterowania.</p>
+          <p>Wspieramy inwestorów od projektowania i wykonawstwa po uruchomienie oraz serwis.</p>
+        </div>
+      </div>
       <ol ref={listRef} className="company-history-list relative">
         {companyHistory.map((step, index) => <li key={step.year} data-milestone data-side={index % 2 === 0 ? 'left' : 'right'} className="company-history-row relative">
           <div data-history-body className="company-history-body relative"><Milestone step={step} /></div>
