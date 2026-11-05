@@ -50,6 +50,9 @@ export default function CompanyHistory() {
 
   return <section className="company-history-vertical bg-[#f5f4f1] px-6 pb-20 pt-16 sm:px-10 sm:pt-20 lg:px-14" aria-label="Historia firmy">
     <div className="mx-auto max-w-[1140px]">
+      <p className="mb-12 max-w-[640px] text-sm leading-relaxed text-[#55595f]">
+        Powierzane nam zadania traktujemy kompleksowo. Dzięki takiemu podejściu wykonujemy z optymalnym efektem nawet najbardziej nietypowe i problematyczne realizacje, których nie potrafią podjąć się inni. Wspieramy klientów na każdym etapie procesu inwestycyjnego — od projektowania i realizacji, po serwis gwarancyjny i pogwarancyjny.
+      </p>
       <ol ref={listRef} className="company-history-list relative">
         {companyHistory.map((step, index) => <li key={step.year} data-milestone data-side={index % 2 === 0 ? 'left' : 'right'} className="company-history-row relative">
           <div data-history-body className="company-history-body relative"><Milestone step={step} /></div>

@@ -25,19 +25,22 @@ export default function Footer() {
             <p className="max-w-sm text-base leading-relaxed text-white">
               Zawsze celujemy w dobrą energię do współpracy.
             </p>
-            <div className="mt-1 flex items-end gap-6 lg:mt-auto">
-              {socialLinks.map(({ label, href, Icon }) => (
-                <a
-                  key={label}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={label}
-                  className="text-white transition-all duration-300 hover:scale-110 hover:text-[var(--brand-accent)]"
-                >
-                  <Icon size={28} />
-                </a>
-              ))}
+            <div className="mt-1 flex flex-col items-center gap-2 lg:mt-auto lg:items-start">
+              <p className="text-sm text-white/70">Nasze media społecznościowe</p>
+              <div className="flex items-end gap-6">
+                {socialLinks.map(({ label, href, Icon }) => (
+                  <a
+                    key={label}
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={label}
+                    className="text-white transition-all duration-300 hover:scale-110 hover:text-[var(--brand-accent)]"
+                  >
+                    <Icon size={28} />
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
 
@@ -45,6 +48,7 @@ export default function Footer() {
             <span className="font-heading text-2xl font-semibold tracking-wide text-[var(--brand-accent)] mb-6">
               Kontakt
             </span>
+            <span className="font-semibold">Główna Siedziba</span>
             <span>
               <span className="font-bold">ul.</span> Wiesława Wody 27, 33-100 Tarnów
             </span>
@@ -69,20 +73,25 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-10 flex flex-col items-center gap-4 text-center text-sm text-white sm:flex-row sm:justify-between sm:text-left">
-          <span>© {year} Energy Solutions Sp. z o.o. Wszelkie prawa zastrzeżone.</span>
-          <div className="flex flex-wrap items-center justify-center gap-6">
-            <Link to="/polityka-prywatnosci" className="transition hover:text-[var(--brand-accent)]">
-              Polityka prywatności
-            </Link>
-            <a
-              href="https://mateuszklich.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="transition hover:text-[var(--brand-accent)]"
-            >
-              Projekt i wykonanie MK
-            </a>
+        <div className="mt-10 flex flex-col gap-6">
+          <p className="text-center text-base font-semibold text-white sm:text-right">
+            Oddział w Warszawie
+          </p>
+          <div className="flex flex-col items-center gap-4 text-center text-sm text-white sm:flex-row sm:justify-between sm:text-left">
+            <span>© {year} Energy Solutions Sp. z o.o. Wszelkie prawa zastrzeżone.</span>
+            <div className="flex flex-wrap items-center justify-center gap-6">
+              <Link to="/polityka-prywatnosci" className="transition hover:text-[var(--brand-accent)]">
+                Polityka prywatności
+              </Link>
+              <a
+                href="https://mateuszklich.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="transition hover:text-[var(--brand-accent)]"
+              >
+                Projekt i wykonanie MK
+              </a>
+            </div>
           </div>
         </div>
       </div>

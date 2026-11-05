@@ -4,7 +4,7 @@ import { useInView } from '@/lib/useInView'
 import { useIsV2 } from '@/lib/homeVariant'
 
 const finalStats = [
-  { value: 1200, suffix: ' km', label: 'Ułożonych kabli i tras kablowych SN, nN oraz AKPiA', description: 'Kompleksowe instalacje elektroenergetyczne, linie przesyłowe, systemy sterowania BMS i okablowanie AKPiA obiektów przemysłowych.' },
+  { value: 50000, suffix: ' km', label: 'Ułożonych kabli i tras kablowych SN, nN oraz AKPiA', description: 'Kompleksowe instalacje elektroenergetyczne, linie przesyłowe, systemy sterowania BMS i okablowanie AKPiA obiektów przemysłowych.' },
   { value: 200, suffix: '', label: 'Sprefabrykowanych rozdzielnic nN, SN i szaf sterowniczych PLC', description: 'Rozdzielnice główne niskiego i średniego napięcia, szafy sterownicze automatyki procesowej oraz układy zasilania gwarantowanego.' },
   { value: 60000, suffix: ' m', label: 'Zmontowanych i zespawanych rurociągów technologicznych', description: 'Magistrale geotermalne ze stali kwasoodpornej, instalacje parowe wysokich parametrów, sieci biogazowe i preizolowane.' },
   { value: 100, suffix: '', label: 'Zainstalowanych i uruchomionych jednostek wytwórczych', description: 'Montaż, rozruch technologiczny i przekazanie jednostek do eksploatacji.' },

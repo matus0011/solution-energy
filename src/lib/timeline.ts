@@ -98,7 +98,7 @@ export const greenIndex = timeline.findIndex((step) => step.greenFrom)
 export const finalTimeline: TimelineStep[] = [
   { year: '2005', title: 'Powstanie i rejestracja spółki', icon: 'blueprint', desc: 'Rejestracja Energy Solutions. Początek usług elektroinstalacyjnych i inżynieryjnych.' },
   { year: '2011', title: 'Rozwój inwestycji przemysłowych', icon: 'cogeneration', desc: 'Rozwój zespołu i pierwsze wielobranżowe kontrakty technologiczne dla przemysłu.' },
-  { year: '2014–2015', title: 'Projekt w Kopalni Soli „Wieliczka”', icon: 'cooling', desc: 'Klimatyzacja i osuszanie przy szybie Daniłowicz w zabytkowej kopalni UNESCO.' },
+  { year: '2014–2015', title: 'Przełomowy projekt na obiekcie UNESCO', icon: 'cooling', desc: 'Klimatyzacja i osuszanie przy szybie Daniłowicz w Kopalni Soli „Wieliczka”.' },
   { year: '2016', title: 'Smart Energy System — SES', icon: 'trigeneration', desc: 'Wdrożenie modułowego SES po własnych pracach badawczo-rozwojowych z lat 2014–2016.' },
   { year: '2016–2017', title: 'Pierwsza trigeneracja SES', icon: 'trigeneration', desc: 'Prąd, ciepło i chłód z jednego systemu dla Szpitala im. Biegańskiego w Łodzi.', project: 9 },
   { year: '2017–2018', title: 'Biogaz i pierwsza geotermia', icon: 'biogas', desc: 'SESBio w Tarnowie i Lubartowie. Pierwsze projekty dla Geotermii Podhalańskiej.' },

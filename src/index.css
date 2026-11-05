@@ -741,6 +741,8 @@ html {
 
 /* Final: every milestone stays readable; the accent marks the current one. */
 :is(.tl-final-desktop, .tl-final-mobile) .tl-step .tl-card {
+  height: 285px;
+  overflow: hidden;
   opacity: 1;
   transform: none;
   border: 0;

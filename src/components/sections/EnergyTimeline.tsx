@@ -30,8 +30,8 @@ function StepCard({ step, className = '', final = false }: { step: TimelineStep;
         <span className={`tl-year font-heading ${final ? 'text-[30px]' : 'text-[26px]'} font-semibold leading-none tracking-[-0.01em]`}>
           {step.year}
         </span>
-        <span className={`mt-1 font-heading ${final ? 'text-[16px]' : 'text-[17px]'} font-semibold leading-snug text-[#26282C]`}>{step.title}</span>
-        <span className={final ? 'text-[14px] leading-[1.5] text-[#4a5058]' : 'line-clamp-3 text-[14.5px] leading-relaxed text-[#55595f]'}>{step.desc}</span>
+        <span className={`mt-1 font-heading ${final ? 'line-clamp-2 text-[16px]' : 'text-[17px]'} font-semibold leading-snug text-[#26282C]`}>{step.title}</span>
+        <span className={final ? 'line-clamp-3 text-[14px] leading-[1.5] text-[#4a5058]' : 'line-clamp-3 text-[14.5px] leading-relaxed text-[#55595f]'}>{step.desc}</span>
       </div>
     </>
   )

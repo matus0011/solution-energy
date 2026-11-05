@@ -22,37 +22,19 @@ export const companyHistory: CompanyMilestone[] = [
   },
   {
     year: '2017–2019', title: 'Dynamiczny wzrost skali działalności', icon: 'trigeneration',
-    text: 'Wyraźny wzrost przychodów i zysku netto umacnia pozycję spółki jako partnera dla przemysłu i energetyki.',
-    financials: [
-      { year: '2017', revenue: '9,85 mln zł', profit: '425,8 tys. zł' },
-      { year: '2018', revenue: '19,94 mln zł', profit: '—' },
-      { year: '2019', revenue: '23,41 mln zł', profit: '> 1,08 mln zł' },
-    ],
+    text: 'Rosnąca skala działalności umacnia pozycję spółki jako partnera dla przemysłu i energetyki.',
   },
   {
     year: '2020–2021', title: 'Stabilność w okresie pandemii', icon: 'research',
     text: 'Utrzymujemy stabilność operacyjną i zatrudnienie mimo wyzwań gospodarczych. Rozwijamy kompetencje w programowaniu PLC i nowoczesnej automatyce.',
-    financials: [
-      { year: '2020', revenue: '14,88 mln zł', profit: '870 tys. zł' },
-      { year: '2021', revenue: '17,89 mln zł', profit: '> 1,33 mln zł' },
-    ],
   },
   {
-    year: '2022', title: 'Skokowy wzrost przychodów i zysków', icon: 'biomass',
-    text: 'Pozyskanie i pomyślna realizacja dużych kontraktów przemysłowych przynoszą przełomowy wzrost wyników.',
-    financials: [{ year: '2022', revenue: '36,59 mln zł', profit: '3,52 mln zł' }],
-    note: 'EBITDA: ponad 5,32 mln zł.',
-  },
-  {
-    year: '2023', title: 'Rekordowe wyniki finansowe', icon: 'storage',
-    text: 'Najwyższe dotychczas obroty w historii spółki. Zatrudnienie stabilizuje się na poziomie około 39 wykwalifikowanych pracowników.',
-    financials: [{ year: '2023', revenue: '102,38 mln zł', profit: '5,66 mln zł' }],
-    note: 'EBITDA: blisko 6,95 mln zł.',
+    year: '2022–2023', title: 'Dynamiczny wzrost obrotów', icon: 'biomass',
+    text: 'Pozyskanie i pomyślna realizacja dużych kontraktów przemysłowych przekładają się na dynamiczny wzrost obrotów spółki. Zatrudnienie wykwalifikowanych pracowników stabilizuje się.',
   },
   {
     year: '2024', title: 'Wysoka pozycja i stabilizacja', icon: 'geothermal',
     text: 'Po rekordowym roku 2023 utrzymujemy wysoki potencjał wykonawczy i stabilną pozycję na rynku.',
-    financials: [{ year: '2024', revenue: '56,21 mln zł', profit: '1,30 mln zł' }],
   },
   {
     year: '2025–2026', title: 'Bieżąca działalność i nowe inicjatywy', icon: 'drilling',

@@ -1,8 +1,17 @@
 import { Fragment, useEffect, useState, type CSSProperties, type ReactNode } from 'react'
 import { NavLink, useSearchParams } from 'react-router-dom'
-import { ChevronDown } from 'lucide-react'
+import { ChevronDown, Mail, Phone } from 'lucide-react'
+import { FaLinkedin } from 'react-icons/fa'
 import clsx from 'clsx'
+import { YoutubeIcon } from '@/components/icons/SocialIcons'
 import { navLinks, finalNavLinks } from '@/lib/navigation'
+
+// Te same profile co w stopce. Pasek jest poza sticky headerem, więc przy
+// scrollu zjeżdża razem ze stroną — zostaje samo menu, tak jak topbar w Klimtarze.
+const socialLinks = [
+  { label: 'LinkedIn', href: '#', Icon: FaLinkedin },
+  { label: 'YouTube', href: '#', Icon: YoutubeIcon },
+]
 
 // Real routes use react-router's NavLink (so the currently active tab can be
 // highlighted); "#" placeholders (pages not built yet) stay as plain inert
@@ -55,7 +64,10 @@ export default function Header() {
   const [expandedMobile, setExpandedMobile] = useState<string | null>(null)
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 0)
+    // Próg równy wysokości górnego paska (h-10 = 40 px): najpierw zjeżdża pasek
+    // z kontaktem i ikonami, dopiero potem menu się ścieśnia. Tak samo działa
+    // topbar w Klimtarze.
+    const onScroll = () => setScrolled(window.scrollY > 40)
     onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
@@ -77,6 +89,42 @@ export default function Header() {
   }, [mobileOpen])
 
   return (
+    <>
+    <div className="hidden bg-white md:block">
+      <div className="mx-auto flex h-10 max-w-[1380px] items-center justify-between gap-6 px-6 2xl:max-w-screen-2xl">
+        <nav aria-label="Media społecznościowe" className="flex items-center gap-4">
+          {socialLinks.map(({ label, href, Icon }) => (
+            <a
+              key={label}
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={label}
+              className="text-[#26282C] transition-colors duration-300 hover:text-[var(--brand-accent,#fbba00)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#26282C]"
+            >
+              <Icon size={18} />
+            </a>
+          ))}
+        </nav>
+        <div className="flex items-center gap-5 text-sm text-[#26282C]">
+          <a
+            href="tel:+48146571105"
+            className="inline-flex items-center gap-2 transition-colors duration-300 hover:text-[var(--brand-accent,#fbba00)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#26282C]"
+          >
+            <Phone className="h-4 w-4 shrink-0" aria-hidden="true" />
+            +48 (14) 657 11 05
+          </a>
+          <span className="h-4 w-px bg-[#e5e5e5]" aria-hidden="true" />
+          <a
+            href="mailto:biuro@energysolutions.pl"
+            className="inline-flex items-center gap-2 transition-colors duration-300 hover:text-[var(--brand-accent,#fbba00)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#26282C]"
+          >
+            <Mail className="h-4 w-4 shrink-0" aria-hidden="true" />
+            biuro@energysolutions.pl
+          </a>
+        </div>
+      </div>
+    </div>
     <header
       className={clsx(
         'sticky top-0 z-50 bg-white transition-shadow duration-300',
@@ -86,7 +134,7 @@ export default function Header() {
       <div
         className={clsx(
           'mx-auto flex max-w-[1380px] 2xl:max-w-screen-2xl items-center justify-between px-6 transition-[padding] duration-300',
-          scrolled ? 'py-4' : 'py-12',
+          scrolled ? 'py-4' : 'py-12 md:py-6',
         )}
       >
         <NavLink to={isFinal ? '/?wersja=final' : '/'} className="shrink-0">
@@ -318,5 +366,6 @@ export default function Header() {
         </nav>
       </div>
     </header>
+    </>
   )
 }
