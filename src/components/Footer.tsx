@@ -11,9 +11,9 @@ export default function Footer() {
   const year = new Date().getFullYear()
 
   return (
-    <footer className="bg-[#26282C] px-6 py-16 sm:px-10 lg:px-14">
-      <div className="mx-auto flex max-w-[1380px] 2xl:max-w-screen-2xl flex-col gap-12">
-        <div className="grid grid-cols-1 gap-10 text-center lg:grid-cols-[1.4fr_1fr_1fr] lg:gap-12 lg:text-left">
+    <footer className="bg-[#26282C] px-6 py-12 sm:px-10 lg:px-14">
+      <div className="mx-auto flex max-w-[1380px] 2xl:max-w-screen-2xl flex-col gap-8">
+        <div className="grid grid-cols-1 gap-10 text-center lg:grid-cols-[1.2fr_1.2fr_1fr] lg:gap-8 lg:text-left">
           <div className="flex flex-col items-center gap-4 lg:items-start">
             <Link to="/" className="inline-block w-fit">
               <img
@@ -44,36 +44,34 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="flex flex-col items-center gap-2.5 text-base text-white lg:items-start">
-            <span className="font-heading text-2xl font-semibold tracking-wide text-[var(--brand-accent)] mb-6">
-              Kontakt
-            </span>
-            <span className="font-semibold">Główna Siedziba</span>
-            <span>
-              <span className="font-bold">ul.</span> Wiesława Wody 27, 33-100 Tarnów
-            </span>
-            <a href="tel:+48146571105" className="w-fit transition hover:text-[var(--brand-accent)]">
-              <span className="font-bold">tel.</span> +48 (14) 657 11 05
-            </a>
-            <span>
-              <span className="font-bold">fax</span> +48 (14) 657 11 06
-            </span>
-            <a href="mailto:biuro@energysolutions.pl" className="w-fit transition hover:text-[var(--brand-accent)]">
-              <span className="font-bold">e-mail:</span> biuro@energysolutions.pl
-            </a>
+          <div className="min-w-0 text-white">
+            <h2 className="mb-5 font-heading text-2xl font-semibold tracking-wide text-[var(--brand-accent)]">Kontakt</h2>
+            <div className="flex flex-col gap-5 text-[15px] leading-[1.45]">
+              <div className="flex min-w-0 flex-col items-center gap-0.5 lg:items-start">
+                <h3 className="mb-0.5 font-semibold">Główna Siedziba</h3>
+                <p>ul. Wiesława Wody 27, 33-100 Tarnów</p>
+                <a href="tel:+48146571105" className="hover:text-[var(--brand-accent)]">tel. +48 (14) 657 11 05</a>
+                <p>fax +48 (14) 657 11 06</p>
+                <a href="mailto:biuro@energysolutions.pl" className="break-all hover:text-[var(--brand-accent)]">biuro@energysolutions.pl</a>
+              </div>
+              <div className="flex min-w-0 flex-col items-center gap-0.5 lg:items-start">
+                <h3 className="mb-0.5 font-semibold">Oddział w Warszawie</h3>
+                <a href="tel:+48795535771" className="hover:text-[var(--brand-accent)]">tel. 795 535 771</a>
+                <a href="mailto:jciombor@energysolutions.pl" className="break-all hover:text-[var(--brand-accent)]">jciombor@energysolutions.pl</a>
+              </div>
+            </div>
           </div>
-
-          <div className="flex flex-col items-center gap-2.5 text-base text-white lg:items-start">
-            <span className="font-heading text-2xl font-semibold tracking-wide text-[var(--brand-accent)] mb-6">
-              Dane rejestrowe
-            </span>
-            <span><span className="font-bold">NIP:</span> 873-308-78-05</span>
-            <span><span className="font-bold">KRS:</span> 0000245582</span>
-            <span><span className="font-bold">BDO:</span> 000566462</span>
+          <div className="min-w-0 text-white">
+            <h2 className="mb-5 font-heading text-2xl font-semibold tracking-wide text-[var(--brand-accent)]">Dane rejestrowe</h2>
+            <div className="flex flex-col gap-1.5 text-[15px] leading-relaxed">
+              <p><span className="font-semibold">NIP:</span> 873-308-78-05</p>
+              <p><span className="font-semibold">KRS:</span> 0000245582</p>
+              <p><span className="font-semibold">BDO:</span> 000566462</p>
+            </div>
           </div>
         </div>
 
-        <div className="mt-10 flex flex-col gap-6">
+        <div className="flex flex-col gap-6 border-t border-white/10 pt-6">
           <div className="flex flex-col items-center gap-4 text-center text-sm text-white sm:flex-row sm:justify-between sm:text-left">
             <span>© {year} Energy Solutions Sp. z o.o. Wszelkie prawa zastrzeżone.</span>
             <div className="flex flex-wrap items-center justify-center gap-6">

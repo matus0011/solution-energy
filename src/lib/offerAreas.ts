@@ -66,4 +66,4 @@ export const offerAreas = [
   },
 ] as const
 
-export const offerAreaUrl = (slug: string) => `/oferta/${slug}?wersja=final`
+export const offerAreaUrl = (slug: string) => `/oferta/${slug}`

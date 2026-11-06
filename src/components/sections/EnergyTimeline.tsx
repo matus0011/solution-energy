@@ -38,7 +38,7 @@ function StepCard({ step, className = '', final = false }: { step: TimelineStep;
 
   const classes = `tl-card group flex flex-col bg-white ${className}`
   return step.project !== undefined ? (
-    <Link to={`/realizacje/${step.project}${final ? '?wersja=final' : ''}`} className={classes}>
+    <Link to={`/realizacje/${step.project}`} className={classes}>
       {body}
     </Link>
   ) : (
@@ -61,7 +61,7 @@ function Intro({ className = '', final = false }: { className?: string; final?: 
         {final ? 'Od usług elektroinstalacyjnych po strategiczne inwestycje energetyczne. Poznaj 10 etapów rozwoju Energy Solutions.' : 'Realizujemy strategiczne inwestycje pod klucz w formule EPC — od projektowania w standardzie 3D BIM, przez ciepłownie geotermalne i układy kogeneracyjne, po prefabrykację i rozruch obiektów.'}
       </p>
       <Link
-        to={final ? '/oferta?wersja=final' : '/firma/obszary-dzialalnosci'}
+        to={'/oferta'}
         className="inline-flex items-center justify-center bg-[var(--brand-accent)] px-10 py-4 text-[14px] font-bold uppercase tracking-[0.14em] text-[#26282C] transition-colors duration-300 hover:bg-[var(--brand-accent-strong)]"
       >
         Zobacz więcej

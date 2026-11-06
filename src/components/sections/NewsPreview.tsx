@@ -66,7 +66,7 @@ export default function NewsPreview({ description = false, final = false }: News
 
         <Reveal>
         <Link
-          to={final ? '/aktualnosci?wersja=final' : '/aktualnosci'}
+          to={'/aktualnosci'}
           className="w-fit text-[14px] font-bold uppercase tracking-[0.1em] text-[var(--brand-accent)] transition-colors duration-300 hover:text-[#26282C]"
         >
           Pokaż więcej

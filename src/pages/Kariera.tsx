@@ -49,8 +49,7 @@ export default function Kariera() {
                       </span>
                       <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[15px] font-bold uppercase tracking-wide text-[#777777]">
                         <span>{job.type}</span>
-                        <span aria-hidden="true">•</span>
-                        <span>{job.salary}</span>
+                        {job.salary && <><span aria-hidden="true">•</span><span>{job.salary}</span></>}
                         <span aria-hidden="true">•</span>
                         <span>{job.location}</span>
                       </div>

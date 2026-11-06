@@ -1,8 +1,7 @@
-import { Link, useSearchParams } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { FaFacebook, FaLinkedin } from 'react-icons/fa'
 import { FaSquareXTwitter } from 'react-icons/fa6'
 import { InstagramIcon, YoutubeIcon } from '@/components/icons/SocialIcons'
-import TrustedClients from '@/components/sections/TrustedClients'
 
 // Te same linki co w stopce (patrz src/components/Footer.tsx) — na razie
 // placeholdery "#", do podmiany na realne profile firmy.
@@ -15,8 +14,6 @@ const socialLinks = [
 ]
 
 export default function Kontakt() {
-  const [params] = useSearchParams()
-  const final = params.get('wersja') === 'final'
   return (
     <>
       <div className="relative mx-auto mb-6 flex h-[200px] w-full max-w-screen-2xl items-center overflow-hidden sm:h-[320px]">
@@ -64,7 +61,7 @@ export default function Kontakt() {
               <div className="flex flex-col gap-5 text-[19px] leading-relaxed text-white/80">
                 <div>
                   <span className="mb-1 block text-[20px] font-semibold uppercase tracking-wide text-white">
-                    {final ? 'Główna Siedziba' : 'Adres:'}
+                    Główna Siedziba
                   </span>
                   Wiesława Wody 27, 33-100 Tarnów
                 </div>
@@ -94,14 +91,6 @@ export default function Kontakt() {
               </div>
             </div>
           </div>
-
-          {/* Logotypy klientów tuż przed formularzem — to moment, w którym
-              odwiedzający decyduje, czy napisać. Widok znanych marek obniża
-              opór przed wysłaniem zapytania. */}
-          {!final && <TrustedClients
-            title="Zaufali nam"
-            description="Realizujemy inwestycje dla wymagających klientów przemysłowych i ciepłowniczych — od zakładów produkcyjnych po miejskie przedsiębiorstwa energetyki cieplnej."
-          />}
 
           {/* Formularz — na razie sam wizualny szkielet, bez obsługi wysyłki.
               Docelowo podpięty pod formularz WordPressa (np. Contact Form 7 /

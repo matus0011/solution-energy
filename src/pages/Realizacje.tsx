@@ -1,116 +1,44 @@
-import { Link, useSearchParams } from 'react-router-dom'
-import clsx from 'clsx'
-import RealizacjeFinal from './RealizacjeFinal'
-import { projects } from '@/lib/projects'
+import { useState } from 'react'
+import { Link } from 'react-router-dom'
+import { ArrowUpRight } from 'lucide-react'
+import { categorizedProjects, projectSectors, type ProjectSector } from '@/lib/projectSectors'
 import TrustedClients from '@/components/sections/TrustedClients'
 
-// Wizualny placeholder — bez logiki, tylko do pokazania.
-const paginationItems = [1, 2]
-const activePaginationItem = 1
-
 export default function Realizacje() {
-  const [params] = useSearchParams()
-  return params.get('wersja') === 'final' ? <RealizacjeFinal /> : <RealizacjeDemo />
-}
+  const [sector, setSector] = useState<ProjectSector | 'Wszystkie'>('Wszystkie')
+  const [expanded, setExpanded] = useState(false)
+  const filtered = categorizedProjects.filter((project) => sector === 'Wszystkie' || project.sectors.includes(sector))
+  const visible = expanded ? filtered : filtered.slice(0, 6)
 
-function RealizacjeDemo() {
-  return (
-    <>
-      <div className="relative mx-auto mb-6 flex h-[200px] w-full max-w-screen-2xl items-center overflow-hidden sm:h-[380px]">
-        <img
-          src="https://pixabay.com/images/download/peterdargatz-windmill-50512_640.jpg"
-          alt="Realizacje"
-          className="absolute inset-0 h-full w-full object-cover"
-        />
-        <div className="absolute inset-0 bg-black/55" />
-        <div className="relative mx-auto flex w-full max-w-screen-2xl flex-col items-center gap-2 px-6 text-center sm:px-10 lg:px-14">
-          <h1 className="font-heading text-4xl font-bold uppercase tracking-wide text-white sm:text-5xl">
-            Realizacje
-          </h1>
-          <span className="pt-4 text-base font-semibold uppercase tracking-[0.12em] text-white/70">
-            <Link to="/" className="transition-colors hover:text-white">
-              Strona główna
-            </Link>{' '}
-            / Realizacje
-          </span>
-        </div>
+  return <>
+    <section className="relative mx-auto mb-6 flex h-[200px] w-full max-w-screen-2xl items-center overflow-hidden sm:h-[320px]">
+      <img src="/realizacje/pruszkow-hala-kotlowni.jpg" alt="" className="absolute inset-0 h-full w-full object-cover" />
+      <div className="absolute inset-0 bg-black/55" />
+      <div className="relative mx-auto flex w-full max-w-screen-2xl flex-col items-center gap-2 px-6 text-center sm:px-10 lg:px-14">
+        <h1 className="font-heading text-4xl font-bold uppercase tracking-wide text-white sm:text-5xl">Realizacje</h1>
+        <span className="pt-4 text-base font-semibold uppercase tracking-[0.12em] text-white/70">
+          <Link to="/" className="transition-colors hover:text-white">Strona główna</Link> / Realizacje
+        </span>
       </div>
-
-      <div className="px-6 pb-10 pt-8 sm:px-10 sm:pb-16 sm:pt-20 lg:px-14">
-        <div className="mx-auto flex max-w-7xl flex-col gap-6 sm:gap-10">
-          <div className="grid grid-cols-1 gap-x-8 gap-y-6 md:grid-cols-2 md:gap-y-12 2xl:grid-cols-3">
-            {projects.map((project, index) => (
-              <Link key={index} to={`/realizacje/${index}`} className="flex cursor-pointer flex-col bg-white">
-                <div className="group relative h-[280px] overflow-hidden md:h-[360px] 2xl:h-[280px]">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
-                  <span className="absolute bottom-4 left-4 bg-[#fbba00] px-3 py-1.5 text-[12px] font-bold uppercase tracking-[0.06em] text-[#26282C]">
-                    {project.cat}
-                  </span>
-                  <div className="absolute inset-0 flex items-center justify-center gap-2 bg-black/30 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                    <span className="h-2.5 w-2.5 scale-0 rounded-full bg-[#fbba00] transition-transform duration-300 group-hover:scale-100" />
-                    <span className="h-2.5 w-2.5 scale-0 rounded-full bg-[#fbba00] transition-transform delay-75 duration-300 group-hover:scale-100" />
-                    <span className="h-2.5 w-2.5 scale-0 rounded-full bg-[#fbba00] transition-transform delay-150 duration-300 group-hover:scale-100" />
-                  </div>
-                </div>
-                <div className="flex flex-col gap-2 py-3 pr-6 sm:py-6">
-                  <span className="line-clamp-2 h-[65px] w-fit font-heading text-[26px] font-bold leading-tight text-[#26282C] transition duration-500 hover:text-[#fbba00]/80">
-                    {project.title}
-                  </span>
-                  <span className="line-clamp-1 text-[16px] font-bold uppercase tracking-wide text-[#777777]">
-                    {project.date} · {project.client}
-                  </span>
-                  <span className="line-clamp-3 mb-3 mt-3 h-[81px] text-[18px] font-normal leading-normal text-[#777777] sm:mb-6 sm:mt-6">
-                    {project.desc}
-                  </span>
-                  <div className="group/cta flex w-fit cursor-pointer items-center gap-3">
-                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border-2 border-[#fbba00] text-lg font-semibold leading-none text-[#fbba00] transition-colors duration-300 group-hover/cta:border-[#26282C] group-hover/cta:text-[#26282C]">
-                      +
-                    </span>
-                    <span className="text-[16px] font-bold uppercase tracking-wide text-[#fbba00] transition-colors duration-300 group-hover/cta:text-[#26282C]">
-                      Czytaj więcej
-                    </span>
-                  </div>
-                </div>
-              </Link>
-            ))}
-          </div>
-
-          <nav aria-label="Paginacja" className="mb-6 mt-6 flex items-center justify-center gap-3">
-            <span className="flex h-10 w-10 cursor-pointer items-center justify-center border-2 border-slate-200 text-lg font-semibold leading-none text-slate-300 transition-colors duration-300 hover:border-[#26282C] hover:text-[#26282C]">
-              ‹
-            </span>
-
-            {paginationItems.map((num) => (
-              <span
-                key={num}
-                className={clsx(
-                  'flex h-10 w-10 cursor-pointer items-center justify-center text-[16px] font-bold transition-colors duration-300',
-                  num === activePaginationItem
-                    ? 'bg-[#fbba00] text-[#26282C]'
-                    : 'border-2 border-[#fbba00] text-[#fbba00] hover:bg-[#fbba00] hover:text-[#26282C]',
-                )}
-              >
-                {num}
-              </span>
-            ))}
-
-            <span className="flex h-10 w-10 cursor-pointer items-center justify-center border-2 border-[#fbba00] text-lg font-semibold leading-none text-[#fbba00] transition-colors duration-300 hover:border-[#26282C] hover:text-[#26282C]">
-              ›
-            </span>
-          </nav>
-
-          {/* Dowód społeczny tuż po przejrzeniu realizacji — czytelnik widział
-              właśnie zakres prac, więc lista klientów pada w najlepszym
-              momencie. */}
-          <div className="mt-4 sm:mt-10">
-            <TrustedClients description="Realizacje powyżej powstawały dla inwestorów, którzy wracają do nas przy kolejnych projektach." />
-          </div>
+    </section>
+    <section className="px-6 py-12 sm:px-10 lg:px-14" aria-label="Katalog realizacji">
+      <div className="mx-auto max-w-[1380px]">
+        <div className="mb-8 flex flex-wrap gap-x-6 gap-y-1 sm:gap-x-8" role="group" aria-label="Filtruj według obszaru działalności">
+          {(['Wszystkie', ...projectSectors] as const).map((name) => <button key={name} type="button" aria-pressed={sector === name} aria-controls="project-results" onClick={() => { setSector(name); setExpanded(false) }} className={`min-h-11 max-w-full border-b-2 bg-transparent py-2 text-left text-[15px] font-semibold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#26282c] ${sector === name ? 'border-[#fbba00] text-[#26282c]' : 'border-transparent text-[#676b72] hover:border-[#fbba00] hover:text-[#26282c]'}`}>{name}</button>)}
         </div>
+        <p role="status" className="mb-6 text-sm text-[#55595f]">{sector} — wyświetlono {visible.length} z {filtered.length} realizacji</p>
+        <div id="project-results" className="grid gap-x-8 gap-y-12 md:grid-cols-2 xl:grid-cols-3">
+          {visible.map((project) => <Link key={project.id} to={`/realizacje/${project.id}`} className="group block focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#b58200]">
+            <div className="aspect-[4/3] overflow-hidden bg-[#f0f0ef]"><img src={project.image} alt={project.title} loading="lazy" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105 motion-reduce:transition-none" /></div>
+            <p className="mb-2 mt-5 text-sm text-[#676b72]">{project.sectors.join(' / ')}</p>
+            <h2 className="font-heading text-[23px] font-semibold leading-snug text-[#26282c]">{project.title}</h2>
+            <p className="mt-3 line-clamp-3 text-[15px] leading-relaxed text-[#55595f]">{project.desc}</p>
+            <span className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-[#26282c]">Zobacz realizację <ArrowUpRight size={18} aria-hidden="true" /></span>
+          </Link>)}
+        </div>
+        {(sector !== 'Wszystkie' || !expanded) && <div className="mt-12 text-center"><button type="button" onClick={() => { setSector('Wszystkie'); setExpanded(true) }} className="min-h-12 bg-[#fbba00] px-8 py-4 font-semibold text-[#26282c] hover:bg-[#e8ac00] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4">Pokaż wszystkie realizacje</button></div>}
       </div>
-    </>
-  )
+    </section>
+    <section className="bg-[#f5f4f1] px-6 py-16 sm:px-10 lg:px-14"><div className="mx-auto max-w-[1380px]"><TrustedClients variant="marquee" description={false} /></div></section>
+  </>
 }

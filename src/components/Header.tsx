@@ -1,10 +1,10 @@
 import { Fragment, useEffect, useState, type CSSProperties, type ReactNode } from 'react'
-import { NavLink, useSearchParams } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { ChevronDown, Mail, Phone } from 'lucide-react'
 import { FaLinkedin } from 'react-icons/fa'
 import clsx from 'clsx'
 import { YoutubeIcon } from '@/components/icons/SocialIcons'
-import { navLinks, finalNavLinks } from '@/lib/navigation'
+import { navLinks } from '@/lib/navigation'
 
 // Te same profile co w stopce. Pasek jest poza sticky headerem, więc przy
 // scrollu zjeżdża razem ze stroną — zostaje samo menu, tak jak topbar w Klimtarze.
@@ -52,13 +52,7 @@ function NavItem({
 }
 
 export default function Header() {
-  const [params] = useSearchParams()
-  const isFinal = params.get('wersja') === 'final'
-  const links = (isFinal ? finalNavLinks : navLinks).map(link => ({
-    ...link,
-    href: isFinal ? `${link.href}?wersja=final` : link.href,
-    children: link.children?.map(child => ({ ...child, href: isFinal ? `${child.href}?wersja=final` : child.href })),
-  }))
+  const links = navLinks
   const [mobileOpen, setMobileOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [expandedMobile, setExpandedMobile] = useState<string | null>(null)
@@ -137,7 +131,7 @@ export default function Header() {
           scrolled ? 'py-4' : 'py-12 md:py-6',
         )}
       >
-        <NavLink to={isFinal ? '/?wersja=final' : '/'} className="shrink-0">
+        <NavLink to="/" className="shrink-0">
           <img
             src="/logos/logotyp_energysolutions_crv.png"
             alt="Energy Solutions — strona główna"
@@ -145,7 +139,7 @@ export default function Header() {
           />
         </NavLink>
 
-        <nav aria-label="Główna nawigacja" className={clsx('hidden items-center gap-4', isFinal ? 'lg:flex' : 'md:flex')}>
+        <nav aria-label="Główna nawigacja" className="hidden items-center gap-4 lg:flex">
           {links.map((link, index) => (
             <Fragment key={link.label}>
               {index > 0 && <span className="h-4 w-px bg-[#e5e5e5]" aria-hidden="true" />}
@@ -165,22 +159,6 @@ export default function Header() {
 
                   <div className="invisible absolute left-0 top-full z-50 w-[190px] translate-y-1 pt-[30px] opacity-0 transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100">
                     <div className="flex flex-col bg-[#26282C] py-2 shadow-[0_16px_32px_rgba(0,0,0,0.25)]">
-                      {/* Sam link do /firma powtórzony jako pierwsza pozycja — bez
-                          tego użytkownik widzi tylko dwie podstrony i może nie
-                          zauważyć, że nagłówek "Firma" też prowadzi na własną,
-                          osobną stronę. */}
-                      {!isFinal && <NavLink
-                        to={link.href}
-                        end
-                        className={({ isActive }) =>
-                          clsx(
-                            'border-b border-white/10 px-5 py-3 text-[17px] font-bold uppercase leading-snug tracking-wide text-[var(--brand-accent,#fbba00)] transition-colors duration-200 hover:text-white',
-                            isActive && 'text-white',
-                          )
-                        }
-                      >
-                        O firmie
-                      </NavLink>}
                       {link.children.map((child) => (
                         <NavLink
                           key={child.href}
@@ -218,7 +196,7 @@ export default function Header() {
           aria-label={mobileOpen ? 'Zamknij menu' : 'Otwórz menu'}
           className={clsx(
             'relative z-50 flex h-12 w-12 items-center justify-center rounded-lg transition-colors',
-            isFinal ? 'lg:hidden' : 'md:hidden',
+            'lg:hidden',
             mobileOpen ? 'text-white' : 'text-[#404040] hover:text-[var(--brand-accent,#fbba00)]',
           )}
         >
@@ -250,7 +228,7 @@ export default function Header() {
       <div
         className={clsx(
           'fixed inset-0 z-40 flex flex-col overflow-hidden bg-[#26282C] transition-opacity duration-300',
-          isFinal ? 'lg:hidden' : 'md:hidden',
+          'lg:hidden',
           mobileOpen ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0',
         )}
       >
@@ -316,18 +294,6 @@ export default function Header() {
                       )}
                     >
                       <div className="flex flex-col gap-1 overflow-hidden pb-1">
-                        {/* Sam link do /firma powtórzony jako pierwsza pozycja — ta sama
-                            logika co w rozwijanym menu desktop (patrz wyżej), żeby po
-                            rozwinięciu podmenu było jasne, że "Firma" to też osobna strona,
-                            a nie tylko nagłówek grupujący dwie podstrony. */}
-                        {!isFinal && <NavItem
-                          href={link.href}
-                          onClick={() => setMobileOpen(false)}
-                          className="py-1.5 text-xl font-bold uppercase tracking-wide text-[var(--brand-accent)] transition-colors duration-300 hover:text-white"
-                          activeClassName="!text-white"
-                        >
-                          O firmie
-                        </NavItem>}
                         {link.children!.map((child) => (
                           <NavItem
                             key={child.href}

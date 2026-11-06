@@ -1,4 +1,5 @@
-import { Routes, Route } from 'react-router-dom'
+import { useEffect } from 'react'
+import { Routes, Route, useLocation, useNavigate } from 'react-router-dom'
 import Layout from '@/components/Layout'
 import Home from '@/pages/Home'
 import Firma from '@/pages/Firma'
@@ -16,6 +17,16 @@ import Oferta from '@/pages/Oferta'
 import OfertaObszar from '@/pages/OfertaObszar'
 
 export default function App() {
+  const location = useLocation()
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    const search = new URLSearchParams(location.search)
+    if (!search.has('wersja')) return
+    search.delete('wersja')
+    navigate({ pathname: location.pathname, search: search.toString(), hash: location.hash }, { replace: true })
+  }, [location.pathname, location.search, location.hash, navigate])
+
   return (
     <Routes>
       <Route element={<Layout />}>

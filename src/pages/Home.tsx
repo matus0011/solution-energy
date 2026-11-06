@@ -1,46 +1,39 @@
-import { useSearchParams } from 'react-router-dom'
-import VersionSwitch, { type HomeVersion } from '@/components/VersionSwitch'
-import HomeDefault from '@/pages/HomeV1'
-import HomeV1 from '@/pages/HomeV2'
-import HomeV2 from '@/pages/HomeV3'
-import HomeV3 from '@/pages/HomeV4'
-import HomeV4 from '@/pages/HomeV5'
-import HomeV5 from '@/pages/HomeV6'
-import HomeFinal from '@/pages/HomeFinal'
-
-// Wejście na / pokazuje dotychczasowe demo.
-// Układ v1 jest pod /?wersja=v1.
-// Układ v2 jest pod /?wersja=v2.
-// Układ v3 (oś czasu ze zdjęciami) jest pod /?wersja=v3.
-// Układ v4 (oś czasu z rysunkami) jest pod /?wersja=v4.
-// Układ v5 (v4 bez przejścia na zielony) jest pod /?wersja=v5.
-const versions: HomeVersion[] = ['v1', 'v2', 'v3', 'v4', 'v5', 'final']
+import Hero from '@/components/sections/Hero'
+import EnergyTimeline from '@/components/sections/EnergyTimeline'
+import StatsStrip from '@/components/sections/StatsStrip'
+import Sectors from '@/components/sections/Sectors'
+import NewsPreview from '@/components/sections/NewsPreview'
+import TrustedClients from '@/components/sections/TrustedClients'
+import { finalPartners, finalCertificates } from '@/lib/company'
+import FeaturedProjects from '@/components/sections/FeaturedProjects'
+import { HomeVariantContext } from '@/lib/homeVariant'
 
 export default function Home() {
-  const [params, setParams] = useSearchParams()
-  const raw = params.get('wersja')
-  const version: HomeVersion = versions.find((v) => v === raw) ?? 'default'
-
-  const choose = (next: HomeVersion) => {
-    const updated = new URLSearchParams(params)
-    if (next === 'default') {
-      updated.delete('wersja')
-    } else {
-      updated.set('wersja', next)
-    }
-    setParams(updated, { replace: true })
-  }
-
   return (
-    <>
-      {version === 'final' && <HomeFinal />}
-      {version === 'v5' && <HomeV5 />}
-      {version === 'v4' && <HomeV4 />}
-      {version === 'v3' && <HomeV3 />}
-      {version === 'v2' && <HomeV2 />}
-      {version === 'v1' && <HomeV1 />}
-      {version === 'default' && <HomeDefault />}
-      <VersionSwitch version={version} onChange={choose} />
-    </>
+    <HomeVariantContext.Provider value="v3">
+      <Hero />
+      <EnergyTimeline final />
+      <StatsStrip final />
+      <Sectors final />
+      <NewsPreview final />
+      <section className="bg-[#f5f4f1] px-6 py-20 sm:px-10 lg:px-14 lg:py-28">
+        <div className="mx-auto flex max-w-[1380px] 2xl:max-w-screen-2xl flex-col">
+          <TrustedClients
+            variant="marquee"
+            logos={finalPartners}
+            marqueeDuration={finalPartners.length * 7.5}
+            title="Partnerzy"
+            description="Energy Solutions skupia wokół siebie marki, których potencjał pozwala dostarczyć inwestorom najlepsze dostępne rozwiązania. Wykorzystując specjalistyczne możliwości swoich partnerów, firma jest w stanie sprostać nawet najbardziej wymagającym projektom."
+            descriptionClassName="max-w-3xl"
+          />
+        </div>
+      </section>
+      <FeaturedProjects final moreLabel="Pokaż więcej" motion />
+      <section className="bg-[#f5f4f1] px-6 py-20 sm:px-10 lg:px-14 lg:py-24">
+        <div className="mx-auto flex max-w-[1380px] 2xl:max-w-screen-2xl flex-col">
+          <TrustedClients variant="marquee" logos={finalCertificates} title="Certyfikaty" description="Systemy zarządzania jakością, BHP i środowiskiem, zgodność z dyrektywą PED 2014/68/UE w module A2 oraz zatwierdzone technologie spawania WPQR." size="xl" />
+        </div>
+      </section>
+    </HomeVariantContext.Provider>
   )
 }

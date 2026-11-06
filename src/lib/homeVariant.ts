@@ -2,7 +2,7 @@ import { createContext, useContext } from 'react'
 
 export type HomeVariant = 'v1' | 'v2' | 'v3'
 
-// Sekcje strony głównej są wspólne dla wariantów. HomeV3 ustawia 'v2', HomeV4, HomeV5 i HomeV6 ustawiają 'v3'.
+// Wspólne style sekcji. Strona główna korzysta z docelowego stylu v3.
 export const HomeVariantContext = createContext<HomeVariant>('v1')
 
 export const useHomeVariant = () => useContext(HomeVariantContext)

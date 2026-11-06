@@ -11,21 +11,6 @@ export interface NavLinkItem {
 
 export const navLinks: NavLinkItem[] = [
   {
-    label: 'Firma',
-    href: '/firma',
-    children: [
-      { label: 'Obszary działalności', href: '/firma/obszary-dzialalnosci' },
-      { label: 'Jak pracujemy', href: '/firma/jak-pracujemy' },
-      { label: 'Środki UE', href: '/srodki-ue' },
-    ],
-  },
-  { label: 'Realizacje', href: '/realizacje' },
-  { label: 'Kariera', href: '/kariera' },
-  { label: 'Kontakt', href: '/kontakt' },
-]
-
-export const finalNavLinks: NavLinkItem[] = [
-  {
     label: 'O Firmie',
     href: '/firma',
     children: [

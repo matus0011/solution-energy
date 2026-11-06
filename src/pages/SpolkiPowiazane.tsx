@@ -76,7 +76,7 @@ export default function SpolkiPowiazane() {
       <PhotoBanner
         title="Spółki powiązane"
         image="/realizacje/wieliczka-instalacja.jpg"
-        parent={{ label: 'O firmie', to: '/firma?wersja=final' }}
+        parent={{ label: 'O firmie', to: '/firma' }}
         flushBottom
       />
       <section aria-label="Spółki powiązane z Energy Solutions" className="bg-[#f5f4f1] px-6 py-14 sm:px-10 sm:py-20 lg:px-14 lg:py-24">
